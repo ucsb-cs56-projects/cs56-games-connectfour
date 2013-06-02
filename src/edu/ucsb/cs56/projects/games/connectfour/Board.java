@@ -46,6 +46,10 @@ public class Board extends JPanel {
 
     }
 
+    /**
+     Constructor intitializes instance variables and creates the empty game board
+    */
+
     public Board() {
 
 	circleHolder = new ArrayList<Circle>();
@@ -64,6 +68,11 @@ public class Board extends JPanel {
 
     }
 
+    /**
+       Overridden paint method calls the circle's draw method
+       @param g argument to draw circle
+    */
+
     @Override
     public void paint(Graphics g) {
 	for (Circle[] circles: gameGrid) {
@@ -73,10 +82,19 @@ public class Board extends JPanel {
 	}
     }
 
+    /** 
+	Inside class MouseClass implements the MouseListener interface.
+    */
 
     class MouseClass implements MouseListener {
 	private int xIndex;
 	private int yIndex;
+
+	/** 
+	    mouseClicked function handles the event appropriately when
+	    the user clicks on the board.
+	    @param e represents the mouseEvent.
+	*/
 
 	public void mouseClicked(MouseEvent e) {
 	    xIndex = e.getX() / 100;
@@ -104,22 +122,41 @@ public class Board extends JPanel {
 	    repaint();
 	        
 	}
+
+	/**
+	   mouseEntered is a function in the MouseListener interface
+	   @param e represents the mouseEvent
+	*/
 	
 	public void mouseEntered(MouseEvent e) {
 	    // TODO Auto-generated method stub
 	
 	}
     
-	
+	/**                                                                                                                                                             
+           mouseExited is a function in the MouseListener interface                                                                                                    
+           @param e represents the mouseEvent                                                                                                                           
+	*/
+
 	public void mouseExited(MouseEvent e) {
 	    // TODO Auto-generated method stub
 	    
 	}
-	
+
+	/**                                                                                                                                                             
+           mousePressed is a function in the MouseListener interface                                                                                                    
+           @param e represents the mouseEvent                                                                                                                           
+	*/
+
 	public void mousePressed(MouseEvent e) {
 	    //TODO Auto-generated method stub
 	}
-	
+
+	/**                                                                                                                                                             
+           mouseReleased is a function in the MouseListener interface                                                                                                   
+           @param e represents the mouseEvent                                                                                                                           
+	*/
+
 	public void mouseReleased(MouseEvent e) {
 	    // TODO Auto-generated method stub
 	

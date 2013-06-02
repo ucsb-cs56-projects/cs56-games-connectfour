@@ -29,6 +29,7 @@ public class Circle
      * @param w    width of circle
      * @param h    height of circle
      */
+
     public Circle(int x, int y, int w, int h)
     {
 	this.x = x;
@@ -39,14 +40,27 @@ public class Circle
         
     }
 
+    /**
+       Setter for the state variable
+       @param state     integer that the state is set equal to
+    */
+
     public void setState(int value) {
 	this.state = value;
     }
 
+    /**
+       Getter for the state variable 
+    */
+
     public int getState() {
 	return this.state;
     }
-   
+
+    /**
+       Draw function for the circle. Color depends on the state.
+    */
+
     public void draw(Graphics g) {
 	if (state == 1) {
 	    g.setColor(Color.red);
