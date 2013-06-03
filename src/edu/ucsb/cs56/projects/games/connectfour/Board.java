@@ -18,11 +18,11 @@ import java.awt.event.MouseListener;
 
 public class Board extends JPanel {
 
-    public static int numColumns = 6;
-    public static int numRows = 7;
+    public static int numColumns = 7;
+    public static int numRows = 6;
 
-    public static int width = 710;
-    public static int height = 650;
+    public static int frame_width = 710;
+    public static int frame_height = 650;
 
     public static Circle cc;
 
@@ -37,7 +37,7 @@ public class Board extends JPanel {
 	
        	frame = new JFrame();;
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	frame.setSize(width,height);
+	frame.setSize(frame_width,frame_height);
 	
 	frame.add(new Board());
 	frame.repaint();
@@ -52,12 +52,14 @@ public class Board extends JPanel {
 
     public Board() {
 
-	circleHolder = new ArrayList<Circle>();
-	this.gameGrid = new Circle[numRows][numColumns];
-	frame.addMouseListener(new MouseClass());
+	circleHolder = new ArrayList<Circle>();   
+	this.gameGrid = new Circle[numColumns][numRows];   //
+	frame.addMouseListener(new MouseClass());   //register the frame with the mouse
 
-	for (int i = 0; i < numRows; i++) {
-	    for (int j = 0; j < numColumns; j++) {
+	//Loop through the board and initialize each circle. add it to circleHolder and gameGrid
+
+	for (int i = 0; i < numColumns; i++) {         
+	    for (int j = 0; j < numRows; j++) {
 	        cc = new Circle( i * 100 + 55, j * 100 + 55, 90,90);
    		circleHolder.add(cc);
 		gameGrid[i][j] = cc;
@@ -75,6 +77,8 @@ public class Board extends JPanel {
 
     @Override
     public void paint(Graphics g) {
+
+	//Loop through gameGrid, drawing each circle that was initialized in Board()
 	for (Circle[] circles: gameGrid) {
 	    for (Circle circle: circles) {
 		circle.draw(g);
@@ -100,18 +104,25 @@ public class Board extends JPanel {
 	    xIndex = e.getX() / 100;
 	    yIndex = 0;
 	    
+	    //move down the selected column until you reach a circle that is red or yellow
+	    //if you reach the bottom-most circle, break
 	    while(gameGrid[xIndex][yIndex + 1].getState() == 0)
 	    {
 		yIndex++;
-		if (yIndex == numColumns -1) {
+		if (yIndex == numRows - 1) {
 		    break;
 		}
 	    }
+
+	    //if the top circle is already filled, do nothing and return
 	    if (yIndex == 0 && gameGrid[xIndex][yIndex].getState() != 0) {
 		return;
 	    }
+
+	    //set the selected circle's state to current turn value (1 or 2)
 	    gameGrid[xIndex][yIndex].setState(turn);
 
+	    //change turns
 	    if (turn == 1) {
 		turn = 2;
 	    }
@@ -119,6 +130,7 @@ public class Board extends JPanel {
 		turn = 1; 
 	    }
 
+	    //repaint after every mouseClick
 	    repaint();
 	        
 	}

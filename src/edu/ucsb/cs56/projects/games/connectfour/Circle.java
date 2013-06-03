@@ -42,7 +42,7 @@ public class Circle
 
     /**
        Setter for the state variable
-       @param state     integer that the state is set equal to
+       @param value     integer that the state is set equal to
     */
 
     public void setState(int value) {
@@ -62,15 +62,20 @@ public class Circle
     */
 
     public void draw(Graphics g) {
+	//red circle for first player
 	if (state == 1) {
 	    g.setColor(Color.red);
 	}
+	//yellow circle for second player
 	else if (state == 2){
 	    g.setColor(Color.yellow);
 	}
+	//state == 0, white circle
 	else {
 	    g.setColor(Color.white);
 	}
+
+	//draw and color the circle with the specificed dimensions
 	g.drawOval(x - width/2, y - height/2, width, height);
 	g.fillOval(x - width/2, y - height/2, width, height);
 	
