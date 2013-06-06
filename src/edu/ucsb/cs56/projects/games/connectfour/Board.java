@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 import java.util.ArrayList;
 import java.awt.Graphics;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 /**
@@ -21,10 +22,13 @@ public class Board extends JPanel {
     public static int numColumns = 7;
     public static int numRows = 6;
 
-    public static int frame_width = 710;
+    public static int frame_width = 720;
     public static int frame_height = 650;
 
     public static Circle cc;
+
+    private boolean gameOver;
+    private int drawCounter;
 
     private static ArrayList<Circle> circleHolder;
     private Circle[][] gameGrid;
@@ -53,7 +57,7 @@ public class Board extends JPanel {
     public Board() {
 
 	circleHolder = new ArrayList<Circle>();   
-	this.gameGrid = new Circle[numColumns][numRows];   //
+	this.gameGrid = new Circle[numColumns][numRows];   
 	frame.addMouseListener(new MouseClass());   //register the frame with the mouse
 
 	//Loop through the board and initialize each circle. add it to circleHolder and gameGrid
@@ -84,8 +88,115 @@ public class Board extends JPanel {
 		circle.draw(g);
 	    }
 	}
+	//after re-drawing the game board, check if someone has won or if it's a draw
+	checkWin(g);
+	if (!gameOver) 
+	    checkDraw(g);
     }
 
+    /**
+       Displays the win message on the screen when someone has won
+       @param g to draw the message
+       @param state represents red or yellow player
+    */
+
+    public void displayWinner(Graphics g, int state) {
+	g.setColor(Color.BLACK);
+	g.setFont(new Font("Times", Font.BOLD, 100));
+	if (state == 1) {
+	    g.drawString("Red Wins!", 100, 400);
+	}
+	else {
+	    g.drawString("Yellow Wins!", 0, 400);
+	}
+
+	this.gameOver = true;
+    }
+
+    /** 
+       Determines and displays a draw message if no player wins
+       @param g to draw the message
+    */
+
+    public void checkDraw(Graphics g) {
+	//if 42 successful mouse events
+	if (drawCounter == 42) {
+	    g.setColor(Color.BLACK);
+	    g.setFont(new Font("Times", Font.BOLD, 100));
+	    g.drawString("Draw", 100, 400);
+	    gameOver = true;
+	}
+    }
+
+    /**
+     *After every new move, loop through the grid and check
+     *for all possible four in a row patterns.
+       @param g necessary to call displayWinner method
+    */
+
+    public void checkWin(Graphics g) {
+	// see if there are 4 disks in a row: horizontal, vertical or diagonal
+	// vertical check. loop through the whole grid, column x row,
+	// checking the state of each circle
+	for (int col = 0; col < numColumns; col++) {
+	    for (int row = 0; row < numRows - 3; row++) {
+		int curr = gameGrid[col][row].getState();
+		if (curr > 0 //circle is red or yellow
+		    && curr == gameGrid[col][row+1].getState() //increment the row
+		    && curr == gameGrid[col][row+2].getState() //but stay in the same column
+		    && curr == gameGrid[col][row+3].getState() ) 
+		{	
+		    displayWinner(g, gameGrid[col][row].getState());
+		}
+	    }
+	}
+	
+	
+	
+	// horizontal check. loop through the board, row x column,
+	// checking the state of each circle.
+	for (int row = 0; row < numRows; row++) {
+	    for (int col = 0; col < numColumns - 3; col++) {
+		
+		int curr = gameGrid[col][row].getState();
+		if (curr > 0
+		    && curr == gameGrid[col+1][row].getState() //increment the column
+		    && curr == gameGrid[col+2][row].getState() //but stay in the same row and
+		    && curr == gameGrid[col+3][row].getState() ) //get the state
+		{
+		    displayWinner(g, gameGrid[col][row].getState());
+		}
+	    }
+	}
+	// diagonal check upper left to lower right
+	for (int col = 0; col < numColumns - 3; col++) {
+	    for (int row = 0; row < numRows - 3; row++) {
+		int curr = gameGrid[col][row].getState();
+		if (curr > 0
+		    && curr == gameGrid[col+1][row+1].getState() //increment the column 
+		    && curr == gameGrid[col+2][row+2].getState() //and the row by equal
+		    && curr == gameGrid[col+3][row+3].getState() ) //amounts and get the state
+		{   
+		    displayWinner(g, gameGrid[col][row].getState()); 
+		}
+	    }
+	}
+
+	// diagonal upper right to lower left
+	for (int col = numColumns - 1; col >= 3; col--) {
+	    for (int row = 0; row < numRows - 3; row++) {
+		int curr = gameGrid[col][row].getState();
+		if (curr > 0
+		    && curr == gameGrid[col-1][row+1].getState()  //move column to the left
+		    && curr == gameGrid[col-2][row+2].getState() //and row down, checking
+		    && curr == gameGrid[col-3][row+3].getState() ) //each state
+                {
+		    displayWinner(g, gameGrid[col][row].getState());
+		}
+	    }
+	}
+    } 
+   
     /** 
 	Inside class MouseClass implements the MouseListener interface.
     */
@@ -101,6 +212,10 @@ public class Board extends JPanel {
 	*/
 
 	public void mouseClicked(MouseEvent e) {
+	    //dont respond to mouse events if the game is over
+	    if (gameOver)
+		return;
+
 	    xIndex = e.getX() / 100;
 	    yIndex = 0;
 	    
@@ -132,6 +247,8 @@ public class Board extends JPanel {
 
 	    //repaint after every mouseClick
 	    repaint();
+
+	    drawCounter++;
 	        
 	}
 
