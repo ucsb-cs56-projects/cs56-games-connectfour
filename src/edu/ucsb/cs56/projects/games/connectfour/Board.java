@@ -11,9 +11,9 @@ import java.awt.event.MouseListener;
 /**
    Board class uses swing gui to represent the Connect 4 game board
 
-   @author Jake Dumont
-   @author Heneli Kailahi
-   @version Project2, CS56, S13
+   @author Girish Kowligi
+   @author Vincent Tan
+   @version Project1, CS56, W14
 
 */
 
