@@ -1,69 +1,38 @@
 package edu.ucsb.cs56.projects.games.connectfour;
 
-
-import javax.swing.JPanel;
-import javax.swing.JFrame;
+import javax.swing.*;
+import java.awt.event.*;
+import java.awt.*;
 import java.util.ArrayList;
-import java.awt.Graphics;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+
 /**
    Board class uses swing gui to represent the Connect 4 game board
 
-   @author Girish Kowligi
-   @author Vincent Tan
-   @version Project1, CS56, W14
+   @author Jake Dumont
+   @author Heneli Kailahi
+   @version Project2, CS56, S13
 
 */
 
-public class Board extends JPanel {
+class Board extends JPanel {
 
     public static int numColumns = 7;
     public static int numRows = 6;
-
-    public static int frame_width = 720;
-    public static int frame_height = 650;
-
     public static Circle cc;
-
     private boolean gameOver;
     private int drawCounter;
-
     private static ArrayList<Circle> circleHolder;
     private Circle[][] gameGrid;
     private int turn;
-
-    public static JFrame frame;
-
-    public static void main (String [] args){
-        
-        frame = new JFrame();;
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(frame_width,frame_height);
-        
-        frame.add(new Board());
-        frame.repaint();
-        frame.setVisible(true);
-    }
     
-    
-    //public void go(){}
-    
-    
-    
-
     /**
      Constructor intitializes instance variables and creates the empty game board
     */
 
     public Board() {
-
-	circleHolder = new ArrayList<Circle>();   
-	this.gameGrid = new Circle[numColumns][numRows];   
-	frame.addMouseListener(new MouseClass());   //register the frame with the mouse
-
+    
+	circleHolder = new ArrayList<Circle>();
+	this.gameGrid = new Circle[numColumns][numRows];
 	//Loop through the board and initialize each circle. add it to circleHolder and gameGrid
 
 	for (int i = 0; i < numColumns; i++) {         
@@ -72,11 +41,10 @@ public class Board extends JPanel {
 		circleHolder.add(cc);
 		gameGrid[i][j] = cc;
 	    }
-	} 
-	
+	}
 	turn = 1;
-
     }
+    
 
     /**
        Overridden paint method calls the circle's draw method
@@ -141,7 +109,7 @@ public class Board extends JPanel {
     */
 
     public void checkWin(Graphics g) {
-	// see if there are 4 disks in a row: horizontal, vertical or diagonal
+	// see if there are 4 disks in a row: horigitzontal, vertical or diagonal
 	
 	// horizontal check. loop through the board, row x column,
 	// checking the state of each circle.
@@ -234,102 +202,33 @@ public class Board extends JPanel {
 		    }
 	    }
 	}
-    } 
-   
-    /** 
-	Inside class MouseClass implements the MouseListener interface.
-    */
-
-    class MouseClass implements MouseListener {
-	private int xIndex;
-	private int yIndex;
-
-	/** 
-	            mouseClicked function handles the event appropriately when
-		        the user clicks on the board.
-			        @param e represents the mouseEvent.
-	*/
-
-	public void mouseClicked(MouseEvent e) {
-	    //dont respond to mouse events if the game is over
-	    if (gameOver)
-		return;
-
-	    xIndex = e.getX() / 100;
-	    yIndex = 0;
-	            
-	    //move down the selected column until you reach a circle that is red or yellow
-	    //if you reach the bottom-most circle, break
-	    while(gameGrid[xIndex][yIndex + 1].getState() == 0)
-		{
-		    yIndex++;
-		    if (yIndex == numRows - 1) {
-			break;
-		    }
-		}
-
-	    //if the top circle is already filled, do nothing and return
-	    if (yIndex == 0 && gameGrid[xIndex][yIndex].getState() != 0) {
-		return;
-	    }
-
-	    //set the selected circle's state to current turn value (1 or 2)
-	    gameGrid[xIndex][yIndex].setState(turn);
-
-	    //change turns
-	    if (turn == 1) {
-		turn = 2;
-	    }
-	    else {
-		turn = 1; 
-	    }
-
-	    //repaint after every mouseClick
-	    repaint();
-
-	    drawCounter++;
-	                
-	}
-
-	/**
-	         mouseEntered is a function in the MouseListener interface
-		          @param e represents the mouseEvent
-	*/
-	
-	public void mouseEntered(MouseEvent e) {
-	    // TODO Auto-generated method stub
-	        
-	}
-    
-	/**                                                                                                                                                             
-           mouseExited is a function in the MouseListener interface                                                                                                    
-           @param e represents the mouseEvent                                                                                                                           
-	*/
-
-	public void mouseExited(MouseEvent e) {
-	    // TODO Auto-generated method stub
-	            
-	}
-
-	/**                                                                                                                                                             
-           mousePressed is a function in the MouseListener interface                                                                                                    
-           @param e represents the mouseEvent                                                                                                                           
-	        */
-
-	public void mousePressed(MouseEvent e) {
-	    //TODO Auto-generated method stub
-	}
-
-	/**                                                                                                                                                             
-           mouseReleased is a function in the MouseListener interface                                                                                                   
-           @param e represents the mouseEvent                                                                                                                           
-	*/
-
-	public void mouseReleased(MouseEvent e) {
-	    // TODO Auto-generated method stub
-	        
-	}
-	
     }
-}
+   
 
+    public int getTurn(){
+        return this.turn;
+    }
+    
+    public void setTurn(int t){
+        if ( (t == 1) || (t == 2))
+            this.turn = t;
+    }
+    
+    public int getDrawCounter(){
+        return this.drawCounter;
+    }
+    
+    public void setDrawCounter(int s){
+        this.drawCounter = s;
+    }
+    
+    public boolean getGameOver(){
+        return this.gameOver;
+    }
+    
+    public Circle getGameGridCircle(int x, int y){
+        return gameGrid[x][y];
+    }
+    
+
+}
