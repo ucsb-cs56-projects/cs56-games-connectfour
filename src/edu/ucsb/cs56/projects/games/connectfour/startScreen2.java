@@ -1,5 +1,7 @@
 package edu.ucsb.cs56.projects.games.connectfour;
 
+package ConnectFour;
+
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
@@ -12,7 +14,7 @@ public class startScreen2 extends JFrame {
     
   
     
-    public static int frame_width = 800;
+    public static int frame_width = 820;
     public static int frame_height = 650;
     public static Board b;
     private static JButton sButton;
@@ -31,40 +33,35 @@ public class startScreen2 extends JFrame {
         sButton = new JButton ("Start!");
         sButton.addActionListener(new startButtonListener());
         
+        
+        
         this.getContentPane().add(BorderLayout.CENTER, sButton);
+        this.addMouseListener(new MouseClass());
         this.setVisible(true);
 
         
     }
-    /*
+    
     public void BackToStartScreen(){
+    
         System.out.println("Back TO Main MEnu");
-        this.remove(b);
         this.getContentPane().add(BorderLayout.CENTER, sButton);
         this.revalidate();
         
-    
-        
     }
-    */
+    
     public void launchGame(){
         System.out.println("Game has started!");
         
 	// remove start button
         this.remove(sButton);
-      
-	//Bad place to put it, This will cause a lot of conflicts later when
-	//we have a "restart" button. Multiple clicks :p (to fix)
         
-        this.addMouseListener(new MouseClass());
-        
-	//  mMButton = new JButton ("Main Menu!");
-	//  mMButton.addActionListener(new mainMenuButtonListener());
+        mMButton = new JButton ("Main Menu!");
+        mMButton.addActionListener(new mainMenuButtonListener());
         
         b = new Board();
-        
-        this.add(b);
-	// this.setContentPane(b);
+        this.getContentPane().add(BorderLayout.EAST, mMButton);
+        this.getContentPane().add(BorderLayout.CENTER,b);
         this.revalidate();
         this.repaint();
     
@@ -160,14 +157,15 @@ public class startScreen2 extends JFrame {
             launchGame();
         }
     }
-    /*
+  
     class mainMenuButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent event){
             BackToStartScreen();
+            remove(b);
+            remove(mMButton);
         }
     }
-    */
+   
 }
-
 
 
