@@ -4,13 +4,13 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 import java.util.ArrayList;
-
+import java.util.Random;
 /**
    Board class uses swing gui to represent the Connect 4 game board
 
-   @author Jake Dumont
-   @author Heneli Kailahi
-   @version Project2, CS56, S13
+   @author Vincent Tan
+   @author Girish Kowligi
+   @version Project1, CS56, W14
 
 */
 
@@ -19,7 +19,7 @@ class Board extends JPanel {
     public static int numColumns = 7;
     public static int numRows = 6;
     public static Circle cc;
-    private boolean gameOver;
+    private boolean gameOver = false;
     private int drawCounter;
     private static ArrayList<Circle> circleHolder;
     private Circle[][] gameGrid;
@@ -73,18 +73,17 @@ class Board extends JPanel {
        @param g to draw the message
     */
 
-    public void displayWinner(Graphics g) {
+    public void displayWinner(Graphics g, int state) {
 	g.setColor(Color.BLACK);
 	g.setFont(new Font("Times", Font.BOLD, 100));
 	
-	if (turn == 1){
-	    g.drawString("Yellow Wins!", 0, 400);
-	}
-	else {
-	    g.drawString("Red Wins!", 100, 400);
-	}
-
+	if (state == 1)
+	    g.drawString("Red Wins!", 0, 400);
+	else
+	    g.drawString("Yellow Wins!", 100, 400);
+	
 	this.gameOver = true;
+        
     }
 
     /** 
@@ -117,13 +116,14 @@ class Board extends JPanel {
 	    for (int col = 0; col < numColumns - 3; col++) {
 		
 		int curr = gameGrid[col][row].getState();
+		//  System.out.println(curr);
 		if (curr > 0
 		    && curr == gameGrid[col+1][row].getState() //increment the column
 		    && curr == gameGrid[col+2][row].getState() //but stay in the same row and
 		    && curr == gameGrid[col+3][row].getState() ) //get the state
 		    {
 			//  displayWinner(g, gameGrid[col][row].getState());
-			displayWinner(g);
+			displayWinner(g, curr);
 			// Change Winning Circles to Blue
 			gameGrid[col][row].setState(3);
 			gameGrid[col+1][row].setState(3);
@@ -146,7 +146,7 @@ class Board extends JPanel {
                     && curr == gameGrid[col][row+3].getState() )
 		    {
                 
-			displayWinner(g);
+			displayWinner(g, curr);
 			// Change Winning Circles to Blue
 			gameGrid[col][row].setState(3);
 			gameGrid[col][row+1].setState(3);
@@ -169,7 +169,7 @@ class Board extends JPanel {
 		    && curr == gameGrid[col+3][row+3].getState() ) //amounts and get the state
 		    {   
 			   
-			displayWinner(g);
+			displayWinner(g, curr);
 			// Change Winning Circles to Blue
 			gameGrid[col][row].setState(3);
 			gameGrid[col+1][row+1].setState(3);
@@ -191,7 +191,7 @@ class Board extends JPanel {
 		    && curr == gameGrid[col-3][row+3].getState() ) //each state
 		    {
 			
-			displayWinner(g);
+			displayWinner(g, curr);
 			// Change Winning Circles to Blue
 			gameGrid[col][row].setState(3);
 			gameGrid[col-1][row+1].setState(3);
@@ -203,8 +203,32 @@ class Board extends JPanel {
 	    }
 	}
     }
-   
+  
+    public void simpleComputerMove(){
+        
+        if (!gameOver){
+	    Random rand = new Random();
+	    int xIndex = rand.nextInt(7);
+	    int yIndex = 0;
 
+	    while (gameGrid[xIndex][yIndex].getState() != 0) {
+		xIndex = (xIndex + 1)%7;
+	    }
+            
+	    while(gameGrid[xIndex][yIndex+1].getState() == 0){
+		yIndex++;
+		if (yIndex == numRows - 1) {
+		    break;
+		}
+	    }
+            
+	    gameGrid[xIndex][yIndex].setState(turn);
+	    turn = 1;
+	    repaint();
+	    drawCounter++;
+        }
+    }
+    
     public int getTurn(){
         return this.turn;
     }
