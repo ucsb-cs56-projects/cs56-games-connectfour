@@ -1,15 +1,15 @@
 <project default="compile">
 
-  <property name="mainClass" value="Board" />
+  <property name="mainClass" value="startScreen2" />
  
-  <!-- build.xml for ConnectFour, CS56, S13
-       name: Jake Dumont and Heneli Kailahi-->
+  <!-- build.xml for ConnectFour, CS56, W14
+       name: Vincent Tan and Girish Kowligi-->
   
 
   <property environment="env"/> <!-- load the environment variables --> 
-  <property name="webRoot" value="${env.HOME}/public_html/cs56/13S/jdumont/hkailahi" />
+  <property name="webRoot" value="${env.HOME}/public_html/cs56/14W/vwtan/gkowligi" />
   <property name="webBaseURL" 
-	    value="http://www.cs.ucsb.edu/~${env.USER}/cs56/13S/jdumont/hkailahi" />
+	    value="http://www.cs.ucsb.edu/~${env.USER}/cs56/14W/vwtan/gkowligi" />
 
   <property name="packageName" value="edu.ucsb.cs56.projects.games.connectfour" />
   <property name="projectPath" value="edu/ucsb/cs56/projects/connectfour" />
@@ -89,7 +89,7 @@
    <mkdir dir="dist" />                                                         
    <jar destfile="dist/${projectName}.jar" basedir="build">  
     <manifest>
-      <attribute name="${mainClass}" value="Board"/>
+      <attribute name="${mainClass}" value="startScreen2"/>
     </manifest>
    </jar>
  </target>   

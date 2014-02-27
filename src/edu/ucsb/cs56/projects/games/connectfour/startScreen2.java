@@ -22,7 +22,7 @@ public class startScreen2 extends JFrame {
     
     public static int frame_width = 880;
     public static int frame_height = 650;
-    public static int menu_width = 200;
+    public static int menu_width = 240;
     public static int menu_height = 320;
     public static Board b;
     private static StartScreenButtonsPanel ss;
@@ -30,12 +30,13 @@ public class startScreen2 extends JFrame {
     private static singlePlayerMenuPanel SPMenu;
     private static inGameMenuPanel inGameMenuP;
     
-    
+    // Launch game
     public static void main (String [] args){
         JFrame frame = new startScreen2();
      
     }
     
+    // initial screen when program is executed
     public startScreen2(){
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(menu_width,menu_height);
@@ -48,6 +49,8 @@ public class startScreen2 extends JFrame {
         
     }
     
+    // When single Player Button is pressed
+    // Allow player to choose level of difficulty
     public void loadSinglePlayerMenu(){
         this.setSize(menu_width,menu_height);
         this.remove(ss);
@@ -100,6 +103,8 @@ public class startScreen2 extends JFrame {
         
     }
     
+    // remove the existing board
+    // and make a new one
     public void relaunchGame(){
         
         this.remove(b);
@@ -171,10 +176,6 @@ public class startScreen2 extends JFrame {
             
 		b.setDrawCounter(b.getDrawCounter()+1);
             
-            
-		System.out.println(b.getGameGridCircle(xIndex,yIndex).getState());
-		System.out.println(e.getX());
-		System.out.println(e.getY());
             }
             
             // single player easy
@@ -224,7 +225,7 @@ public class startScreen2 extends JFrame {
                         
 		}
 		else {
-                        
+                    // retrieve a Random computer move    
 		    b.simpleComputerMove();
 		}
             
@@ -263,20 +264,21 @@ public class startScreen2 extends JFrame {
                     b.setDrawCounter(b.getDrawCounter()+1);
                     
                     
-                    //Make a automatic mouse click to start the Computer Move
+                    //Make a automatic mouse click
+		    // to start the Computer Move
                     try {
                         Robot r = new Robot();
                         r.mousePress(InputEvent.BUTTON1_MASK);
                         r.mouseRelease(InputEvent.BUTTON1_MASK);
                         
                     }catch (AWTException ex){
-                        System.out.println("didn't work");
+                        System.out.println("generate robot didn't work");
                     }
                     
                     
                 }
                 else {
-                    
+                    // retrieve an advanced Computer move
                     b.AdvancedComputerMove();
                 }
 
@@ -319,7 +321,8 @@ public class startScreen2 extends JFrame {
         
     }
 
-    
+    // When the main Menu button is pressed
+    // return back to the startScreen
     class mainMenuButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent event){
             BackToStartScreen();
@@ -337,7 +340,7 @@ public class startScreen2 extends JFrame {
         private JButton MPButton;  // Multi Player Button
         private JButton SPButton;  // Single Player Button
         private JButton ExitButton;  // Exit Button
-        
+        private JButton ruleButton;  // Button to show rules
         
         public StartScreenButtonsPanel(){
             super();
@@ -354,15 +357,31 @@ public class startScreen2 extends JFrame {
             SPButton.addActionListener(new SPButtonListener());
             SPButton.setFont(BFont);
             
-            ExitButton = new JButton ("Exit");
+            ruleButton = new JButton ("Rules");
+	    ruleButton.addActionListener(new ruleButtonListener());
+	    ruleButton.setFont(BFont);
+
+	    ExitButton = new JButton ("Exit");
             ExitButton.addActionListener(new ExitButtonListener());
             ExitButton.setFont(BFont);
+
+	    
             
             this.add(SPButton);
             this.add(MPButton);
+	    this.add(ruleButton);
             this.add(ExitButton);
             
         }
+
+	/*
+	public void displayRules(Graphics g){
+	    g.setColor(Color.BLACK);
+	    g.setFont(new Font("Times", font.REGULAR, 18));
+	    g.drawString("1.Choose a Column to Place a Circle in.\n2. Try to get Four identical circles in a row.");
+
+	}
+	*/
         
         class MPButtonListener implements ActionListener {
             public void actionPerformed(ActionEvent event) {
@@ -377,6 +396,12 @@ public class startScreen2 extends JFrame {
 		//        b.setSinglePlayer(true);
                 loadSinglePlayerMenu();
 		//   launchGame();
+            }
+        }
+
+	class ruleButtonListener implements ActionListener {
+            public void actionPerformed(ActionEvent event){
+		//   displayRules(g); 
             }
         }
         
@@ -426,7 +451,7 @@ public class startScreen2 extends JFrame {
         class singlePlayerAdvancedListener implements ActionListener {
             public void actionPerformed(ActionEvent event){
                 gameMode = 3;
-                System.out.println("SinglePlayer Advanced");
+           
             }
         }
     }
@@ -436,14 +461,18 @@ public class startScreen2 extends JFrame {
     
     public class inGameMenuPanel extends JPanel{
         private JButton mainMButton;  // main Menu Button
-        private JButton restartButton;
-        private JButton exitButton;
-        
+        private JButton restartButton;  // restart Button
+        private JButton exitButton;   // exitButton
+	
         public inGameMenuPanel(){
             super ();
             this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
             Font BFont = new Font ("Comic Sans MS", Font.BOLD, 22);
         
+	    // Create a 
+	    // main button
+	    // restart button
+	    // exit Button
             mainMButton = new JButton ("Main Menu");
             mainMButton.addActionListener(new mainMenuButtonListener());
             mainMButton.setFont(BFont);
@@ -456,30 +485,41 @@ public class startScreen2 extends JFrame {
             exitButton.addActionListener(new exitButtonListener());
             exitButton.setFont(BFont);
         
+	    
         
             this.add(mainMButton);
             this.add(restartButton);
+	    
             this.add(exitButton);
+
         }
+	
+	// Listeners for Buttons in Panel
         
+	// when restart Button is pressed
+	// relaunch Game
         class restartButtonListener implements ActionListener {
             public void actionPerformed(ActionEvent event){
                 relaunchGame();
             }
-        }
+        }// end of RestartButtonListener Class
+
+	// Navigate back to startScreen when this button is pressed
         class mainMenuButtonListener implements ActionListener {
             public void actionPerformed(ActionEvent event){
-                BackToStartScreen();
-                
+		BackToStartScreen();                
             }
-        }
+        }// end of mainMenuButtonListener Class
+	
+	// when exit button is pressed 
+	// make the screen no longer visible, and stop execution
         class exitButtonListener implements ActionListener {
             public void actionPerformed(ActionEvent event){
-                setVisible(false);
+		setVisible(false);
                 dispose();
             }
-        }
-    }
+        }// end of exitButtonListener Class
+    }// end of inGameMenuPanel Class
     
-}
+}// end of startScreen Class
 
