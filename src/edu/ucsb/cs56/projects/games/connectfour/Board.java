@@ -24,6 +24,7 @@ class Board extends JPanel {
     private static ArrayList<Circle> circleHolder;
     private Circle[][] gameGrid;
     private int turn;
+    private boolean singlePlayer = false;
     
     /**
      Constructor intitializes instance variables and creates the empty game board
@@ -34,7 +35,7 @@ class Board extends JPanel {
 	circleHolder = new ArrayList<Circle>();
 	this.gameGrid = new Circle[numColumns][numRows];
 	//Loop through the board and initialize each circle. add it to circleHolder and gameGrid
-
+        
 	for (int i = 0; i < numColumns; i++) {         
 	    for (int j = 0; j < numRows; j++) {
 		cc = new Circle( i * 100 + 55, j * 100 + 55, 90,90);
@@ -73,15 +74,21 @@ class Board extends JPanel {
        @param g to draw the message
     */
 
-    public void displayWinner(Graphics g, int state) {
+    public void displayWinner(Graphics g) {
 	g.setColor(Color.BLACK);
 	g.setFont(new Font("Times", Font.BOLD, 100));
-	
-	if (state == 1)
-	    g.drawString("Red Wins!", 0, 400);
-	else
-	    g.drawString("Yellow Wins!", 100, 400);
-	
+	if (singlePlayer == false){
+	    if (turn == 1)
+		g.drawString("Yellow Wins!", 0, 400);
+	    else
+		g.drawString("Red Wins!", 100, 400);
+	}
+	else{
+	    if (turn == 1)
+		g.drawString("YOU LOSE!", 0, 400);
+	    else
+		g.drawString("YOU WIN!", 0, 400);
+	}
 	this.gameOver = true;
         
     }
@@ -123,7 +130,7 @@ class Board extends JPanel {
 		    && curr == gameGrid[col+3][row].getState() ) //get the state
 		    {
 			//  displayWinner(g, gameGrid[col][row].getState());
-			displayWinner(g, curr);
+			displayWinner(g);
 			// Change Winning Circles to Blue
 			gameGrid[col][row].setState(3);
 			gameGrid[col+1][row].setState(3);
@@ -146,7 +153,7 @@ class Board extends JPanel {
                     && curr == gameGrid[col][row+3].getState() )
 		    {
                 
-			displayWinner(g, curr);
+			displayWinner(g);
 			// Change Winning Circles to Blue
 			gameGrid[col][row].setState(3);
 			gameGrid[col][row+1].setState(3);
@@ -169,7 +176,7 @@ class Board extends JPanel {
 		    && curr == gameGrid[col+3][row+3].getState() ) //amounts and get the state
 		    {   
 			   
-			displayWinner(g, curr);
+			displayWinner(g);
 			// Change Winning Circles to Blue
 			gameGrid[col][row].setState(3);
 			gameGrid[col+1][row+1].setState(3);
@@ -191,7 +198,7 @@ class Board extends JPanel {
 		    && curr == gameGrid[col-3][row+3].getState() ) //each state
 		    {
 			
-			displayWinner(g, curr);
+			displayWinner(g);
 			// Change Winning Circles to Blue
 			gameGrid[col][row].setState(3);
 			gameGrid[col-1][row+1].setState(3);
@@ -204,29 +211,53 @@ class Board extends JPanel {
 	}
     }
   
+    
+    //Automatically Generate a Random Computer Move
+    //For Easy Mode
     public void simpleComputerMove(){
-        
+        //Make sure game is not Already Over
         if (!gameOver){
-	    Random rand = new Random();
-	    int xIndex = rand.nextInt(7);
-	    int yIndex = 0;
+            //generate a random Column
+            Random rand = new Random();
+            int xIndex = rand.nextInt(7);
+            int yIndex = 0;
 
-	    while (gameGrid[xIndex][yIndex].getState() != 0) {
-		xIndex = (xIndex + 1)%7;
-	    }
+            // make sure random column is not already full
+            while (gameGrid[xIndex][yIndex].getState() != 0) {
+                xIndex = (xIndex + 1)%7;
+            }
+            //find the lowest empty slot in the chosen column
+            //Place a circle there
+            while(gameGrid[xIndex][yIndex+1].getState() == 0){
+                yIndex++;
+                if (yIndex == numRows - 1) {
+                    break;
+                }
+            }
             
-	    while(gameGrid[xIndex][yIndex+1].getState() == 0){
-		yIndex++;
-		if (yIndex == numRows - 1) {
-		    break;
-		}
-	    }
-            
-	    gameGrid[xIndex][yIndex].setState(turn);
-	    turn = 1;
-	    repaint();
-	    drawCounter++;
+            gameGrid[xIndex][yIndex].setState(turn);
+            turn = 1;
+            repaint();
+            drawCounter++;
         }
+    }
+    
+    //Blocks any 3 in a row
+    public void AdvancedComputerMove(){
+        
+        //to be Implements
+    }
+    
+    
+    
+    //Getter and Setters
+    public void setSinglePlayer(boolean a){
+        this.singlePlayer = a;
+        
+    }
+    
+    public boolean getSinglePlayer(){
+        return this.singlePlayer;
     }
     
     public int getTurn(){
@@ -256,3 +287,4 @@ class Board extends JPanel {
     
 
 }
+
