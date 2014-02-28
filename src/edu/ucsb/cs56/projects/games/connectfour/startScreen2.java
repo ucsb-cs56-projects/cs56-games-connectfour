@@ -203,6 +203,7 @@ public class startScreen2 extends JFrame {
                                         
 		    //Make a automatic mouse click to start the Computer Move
 		    try {
+			//	Thread.sleep(1000);
 			Robot r = new Robot();
 			r.mousePress(InputEvent.BUTTON1_MASK);
 			r.mouseRelease(InputEvent.BUTTON1_MASK);
@@ -215,7 +216,14 @@ public class startScreen2 extends JFrame {
 		}
 		else {
                     // retrieve a Random computer move    
-		    b.simpleComputerMove();
+		    // generate a delay to slow computer down
+		    try{
+			Thread.sleep(1000);
+			b.simpleComputerMove();
+		    }catch (InterruptedException ex1){
+			System.out.println("Broken Thread");
+		    }
+
 		}
             
             }
