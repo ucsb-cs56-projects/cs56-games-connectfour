@@ -30,12 +30,18 @@ public class startScreen2 extends JFrame {
     private static singlePlayerMenuPanel SPMenu;
     private static inGameMenuPanel inGameMenuP;
     
+
     // Launch game
     public static void main (String [] args){
         JFrame frame = new startScreen2();
      
     }
+     
+    /**
+     Constructor intitializes JFrame For all panel
     
+    */
+
     // initial screen when program is executed
     public startScreen2(){
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -61,7 +67,9 @@ public class startScreen2 extends JFrame {
         
         
     }
-    
+    /**
+       Navigate Back to the main Menu
+     */
     public void BackToStartScreen(){
         if (b != null)
             remove(b);
@@ -78,50 +86,31 @@ public class startScreen2 extends JFrame {
         
     }
     
-    public void launchGame(){
-        
-        System.out.println("Game has started!");
-        this.setSize(frame_width,frame_height);
-	// remove start button
-	//  this.remove(SPButton);
-	//  this.remove(MPButton);
-        
-        this.remove(ss);
-        if (SPMenu != null)
-            this.remove(SPMenu);
-        this.setLayout(new BoxLayout(getContentPane(), BoxLayout.X_AXIS));
-        
-       
-        inGameMenuP = new inGameMenuPanel();
-        b = new Board();
-        
-        this.add(b);
-        this.add(inGameMenuP);
-        this.revalidate();
-        this.repaint();
-        
-        
-    }
-    
-    // remove the existing board
+    // remove the board if one already exists
     // and make a new one
-    public void relaunchGame(){
-        
-        this.remove(b);
-        this.remove(inGameMenuP);
-        
+    public void launchGame(){
+        // Make sure Panel already Exist.
+	// remove if it does.
+	if (b != null)
+	    this.remove(b);
+        if (inGameMenuP != null)
+	    this.remove(inGameMenuP);
         this.repaint();
-        System.out.println("Game has started!");
+
+	// set the Game size ready for The board
         this.setSize(frame_width,frame_height);
-        if (SPMenu != null)
+        // Remove SinglePlayer Menu if it exist
+	if (SPMenu != null)
             this.remove(SPMenu);
-        //this.remove(ss);
+        // remove startScreen if it exist
+	if (ss!= null)
+	    this.remove(ss);
         this.setLayout(new BoxLayout(getContentPane(), BoxLayout.X_AXIS));
-        
-        
+	// initiate a new board and a in-Game Menu
         inGameMenuP = new inGameMenuPanel();
         b = new Board();
         
+	// add it to frame and refresh
         this.add(b);
         this.add(inGameMenuP);
         this.revalidate();
@@ -500,7 +489,7 @@ public class startScreen2 extends JFrame {
 	// relaunch Game
         class restartButtonListener implements ActionListener {
             public void actionPerformed(ActionEvent event){
-                relaunchGame();
+                launchGame();
             }
         }// end of RestartButtonListener Class
 
