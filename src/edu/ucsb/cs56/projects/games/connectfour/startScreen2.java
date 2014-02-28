@@ -218,7 +218,7 @@ public class startScreen2 extends JFrame {
                     // retrieve a Random computer move    
 		    // generate a delay to slow computer down
 		    try{
-			Thread.sleep(1000);
+			Thread.sleep(500);
 			b.simpleComputerMove();
 		    }catch (InterruptedException ex1){
 			System.out.println("Broken Thread");
@@ -275,9 +275,15 @@ public class startScreen2 extends JFrame {
                     
                 }
                 else {
-                    // retrieve an advanced Computer move
-                    b.AdvancedComputerMove();
-                }
+			//retrieve an advanced computer move
+			//generate a delay to slow computer down
+		    try{
+			Thread.sleep(500);
+			b.simpleComputerMove();
+		    }catch (InterruptedException ex1){
+			System.out.println("Broken Thread");
+		    }
+		}
 
             }
         }
@@ -448,6 +454,7 @@ public class startScreen2 extends JFrame {
         class singlePlayerAdvancedListener implements ActionListener {
             public void actionPerformed(ActionEvent event){
                 gameMode = 3;
+		launchGame();
            
             }
         }

@@ -115,7 +115,7 @@ class Board extends JPanel {
     */
 
     public void checkWin(Graphics g) {
-	// see if there are 4 disks in a row: horigitzontal, vertical or diagonal
+	// see if there are 4 disks in a row: horizontal, vertical or diagonal
 	
 	// horizontal check. loop through the board, row x column,
 	// checking the state of each circle.
@@ -242,10 +242,191 @@ class Board extends JPanel {
         }
     }
     
-    //Blocks any 3 in a row
+
+    public void randomMove() {
+	//generate a random Column
+	Random rand = new Random();
+	int xIndex = rand.nextInt(7);
+	int yIndex = 0;
+
+	// make sure random column is not already full
+	while (gameGrid[xIndex][yIndex].getState() != 0) {
+	    xIndex = (xIndex + 1)%7;
+	}
+	//find the lowest empty slot in the chosen column
+	//Place a circle there
+	while(gameGrid[xIndex][yIndex+1].getState() == 0){
+	    yIndex++;
+	    if (yIndex == numRows - 1) {
+		break;
+	    }
+	}
+
+	gameGrid[xIndex][yIndex].setState(turn);
+	turn = 1;
+	repaint();
+	drawCounter++;
+    }
+
+    //Blocks any 3 in a row... so much strategy...
     public void AdvancedComputerMove(){
-        
-        //to be Implements
+
+	outerloop:
+        if(!gameOver){
+	    
+
+	    //horizontal checker
+	    for (int row = 0; row < numRows; row++) {
+		for (int col = 0; col < numColumns-3; col++) {
+
+		   int current = gameGrid[col][row].getState();
+
+			    if(row == 5 && col == 0 && current > 0 && current  == gameGrid[col + 1][row].getState() && current == gameGrid[col + 2][row].getState() && gameGrid[col + 3][row].getState() == 0) {
+				//3 in a row horizontal in bottom left corner, next spot not taken
+			       
+				gameGrid[col+3][row].setState(turn);
+				turn = 1;
+				repaint();
+				drawCounter++;
+				break outerloop;
+			    }	
+
+
+			    
+			    else if(row == 5 && col == 4 && current > 0 && current  == gameGrid[col + 1][row].getState() && current == gameGrid[col + 2][row].getState() && gameGrid[col - 1][row].getState() == 0){
+				//3 in a row horizontal in bottom right corner, previous spot not taken
+				
+				gameGrid[col - 1][row].setState(turn);
+				turn = 1;
+				repaint();
+				drawCounter++;
+				break outerloop;
+			    }
+
+			    else if(row == 5 && current > 0 && current  == gameGrid[col + 1][row].getState() && current == gameGrid[col + 2][row].getState() && gameGrid[col + 3][row].getState() == 0){
+				//3 in a row horizontal in bottom row, next spot not taken
+
+				gameGrid[col+3][row].setState(turn);
+				turn = 1;
+				repaint();
+				drawCounter++;
+				break outerloop;
+			    }
+			    
+			   else if(row == 5 && current > 0 && current == gameGrid[col + 1][row].getState() && current == gameGrid[col + 2][row].getState() && gameGrid[col + 3][row].getState() != 0 && gameGrid[col-1][row].getState() == 0){
+				//3 in a row horizontal in bottom row, next spot taken, previous spot not taken
+
+				gameGrid[col-1][row].setState(turn);
+				turn = 1;
+				repaint();
+				drawCounter++;
+				break outerloop;
+			    }
+
+			//not in bottom row
+			else if(col == 0 && current > 0 && current  == gameGrid[col + 1][row].getState() && current == gameGrid[col + 2][row].getState() && gameGrid[col + 3][row - 1].getState() != 0){
+				// 3 in a row horizontal, aligned left, need to only check for right block
+			gameGrid[col + 3][row].setState(turn);
+			turn = 1;
+			repaint();
+			drawCounter++;
+			break outerloop;
+		    }
+
+			else if(col == 4 && current > 0 && current  == gameGrid[col + 1][row].getState() && current == gameGrid[col + 2][row].getState() && gameGrid[col -1][row - 1].getState() != 0){
+				// 3 in a row horizontal, aligned right, need to only check for left block
+			gameGrid[col - 1][row].setState(turn);
+			turn = 1;
+			repaint();
+			drawCounter++;
+			break outerloop;
+		    }
+
+		    else if(current > 0 && current  == gameGrid[col + 1][row].getState() && current == gameGrid[col + 2][row].getState() && gameGrid[col + 3][row-1].getState() != 0){
+			//3 in a row horizontal, not in bottom row or corner or side, need to block right
+
+			gameGrid[col + 3][row].setState(turn);
+			turn = 1;
+			repaint();
+			drawCounter++;
+			break outerloop;
+		    }
+
+		   else if(current > 0 && current  == gameGrid[col + 1][row].getState() && current == gameGrid[col + 2][row].getState() && gameGrid[col - 1][row-1].getState() != 0){
+			//3 in a row horizontal, not in bottom row or corner, need to block left
+
+			gameGrid[col-1][row].setState(turn);
+			turn = 1;
+			repaint();
+			drawCounter++;
+			break outerloop;
+		    }
+
+		}
+	    }
+	    
+	    //vertical checker
+	    for (int col = 0; col < numColumns; col++){
+		for(int row = 0; row < numRows - 3; row++) {
+		    int current = gameGrid[col][row].getState();
+
+		    if(current > 0 && current == gameGrid[col][row+1].getState() && current == gameGrid[col][row+2].getState() && gameGrid[col][row + 3].getState() == 0) {
+			//3 in a row vertical, spot above not taken
+
+			gameGrid[col][row-1].setState(turn);
+			turn = 1;
+			repaint();
+			drawCounter++;
+			break outerloop;
+		    }
+
+		}
+	    }
+
+/*
+	    //top left to bottom right checker
+	    	    for (int col = 0; col < numColumns - 3; col++) {
+		for (int row = 0; row < numRows - 3; row++) {
+		    int current = gameGrid[col][row].getState();
+
+		    if(row == 3){
+			//bottom-most row
+			    
+			if (current > 0 && current == gameGrid[col+1][row+1].getState() && current == gameGrid[col+2][row+2].getState() && gameGrid[col-1][row-1].getState() == 0) {
+			//3 in a row diagonal top left to bottom right, bottom corner, blocking space open
+			    
+			    gameGrid[col-1][row-1].setState(turn);
+			    turn = 1;
+			    repaint();
+			    drawCounter++;
+			    break outerloop;
+			}
+		       
+			else {   //do a random move
+			    
+			    randomMove();
+			    break outerloop;
+			}
+		    }
+
+		    else if(row == 0 && col == 0
+		}
+	    }
+
+	    //bottom left to top right checker
+	    for (int col = numColumns - 1; col >= 3; col--) {
+		for (int row = 0; row < numRows - 3; row++) {
+		    int current = gameGrid[col][row].getState();
+		    if (current > 0 && current == gameGrid[col-1][row+1].getState() && current == gameGrid[col-2][row+2].getState()) {
+			//3 in a row diagonal bottom left to top right)
+
+		    }
+		}
+		}*/
+
+	    randomMove();
+        }
+	    
     }
     
     
