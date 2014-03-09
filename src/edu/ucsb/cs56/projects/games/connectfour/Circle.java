@@ -9,9 +9,9 @@ import java.awt.event.MouseEvent;
  * Circle draws a circle at the specified location and with
  * the specified color.
  * 
- * @author Jake Dumont
- * @author Heneli Kailahi
- * @version CS56, Spring 2013, UCSB
+ * @author Girish Kowligi
+ * @author Vincent Tan
+ * @version CS56, Winter 2014, UCSB
  */
 public class Circle
 { 
@@ -69,6 +69,10 @@ public class Circle
 	//yellow circle for second player
 	else if (state == 2){
 	    g.setColor(Color.yellow);
+	}
+	//blue circle for winning Circles
+	else if (state == 3) {
+	    g.setColor(Color.blue);
 	}
 	//state == 0, white circle
 	else {

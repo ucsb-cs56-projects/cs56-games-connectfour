@@ -1,78 +1,51 @@
 package edu.ucsb.cs56.projects.games.connectfour;
 
-import javax.swing.JPanel;
-import javax.swing.JFrame;
+import javax.swing.*;
+import java.awt.event.*;
+import java.awt.*;
 import java.util.ArrayList;
-import java.awt.Graphics;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.util.Random;
 /**
    Board class uses swing gui to represent the Connect 4 game board
 
-   @author Jake Dumont
-   @author Heneli Kailahi
-   @version Project2, CS56, S13
+   @author Vincent Tan
+   @author Girish Kowligi
+   @version Project1, CS56, W14
 
 */
 
-public class Board extends JPanel {
+class Board extends JPanel {
 
     public static int numColumns = 7;
     public static int numRows = 6;
-
-    public static int frame_width = 720;
-    public static int frame_height = 650;
-
     public static Circle cc;
-
-    private boolean gameOver;
+    private boolean gameOver = false;
     private int drawCounter;
-
     private static ArrayList<Circle> circleHolder;
     private Circle[][] gameGrid;
     private int turn;
-
-    public static JFrame frame;
-
+    private boolean singlePlayer = false;
     
-    public static void main(String[] args) {
-	
-       	frame = new JFrame();;
-	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	frame.setSize(frame_width,frame_height);
-	
-	frame.add(new Board());
-	frame.repaint();
-	frame.setVisible(true);
-
-
-    }
-
     /**
      Constructor intitializes instance variables and creates the empty game board
     */
 
     public Board() {
-
-	circleHolder = new ArrayList<Circle>();   
-	this.gameGrid = new Circle[numColumns][numRows];   
-	frame.addMouseListener(new MouseClass());   //register the frame with the mouse
-
+    
+	circleHolder = new ArrayList<Circle>();
+	this.gameGrid = new Circle[numColumns][numRows];
 	//Loop through the board and initialize each circle. add it to circleHolder and gameGrid
-
+        
 	for (int i = 0; i < numColumns; i++) {         
 	    for (int j = 0; j < numRows; j++) {
-	        cc = new Circle( i * 100 + 55, j * 100 + 55, 90,90);
-   		circleHolder.add(cc);
+		cc = new Circle( i * 100 + 55, j * 100 + 55, 90,90);
+		circleHolder.add(cc);
 		gameGrid[i][j] = cc;
 	    }
-	} 
-	
+	}
 	turn = 1;
-
     }
+    
 
     /**
        Overridden paint method calls the circle's draw method
@@ -96,21 +69,28 @@ public class Board extends JPanel {
 
     /**
        Displays the win message on the screen when someone has won
+       If It's Red's Turn (turn == 1), and a winner has been detected, Yellow Wins
+       If It's Yellow's Turn (turn == 2) and a winner has been detected, Red Wins
        @param g to draw the message
-       @param state represents red or yellow player
     */
 
-    public void displayWinner(Graphics g, int state) {
+    public void displayWinner(Graphics g) {
 	g.setColor(Color.BLACK);
 	g.setFont(new Font("Times", Font.BOLD, 100));
-	if (state == 1) {
-	    g.drawString("Red Wins!", 100, 400);
+	if (singlePlayer == false){
+	    if (turn == 1)
+		g.drawString("Yellow Wins!", 0, 400);
+	    else
+		g.drawString("Red Wins!", 100, 400);
 	}
-	else {
-	    g.drawString("Yellow Wins!", 0, 400);
+	else{
+	    if (turn == 1)
+		g.drawString("YOU LOSE!", 0, 400);
+	    else
+		g.drawString("YOU WIN!", 0, 400);
 	}
-
 	this.gameOver = true;
+        
     }
 
     /** 
@@ -136,22 +116,6 @@ public class Board extends JPanel {
 
     public void checkWin(Graphics g) {
 	// see if there are 4 disks in a row: horizontal, vertical or diagonal
-	// vertical check. loop through the whole grid, column x row,
-	// checking the state of each circle
-	for (int col = 0; col < numColumns; col++) {
-	    for (int row = 0; row < numRows - 3; row++) {
-		int curr = gameGrid[col][row].getState();
-		if (curr > 0 //circle is red or yellow
-		    && curr == gameGrid[col][row+1].getState() //increment the row
-		    && curr == gameGrid[col][row+2].getState() //but stay in the same column
-		    && curr == gameGrid[col][row+3].getState() ) 
-		{	
-		    displayWinner(g, gameGrid[col][row].getState());
-		}
-	    }
-	}
-	
-	
 	
 	// horizontal check. loop through the board, row x column,
 	// checking the state of each circle.
@@ -159,15 +123,49 @@ public class Board extends JPanel {
 	    for (int col = 0; col < numColumns - 3; col++) {
 		
 		int curr = gameGrid[col][row].getState();
+		//  System.out.println(curr);
 		if (curr > 0
 		    && curr == gameGrid[col+1][row].getState() //increment the column
 		    && curr == gameGrid[col+2][row].getState() //but stay in the same row and
 		    && curr == gameGrid[col+3][row].getState() ) //get the state
-		{
-		    displayWinner(g, gameGrid[col][row].getState());
-		}
+		    {
+			//  displayWinner(g, gameGrid[col][row].getState());
+			displayWinner(g);
+			// Change Winning Circles to Blue
+			gameGrid[col][row].setState(3);
+			gameGrid[col+1][row].setState(3);
+			gameGrid[col+2][row].setState(3);
+			gameGrid[col+3][row].setState(3);
+			repaint();
+			break;
+		    }
 	    }
 	}
+        
+        // vertical check. loop through the whole grid, column x row,
+        // checking the state of each circle
+        for (int col = 0; col < numColumns; col++) {
+            for (int row = 0; row < numRows - 3; row++) {
+                int curr = gameGrid[col][row].getState();
+                if (curr > 0 //circle is red or yellow
+                    && curr == gameGrid[col][row+1].getState() //increment the row
+                    && curr == gameGrid[col][row+2].getState() //but stay in the same column
+                    && curr == gameGrid[col][row+3].getState() )
+		    {
+                
+			displayWinner(g);
+			// Change Winning Circles to Blue
+			gameGrid[col][row].setState(3);
+			gameGrid[col][row+1].setState(3);
+			gameGrid[col][row+2].setState(3);
+			gameGrid[col][row+3].setState(3);
+			repaint();
+			break;
+		    }
+            }
+        }
+        
+        
 	// diagonal check upper left to lower right
 	for (int col = 0; col < numColumns - 3; col++) {
 	    for (int row = 0; row < numRows - 3; row++) {
@@ -176,9 +174,17 @@ public class Board extends JPanel {
 		    && curr == gameGrid[col+1][row+1].getState() //increment the column 
 		    && curr == gameGrid[col+2][row+2].getState() //and the row by equal
 		    && curr == gameGrid[col+3][row+3].getState() ) //amounts and get the state
-		{   
-		    displayWinner(g, gameGrid[col][row].getState()); 
-		}
+		    {   
+			   
+			displayWinner(g);
+			// Change Winning Circles to Blue
+			gameGrid[col][row].setState(3);
+			gameGrid[col+1][row+1].setState(3);
+			gameGrid[col+2][row+2].setState(3);
+			gameGrid[col+3][row+3].setState(3);
+			repaint();
+			break;
+		    }
 	    }
 	}
 
@@ -190,106 +196,276 @@ public class Board extends JPanel {
 		    && curr == gameGrid[col-1][row+1].getState()  //move column to the left
 		    && curr == gameGrid[col-2][row+2].getState() //and row down, checking
 		    && curr == gameGrid[col-3][row+3].getState() ) //each state
-                {
-		    displayWinner(g, gameGrid[col][row].getState());
-		}
+		    {
+			
+			displayWinner(g);
+			// Change Winning Circles to Blue
+			gameGrid[col][row].setState(3);
+			gameGrid[col-1][row+1].setState(3);
+			gameGrid[col-2][row+2].setState(3);
+			gameGrid[col-3][row+3].setState(3);
+			repaint();
+			break;
+		    }
 	    }
 	}
-    } 
-   
-    /** 
-	Inside class MouseClass implements the MouseListener interface.
-    */
-
-    class MouseClass implements MouseListener {
-	private int xIndex;
-	private int yIndex;
-
-	/** 
-	    mouseClicked function handles the event appropriately when
-	    the user clicks on the board.
-	    @param e represents the mouseEvent.
-	*/
-
-	public void mouseClicked(MouseEvent e) {
-	    //dont respond to mouse events if the game is over
-	    if (gameOver)
-		return;
-
-	    xIndex = e.getX() / 100;
-	    yIndex = 0;
-	    
-	    //move down the selected column until you reach a circle that is red or yellow
-	    //if you reach the bottom-most circle, break
-	    while(gameGrid[xIndex][yIndex + 1].getState() == 0)
-	    {
-		yIndex++;
-		if (yIndex == numRows - 1) {
-		    break;
-		}
-	    }
-
-	    //if the top circle is already filled, do nothing and return
-	    if (yIndex == 0 && gameGrid[xIndex][yIndex].getState() != 0) {
-		return;
-	    }
-
-	    //set the selected circle's state to current turn value (1 or 2)
-	    gameGrid[xIndex][yIndex].setState(turn);
-
-	    //change turns
-	    if (turn == 1) {
-		turn = 2;
-	    }
-	    else {
-		turn = 1; 
-	    }
-
-	    //repaint after every mouseClick
-	    repaint();
-
-	    drawCounter++;
-	        
-	}
-
-	/**
-	   mouseEntered is a function in the MouseListener interface
-	   @param e represents the mouseEvent
-	*/
-	
-	public void mouseEntered(MouseEvent e) {
-	    // TODO Auto-generated method stub
-	
-	}
+    }
+  
     
-	/**                                                                                                                                                             
-           mouseExited is a function in the MouseListener interface                                                                                                    
-           @param e represents the mouseEvent                                                                                                                           
-	*/
+    //Automatically Generate a Random Computer Move
+    //For Easy Mode
+    public void simpleComputerMove(){
+        //Make sure game is not Already Over
+        if (!gameOver){
+            //generate a random Column
+            Random rand = new Random();
+            int xIndex = rand.nextInt(7);
+            int yIndex = 0;
 
-	public void mouseExited(MouseEvent e) {
-	    // TODO Auto-generated method stub
+            // make sure random column is not already full
+            while (gameGrid[xIndex][yIndex].getState() != 0) {
+                xIndex = (xIndex + 1)%7;
+            }
+            //find the lowest empty slot in the chosen column
+            //Place a circle there
+            while(gameGrid[xIndex][yIndex+1].getState() == 0){
+                yIndex++;
+                if (yIndex == numRows - 1) {
+                    break;
+                }
+            }
+            
+            gameGrid[xIndex][yIndex].setState(turn);
+            turn = 1;
+            repaint();
+            drawCounter++;
+        }
+    }
+    
+
+    public void randomMove() {
+	//generate a random Column
+	Random rand = new Random();
+	int xIndex = rand.nextInt(7);
+	int yIndex = 0;
+
+	// make sure random column is not already full
+	while (gameGrid[xIndex][yIndex].getState() != 0) {
+	    xIndex = (xIndex + 1)%7;
+	}
+	//find the lowest empty slot in the chosen column
+	//Place a circle there
+	while(gameGrid[xIndex][yIndex+1].getState() == 0){
+	    yIndex++;
+	    if (yIndex == numRows - 1) {
+		break;
+	    }
+	}
+
+	gameGrid[xIndex][yIndex].setState(turn);
+	turn = 1;
+	repaint();
+	drawCounter++;
+    }
+
+    //Blocks any 3 in a row... so much strategy...
+    public void AdvancedComputerMove(){
+
+	outerloop:
+        if(!gameOver){
 	    
-	}
 
-	/**                                                                                                                                                             
-           mousePressed is a function in the MouseListener interface                                                                                                    
-           @param e represents the mouseEvent                                                                                                                           
-	*/
+	    //horizontal checker
+	    for (int row = 0; row < numRows; row++) {
+		for (int col = 0; col < numColumns-3; col++) {
 
-	public void mousePressed(MouseEvent e) {
-	    //TODO Auto-generated method stub
-	}
+		   int current = gameGrid[col][row].getState();
 
-	/**                                                                                                                                                             
-           mouseReleased is a function in the MouseListener interface                                                                                                   
-           @param e represents the mouseEvent                                                                                                                           
-	*/
+			    if(row == 5 && col == 0 && current > 0 && current  == gameGrid[col + 1][row].getState() && current == gameGrid[col + 2][row].getState() && gameGrid[col + 3][row].getState() == 0) {
+				//3 in a row horizontal in bottom left corner, next spot not taken
+			       
+				gameGrid[col+3][row].setState(turn);
+				turn = 1;
+				repaint();
+				drawCounter++;
+				break outerloop;
+			    }	
 
-	public void mouseReleased(MouseEvent e) {
-	    // TODO Auto-generated method stub
-	
-	}
-	
-    }	
+
+			    
+			    else if(row == 5 && col == 4 && current > 0 && current  == gameGrid[col + 1][row].getState() && current == gameGrid[col + 2][row].getState() && gameGrid[col - 1][row].getState() == 0){
+				//3 in a row horizontal in bottom right corner, previous spot not taken
+				
+				gameGrid[col - 1][row].setState(turn);
+				turn = 1;
+				repaint();
+				drawCounter++;
+				break outerloop;
+			    }
+
+			    else if(row == 5 && current > 0 && current  == gameGrid[col + 1][row].getState() && current == gameGrid[col + 2][row].getState() && gameGrid[col + 3][row].getState() == 0){
+				//3 in a row horizontal in bottom row, next spot not taken
+
+				gameGrid[col+3][row].setState(turn);
+				turn = 1;
+				repaint();
+				drawCounter++;
+				break outerloop;
+			    }
+			    
+			   else if(row == 5 && current > 0 && current == gameGrid[col + 1][row].getState() && current == gameGrid[col + 2][row].getState() && gameGrid[col + 3][row].getState() != 0 && gameGrid[col-1][row].getState() == 0){
+				//3 in a row horizontal in bottom row, next spot taken, previous spot not taken
+
+				gameGrid[col-1][row].setState(turn);
+				turn = 1;
+				repaint();
+				drawCounter++;
+				break outerloop;
+			    }
+
+			//not in bottom row
+			else if(col == 0 && current > 0 && current  == gameGrid[col + 1][row].getState() && current == gameGrid[col + 2][row].getState() && gameGrid[col + 3][row - 1].getState() != 0){
+				// 3 in a row horizontal, aligned left, need to only check for right block
+			gameGrid[col + 3][row].setState(turn);
+			turn = 1;
+			repaint();
+			drawCounter++;
+			break outerloop;
+		    }
+
+			else if(col == 4 && current > 0 && current  == gameGrid[col + 1][row].getState() && current == gameGrid[col + 2][row].getState() && gameGrid[col -1][row - 1].getState() != 0){
+				// 3 in a row horizontal, aligned right, need to only check for left block
+			gameGrid[col - 1][row].setState(turn);
+			turn = 1;
+			repaint();
+			drawCounter++;
+			break outerloop;
+		    }
+
+		    else if(current > 0 && current  == gameGrid[col + 1][row].getState() && current == gameGrid[col + 2][row].getState() && gameGrid[col + 3][row-1].getState() != 0){
+			//3 in a row horizontal, not in bottom row or corner or side, need to block right
+
+			gameGrid[col + 3][row].setState(turn);
+			turn = 1;
+			repaint();
+			drawCounter++;
+			break outerloop;
+		    }
+
+		   else if(current > 0 && current  == gameGrid[col + 1][row].getState() && current == gameGrid[col + 2][row].getState() && gameGrid[col - 1][row-1].getState() != 0){
+			//3 in a row horizontal, not in bottom row or corner, need to block left
+
+			gameGrid[col-1][row].setState(turn);
+			turn = 1;
+			repaint();
+			drawCounter++;
+			break outerloop;
+		    }
+
+		}
+	    }
+	    
+	    //vertical checker
+	    for (int col = 0; col < numColumns; col++){
+		for(int row = 0; row < numRows - 3; row++) {
+		    int current = gameGrid[col][row].getState();
+
+		    if(current > 0 && current == gameGrid[col][row+1].getState() && current == gameGrid[col][row+2].getState() && gameGrid[col][row + 3].getState() == 0) {
+			//3 in a row vertical, spot above not taken
+
+			gameGrid[col][row-1].setState(turn);
+			turn = 1;
+			repaint();
+			drawCounter++;
+			break outerloop;
+		    }
+
+		}
+	    }
+
+/*
+	    //top left to bottom right checker
+	    	    for (int col = 0; col < numColumns - 3; col++) {
+		for (int row = 0; row < numRows - 3; row++) {
+		    int current = gameGrid[col][row].getState();
+
+		    if(row == 3){
+			//bottom-most row
+			    
+			if (current > 0 && current == gameGrid[col+1][row+1].getState() && current == gameGrid[col+2][row+2].getState() && gameGrid[col-1][row-1].getState() == 0) {
+			//3 in a row diagonal top left to bottom right, bottom corner, blocking space open
+			    
+			    gameGrid[col-1][row-1].setState(turn);
+			    turn = 1;
+			    repaint();
+			    drawCounter++;
+			    break outerloop;
+			}
+		       
+			else {   //do a random move
+			    
+			    randomMove();
+			    break outerloop;
+			}
+		    }
+
+		    else if(row == 0 && col == 0
+		}
+	    }
+
+	    //bottom left to top right checker
+	    for (int col = numColumns - 1; col >= 3; col--) {
+		for (int row = 0; row < numRows - 3; row++) {
+		    int current = gameGrid[col][row].getState();
+		    if (current > 0 && current == gameGrid[col-1][row+1].getState() && current == gameGrid[col-2][row+2].getState()) {
+			//3 in a row diagonal bottom left to top right)
+
+		    }
+		}
+		}*/
+
+	    randomMove();
+        }
+	    
+    }
+    
+    
+    
+    //Getter and Setters
+    public void setSinglePlayer(boolean a){
+        this.singlePlayer = a;
+        
+    }
+    
+    public boolean getSinglePlayer(){
+        return this.singlePlayer;
+    }
+    
+    public int getTurn(){
+        return this.turn;
+    }
+    
+    public void setTurn(int t){
+        if ( (t == 1) || (t == 2))
+            this.turn = t;
+    }
+    
+    public int getDrawCounter(){
+        return this.drawCounter;
+    }
+    
+    public void setDrawCounter(int s){
+        this.drawCounter = s;
+    }
+    
+    public boolean getGameOver(){
+        return this.gameOver;
+    }
+    
+    public Circle getGameGridCircle(int x, int y){
+        return gameGrid[x][y];
+    }
+    
+
 }
+
