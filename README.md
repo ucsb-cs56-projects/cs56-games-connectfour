@@ -6,5 +6,8 @@ An implementation of Connect Four. Includes a Board and Circle class that create
 project history
 ===============
 ```
+YES | mastergberry | gkowligi, vwtan | An implementation of Connect Four
+```
+```
  W14 | bkiefer13 4pm | gkowligi, vwtan | An implementation of Connect Four
 ```
