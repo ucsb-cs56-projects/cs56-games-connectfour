@@ -55,6 +55,11 @@ class Board extends JPanel {
     @Override
     public void paint(Graphics g) {
         
+	// Draw blue background for contrast
+	g.setColor(Color.BLUE);
+	g.fillRect(0, 0, this.getWidth(), this.getHeight());
+	
+
         //Loop through gameGrid, drawing each circle that was initialized in Board()
         for (Circle[] circles: gameGrid) {
             for (Circle circle: circles) {
