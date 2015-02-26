@@ -1,7 +1,10 @@
+
+PLEASE READ!!!:
 Hey Shane(sorry if I mispelled your name). This is Alexis, your partner, I 
 forgot that I had a conference today at 5 so I wont be avle to make it to lab. 
 Since I can't go, I did the first part of lab 6 which was to write this file.
-You can go ahead and change or add anything you would like.
+You can go ahead and change or add anything you would like. My email is 
+alexisjimenez@umail.ucsb.edu if you need to contact me.
 
 
 README.md
