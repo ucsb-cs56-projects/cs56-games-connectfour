@@ -30,7 +30,7 @@ public class StartScreenButtonsPanel extends JPanel{
         SPButton.setFont(BFont);
         
         ruleButton = new JButton ("Rules");
-        ruleButton.addActionListener(new ruleButtonListener());
+        ruleButton.addActionListener(new ruleButtonListener(ss));
         ruleButton.setFont(BFont);
         
         ExitButton = new JButton ("Exit");
@@ -81,8 +81,13 @@ public class StartScreenButtonsPanel extends JPanel{
     }
     
     class ruleButtonListener implements ActionListener {
-        public void actionPerformed(ActionEvent event){
-            // displayRules(g);
+	private startScreen2 ss1;
+	
+	ruleButtonListener(final startScreen2 ss) {
+	    ss1 = ss;
+	}
+	public void actionPerformed(ActionEvent event){
+            ss1.loadRulesPage();
         }
     }
     

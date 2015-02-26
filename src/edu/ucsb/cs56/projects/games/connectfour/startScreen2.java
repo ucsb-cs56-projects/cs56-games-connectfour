@@ -27,6 +27,7 @@ public class startScreen2 extends JFrame {
     private static StartScreenButtonsPanel ss;
     private int gameMode = 1;
     private static singlePlayerMenuPanel SPMenu;
+    private static rulesPanel RulesMenu;
     private static inGameMenuPanel inGameMenuP;
 
     
@@ -66,6 +67,18 @@ public class startScreen2 extends JFrame {
         
         
     }
+
+    // Loads the rules page when the rules button
+    // is pressed
+    public void loadRulesPage() {
+	this.setSize(menu_width,menu_height);
+        this.remove(ss);
+        this.repaint();
+        RulesMenu = new rulesPanel(this);
+        this.add(RulesMenu);
+        this.revalidate();
+    }
+
     /**
      Navigate Back to the main Menu
      */
@@ -78,7 +91,9 @@ public class startScreen2 extends JFrame {
         this.setSize(menu_width,menu_height);
         if (SPMenu != null)
             this.remove(SPMenu);
-        
+	if (RulesMenu != null)
+	    this.remove(RulesMenu);
+
         this.add(ss);
         repaint();
         this.revalidate();
