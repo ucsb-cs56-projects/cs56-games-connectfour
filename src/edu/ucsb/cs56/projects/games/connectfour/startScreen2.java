@@ -6,6 +6,7 @@ import java.awt.event.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Stack;
 
 /**
  startScreen2 class uses swing gui to represent the Connect 4 start Menu
@@ -29,7 +30,7 @@ public class startScreen2 extends JFrame {
     private static singlePlayerMenuPanel SPMenu;
     private static rulesPanel RulesMenu;
     private static inGameMenuPanel inGameMenuP;
-
+    private static Stack<IntPair> movesList = new Stack<IntPair>();
     
     
     // Launch game
@@ -133,7 +134,48 @@ public class startScreen2 extends JFrame {
         
     }
     
+    public void undo() {
+	if (b.checkIfGameOver() == true)
+	    return;
+	if (b.getMoveCounter() < 1)
+	    return;
+	
+	// gameMode is multiplayer
+	if (gameMode == 1) {
+	    // Decrement moveCounter
+	    b.decrementMoveCounter();
+	    System.out.println("Move Counter Decremented to: " + b.getMoveCounter());
+	    
+	    // pop from movesList
+	    IntPair tempPair= movesList.pop();
+	    
+	    // switch turns back to original person
+	    if (b.getTurn() == 1) {
+		b.setTurn(2);
+	    }
+	    else {
+		b.setTurn(1);
+	    }
+
+	    int xSpot = tempPair.getX();
+	    int ySpot = tempPair.getY();
+
+	    // set spot as available
+	    b.getGameGridCircle(xSpot, ySpot).setState(0);
+	    
+	    // redraw circle as all white
+	    b.repaint();
+	    return;
+
+	}
+
+	// gameMode is singleplayer
+	else if ((gameMode == 2) || (gameMode == 3)) {
+	    System.out.println("Undo has not been written yet");
+	}
+    }
     
+
     class MouseClass implements MouseListener{
         private int xIndex;
         private int yIndex;
@@ -165,7 +207,11 @@ public class startScreen2 extends JFrame {
                 //set the selected circle's state to current turn value (1 or 2)
                 
                 b.getGameGridCircle(xIndex, yIndex).setState(b.getTurn());
-                
+		b.incrementMoveCounter();
+		System.out.println("Move Counter: " + b.getMoveCounter());
+		IntPair spotOnBoard = new IntPair(xIndex, yIndex);
+		movesList.push(spotOnBoard);
+
                 //change turns
                 if (b.getTurn() == 1) {
                     b.setTurn(2);
@@ -206,7 +252,11 @@ public class startScreen2 extends JFrame {
                     //set the selected circle's state to current turn value (1 or 2)
                     
                     b.getGameGridCircle(xIndex, yIndex).setState(b.getTurn());
-                    
+		    b.incrementMoveCounter();
+		    System.out.println("Move Counter: " + b.getMoveCounter());
+		    IntPair spotOnBoard = new IntPair(xIndex, yIndex);
+		    movesList.push( spotOnBoard);
+
                     //change turns
                     b.setTurn(2);
                     
@@ -236,6 +286,8 @@ public class startScreen2 extends JFrame {
                         try{
                             Thread.sleep(500);
                             SinglePlayerEasy.randomMove(b); //Generate a Random Move
+			    b.incrementMoveCounter();
+			    System.out.println("Move Counter: " + b.getMoveCounter());
                         }catch (InterruptedException ex1){
                             System.out.println("Broken Thread");
                         }
@@ -247,6 +299,8 @@ public class startScreen2 extends JFrame {
                         try{
                             Thread.sleep(500);
                             SinglePlayerAdvanced.AdvancedComputerMove(b);
+			    b.incrementMoveCounter();
+			    System.out.println("Move Counter: " + b.getMoveCounter());
                         }catch (InterruptedException ex1){
                             System.out.println("Broken Thread");
                         }

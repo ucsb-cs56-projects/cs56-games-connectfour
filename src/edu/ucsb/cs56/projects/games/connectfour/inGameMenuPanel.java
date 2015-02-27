@@ -11,6 +11,7 @@ public class inGameMenuPanel extends JPanel{
     private JButton mainMButton; // main Menu Button
     private JButton restartButton; // restart Button
     private JButton exitButton; // exitButton
+    private JButton undoButton; // undoButton
     
     public inGameMenuPanel(startScreen2 ss){
         super ();
@@ -21,6 +22,7 @@ public class inGameMenuPanel extends JPanel{
         // main button
         // restart button
         // exit Button
+	// undo button
         mainMButton = new JButton ("Main Menu");
         mainMButton.addActionListener(new mainMenuButtonListener(ss));
         mainMButton.setFont(BFont);
@@ -33,11 +35,13 @@ public class inGameMenuPanel extends JPanel{
         exitButton.addActionListener(new exitButtonListener(ss));
         exitButton.setFont(BFont);
         
+        undoButton = new JButton ("Undo");
+	undoButton.addActionListener(new undoButtonListener(ss));
+	undoButton.setFont(BFont);
         
-        
+	this.add(undoButton);
         this.add(mainMButton);
         this.add(restartButton);
-        
         this.add(exitButton);
         
     }
@@ -85,6 +89,20 @@ public class inGameMenuPanel extends JPanel{
             ss1.dispose();
         }
     }// end of exitButtonListener Class
+
+    class undoButtonListener implements ActionListener {
+        private startScreen2 ss1;
+        
+        undoButtonListener(final startScreen2 ss){
+            ss1 = ss;
+        }
+        
+        public void actionPerformed(ActionEvent event){
+            ss1.undo();
+        }
+    }
+
+
 }// end of inGameMenuPanel Class
 
 

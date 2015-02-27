@@ -5,6 +5,7 @@ import java.awt.event.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
+
 /**
  Board class uses swing gui to represent the Connect 4 game board
  
@@ -25,7 +26,9 @@ class Board extends JPanel {
     private Circle[][] gameGrid;
     private int turn;
     private boolean singlePlayer = false;
-    
+    private int moveCounter = 0;
+    private boolean gameIsOver = false;
+
     /**
      Constructor intitializes instance variables and creates the empty game board
      */
@@ -110,6 +113,7 @@ class Board extends JPanel {
             g.setFont(new Font("Times", Font.BOLD, 100));
             g.drawString("Draw", 100, 400);
             gameOver = true;
+	    this.setGameOver();
         }
     }
     
@@ -142,6 +146,7 @@ class Board extends JPanel {
                     gameGrid[col+2][row].setState(3);
                     gameGrid[col+3][row].setState(3);
                     repaint();
+		    this.setGameOver();
                     break;
                 }
             }
@@ -165,7 +170,8 @@ class Board extends JPanel {
                     gameGrid[col][row+2].setState(3);
                     gameGrid[col][row+3].setState(3);
                     repaint();
-                    break;
+                    this.setGameOver();
+		    break;
                 }
             }
         }
@@ -188,6 +194,7 @@ class Board extends JPanel {
                     gameGrid[col+2][row+2].setState(3);
                     gameGrid[col+3][row+3].setState(3);
                     repaint();
+		    this.setGameOver();
                     break;
                 }
             }
@@ -210,6 +217,7 @@ class Board extends JPanel {
                     gameGrid[col-2][row+2].setState(3);
                     gameGrid[col-3][row+3].setState(3);
                     repaint();
+		    this.setGameOver();
                     break;
                 }
             }
@@ -254,5 +262,30 @@ class Board extends JPanel {
         return gameGrid[x][y];
     }
     
+    public void incrementMoveCounter() {
+	if (this.moveCounter > 41)
+	    return;
+	else
+	    this.moveCounter++;
+	
+    }
     
+    public void decrementMoveCounter() {
+	if (this.moveCounter < 1)
+	    return;
+	else
+	    this.moveCounter--;
+    }
+    
+    public int getMoveCounter() {
+	return this.moveCounter;
+    }
+
+    public void setGameOver() {
+	this.gameIsOver = true;
+    }
+
+    public boolean checkIfGameOver(){
+	return this.gameIsOver;
+    }
 }
