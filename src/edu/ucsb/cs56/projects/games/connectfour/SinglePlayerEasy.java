@@ -13,11 +13,12 @@ class SinglePlayerEasy {
     //Automatically Generate a Random Computer Move
     // For Easy Mode
     
-    public static void randomMove(Board b){
-        if (!b.getGameOver()){    //make sure game is not already over
-            Random rand = new Random();
-            int xIndex = rand.nextInt(7);
-            int yIndex = 0;
+    public static IntPair randomMove(Board b){
+        Random rand = new Random();
+	int xIndex = rand.nextInt(7);
+	int yIndex = 0;
+	if (!b.getGameOver()){    //make sure game is not already over
+            
         
             // make sure random column is not already full
             while (b.getGameGridCircle(xIndex,yIndex).getState() != 0) {
@@ -37,6 +38,7 @@ class SinglePlayerEasy {
             b.repaint();
             b.setDrawCounter(b.getDrawCounter() + 1);
         }
+	return new IntPair(xIndex, yIndex);
     }
 
 }

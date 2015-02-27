@@ -135,7 +135,7 @@ public class startScreen2 extends JFrame {
     }
     
     public void undo() {
-	if (b.checkIfGameOver() == true)
+	if ( b.checkIfGameOver() )
 	    return;
 	if (b.getMoveCounter() < 1)
 	    return;
@@ -171,7 +171,39 @@ public class startScreen2 extends JFrame {
 
 	// gameMode is singleplayer
 	else if ((gameMode == 2) || (gameMode == 3)) {
-	    System.out.println("Undo has not been written yet");
+	    if ( b.checkIfGameOver() )
+		return;
+	    if (b.getMoveCounter() < 1)
+		return;
+
+	    // The only time there is only one move is when there is the bug
+	    // from X11 forwarding. 
+	    // As a result the game can get confused and accidentally switch turns
+	    // if the turn state is not set. 
+	    // (It is currently set to always return to the user's turn)  
+	    if (b.getMoveCounter() % 2 == 1){
+		IntPair tempPair = movesList.pop();
+		b.decrementMoveCounter();
+		b.setTurn(1);
+		System.out.println("Move Counter Decremented to: " + b.getMoveCounter());
+		b.getGameGridCircle(tempPair.getX(), tempPair.getY()).setState(0);
+	    }
+
+	    // pop two moves fom the moves list
+	    // and set both spots as available
+	    else {
+		IntPair tempPair1 = movesList.pop();
+		b.decrementMoveCounter();
+		IntPair tempPair2 = movesList.pop();
+		b.decrementMoveCounter();
+
+		System.out.println("Move Counter Decremented to: " + b.getMoveCounter());
+		b.getGameGridCircle(tempPair1.getX(), tempPair1.getY()).setState(0);
+		b.getGameGridCircle(tempPair2.getX(), tempPair2.getY()).setState(0);
+	    }
+	
+	    b.repaint();
+	    return;
 	}
     }
     
@@ -255,7 +287,7 @@ public class startScreen2 extends JFrame {
 		    b.incrementMoveCounter();
 		    System.out.println("Move Counter: " + b.getMoveCounter());
 		    IntPair spotOnBoard = new IntPair(xIndex, yIndex);
-		    movesList.push( spotOnBoard);
+		    movesList.push(spotOnBoard);
 
                     //change turns
                     b.setTurn(2);
@@ -285,8 +317,10 @@ public class startScreen2 extends JFrame {
                     if (gameMode == 2){
                         try{
                             Thread.sleep(500);
-                            SinglePlayerEasy.randomMove(b); //Generate a Random Move
+			     //Generate a Random Move
+                            IntPair easyMoveSpot = SinglePlayerEasy.randomMove(b);
 			    b.incrementMoveCounter();
+			    movesList.push(easyMoveSpot);
 			    System.out.println("Move Counter: " + b.getMoveCounter());
                         }catch (InterruptedException ex1){
                             System.out.println("Broken Thread");
@@ -298,8 +332,9 @@ public class startScreen2 extends JFrame {
                         //generate a delay to slow computer down
                         try{
                             Thread.sleep(500);
-                            SinglePlayerAdvanced.AdvancedComputerMove(b);
+                            IntPair advancedMoveSpot = SinglePlayerAdvanced.AdvancedComputerMove(b);
 			    b.incrementMoveCounter();
+			    movesList.push(advancedMoveSpot);
 			    System.out.println("Move Counter: " + b.getMoveCounter());
                         }catch (InterruptedException ex1){
                             System.out.println("Broken Thread");

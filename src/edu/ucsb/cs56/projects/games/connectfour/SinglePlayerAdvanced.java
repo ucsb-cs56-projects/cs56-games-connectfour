@@ -14,13 +14,14 @@ class SinglePlayerAdvanced {
     //If so, block spot. If not, random move
     // For Advanced Mode
     
-    public static void AdvancedComputerMove(Board b){
-        if (!b.getGameOver()){    //make sure game is not already over
+    public static IntPair AdvancedComputerMove(Board b){
+        Random rand = new Random();
+	int xIndex = 0;
+	int yIndex = 0;
+	int weight = 0;
+	if (!b.getGameOver()){    //make sure game is not already over
 
-            Random rand = new Random();
-            int xIndex = 0;
-            int yIndex = 0;
-	    int weight = 0;
+            
 
 
 
@@ -232,7 +233,9 @@ class SinglePlayerAdvanced {
             b.setTurn(1);
             b.repaint();
             b.setDrawCounter(b.getDrawCounter() + 1);
+	    
         }
+	return new IntPair(xIndex, yIndex);
     }
 
 }
