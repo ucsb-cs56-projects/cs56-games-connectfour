@@ -13,7 +13,18 @@ public class rulesPanel extends JPanel{
     private JScrollPane scrollPane;
     // Right now there's an error where if text is outside of the pane it 
     // can't be seen. Need to add a scrollbar
-    private String rulesTextString = " \n \n \n \n \n \n hello"; 
+    private String rulesTextString = "RULES" + 
+	"\n\n*GamePlay" +
+	"\n- First to get 4 of their color in a row wins \n  (Diagonal, horizontal, or vertical)." +
+	     " \n  If no one wins then the game is declared a Draw." +
+	"\n- For Multiplayer: player 1 is red, player 2 is yellow.\n  The undo button takes away 1 move." + 
+	"\n- For Singleplayer: the user goes first and is red, \n  the computer goes 2nd and is yellow." +
+	     "\n  The undo button takes away 2 moves (the user's and the computer's)." + 
+ 	"\n\n*Features " + 
+	"\n- Undo button" + 
+	"\n- Restart game button" +
+	"\n- Main menu button" + 
+	"\n- Exit program button"; 
 
     public rulesPanel(startScreen2 ss){
         super ();
@@ -27,8 +38,10 @@ public class rulesPanel extends JPanel{
 	rulesTextArea = new JTextArea(5, 20);
 	scrollPane = new JScrollPane(rulesTextArea);
 	rulesTextArea.setEditable(false);
+	rulesTextArea.setLineWrap(true);
 	rulesTextArea.append(rulesTextString);
-        
+	
+
 	this.add(mainMenuButton);
 	this.add(rulesTextArea);
     }

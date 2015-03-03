@@ -72,7 +72,7 @@ public class startScreen2 extends JFrame {
     // Loads the rules page when the rules button
     // is pressed
     public void loadRulesPage() {
-	this.setSize(menu_width,menu_height);
+	this.setSize(2 * menu_width, (int) 1.5*menu_height);
         this.remove(ss);
         this.repaint();
         RulesMenu = new rulesPanel(this);
