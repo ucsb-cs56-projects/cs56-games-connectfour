@@ -51,6 +51,7 @@ public class Circle
 
     /**
        Getter for the state variable 
+       @return int
     */
 
     public int getState() {
@@ -59,6 +60,7 @@ public class Circle
 
     /**
        Draw function for the circle. Color depends on the state.
+       @param g graphics 
     */
 
     public void draw(Graphics g) {

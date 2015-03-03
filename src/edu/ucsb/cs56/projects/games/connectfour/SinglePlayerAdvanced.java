@@ -7,12 +7,22 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+   Advanced single player difficulty class. 
+ */
+
 class SinglePlayerAdvanced {
 
     
     //Check if possibility for player to win
     //If so, block spot. If not, random move
     // For Advanced Mode
+    
+    /**
+       Method that generates an advanced move and returns and IntPair of the spot that was chosen.
+       @param b Board on which the move should be made.
+       @return IntPair the IntPair of the spot at which the move is made
+     */
     
     public static IntPair AdvancedComputerMove(Board b){
         Random rand = new Random();

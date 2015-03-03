@@ -7,12 +7,12 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
- Board class uses swing gui to represent the Connect 4 game board
- 
- @author Vincent Tan
- @author Girish Kowligi
- @version Project1, CS56, W14
- 
+ * Board class uses swing gui to represent the Connect 4 game board
+ *
+ * @author Vincent Tan
+ * @author Girish Kowligi
+ * @version Project1, CS56, W14
+ *
  */
 
 class Board extends JPanel {
@@ -30,7 +30,7 @@ class Board extends JPanel {
     private boolean gameIsOver = false;
 
     /**
-     Constructor intitializes instance variables and creates the empty game board
+     * Constructor intitializes instance variables and creates the empty game board
      */
     
     public Board() {
@@ -51,8 +51,8 @@ class Board extends JPanel {
     
     
     /**
-     Overridden paint method calls the circle's draw method
-     @param g argument to draw circle
+     * Overridden paint method calls the circle's draw method
+     * @param g argument to draw circle
      */
     
     @Override
@@ -76,10 +76,10 @@ class Board extends JPanel {
     }
     
     /**
-     Displays the win message on the screen when someone has won
-     If It's Red's Turn (turn == 1), and a winner has been detected, Yellow Wins
-     If It's Yellow's Turn (turn == 2) and a winner has been detected, Red Wins
-     @param g to draw the message
+     * Displays the win message on the screen when someone has won
+     * If It's Red's Turn (turn == 1), and a winner has been detected, Yellow Wins
+     * If It's Yellow's Turn (turn == 2) and a winner has been detected, Red Wins
+     * @param g to draw the message
      */
     
     public void displayWinner(Graphics g) {
@@ -102,8 +102,8 @@ class Board extends JPanel {
     }
     
     /**
-     Determines and displays a draw message if no player wins
-     @param g to draw the message
+     * Determines and displays a draw message if no player wins
+     * @param g to draw the message
      */
     
     public void checkDraw(Graphics g) {
@@ -118,9 +118,9 @@ class Board extends JPanel {
     }
     
     /**
-     *After every new move, loop through the grid and check
-     *for all possible four in a row patterns.
-     @param g necessary to call displayWinner method
+     * After every new move, loop through the grid and check
+     * for all possible four in a row patterns.
+     * @param g necessary to call displayWinner method
      */
     
     public void checkWin(Graphics g) {
@@ -228,40 +228,77 @@ class Board extends JPanel {
     
     
     //Getter and Setters
+    /**
+     * Set singlePlayer as true or false
+     *@param a set true if the gamemode is singleplayer, false otherwise
+     */
     public void setSinglePlayer(boolean a){
         this.singlePlayer = a;
         
     }
     
+    /**
+     * Get singlePlayer variable
+     *@return boolean
+     */
     public boolean getSinglePlayer(){
         return this.singlePlayer;
     }
     
+    /**
+     * Get whose turn it is. (1 or 2)
+     * @return int 1 or 2
+     */
     public int getTurn(){
         return this.turn;
     }
     
+    /**
+     * Set whose turn it is.
+     *@param t int for whose turn it is (1 or 2)
+     */
     public void setTurn(int t){
         if ( (t == 1) || (t == 2))
             this.turn = t;
     }
     
+    /**
+     * Get drawCounter
+     * @return int 
+     */
     public int getDrawCounter(){
         return this.drawCounter;
     }
     
+    /**
+     * Set the drawCounter to parameter s
+     * @param s int to set the draw counter to
+     */
     public void setDrawCounter(int s){
         this.drawCounter = s;
     }
     
+    /**
+     * Get if the game is over (true or false)
+     * @return boolean
+     */
     public boolean getGameOver(){
         return this.gameOver;
     }
     
+    /**
+     * Get the Circle on the game board at spot (x,y) 
+     * @param x x coordinate
+     * @param y y coordinate
+     * @return Circle
+     */
     public Circle getGameGridCircle(int x, int y){
         return gameGrid[x][y];
     }
     
+    /**
+     * Add 1 to the move counter. If the moveCounter is greater than 41 then it does nothing.
+     */
     public void incrementMoveCounter() {
 	if (this.moveCounter > 41)
 	    return;
@@ -270,6 +307,9 @@ class Board extends JPanel {
 	
     }
     
+    /**
+     * Subtract 1 from the move counter. If the moveCounter is less than 1, then it does nothing.
+     */
     public void decrementMoveCounter() {
 	if (this.moveCounter < 1)
 	    return;
@@ -277,14 +317,25 @@ class Board extends JPanel {
 	    this.moveCounter--;
     }
     
+    /**
+     * Get the moveCounter
+     * @return int
+     */
     public int getMoveCounter() {
 	return this.moveCounter;
     }
-
+    
+    /**
+     * Set gameIsOver to true
+     */
     public void setGameOver() {
 	this.gameIsOver = true;
     }
 
+    /**
+     * Return the gameIsOver boolean
+     * @return boolean
+     */
     public boolean checkIfGameOver(){
 	return this.gameIsOver;
     }

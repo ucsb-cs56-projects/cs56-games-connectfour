@@ -5,6 +5,9 @@ import java.awt.event.*;
 import java.awt.*;
 import java.util.ArrayList;
 
+/**
+   Panel for choosing the difficulty menu of the single player mode
+ */
 
 public class singlePlayerMenuPanel extends JPanel{
     
@@ -12,6 +15,10 @@ public class singlePlayerMenuPanel extends JPanel{
     private JButton singlePlayerAdvanced;
     private JButton mainMenuButton;
     
+    /**
+       Constructor for the single player menu panel
+       @param ss startScreen2
+     */
     public singlePlayerMenuPanel(startScreen2 ss){
         super ();
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -34,6 +41,9 @@ public class singlePlayerMenuPanel extends JPanel{
         this.add(singlePlayerAdvanced);
     }
     
+    /**
+       Listener for the main menu button in the single player difficulty menu
+     */
     class mainMenuButtonListener implements ActionListener {
 	private startScreen2 ss1;
 	mainMenuButtonListener(final startScreen2 ss){
@@ -45,6 +55,9 @@ public class singlePlayerMenuPanel extends JPanel{
 
     }
 
+    /**
+       Listener for the easy difficulty button in the single player difficulty menu
+     */
     class singlePlayerEasyListener implements ActionListener {
         private startScreen2 ss1;
         singlePlayerEasyListener(final startScreen2 ss){
@@ -56,6 +69,9 @@ public class singlePlayerMenuPanel extends JPanel{
         }
     }
     
+    /**
+       Listener for the advanced difficulty button in the single player difficulty menu
+     */
     class singlePlayerAdvancedListener implements ActionListener {
         private startScreen2 ss1;
         singlePlayerAdvancedListener(final startScreen2 ss){

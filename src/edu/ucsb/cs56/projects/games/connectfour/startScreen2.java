@@ -32,7 +32,10 @@ public class startScreen2 extends JFrame {
     private static inGameMenuPanel inGameMenuP;
     private static Stack<IntPair> movesList = new Stack<IntPair>();
     
-    
+
+    /**
+       Launch the frame and the game.
+     */
     // Launch game
     public static void main (String [] args){
         JFrame frame = new startScreen2();
@@ -56,6 +59,9 @@ public class startScreen2 extends JFrame {
         
     }
     
+    /**
+       Loads the single player menu when the button on the main menu is pressed. (StartScreenButtonsPanel)
+     */
     // When single Player Button is pressed
     // Allow player to choose level of difficulty
     public void loadSinglePlayerMenu(){
@@ -69,6 +75,9 @@ public class startScreen2 extends JFrame {
         
     }
 
+    /**
+       Loads the rules page when the button on the main menu is pressed. (StartScreenButtonsPanel)
+     */
     // Loads the rules page when the rules button
     // is pressed
     public void loadRulesPage() {
@@ -101,6 +110,9 @@ public class startScreen2 extends JFrame {
         
     }
     
+    /**
+       Launch the game. Remove the board if one already exists.
+     */
     // remove the board if one already exists
     // and make a new one
     public void launchGame(){
@@ -134,6 +146,9 @@ public class startScreen2 extends JFrame {
         
     }
     
+    /**
+       Undo the last move that was done. (undo 1 move is multiplayer, 2 moves if singleplayer)
+     */
     public void undo() {
 	if ( b.checkIfGameOver() )
 	    return;
@@ -207,7 +222,9 @@ public class startScreen2 extends JFrame {
 	}
     }
     
-
+    /**
+       Listener for the mouse clicks on the board.
+     */
     class MouseClass implements MouseListener{
         private int xIndex;
         private int yIndex;
@@ -382,11 +399,19 @@ public class startScreen2 extends JFrame {
     }
  
     
+    /**
+       Get the current game mode
+       @return int gameMode
+     */
     //getters and Setters
     public int getGameMode(){
         return gameMode;
     }
     
+    /**
+       Set the current game mode
+       @param gMode int that determines the gamemode. 1 - multiplayer, 2 - singleplayer easy, 3 - singleplayer advanced.
+     */
     public void setGameMode(int gMode){
         gameMode = gMode;
     }

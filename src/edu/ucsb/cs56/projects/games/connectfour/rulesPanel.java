@@ -5,14 +5,14 @@ import java.awt.event.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-
+/**
+   Panel for the rules menu accessed from the Main Menu screen
+ */
 public class rulesPanel extends JPanel{
     
     private JButton mainMenuButton;
     private JTextArea rulesTextArea;
     private JScrollPane scrollPane;
-    // Right now there's an error where if text is outside of the pane it 
-    // can't be seen. Need to add a scrollbar
     private String rulesTextString = "RULES" + 
 	"\n\n*GamePlay" +
 	"\n- First to get 4 of their color in a row wins \n  (Diagonal, horizontal, or vertical)." +
@@ -26,6 +26,10 @@ public class rulesPanel extends JPanel{
 	"\n- Main menu button" + 
 	"\n- Exit program button"; 
 
+    /**
+       Constructor for rulesPanel
+       @param ss startScreen2
+     */
     public rulesPanel(startScreen2 ss){
         super ();
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -46,6 +50,9 @@ public class rulesPanel extends JPanel{
 	this.add(rulesTextArea);
     }
     
+    /**
+       Listener for the main menu button in the rules page
+     */
     class mainMenuButtonListener implements ActionListener {
 	private startScreen2 ss1;
 	mainMenuButtonListener(final startScreen2 ss){

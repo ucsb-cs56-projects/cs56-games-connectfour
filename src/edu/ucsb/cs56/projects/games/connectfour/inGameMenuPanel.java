@@ -7,11 +7,20 @@ import java.util.ArrayList;
 
 // Panel for Buttons next to Connect Four Game Board
 
+/**
+   Class for the menu panel shown while the game is played.
+ */
+
 public class inGameMenuPanel extends JPanel{
     private JButton mainMButton; // main Menu Button
     private JButton restartButton; // restart Button
     private JButton exitButton; // exitButton
     private JButton undoButton; // undoButton
+
+    /**
+       Constructor for inGameMenuPanel
+       @param ss startScreen2 
+     */
     
     public inGameMenuPanel(startScreen2 ss){
         super ();
@@ -38,7 +47,7 @@ public class inGameMenuPanel extends JPanel{
         undoButton = new JButton ("Undo");
 	undoButton.addActionListener(new undoButtonListener(ss));
 	undoButton.setFont(BFont);
-        
+
 	this.add(undoButton);
         this.add(mainMButton);
         this.add(restartButton);
@@ -46,10 +55,18 @@ public class inGameMenuPanel extends JPanel{
         
     }
     
+    //public void setWhoseTurnText(String whoseTurn) {
+	
+    //}
+    
     // Listeners for Buttons in Panel
     
     // when restart Button is pressed
     // relaunch Game
+
+    /**
+       Listener class for the restart button
+     */
     class restartButtonListener implements ActionListener {
         private startScreen2 ss1;
         
@@ -62,6 +79,9 @@ public class inGameMenuPanel extends JPanel{
         }
     }// end of RestartButtonListener Class
     
+    /**
+       Listener class for the main menu button
+     */
     // Navigate back to startScreen when this button is pressed
     class mainMenuButtonListener implements ActionListener {
         private startScreen2 ss1;
@@ -75,6 +95,10 @@ public class inGameMenuPanel extends JPanel{
         }
     }// end of mainMenuButtonListener Class
     
+
+    /**
+       Listener class for the exit button
+     */
     // when exit button is pressed
     // make the screen no longer visible, and stop execution
     class exitButtonListener implements ActionListener {
@@ -90,6 +114,9 @@ public class inGameMenuPanel extends JPanel{
         }
     }// end of exitButtonListener Class
 
+    /**
+       Listener class for the undo button
+     */
     class undoButtonListener implements ActionListener {
         private startScreen2 ss1;
         

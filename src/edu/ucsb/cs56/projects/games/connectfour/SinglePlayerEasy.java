@@ -7,12 +7,20 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+   Single player easy difficult class.  
+ */
 class SinglePlayerEasy {
 
     
     //Automatically Generate a Random Computer Move
     // For Easy Mode
     
+    /**
+       Method that generates a random move on the board and returns an IntPair of the spot chosen
+       @param b board on which the spot is to be done
+       @return IntPair the IntPair of the spot randomly chosen.
+     */
     public static IntPair randomMove(Board b){
         Random rand = new Random();
 	int xIndex = rand.nextInt(7);
