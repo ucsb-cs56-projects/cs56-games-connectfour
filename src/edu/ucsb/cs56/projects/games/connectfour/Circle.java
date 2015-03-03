@@ -51,6 +51,7 @@ public class Circle
 
     /**
        Getter for the state variable 
+       @return int
     */
 
     public int getState() {
@@ -59,6 +60,7 @@ public class Circle
 
     /**
        Draw function for the circle. Color depends on the state.
+       @param g graphics 
     */
 
     public void draw(Graphics g) {
@@ -70,9 +72,9 @@ public class Circle
 	else if (state == 2){
 	    g.setColor(Color.yellow);
 	}
-    //blue circle for winning Circles
+    //green circle for winning Circles
     else if (state == 3) {
-        g.setColor(Color.blue);
+        g.setColor(Color.green.darker());
     }
 	//state == 0, white circle
 	else {

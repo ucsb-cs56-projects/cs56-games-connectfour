@@ -7,6 +7,9 @@ import java.util.ArrayList;
 
 // A JPanel to Layout the Buttons in Start Menu
 
+/**
+   Panel for the main menu screen
+ */
 public class StartScreenButtonsPanel extends JPanel{
     
     private JButton MPButton; // Multi Player Button
@@ -14,6 +17,10 @@ public class StartScreenButtonsPanel extends JPanel{
     private JButton ExitButton; // Exit Button
     private JButton ruleButton; // Button to show rules
     
+    /**
+       Constructor for the panel
+       @param ss startScreen2
+     */
     public StartScreenButtonsPanel(startScreen2 ss){
         super();
         
@@ -30,7 +37,7 @@ public class StartScreenButtonsPanel extends JPanel{
         SPButton.setFont(BFont);
         
         ruleButton = new JButton ("Rules");
-        ruleButton.addActionListener(new ruleButtonListener());
+        ruleButton.addActionListener(new ruleButtonListener(ss));
         ruleButton.setFont(BFont);
         
         ExitButton = new JButton ("Exit");
@@ -55,6 +62,10 @@ public class StartScreenButtonsPanel extends JPanel{
      }
  
     */
+
+    /**
+       Listener for the multiplayer button
+     */
     class MPButtonListener implements ActionListener {
         private startScreen2 ss1;
         
@@ -67,6 +78,9 @@ public class StartScreenButtonsPanel extends JPanel{
         }
     }
     
+    /**
+       Listener for the single player button
+     */
     class SPButtonListener implements ActionListener {
         private startScreen2 ss1;
         
@@ -80,12 +94,23 @@ public class StartScreenButtonsPanel extends JPanel{
         }
     }
     
+    /**
+       Listener for the rules button
+     */
     class ruleButtonListener implements ActionListener {
-        public void actionPerformed(ActionEvent event){
-            // displayRules(g);
+	private startScreen2 ss1;
+	
+	ruleButtonListener(final startScreen2 ss) {
+	    ss1 = ss;
+	}
+	public void actionPerformed(ActionEvent event){
+            ss1.loadRulesPage();
         }
     }
     
+    /**
+       Listener for the exit button
+     */
     class ExitButtonListener implements ActionListener {
         private startScreen2 ss1;
         ExitButtonListener(final startScreen2 ss){

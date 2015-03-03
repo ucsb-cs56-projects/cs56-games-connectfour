@@ -7,17 +7,26 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+   Single player easy difficult class.  
+ */
 class SinglePlayerEasy {
 
     
     //Automatically Generate a Random Computer Move
     // For Easy Mode
     
-    public static void randomMove(Board b){
-        if (!b.getGameOver()){    //make sure game is not already over
-            Random rand = new Random();
-            int xIndex = rand.nextInt(7);
-            int yIndex = 0;
+    /**
+       Method that generates a random move on the board and returns an IntPair of the spot chosen
+       @param b board on which the spot is to be done
+       @return IntPair the IntPair of the spot randomly chosen.
+     */
+    public static IntPair randomMove(Board b){
+        Random rand = new Random();
+	int xIndex = rand.nextInt(7);
+	int yIndex = 0;
+	if (!b.getGameOver()){    //make sure game is not already over
+            
         
             // make sure random column is not already full
             while (b.getGameGridCircle(xIndex,yIndex).getState() != 0) {
@@ -37,6 +46,7 @@ class SinglePlayerEasy {
             b.repaint();
             b.setDrawCounter(b.getDrawCounter() + 1);
         }
+	return new IntPair(xIndex, yIndex);
     }
 
 }
