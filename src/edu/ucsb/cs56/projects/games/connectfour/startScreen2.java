@@ -138,8 +138,9 @@ public class startScreen2 extends JFrame {
                 xIndex = e.getX()/100;
                 yIndex = 0;
                 
-                //while the circle is not filled add to the yindex until
-		// it is 1 less than the number of rows in the board 
+                //while the circle below is not filled add 1 to the yindex until
+		//you find a filled circle, or until all you have searched all circles
+		//in the row 
                 while(b.getGameGridCircle(xIndex, yIndex+1).getState() == 0)
                 {
                     yIndex++;
@@ -180,8 +181,9 @@ public class startScreen2 extends JFrame {
                     xIndex = e.getX()/100;
                     yIndex = 0;
                     
-                    //while the  right circle is not filled, add to the y index until
-		    //there is a circle filled or the the y index equals number of rows
+		    //while the circle below is not filled add 1 to the yindex until
+		    //you find a filled circle, or until all you have searched all circles
+		    //in the row 
                     while(b.getGameGridCircle(xIndex, yIndex+1).getState() == 0)
                     {
                         yIndex++;
