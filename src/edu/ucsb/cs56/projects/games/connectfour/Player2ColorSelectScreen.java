@@ -6,7 +6,7 @@ import java.awt.*;
 import java.util.ArrayList;
 
 
-public class Player1ColorSelectScreen extends JPanel{
+public class Player2ColorSelectScreen extends JPanel{
     
     private JButton blackButton;
     private JButton blueButton;
@@ -15,9 +15,9 @@ public class Player1ColorSelectScreen extends JPanel{
     private JButton pinkButton;
     private JButton redButton;
     private JButton yellowButton;
-    private JTextField player1SelectText;
+    private JTextField player2SelectText;
     
-    public Player1ColorSelectScreen(startScreen2 ss){
+    public Player2ColorSelectScreen(startScreen2 ss, int stateToNotShow){
         super ();
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         Font BFont = new Font("Comic Sans MS", Font.BOLD, 22);
@@ -50,15 +50,33 @@ public class Player1ColorSelectScreen extends JPanel{
 	yellowButton.addActionListener(new yellowButtonListener(ss));
 	yellowButton.setFont(BFont);
     
-	// Create and add player 1 textfield
+	// Create and add player 2 textfield
 	
-	this.add(redButton);
-	this.add(yellowButton);
-	this.add(blackButton);
-	this.add(blueButton);
-	this.add(magentaButton);
-	this.add(orangeButton);
-	this.add(pinkButton);
+	if (stateToNotShow != 1) {
+	    this.add(redButton);
+	}
+	if (stateToNotShow != 2) {
+	    this.add(yellowButton);
+	}
+        if (stateToNotShow != 4) {
+	    this.add(blackButton);
+	}
+
+        if (stateToNotShow != 5) {
+	    this.add(blueButton);
+	}
+	
+	if (stateToNotShow != 6) {
+	    this.add(magentaButton);
+	}
+	
+	if (stateToNotShow != 7) {
+	    this.add(orangeButton);
+	}
+	
+	if (stateToNotShow != 8) {
+	    this.add(pinkButton);
+	}
 	
     }
     
@@ -70,8 +88,8 @@ public class Player1ColorSelectScreen extends JPanel{
             ss1 = ss;
         }
         public void actionPerformed(ActionEvent event){
-            ss1.setPlayer1ColorState(4);
-	    ss1.launchPlayer2ColorSelectScreen();
+            ss1.setPlayer2ColorState(4);
+	    ss1.launchGame();
         }
     }
     
@@ -81,8 +99,8 @@ public class Player1ColorSelectScreen extends JPanel{
             ss1 = ss;
         }
         public void actionPerformed(ActionEvent event){
-            ss1.setPlayer1ColorState(5);
-	    ss1.launchPlayer2ColorSelectScreen();
+            ss1.setPlayer2ColorState(5);
+	    ss1.launchGame();
         }
     }
 
@@ -92,8 +110,8 @@ public class Player1ColorSelectScreen extends JPanel{
             ss1 = ss;
         }
         public void actionPerformed(ActionEvent event){
-            ss1.setPlayer1ColorState(6);
-	    ss1.launchPlayer2ColorSelectScreen();
+            ss1.setPlayer2ColorState(6);
+	    ss1.launchGame();
         }
     }
 
@@ -103,8 +121,8 @@ public class Player1ColorSelectScreen extends JPanel{
             ss1 = ss;
         }
         public void actionPerformed(ActionEvent event){
-            ss1.setPlayer1ColorState(7);
-	    ss1.launchPlayer2ColorSelectScreen();
+            ss1.setPlayer2ColorState(7);
+	    ss1.launchGame();
         }
     }
 
@@ -114,8 +132,8 @@ public class Player1ColorSelectScreen extends JPanel{
             ss1 = ss;
         }
         public void actionPerformed(ActionEvent event){
-            ss1.setPlayer1ColorState(8);
-	    ss1.launchPlayer2ColorSelectScreen();
+            ss1.setPlayer2ColorState(8);
+	    ss1.launchGame();
         }
     }
 
@@ -125,8 +143,8 @@ public class Player1ColorSelectScreen extends JPanel{
             ss1 = ss;
         }
         public void actionPerformed(ActionEvent event){
-            ss1.setPlayer1ColorState(1);
-	    ss1.launchPlayer2ColorSelectScreen();
+            ss1.setPlayer2ColorState(1);
+	    ss1.launchGame();
         }
     }
 
@@ -136,8 +154,8 @@ public class Player1ColorSelectScreen extends JPanel{
             ss1 = ss;
         }
         public void actionPerformed(ActionEvent event){
-            ss1.setPlayer1ColorState(2);
-	    ss1.launchPlayer2ColorSelectScreen();
+            ss1.setPlayer2ColorState(2);
+	    ss1.launchGame();
         }
     }
 

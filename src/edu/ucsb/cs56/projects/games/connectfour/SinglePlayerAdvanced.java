@@ -237,13 +237,13 @@ class SinglePlayerAdvanced {
             }
     
 	}
-
-
-            b.getGameGridCircle(xIndex,yIndex).setState(b.getTurn());
-            b.setTurn(1);
-            b.repaint();
-            b.setDrawCounter(b.getDrawCounter() + 1);
-	    
+	
+	
+	b.getGameGridCircle(xIndex,yIndex).setState( b.getPlayer2State() );
+	b.setTurn(1);
+	b.repaint();
+	b.setDrawCounter(b.getDrawCounter() + 1);
+	
         }
 	return new IntPair(xIndex, yIndex);
     }

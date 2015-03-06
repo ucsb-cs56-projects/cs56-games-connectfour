@@ -65,7 +65,7 @@ public class singlePlayerMenuPanel extends JPanel{
         }
         public void actionPerformed(ActionEvent event){
             ss1.setGameMode(2);
-            ss1.launchGame();
+            ss1.launchPlayer1ColorSelectScreen();
         }
     }
     
@@ -79,7 +79,7 @@ public class singlePlayerMenuPanel extends JPanel{
         }
         public void actionPerformed(ActionEvent event){
             ss1.setGameMode(3);
-            ss1.launchGame();
+            ss1.launchPlayer1ColorSelectScreen();
             
         }
     }

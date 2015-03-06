@@ -41,7 +41,7 @@ class SinglePlayerEasy {
                 }
             }
         
-            b.getGameGridCircle(xIndex,yIndex).setState(b.getTurn());
+            b.getGameGridCircle(xIndex,yIndex).setState( b.getPlayer2State() );
             b.setTurn(1);
             b.repaint();
             b.setDrawCounter(b.getDrawCounter() + 1);

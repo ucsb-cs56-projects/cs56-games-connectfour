@@ -74,7 +74,7 @@ public class StartScreenButtonsPanel extends JPanel{
         }
         public void actionPerformed(ActionEvent event) {
             ss1.setGameMode(1);
-            ss1.launchGame();
+            ss1.launchPlayer1ColorSelectScreen();
         }
     }
     

@@ -28,7 +28,9 @@ class Board extends JPanel {
     private boolean singlePlayer = false;
     private int moveCounter = 0;
     private boolean gameIsOver = false;
-
+    private static int player1State;
+    private static int player2State;
+    
     /**
      * Constructor intitializes instance variables and creates the empty game board
      */
@@ -339,4 +341,39 @@ class Board extends JPanel {
     public boolean checkIfGameOver(){
 	return this.gameIsOver;
     }
+
+    /**
+     * Set the color state for player 1
+     * @param state one of the colors
+     */
+    
+    public void setPlayer1State(int state) {
+	player1State = state;
+    }
+    
+    /**
+     * Returns the int corresponding to the color selected for player 1
+     * @return state int (color) selected for player 1
+     */
+    public int getPlayer1State() {
+	return player1State;
+    }
+
+    /**
+     * Set the color state for player 2
+     * @param state one of the ints for a color
+     */
+    public void setPlayer2State(int state) {
+	player2State = state;
+    }
+
+    /**
+     * Returns the int corresponding to the color selected for player 2
+     * @return state int (color) selected for player 2
+     */
+    public int getPlayer2State() {
+	return player2State;
+    }
+    
+
 }
