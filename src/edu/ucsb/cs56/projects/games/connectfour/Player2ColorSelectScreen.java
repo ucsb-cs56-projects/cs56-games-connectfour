@@ -11,7 +11,7 @@ public class Player2ColorSelectScreen extends JPanel{
     private JButton blackButton;
     private JButton blueButton;
     private JButton magentaButton;
-    private JButton orangeButton;
+    private JButton brownButton;
     private JButton pinkButton;
     private JButton redButton;
     private JButton yellowButton;
@@ -34,9 +34,9 @@ public class Player2ColorSelectScreen extends JPanel{
 	magentaButton.addActionListener(new magentaButtonListener(ss));
 	magentaButton.setFont(BFont);
 
-	orangeButton = new JButton ("Orange");
-	orangeButton.addActionListener(new orangeButtonListener(ss));
-	orangeButton.setFont(BFont);
+	brownButton = new JButton ("Brown");
+	brownButton.addActionListener(new brownButtonListener(ss));
+	brownButton.setFont(BFont);
 
 	pinkButton = new JButton ("Pink");
 	pinkButton.addActionListener(new pinkButtonListener(ss));
@@ -71,7 +71,7 @@ public class Player2ColorSelectScreen extends JPanel{
 	}
 	
 	if (stateToNotShow != 7) {
-	    this.add(orangeButton);
+	    this.add(brownButton);
 	}
 	
 	if (stateToNotShow != 8) {
@@ -115,9 +115,9 @@ public class Player2ColorSelectScreen extends JPanel{
         }
     }
 
-    class orangeButtonListener implements ActionListener {
+    class brownButtonListener implements ActionListener {
         private startScreen2 ss1;
-        orangeButtonListener(final startScreen2 ss){
+        brownButtonListener(final startScreen2 ss){
             ss1 = ss;
         }
         public void actionPerformed(ActionEvent event){

@@ -30,7 +30,14 @@ class Board extends JPanel {
     private boolean gameIsOver = false;
     private static int player1State;
     private static int player2State;
-    
+    private static String redText = "Red";
+    private static String yellowText = "Yellow";
+    private static String blackText = "Black";
+    private static String blueText = "Blue";
+    private static String magentaText = "Magenta";
+    private static String brownText = "Brown";
+    private static String pinkText = "Pink";
+
     /**
      * Constructor intitializes instance variables and creates the empty game board
      */
@@ -85,19 +92,62 @@ class Board extends JPanel {
      */
     
     public void displayWinner(Graphics g) {
-        g.setColor(Color.BLACK);
-        g.setFont(new Font("Times", Font.BOLD, 100));
-        if (singlePlayer == false){
-            if (turn == 1)
-                g.drawString("Yellow Wins!", 0, 400);
-            else
-                g.drawString("Red Wins!", 100, 400);
+        g.setColor(Color.black);
+	if ((player1State == 4) || (player2State ==4))
+	    g.setColor(Color.cyan);
+        g.setFont(new Font("Times", Font.BOLD, 75));
+        String winnerText;
+	if (singlePlayer == false){
+            if (turn == 1){
+		// The switch looks at player 2 because right after
+		//     the player wins it switches turns
+		switch (player2State) {
+		case 1: winnerText = "Red";
+		    break;
+		case 2: winnerText = "Yellow";
+		    break;
+		case 4: winnerText = "Black";
+		    break;
+		case 5: winnerText = "Blue";
+		    break;
+		case 6: winnerText = "Magenta";
+		    break;
+		case 7: winnerText = "Brown";
+		    break;
+		case 8: winnerText = "Pink";
+		    break;
+		default: winnerText = "P1";
+		    break;
+		}
+                g.drawString(winnerText + " Wins!", 100, 400);
+	    }
+            else {
+		switch (player1State) {
+		case 1: winnerText = "Red";
+		    break;
+		case 2: winnerText = "Yellow";
+		    break;
+		case 4: winnerText = "Black";
+		    break;
+		case 5: winnerText = "Blue";
+		    break;
+		case 6: winnerText = "Magenta";
+		    break;
+		case 7: winnerText = "Brown";
+		    break;
+		case 8: winnerText = "Pink";
+		    break;
+		default: winnerText = "P1";
+		    break;
+		}
+                g.drawString(winnerText + " Wins!", 100, 400);
+	    }
         }
         else{
             if (turn == 1)
-                g.drawString("YOU LOSE!", 0, 400);
+                g.drawString("YOU LOSE!", 100, 400);
             else
-                g.drawString("YOU WIN!", 0, 400);
+                g.drawString("YOU WIN!", 100, 400);
         }
         this.gameOver = true;
         

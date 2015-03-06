@@ -115,7 +115,7 @@ public class startScreen2 extends JFrame {
 	remove(ss);
 	if (SPMenu != null)
 	    remove(SPMenu);
-	this.setSize( menu_width, (int) 2 * menu_height);
+	this.setSize( menu_width,  menu_height);
 	this.repaint();
 	p1ColorScreen = new Player1ColorSelectScreen(this);
 	this.add(p1ColorScreen);
@@ -127,7 +127,7 @@ public class startScreen2 extends JFrame {
 	    remove(p1ColorScreen);
 	if (ss != null)
 	    remove(ss);
-	this.setSize( menu_width, (int) 2 * menu_height);
+	this.setSize( menu_width,  menu_height);
 	this.remove(ss);
 	this.repaint();
 	p2ColorScreen = new Player2ColorSelectScreen(this, player1ColorState);

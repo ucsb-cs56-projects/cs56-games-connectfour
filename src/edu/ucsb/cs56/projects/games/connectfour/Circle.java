@@ -100,9 +100,9 @@ public class Circle
 	    g.setColor(Color.magenta);
 	}
 
-	//orange circle
+	//brown circle
 	else if (state == 7){
-	    g.setColor(Color.orange);
+	    g.setColor(Color.orange.darker());
 	}
 
 	//pink circle
@@ -113,7 +113,7 @@ public class Circle
 	else { // failsafe
 	    g.setColor(Color.darkGray);
 	}
-	
+
 	//draw and color the circle with the specificed dimensions
 	g.drawOval(x - width/2, y - height/2, width, height);
 	g.fillOval(x - width/2, y - height/2, width, height);
