@@ -28,9 +28,13 @@ class SinglePlayerAdvanced {
 //Horizontal left to right
         for (int row = 0; row < 6; row++) {
             for (int col = 0; col < 4; col++) {
-                
+                //check for state of each Circle in the Board 
                 int curr = b.getGameGridCircle(col, row).getState();
 
+		// if state is more than zero (circle is red,yellow or blue)
+		//and the 3 adjacent circles to the right of the circle being
+		//looked at are white , make xIndex  3 plus the column being 
+		//checked ans yIndex, the row being checked.
                 if (curr > 0
                     && curr == b.getGameGridCircle(col+1, row).getState() 
                     && curr == b.getGameGridCircle(col+2, row).getState() 
@@ -38,14 +42,14 @@ class SinglePlayerAdvanced {
                 {
  	            xIndex = col + 3;
 	            yIndex = row;
-
-            while((yIndex != b.numRows - 1) && (b.getGameGridCircle(xIndex, yIndex+1).getState() == 0)){
-                yIndex++;
-                if (yIndex == b.numRows - 1) {
-                    break;
-                }
-            }
-
+	    
+		    while((yIndex != b.numRows - 1) && (b.getGameGridCircle(xIndex, yIndex+1).getState() == 0)){
+			yIndex++;
+			if (yIndex == b.numRows - 1) {
+			    break;
+			}
+		    }
+		    
 		    weight = 1;
                     break;
                 }
