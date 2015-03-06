@@ -45,16 +45,8 @@ public class StartScreenButtonsPanel extends JPanel{
         this.add(ExitButton);
         
     }
-    
-    /*
-     public void displayRules(Graphics g){
-     g.setColor(Color.BLACK);
-     g.setFont(new Font("Times", font.REGULAR, 18));
-     g.drawString("1.Choose a Column to Place a Circle in.\n2. Try to get Four identical circles in a row.");
-     
-     }
  
-    */
+    
     class MPButtonListener implements ActionListener {
         private startScreen2 ss1;
         
@@ -82,7 +74,8 @@ public class StartScreenButtonsPanel extends JPanel{
     
     class ruleButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent event){
-            // displayRules(g);
+           Frame frame = new Frame();
+	   JOptionPane.showMessageDialog(frame, "Blah BLah blah");
         }
     }
     
