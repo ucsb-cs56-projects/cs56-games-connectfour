@@ -7,6 +7,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 
+/** SinglePlayerEasy class implements 1 player game that is easy */
 class SinglePlayerEasy {
 
     
@@ -31,7 +32,7 @@ class SinglePlayerEasy {
                     break;
                 }
             }
-        
+	    //change state,turn,draw counter and refresh the board
             b.getGameGridCircle(xIndex,yIndex).setState(b.getTurn());
             b.setTurn(1);
             b.repaint();
