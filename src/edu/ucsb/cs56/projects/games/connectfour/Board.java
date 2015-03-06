@@ -59,7 +59,7 @@ class Board extends JPanel {
     public void paint(Graphics g) {
         
 	// Draw blue background for contrast
-	g.setColor(Color.BLUE);
+	g.setColor(Color.LIGHT_GRAY);
 	g.fillRect(0, 0, this.getWidth(), this.getHeight());
 	
 
