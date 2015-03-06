@@ -15,7 +15,7 @@ import java.awt.event.MouseEvent;
  */
 public class Circle
 { 
-
+    //Instance variables
     private int x;
     private int y;
     private int width;
