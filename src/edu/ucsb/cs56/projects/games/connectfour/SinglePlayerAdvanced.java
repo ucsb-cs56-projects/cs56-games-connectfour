@@ -25,213 +25,258 @@ class SinglePlayerAdvanced {
 
 
 
-//Horizontal left to right
-        for (int row = 0; row < 6; row++) {
-            for (int col = 0; col < 4; col++) {
-                //check for state of each Circle in the Board 
-                int curr = b.getGameGridCircle(col, row).getState();
-
-		// if state is more than zero (circle is red,yellow or blue)
-		//and the 3 adjacent circles to the right of the circle being
-		//looked at are white , make xIndex  3 plus the column being 
-		//checked ans yIndex, the row being checked.
-                if (curr > 0
-                    && curr == b.getGameGridCircle(col+1, row).getState() 
-                    && curr == b.getGameGridCircle(col+2, row).getState() 
-		    && (b.getGameGridCircle(col+3, row).getState() == 0) ) 
-                {
- 	            xIndex = col + 3;
-	            yIndex = row;
+	    //Horizontal left to right
+	    for (int row = 0; row < 6; row++) {
+		for (int col = 0; col < 4; col++) {
+		    //check for state of each Circle in the Board 
+		    int curr = b.getGameGridCircle(col, row).getState();
+		    
+		    // if state is more than zero (circle is red,yellow or blue)
+		    //and the 3 adjacent circles to the right of the circle being
+		    //looked at are white , make xIndex  3 plus the column being 
+		    //checked and yIndex, the row being checked.
+		    if (curr > 0
+			&& curr == b.getGameGridCircle(col+1, row).getState() 
+			&& curr == b.getGameGridCircle(col+2, row).getState() 
+			&& (b.getGameGridCircle(col+3, row).getState() == 0) ) 
+			{
+			    xIndex = col + 3;
+			    yIndex = row;
+			    
+			    while((yIndex != b.numRows - 1) && (b.getGameGridCircle(xIndex, yIndex+1).getState() == 0)){
+				yIndex++;
+				if (yIndex == b.numRows - 1) {
+				    break;
+				}
+			    }
+			    
+			    weight = 1;
+			    break;
+			}
+		}
+	    }
 	    
+	    //Horizontal right to left
+	    for (int row = 0; row < 6; row++) {
+		for (int col = 6; col > 2; col--) {
+		    //check for state of each Circle in the Board
+		    int curr = b.getGameGridCircle(col, row).getState();
+		    
+		    // if state is more than zero (circle is red,yellow or blue)
+		    //and the 3 adjacent circles to the left of the circle being
+		    //looked at are white , make xIndex  3 minus the column being 
+		    //checked and yIndex, the row being checked.
+		    if (curr > 0
+			&& curr == b.getGameGridCircle(col-1, row).getState() 
+			&& curr == b.getGameGridCircle(col-2, row).getState() 
+			&& (b.getGameGridCircle(col-3, row).getState() == 0) ) 
+			{
+			    xIndex = col - 3;
+			    yIndex = row;
+			    //while all rows have not been checked for that specific column
+			    //or the bottom cicle is not filled, add 1 to the  yindex
+			    while((yIndex != b.numRows - 1) && (b.getGameGridCircle(xIndex, yIndex+1).getState() == 0)){
+				yIndex++;
+				if (yIndex == b.numRows - 1) {
+				    break;
+				}
+			    }
+			    
+			    weight = 1;
+			    break;
+			}
+		}
+	    }
+	    
+	    //vertical
+	    for (int col = 0; col < 7; col++) {
+		for (int row = 5; row > 2; row--) {
+		    //check state of the circle chosen
+		    int curr = b.getGameGridCircle(col, row).getState();
+
+		    // if state is more than zero (circle is red,yellow or blue)
+		    //and the 3 circle underneath  of the circle being
+		    //looked at are white , make yIndex  3 minus the row  being 
+		    //checked and xIndex, the column being checked.
+		    if (curr > 0 
+			&& curr == b.getGameGridCircle(col, row-1).getState() 
+			&& curr == b.getGameGridCircle(col, row-2).getState()
+			&& (b.getGameGridCircle(col, row-3).getState() == 0) )
+			{
+			    xIndex = col;
+			    yIndex = row - 3;
+			    
+			    //while all rows have not been checked for that specific column
+			    //or the bottom cicle is not filled, add 1 to the  yindex
+			    while((yIndex != b.numRows - 1) && (b.getGameGridCircle(xIndex, yIndex+1).getState() == 0)){
+				yIndex++;
+				if (yIndex == b.numRows - 1) {
+				    break;
+				}
+			    }
+			    
+			    weight = 1;
+			    break;
+			}
+		}
+	    }
+	    
+	    
+	    // diagonal check upper left to lower right, left to right
+	    for (int col = 0; col < 4; col++) {
+		for (int row = 0; row < 3; row++) {
+		    //check state of the circle chosen
+		    int curr = b.getGameGridCircle(col, row).getState();
+
+		    // if state is more than zero (circle is red,yellow or blue)
+		    //and the 3 circles from the  upper left to lower right, left to right being
+		    //looked at are white , make yIndex and xIndex  3 plus the row and column  being checked respectively
+		    if (curr > 0
+			&& curr == b.getGameGridCircle(col+1, row+1).getState() 
+			&& curr == b.getGameGridCircle(col+2, row+2).getState()
+			&& (b.getGameGridCircle(col+3, row+3).getState() == 0) )
+			{
+			    xIndex = col + 3;
+			    yIndex = row + 3;
+			    ]
+
+			//while all rows have not been checked for that specific column
+			//or the bottom cicle is not filled, add 1 to the  yindex
+			    while((yIndex != b.numRows - 1) && (b.getGameGridCircle(xIndex, yIndex+1).getState() == 0)){
+				yIndex++;
+				if (yIndex == b.numRows - 1) {
+				    break;
+				}
+			    }
+			    
+			    weight = 1;
+			    break;
+			}
+		}
+	    }
+	    
+	    // diagonal check upper left to lower right, right to left
+	    for (int col = 6; col > 2; col--) {
+		for (int row = 5; row > 2; row--) {
+		    //check the state of the circle selected
+		    int curr = b.getGameGridCircle(col, row).getState();
+
+		    // if state is more than zero (circle is red,yellow or blue)
+		    //and the 3 circles from the  upper left to lower right, right to left being 
+		    //looked at are white , make yIndex and xIndex  3 minus the row and column  being checked
+		    if (curr > 0
+			&& curr == b.getGameGridCircle(col-1, row-1).getState()
+			&& curr == b.getGameGridCircle(col-2, row-2).getState()
+			&& (b.getGameGridCircle(col-3, row-3).getState() == 0) )
+			{
+			    xIndex = col - 3;
+			    yIndex = row - 3;
+			    
+
+			//while all rows have not been checked for that specific column
+			//or the bottom cicle is not filled, add 1 to the  yindex
+			    while((yIndex != b.numRows - 1) && (b.getGameGridCircle(xIndex, yIndex+1).getState() == 0)){
+				yIndex++;
+				if (yIndex == b.numRows - 1) {
+				    break;
+				}
+			    }
+			    
+			    weight = 1;
+			    break;
+			}
+		}
+	    }
+	    
+	    // diagonal upper right to lower left, left to right
+	    for (int col = 6; col >= 3; col--) {
+		for (int row = 0; row < 3; row++) {
+		    //check state of circle selected
+		    int curr = b.getGameGridCircle(col, row).getState();
+
+		    // if state is more than zero (circle is red,yellow or blue)
+		    //and the 3 circles from the  upper right to lower left, left to right being 
+		    //looked at are white , make yIndex  3 plus the row  being checked and xIndex
+		    //be 3 minus the row being checked
+		    if (curr > 0
+			&& curr == b.getGameGridCircle(col-1, row+1).getState() 
+			&& curr == b.getGameGridCircle(col-2, row+2).getState()
+			&& (b.getGameGridCircle(col-3, row+3).getState() == 0) ) 
+			{
+			    xIndex = col - 3;
+			    yIndex = row + 3;
+			    
+			    //while all rows have not been checked for that specific column
+			    //or the bottom cicle is not filled, add 1 to the  yindex
+			    while((yIndex != b.numRows - 1) && (b.getGameGridCircle(xIndex, yIndex+1).getState() == 0)){
+				yIndex++;
+				if (yIndex == b.numRows - 1) {
+				    break;
+				}
+			    }
+			    
+			    weight = 1;
+			    break;
+			}
+		}
+	    }
+
+
+	    // diagonal upper right to lower left, right to left
+	    for (int col = 0; col < 4; col++) {
+		for (int row = 5; row > 2; row--) {
+		    //check state of the circle selected
+		    int curr = b.getGameGridCircle(col, row).getState();
+
+		    // if state is more than zero (circle is red,yellow or blue)
+		    //and the 3 circles from the  upper right to lower left, right to left being 
+		    //looked at are white , make yIndex  3 minus the row  being checked and xIndex
+		    //be 3 plus the row being checked
+		    if (curr > 0
+			&& curr == b.getGameGridCircle(col+1, row-1).getState() 
+			&& curr == b.getGameGridCircle(col+2, row-2).getState()
+			&& (b.getGameGridCircle(col+3, row-3).getState() == 0) ) 
+			{
+			    xIndex = col + 3;
+			    yIndex = row - 3;
+
+			    //while all rows have not been checked for that specific column
+			    //or the bottom cicle is not filled, add 1 to the  yindex
+			    while((yIndex != b.numRows - 1) && (b.getGameGridCircle(xIndex, yIndex+1).getState() == 0)){
+				yIndex++;
+				if (yIndex == b.numRows - 1) {
+				    break;
+				}
+			    }
+
+			    weight = 1;
+			    break;
+			}
+		}
+	    }
+
+
+
+	    if(weight == 0)
+		{
+		    xIndex = rand.nextInt(7);
+
+		    // make sure random column is not already full
+		    while (b.getGameGridCircle(xIndex,yIndex).getState() != 0) {
+			xIndex = (xIndex + 1)%7;
+		    }
+		    //find the lowest empty slot in the chosen column
+		    //Place a circle there
 		    while((yIndex != b.numRows - 1) && (b.getGameGridCircle(xIndex, yIndex+1).getState() == 0)){
 			yIndex++;
 			if (yIndex == b.numRows - 1) {
 			    break;
 			}
 		    }
-		    
-		    weight = 1;
-                    break;
-                }
-            }
-        }
-
-//Horizontal right to left
-        for (int row = 0; row < 6; row++) {
-            for (int col = 6; col > 2; col--) {
-                
-                int curr = b.getGameGridCircle(col, row).getState();
-
-                if (curr > 0
-                    && curr == b.getGameGridCircle(col-1, row).getState() 
-                    && curr == b.getGameGridCircle(col-2, row).getState() 
-		    && (b.getGameGridCircle(col-3, row).getState() == 0) ) 
-                {
-	            xIndex = col - 3;
-	            yIndex = row;
-
-            while((yIndex != b.numRows - 1) && (b.getGameGridCircle(xIndex, yIndex+1).getState() == 0)){
-                yIndex++;
-                if (yIndex == b.numRows - 1) {
-                    break;
-                }
-            }
-
-		    weight = 1;
-                    break;
-                }
-            }
-        }
-        
-//vertical
-        for (int col = 0; col < 7; col++) {
-            for (int row = 5; row > 2; row--) {
-                int curr = b.getGameGridCircle(col, row).getState();
-                if (curr > 0 
-                    && curr == b.getGameGridCircle(col, row-1).getState() 
-                    && curr == b.getGameGridCircle(col, row-2).getState()
-		    && (b.getGameGridCircle(col, row-3).getState() == 0) )
-                {
-	            xIndex = col;
-	            yIndex = row - 3;
-
-            while((yIndex != b.numRows - 1) && (b.getGameGridCircle(xIndex, yIndex+1).getState() == 0)){
-                yIndex++;
-                if (yIndex == b.numRows - 1) {
-                    break;
-                }
-            }
-
-		    weight = 1;
-                    break;
-                }
-            }
-        }
-        
-        
-// diagonal check upper left to lower right, left to right
-        for (int col = 0; col < 4; col++) {
-            for (int row = 0; row < 3; row++) {
-                int curr = b.getGameGridCircle(col, row).getState();
-                if (curr > 0
-                    && curr == b.getGameGridCircle(col+1, row+1).getState() 
-                    && curr == b.getGameGridCircle(col+2, row+2).getState()
-		    && (b.getGameGridCircle(col+3, row+3).getState() == 0) )
-                {
-                    xIndex = col + 3;
-                    yIndex = row + 3;
-
-            while((yIndex != b.numRows - 1) && (b.getGameGridCircle(xIndex, yIndex+1).getState() == 0)){
-                yIndex++;
-                if (yIndex == b.numRows - 1) {
-                    break;
-                }
-            }
-
-		    weight = 1;
-                    break;
-                }
-            }
-        }
-
-// diagonal check upper left to lower right, right to left
-        for (int col = 6; col > 2; col--) {
-            for (int row = 5; row > 2; row--) {
-                int curr = b.getGameGridCircle(col, row).getState();
-                if (curr > 0
-                    && curr == b.getGameGridCircle(col-1, row-1).getState()
-                    && curr == b.getGameGridCircle(col-2, row-2).getState()
-		    && (b.getGameGridCircle(col-3, row-3).getState() == 0) )
-                {
-                    xIndex = col - 3;
-                    yIndex = row - 3;
-
-            while((yIndex != b.numRows - 1) && (b.getGameGridCircle(xIndex, yIndex+1).getState() == 0)){
-                yIndex++;
-                if (yIndex == b.numRows - 1) {
-                    break;
-                }
-            }
-
-		    weight = 1;
-                    break;
-                }
-            }
-        }
-        
-// diagonal upper right to lower left, left to right
-        for (int col = 6; col >= 3; col--) {
-            for (int row = 0; row < 3; row++) {
-                int curr = b.getGameGridCircle(col, row).getState();
-                if (curr > 0
-                    && curr == b.getGameGridCircle(col-1, row+1).getState() 
-                    && curr == b.getGameGridCircle(col-2, row+2).getState()
-		    && (b.getGameGridCircle(col-3, row+3).getState() == 0) ) 
-                {
-                    xIndex = col - 3;
-                    yIndex = row + 3;
-
-            while((yIndex != b.numRows - 1) && (b.getGameGridCircle(xIndex, yIndex+1).getState() == 0)){
-                yIndex++;
-                if (yIndex == b.numRows - 1) {
-                    break;
-                }
-            }
-
-		    weight = 1;
-                    break;
-                }
-            }
-        }
-
-
-// diagonal upper right to lower left, right to left
-        for (int col = 0; col < 4; col++) {
-            for (int row = 5; row > 2; row--) {
-                int curr = b.getGameGridCircle(col, row).getState();
-                if (curr > 0
-                    && curr == b.getGameGridCircle(col+1, row-1).getState() 
-                    && curr == b.getGameGridCircle(col+2, row-2).getState()
-		    && (b.getGameGridCircle(col+3, row-3).getState() == 0) ) 
-                {
-                    xIndex = col + 3;
-                    yIndex = row - 3;
-
-            while((yIndex != b.numRows - 1) && (b.getGameGridCircle(xIndex, yIndex+1).getState() == 0)){
-                yIndex++;
-                if (yIndex == b.numRows - 1) {
-                    break;
-                }
-            }
-
-		    weight = 1;
-                    break;
-                }
-            }
-        }
-
-
-
-	if(weight == 0)
-	{
-		xIndex = rand.nextInt(7);
-
-            // make sure random column is not already full
-            while (b.getGameGridCircle(xIndex,yIndex).getState() != 0) {
-                xIndex = (xIndex + 1)%7;
-            }
-            //find the lowest empty slot in the chosen column
-            //Place a circle there
-            while((yIndex != b.numRows - 1) && (b.getGameGridCircle(xIndex, yIndex+1).getState() == 0)){
-                yIndex++;
-                if (yIndex == b.numRows - 1) {
-                    break;
-                }
-            }
     
-	}
+		}
 
-
+	    //change state,turn and draw counter and refresh the board
             b.getGameGridCircle(xIndex,yIndex).setState(b.getTurn());
             b.setTurn(1);
             b.repaint();
