@@ -8,12 +8,13 @@ import java.util.ArrayList;
 // Panel for Buttons next to Connect Four Game Board
 
 public class inGameMenuPanel extends JPanel{
+    //Instance variables
     private JButton mainMButton; // main Menu Button
     private JButton restartButton; // restart Button
     private JButton exitButton; // exitButton
     
     public inGameMenuPanel(startScreen2 ss){
-        super ();
+        super ();//Calls constructor of JPanel
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         Font BFont = new Font ("Comic Sans MS", Font.BOLD, 22);
         
@@ -37,7 +38,6 @@ public class inGameMenuPanel extends JPanel{
         
         this.add(mainMButton);
         this.add(restartButton);
-        
         this.add(exitButton);
         
     }
