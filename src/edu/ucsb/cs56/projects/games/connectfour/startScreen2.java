@@ -18,7 +18,7 @@ import java.util.Random;
 public class startScreen2 extends JFrame {
     
     
-    
+    //Instance variables
     public static int frame_width = 880;
     public static int frame_height = 650;
     public static int menu_width = 240;
@@ -44,11 +44,11 @@ public class startScreen2 extends JFrame {
     // initial screen when program is executed
     public startScreen2(){
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(menu_width,menu_height);
+        this.setSize(menu_width,menu_height); //sets size of start screen
         this.setResizable(false);
-        ss = new StartScreenButtonsPanel(this);
-        this.add(ss);
-        this.addMouseListener(new MouseClass());
+        ss = new StartScreenButtonsPanel(this); //makes buttons for main menu
+        this.add(ss); //adds it to the frame
+        this.addMouseListener(new MouseClass());//adds mouse listner to frame
         this.setVisible(true);
         
         
@@ -70,15 +70,18 @@ public class startScreen2 extends JFrame {
      Navigate Back to the main Menu
      */
     public void BackToStartScreen(){
+	//remove board screen if there is one
         if (b != null)
             remove(b);
+	//remove game menu if one is made
         if (inGameMenuP != null)
             remove(inGameMenuP);
-        
+        //make new start menu 
         this.setSize(menu_width,menu_height);
+	//remove single player menu if there is one
         if (SPMenu != null)
             this.remove(SPMenu);
-        
+        //add the start screen buttons to the start menu and refresh
         this.add(ss);
         repaint();
         this.revalidate();
@@ -124,16 +127,19 @@ public class startScreen2 extends JFrame {
         private int yIndex;
         
         public void mouseClicked(MouseEvent e){
+	    //if game is over, do nothing
             if (b.getGameOver())
                 return;
-            
+            //print out game mode (single or multi
             System.out.println("GameMode is " + gameMode);
+	    //Multip player game mode
             if (gameMode == 1){// multiplayer
                 b.setSinglePlayer(false);
                 xIndex = e.getX()/100;
                 yIndex = 0;
                 
-                
+                //while the circle is not filled add to the yindex until
+		// it is 1 less than the number of rows in the board 
                 while(b.getGameGridCircle(xIndex, yIndex+1).getState() == 0)
                 {
                     yIndex++;
@@ -174,7 +180,8 @@ public class startScreen2 extends JFrame {
                     xIndex = e.getX()/100;
                     yIndex = 0;
                     
-                    
+                    //while the  right circle is not filled, add to the y index until
+		    //there is a circle filled or the the y index equals number of rows
                     while(b.getGameGridCircle(xIndex, yIndex+1).getState() == 0)
                     {
                         yIndex++;
