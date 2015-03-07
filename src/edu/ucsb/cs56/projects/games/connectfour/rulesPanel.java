@@ -17,10 +17,14 @@ public class rulesPanel extends JPanel{
 	"\n\n*GamePlay" +
 	"\n- First to get 4 of their color in a row wins \n  (Diagonal, horizontal, or vertical)." +
 	     " \n  If no one wins then the game is declared a Draw." +
-	"\n- For Multiplayer: player 1 is red, player 2 is yellow.\n  The undo button takes away 1 move." + 
-	"\n- For Singleplayer: the user goes first and is red, \n  the computer goes 2nd and is yellow." +
-	     "\n  The undo button takes away 2 moves (the user's and the computer's)." + 
+	"\n- For Multiplayer: player 1 chooses their color first," + 
+	"\n  player 2 chooses their color second." +
+	"\n  The undo button takes away 1 move." + 
+	"\n- For Singleplayer: the user chooses their color first and goes first," +
+	" \n  the computer's color is the second color chosen." +
+	"\n  The undo button takes away 2 moves (the user's and the computer's)." + 
  	"\n\n*Features " + 
+	"\n- Choose colors for the circles" + 
 	"\n- Undo button" + 
 	"\n- Restart game button" +
 	"\n- Main menu button" + 
