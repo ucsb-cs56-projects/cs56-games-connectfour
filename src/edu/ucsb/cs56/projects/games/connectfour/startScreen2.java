@@ -20,7 +20,7 @@ public class startScreen2 extends JFrame {
     
     
     
-    public static int frame_width = 880;
+    public static int frame_width = 890;
     public static int frame_height = 650;
     public static int menu_width = 240;
     public static int menu_height = 320;
@@ -188,7 +188,7 @@ public class startScreen2 extends JFrame {
         b = new Board();
         b.setPlayer1State(player1ColorState);
 	b.setPlayer2State(player2ColorState);
-	    
+
         // add it to frame and refresh
         this.add(b);
         this.add(inGameMenuP);
@@ -308,9 +308,11 @@ public class startScreen2 extends JFrame {
                 //set the selected circle's state to current turn value (1 or 2)
                 if (b.getTurn() == 1){
 		    b.getGameGridCircle(xIndex, yIndex).setState( b.getPlayer1State() );
+		    
 		}
 		else if (b.getTurn() == 2){
 		    b.getGameGridCircle(xIndex, yIndex).setState( b.getPlayer2State() );
+		    
 		}
 	    
 		b.incrementMoveCounter();
@@ -321,14 +323,16 @@ public class startScreen2 extends JFrame {
                 //change turns
                 if (b.getTurn() == 1) {
                     b.setTurn(2);
+		    //inGameMenuP.setCurrentTurn(player2ColorState);
                 }
                 else {
                     b.setTurn(1);
+		    //inGameMenuP.setCurrentTurn(player1ColorState);
                 }
                 
                 //repaint after every mouseClick
                 b.repaint();
-                
+	        
                 b.setDrawCounter(b.getDrawCounter()+1);
                 
             }
@@ -370,6 +374,7 @@ public class startScreen2 extends JFrame {
 
                     //change turns
                     b.setTurn(2);
+		    
                     
                     //repaint after every mouseClick
                     b.repaint();

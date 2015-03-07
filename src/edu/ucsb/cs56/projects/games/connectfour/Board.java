@@ -43,11 +43,12 @@ class Board extends JPanel {
      */
     
     public Board() {
-        
+
         circleHolder = new ArrayList<Circle>();
         this.gameGrid = new Circle[numColumns][numRows];
-        //Loop through the board and initialize each circle. add it to circleHolder and gameGrid
         
+	//Loop through the board and initialize each circle. add it to circleHolder and gameGrid
+	
         for (int i = 0; i < numColumns; i++) {
             for (int j = 0; j < numRows; j++) {
                 cc = new Circle( i * 100 + 55, j * 100 + 55, 90,90);
