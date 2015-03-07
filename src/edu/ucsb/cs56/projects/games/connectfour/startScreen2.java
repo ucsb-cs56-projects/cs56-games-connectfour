@@ -35,7 +35,7 @@ public class startScreen2 extends JFrame {
     private static Player2ColorSelectScreen p2ColorScreen;
     private static int player1ColorState;
     private static int player2ColorState;
-    
+    private static settingsPanel settingsMenu;
 
     /**
        Launch the frame and the game.
@@ -103,12 +103,21 @@ public class startScreen2 extends JFrame {
     // Loads the rules page when the rules button
     // is pressed
     public void loadRulesPage() {
-	this.setSize(2 * menu_width, 2*menu_height);
+	this.setSize(2 * menu_width, (int) (1.25 * menu_height));
         this.remove(ss);
         this.repaint();
         RulesMenu = new rulesPanel(this);
         this.add(RulesMenu);
         this.revalidate();
+    }
+
+    public void loadSettingsPage() {
+	this.setSize(menu_width, menu_height);
+	this.remove(ss);
+	this.repaint();
+	settingsMenu = new settingsPanel(this);
+	this.add(settingsMenu);
+	this.revalidate();
     }
 
     public void launchPlayer1ColorSelectScreen() {
@@ -149,6 +158,8 @@ public class startScreen2 extends JFrame {
             this.remove(SPMenu);
 	if (RulesMenu != null)
 	    this.remove(RulesMenu);
+	if (settingsMenu != null) 
+	    this.remove(settingsMenu);
 
         this.add(ss);
         repaint();

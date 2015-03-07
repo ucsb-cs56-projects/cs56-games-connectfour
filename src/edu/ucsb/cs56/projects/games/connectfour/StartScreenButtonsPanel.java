@@ -16,6 +16,7 @@ public class StartScreenButtonsPanel extends JPanel{
     private JButton SPButton; // Single Player Button
     private JButton ExitButton; // Exit Button
     private JButton ruleButton; // Button to show rules
+    private JButton settingsButton;
     
     /**
        Constructor for the panel
@@ -28,14 +29,18 @@ public class StartScreenButtonsPanel extends JPanel{
         
         Font BFont = new Font("Comic Sans MS", Font.BOLD, 22);
         
-        MPButton = new JButton ("Multiplayer!");
+        MPButton = new JButton ("Multiplayer");
         MPButton.addActionListener(new MPButtonListener(ss));
         MPButton.setFont(BFont);
         
         SPButton = new JButton ("Single Player");
         SPButton.addActionListener(new SPButtonListener(ss));
         SPButton.setFont(BFont);
-        
+
+	settingsButton = new JButton("Settings");
+	settingsButton.addActionListener(new settingsButtonListener(ss));
+	settingsButton.setFont(BFont);
+
         ruleButton = new JButton ("Rules");
         ruleButton.addActionListener(new ruleButtonListener(ss));
         ruleButton.setFont(BFont);
@@ -48,6 +53,7 @@ public class StartScreenButtonsPanel extends JPanel{
         
         this.add(SPButton);
         this.add(MPButton);
+	this.add(settingsButton);
         this.add(ruleButton);
         this.add(ExitButton);
         
@@ -120,6 +126,21 @@ public class StartScreenButtonsPanel extends JPanel{
             
             ss1.setVisible(false);
             ss1.dispose();
+        }
+        
+    }
+
+     /**
+       Listener for the settings button
+     */
+    class settingsButtonListener implements ActionListener {
+        private startScreen2 ss1;
+        settingsButtonListener(final startScreen2 ss){
+            ss1 = ss;
+        }
+        public void actionPerformed(ActionEvent event) {
+            
+            ss1.loadSettingsPage();
         }
         
     }
