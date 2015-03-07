@@ -11,7 +11,8 @@ import java.util.ArrayList;
 public class settingsPanel extends JPanel{
     
     private JButton mainMenuButton;
-
+    private JCheckBox popOutModeCB;
+    
     /**
        Constructor for the settingsPanel
        @param ss startScreen2
@@ -24,9 +25,12 @@ public class settingsPanel extends JPanel{
         mainMenuButton = new JButton("Main Menu");
 	mainMenuButton.addActionListener( new mainMenuButtonListener(ss) );
 	mainMenuButton.setFont(BFont);
+	
+	popOutModeCB = new JCheckBox("Pop Out Mode");
+	popOutModeCB.setFont(BFont);
 
 	this.add(mainMenuButton);
-	
+	this.add(popOutModeCB);
     }
     
     /**
