@@ -36,6 +36,8 @@ public class startScreen2 extends JFrame {
     private static int player1ColorState;
     private static int player2ColorState;
     private static settingsPanel settingsMenu;
+    private static boolean popOutModeCBIsSelected = false;
+
 
     /**
        Launch the frame and the game.
@@ -115,7 +117,7 @@ public class startScreen2 extends JFrame {
 	this.setSize(menu_width, menu_height);
 	this.remove(ss);
 	this.repaint();
-	settingsMenu = new settingsPanel(this);
+	settingsMenu = new settingsPanel(this, popOutModeCBIsSelected);
 	this.add(settingsMenu);
 	this.revalidate();
     }
@@ -493,7 +495,10 @@ public class startScreen2 extends JFrame {
     public void setGameMode(int gMode){
         gameMode = gMode;
     }
-    
+
+    public void setPopOutModeBool(boolean onOrOff){
+	popOutModeCBIsSelected = onOrOff;
+    }
     
     
 }// end of startScreen Class
