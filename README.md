@@ -54,7 +54,7 @@ The user chooses their color first, and then selects the color for the computer.
 
 ###Startscreen
 
-![](https://raw.githubusercontent.com/omeedrabani/cs56-games-connectfour/master/images/screenshots/boardInPlay.png)
+![](https://raw.githubusercontent.com/omeedrabani/cs56-games-connectfour/master/images/screenshots/startscreenImage.png)
 
 ###Single Player Select Screen
 
