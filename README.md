@@ -6,7 +6,7 @@ cs56-games-connectFour
     - [Project History](https://github.com/omeedrabani/cs56-games-connectfour/blob/master/README.md#project-history)
     - [How To Play](https://github.com/omeedrabani/cs56-games-connectfour/blob/master/README.md#how-to-play)
     - [Game Modes](https://github.com/omeedrabani/cs56-games-connectfour/blob/master/README.md#game-modes)
-    - [Features}(https://github.com/omeedrabani/cs56-games-connectfour/blob/master/README.md#features)
+    - [Features](https://github.com/omeedrabani/cs56-games-connectfour/blob/master/README.md#features)
   - [Interface](https://github.com/omeedrabani/cs56-games-connectfour/blob/master/README.md#interface)
     - [Startscreen](https://github.com/omeedrabani/cs56-games-connectfour/blob/master/README.md#startscreen)
     - [Single Player Select Screen](https://github.com/omeedrabani/cs56-games-connectfour/blob/master/README.md#single-player-select-screen)
@@ -47,8 +47,8 @@ The user chooses their color first, and then selects the color for the computer.
 ###Features
 - Each player (or computer) gets a selected color.
 - The undo button removes the most recent move made. (The undo button can be used as many times as you like, until the board is empty)
-  - Multiplayer: The undo button only removes 1 of the most recent move. The turn is switched with each press of the undo.
-  - Singleplayer: The undo button removes 2 of the most recent moves (the user's and the computer's). It is always the user's move.
+  - Multiplayer: The undo button only removes the most recent singular move. The turn is switched with each press of the undo.
+  - Singleplayer: The undo button removes the 2 most recent moves (the user's and the computer's). It is always the user's turn.
 
 ##Interface
 
