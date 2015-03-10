@@ -1,6 +1,6 @@
 cs56-games-connectFour
 ======================
-
+ 
 - __Navigation__:
   - [Intro](https://github.com/omeedrabani/cs56-games-connectfour/blob/master/README.md#intro)
     - [Project History](https://github.com/omeedrabani/cs56-games-connectfour/blob/master/README.md#project-history)
