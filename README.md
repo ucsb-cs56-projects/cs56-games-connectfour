@@ -87,3 +87,4 @@ To start the program, use `ant run`
 
 ##Known Bugs
 * When forwarding through X11, in singleplayer mode there is a lag between when the user selects a column and when the computer makes their move. After the user clicks again does the computer make their move. This does not affect gameplay but rather only affects the user experience as they now have to click again after their selection in order for the computer to make their move. Regarding the undo feature, if the user presses undo before the computer has made its move, it will only undo 1 recent move as opposed to the expected 2. 
+* After pressing the main menu button from the game board, the buttons are moved down some space.
