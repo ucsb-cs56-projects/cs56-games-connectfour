@@ -12,14 +12,14 @@ YES | mastergberry | gkowligi, vwtan | A "Connect Four" game where the player tr
 
 
  - __Navigation__: 
-   - [Introduction](https://github.com/vwtan/cs56-games-connectfour/blob/master/README.md#introduction)
-   - [Interface](https://github.com/vwtan/cs56-games-connectfour/blob/master/README.md#interface)
-      - [New Game](https://github.com/vwtan/cs56-games-connectfour/blob/master/README.md#new-game)
-      - [Choose Version](https://github.com/vwtan//cs56-games-connectfour/blob/master/README.md#choose-version)
-        - [Rules](https://github.com/vwtan//cs56-games-connectfour/blob/master/README.md#rules)
-	  - [Exit](https://github.com/vwtan//cs56-games-connectfour/blob/master/README.md#exit)
-   - [Documentation](https://github.com/vwtan//cs56-games-connectfour/blob/master/README.md#documentation)
-   - [How to run](https://github.com/vwtan/cs56-games-connectfour/blob/master/README.md#how-to-run)
+   - [Introduction](https://github.com/alexisjimenez/cs56-games-connectfour/blob/master/README.md#introduction)
+   - [Interface](https://github.com/alexisjimenez/cs56-games-connectfour/blob/master/README.md#interface)
+      - [New Game](https://github.com/alexisjimenez/cs56-games-connectfour/blob/master/README.md#new-game)
+      - [Choose Version](https://github.com/alexisjimenez/cs56-games-connectfour/blob/master/README.md#choose-version)
+        - [Rules](https://github.com/alexisjimenez/cs56-games-connectfour/blob/master/README.md#rules)
+	  - [Exit](https://github.com/alexisjimenez/cs56-games-connectfour/blob/master/README.md#exit)
+   - [Documentation](https://github.com/alexisjimenez/cs56-games-connectfour/blob/master/README.md#documentation)
+   - [How to run](https://github.com/alexisjimenez/cs56-games-connectfour/blob/master/README.md#how-to-run)
 
 
 ##Introduction
