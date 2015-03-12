@@ -36,7 +36,7 @@ public class inGameMenuPanel extends JPanel{
         exitButton.setFont(BFont);
 	
 	//inserted a music off/on
-       	musicButton = new JButton ("Music On/Off");
+       	musicButton = new JButton ("Music");
 	//  musicButton.addActionListener(new musicButtonListener(ss));
 	musicButton.setFont(BFont);
         
@@ -97,7 +97,7 @@ public class inGameMenuPanel extends JPanel{
 
     // when music button is pressed
     // make the music turn on or off.
-    /* class musicButtonListener implements ActionListener {
+     class musicButtonListener implements ActionListener {
         private Sound ss1;
         
         musicButtonListener(final Sound ss){
@@ -108,7 +108,7 @@ public class inGameMenuPanel extends JPanel{
             ss1.music();
            
         }
-	}// end of musicButtonListener Class*/
+     }// end of musicButtonListener Class*/
 
 
 
