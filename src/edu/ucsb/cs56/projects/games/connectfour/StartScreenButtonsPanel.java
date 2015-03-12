@@ -89,7 +89,7 @@ public class StartScreenButtonsPanel extends JPanel{
     class ruleButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent event){
            Frame frame = new Frame();
-	   JOptionPane.showMessageDialog(frame, "Blah BLah blah");
+	   JOptionPane.showMessageDialog(frame, "1) For mulyplayer you decide who goes first, but for singleplayer you will always get the start.\n\n2) The first player clicks one of the clolums and their color checker falls into\n    the lowest of the slots in that column on the board.\n    Then, players alternate turns (or player and AI) dropping checkers into the\n    slots on the board, either trying to build up their strategy to win, or block an opponent.\n\n3) Know how the game works. The object of the game is to get four of your color checkers either\n    vertically, horizontally, or diagonally. By strategizing, a player may try to figure out\n    what their opponent is thinking and then attempt to block their win by dropping\n    a checker in a corresponding slot.");
         }
     }
     
