@@ -28,13 +28,15 @@ public class startScreen2 extends JFrame {
     private int gameMode = 1;
     private static singlePlayerMenuPanel SPMenu;
     private static inGameMenuPanel inGameMenuP;
+    //added Sound instance
+    //private static Sound m;
 
     
     
     // Launch game
-    public static void main (String [] args){
-        JFrame frame = new startScreen2();
-        
+     public static void main (String [] args){
+      JFrame frame = new startScreen2();
+	//m.music();   
     }
     
     /**
@@ -43,14 +45,17 @@ public class startScreen2 extends JFrame {
     
     // initial screen when program is executed
     public startScreen2(){
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(menu_width,menu_height); //sets size of start screen
         this.setResizable(false);
         ss = new StartScreenButtonsPanel(this); //makes buttons for main menu
         this.add(ss); //adds it to the frame
         this.addMouseListener(new MouseClass());//adds mouse listner to frame
         this.setVisible(true);
-        
+
+
+
+
         
     }
     
@@ -91,6 +96,7 @@ public class startScreen2 extends JFrame {
     // remove the board if one already exists
     // and make a new one
     public void launchGame(){
+
         // Make sure Panel already Exist.
         // remove if it does.
         if (b != null)
