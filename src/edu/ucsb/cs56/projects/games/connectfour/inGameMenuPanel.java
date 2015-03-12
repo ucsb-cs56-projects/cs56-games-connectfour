@@ -12,7 +12,7 @@ public class inGameMenuPanel extends JPanel{
     private JButton mainMButton; // main Menu Button
     private JButton restartButton; // restart Button
     private JButton exitButton; // exitButton
-    private JButton musicButton; //musicButton
+    // private JButton musicButton; //musicButton
     
     public inGameMenuPanel(startScreen2 ss){
         super ();//Calls constructor of JPanel
@@ -36,9 +36,9 @@ public class inGameMenuPanel extends JPanel{
         exitButton.setFont(BFont);
 	
 	//inserted a music off/on
-       	musicButton = new JButton ("Music");
+	// 	musicButton = new JButton ("Music");
 	//  musicButton.addActionListener(new musicButtonListener(ss));
-	musicButton.setFont(BFont);
+	//	musicButton.setFont(BFont);
         
         
         
@@ -46,7 +46,7 @@ public class inGameMenuPanel extends JPanel{
         this.add(restartButton);
         this.add(exitButton);
 	//added music button to jframe
-       	this.add(musicButton);
+	// 	this.add(musicButton);
     }
     
     // Listeners for Buttons in Panel
@@ -97,7 +97,7 @@ public class inGameMenuPanel extends JPanel{
 
     // when music button is pressed
     // make the music turn on or off.
-     class musicButtonListener implements ActionListener {
+    /* class musicButtonListener implements ActionListener {
         private Sound ss1;
         
         musicButtonListener(final Sound ss){
@@ -108,7 +108,7 @@ public class inGameMenuPanel extends JPanel{
             ss1.music();
            
         }
-     }// end of musicButtonListener Class*/
+     }// end of musicButtonListener Class*/*/
 
 
 

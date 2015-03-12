@@ -1,4 +1,4 @@
-package edu.ucsb.cs56.projects.games.connectfour;
+/*package edu.ucsb.cs56.projects.games.connectfour;
 
 import java.awt.event.*;
 import javax.swing.*;
@@ -8,19 +8,24 @@ import java.io.*;
 
 public class Sound {
 
-
-	AudioPlayer gameMusic = AudioPlayer.player;
-	AudioStream musicImported;
-	AudioData musicData;
-	ContinuousAudioDataStream loop = null;
-
-	try{
-	musicImported = new AudioStream (new FileInputStream("BackroundMusic.mp3"));
-	musicData = musicImported.getData();
-	loop = new ContinuousAudioDataStream(musicData);
-	}
-	catch(IOException error){}
-
-	gameMusic.start(loop);
+    public static void music()
+    {
+    AudioPlayer MGP = AudioPlayer.player;
+    AudioStream BGM;
+    AudioData MD;
+    ContinuousAudioDataStream loop = null;
+    
+    try{
+	BGM = new AudioStream (new FileInputStream("BackroundMusic.mp3"));
+	MD = BGM.getData();
+	loop = new ContinuousAudioDataStream(MD);
+    }
+    catch(IOException error){
+	System.out.println(" music didn't work");
+}
+    
+    MGP.start(loop);
     }
 }
+
+*/
