@@ -138,7 +138,7 @@ class SinglePlayerAdvanced {
 			{
 			    xIndex = col + 3;
 			    yIndex = row + 3;
-			    ]
+			    
 
 			//while all rows have not been checked for that specific column
 			//or the bottom cicle is not filled, add 1 to the  yindex
