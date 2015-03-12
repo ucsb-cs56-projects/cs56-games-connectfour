@@ -8,12 +8,14 @@ import java.util.ArrayList;
 // Panel for Buttons next to Connect Four Game Board
 
 public class inGameMenuPanel extends JPanel{
+    //Instance variables
     private JButton mainMButton; // main Menu Button
     private JButton restartButton; // restart Button
     private JButton exitButton; // exitButton
+    private JButton musicButton; //musicButton
     
     public inGameMenuPanel(startScreen2 ss){
-        super ();
+        super ();//Calls constructor of JPanel
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         Font BFont = new Font ("Comic Sans MS", Font.BOLD, 22);
         
@@ -32,14 +34,19 @@ public class inGameMenuPanel extends JPanel{
         exitButton = new JButton ("Exit");
         exitButton.addActionListener(new exitButtonListener(ss));
         exitButton.setFont(BFont);
+	
+	//inserted a music off/on
+       	musicButton = new JButton ("Music On/Off");
+	//  musicButton.addActionListener(new musicButtonListener(ss));
+	musicButton.setFont(BFont);
         
         
         
         this.add(mainMButton);
         this.add(restartButton);
-        
         this.add(exitButton);
-        
+	//added music button to jframe
+       	this.add(musicButton);
     }
     
     // Listeners for Buttons in Panel
@@ -57,6 +64,7 @@ public class inGameMenuPanel extends JPanel{
             ss1.launchGame();
         }
     }// end of RestartButtonListener Class
+
     
     // Navigate back to startScreen when this button is pressed
     class mainMenuButtonListener implements ActionListener {
@@ -70,6 +78,7 @@ public class inGameMenuPanel extends JPanel{
             ss1.BackToStartScreen();
         }
     }// end of mainMenuButtonListener Class
+
     
     // when exit button is pressed
     // make the screen no longer visible, and stop execution
@@ -85,6 +94,24 @@ public class inGameMenuPanel extends JPanel{
             ss1.dispose();
         }
     }// end of exitButtonListener Class
+
+    // when music button is pressed
+    // make the music turn on or off.
+    /* class musicButtonListener implements ActionListener {
+        private Sound ss1;
+        
+        musicButtonListener(final Sound ss){
+            ss1 = ss;
+        }
+        
+        public void actionPerformed(ActionEvent event){
+            ss1.music();
+           
+        }
+	}// end of musicButtonListener Class*/
+
+
+
 }// end of inGameMenuPanel Class
 
 

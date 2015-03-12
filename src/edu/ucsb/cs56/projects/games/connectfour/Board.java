@@ -15,7 +15,8 @@ import java.util.Random;
  */
 
 class Board extends JPanel {
-    
+
+    // Instance vaiables     
     public static int numColumns = 7;
     public static int numRows = 6;
     public static Circle cc;
