@@ -28,8 +28,7 @@ public class startScreen2 extends JFrame {
     private int gameMode = 1;
     private static singlePlayerMenuPanel SPMenu;
     private static inGameMenuPanel inGameMenuP;
-    //added Sound instance
-    //private static Sound m;
+
 
     
     

@@ -4,6 +4,9 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 import java.util.ArrayList;
+import javax.sound.sampled.*;
+import java.io.*;
+import java.net.URL;
 
 // Panel for Buttons next to Connect Four Game Board
 
@@ -12,12 +15,17 @@ public class inGameMenuPanel extends JPanel{
     private JButton mainMButton; // main Menu Button
     private JButton restartButton; // restart Button
     private JButton exitButton; // exitButton
-    // private JButton musicButton; //musicButton
+   
+
+
     
     public inGameMenuPanel(startScreen2 ss){
+
         super ();//Calls constructor of JPanel
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         Font BFont = new Font ("Comic Sans MS", Font.BOLD, 22);
+
+	
         
         // Create a
         // main button
@@ -35,18 +43,13 @@ public class inGameMenuPanel extends JPanel{
         exitButton.addActionListener(new exitButtonListener(ss));
         exitButton.setFont(BFont);
 	
-	//inserted a music off/on
-	// 	musicButton = new JButton ("Music");
-	//  musicButton.addActionListener(new musicButtonListener(ss));
-	//	musicButton.setFont(BFont);
+
         
         
         
         this.add(mainMButton);
         this.add(restartButton);
         this.add(exitButton);
-	//added music button to jframe
-	// 	this.add(musicButton);
     }
     
     // Listeners for Buttons in Panel
@@ -76,6 +79,7 @@ public class inGameMenuPanel extends JPanel{
         
         public void actionPerformed(ActionEvent event){
             ss1.BackToStartScreen();
+	    
         }
     }// end of mainMenuButtonListener Class
 
@@ -97,18 +101,7 @@ public class inGameMenuPanel extends JPanel{
 
     // when music button is pressed
     // make the music turn on or off.
-    /* class musicButtonListener implements ActionListener {
-        private Sound ss1;
-        
-        musicButtonListener(final Sound ss){
-            ss1 = ss;
-        }
-        
-        public void actionPerformed(ActionEvent event){
-            ss1.music();
-           
-        }
-     }// end of musicButtonListener Class*/
+    
 
 
 

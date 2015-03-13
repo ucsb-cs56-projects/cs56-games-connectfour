@@ -13,6 +13,7 @@ public class StartScreenButtonsPanel extends JPanel{
     private JButton SPButton; // Single Player Button
     private JButton ExitButton; // Exit Button
     private JButton ruleButton; // Button to show rules
+    AePlayWave music;
     
     public StartScreenButtonsPanel(startScreen2 ss){
         super(); //calls in the constructor of a JPanel
@@ -65,6 +66,8 @@ public class StartScreenButtonsPanel extends JPanel{
         public void actionPerformed(ActionEvent event) {
             ss1.setGameMode(1);
             ss1.launchGame();
+	    music = new AePlayWave("ConnectFourMusic.wav");
+	    music.start();
         }
     }
 

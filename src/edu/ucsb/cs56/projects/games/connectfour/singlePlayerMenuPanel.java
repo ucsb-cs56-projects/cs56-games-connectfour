@@ -11,6 +11,7 @@ public class singlePlayerMenuPanel extends JPanel{
     //Instance variables
     private JButton singlePlayerEasy;
     private JButton singlePlayerAdvanced;
+    AePlayWave music1;
     
     //constructor
     public singlePlayerMenuPanel(startScreen2 ss){
@@ -44,6 +45,8 @@ public class singlePlayerMenuPanel extends JPanel{
         public void actionPerformed(ActionEvent event){
             ss1.setGameMode(2);
             ss1.launchGame();
+	    music1 = new AePlayWave("ConnectFourMusic.wav");
+	    music1.start();
         }
     }
     
@@ -59,6 +62,8 @@ public class singlePlayerMenuPanel extends JPanel{
         public void actionPerformed(ActionEvent event){
             ss1.setGameMode(3);
             ss1.launchGame();
+	    music1 = new AePlayWave("ConnectFourMusic.wav");
+	    music1.start();
             
         }
     }
