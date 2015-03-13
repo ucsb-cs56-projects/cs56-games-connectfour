@@ -266,16 +266,6 @@ public class startScreen2 extends JFrame {
                             System.out.println("Broken Thread");
                         }
                     }// end else if (gameMode == 3)
-		    else if (gameMode == 4){
-                        //retrieve an insane computer move
-                        //generate a delay to slow computer down
-                        try{
-                            Thread.sleep(500);
-                            SinglePlayerInsane.InsaneComputerMove(b);
-                        }catch (InterruptedException ex1){
-                            System.out.println("Broken Thread");
-                        }
-                    }// end else if (gameMode == 3)
                 
                 }// end else
             }// end else
