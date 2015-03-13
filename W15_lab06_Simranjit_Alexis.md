@@ -19,10 +19,18 @@ Readme.md: Improve this text file so the user knows how to use the game and also
 how to run it. This text file must be user friendly.
 
 Rules: There is currently no rules file in this program. A new file must be
-implemented with the rules to Connect 4.
+implemented with the rules to Connect 4. There was existing code for rule button
+that has been commented out. Plan on completely implementing Run differently and
+adding actual rule text for common version of Connect four.
 
 Javadoc: Some source code has parts of its code that has no javadoc comments.
 These files must be found and the javadoc comments must be added.
+
+Another Difficulty: Currently there is an easy and advanced mode. Easy is AI
+making completely random moves. Advanced looks to only block you from winning
+and plays randomly if no block found. We are going to rename advanced to normal
+and create another smarter AI that not only blocks, but know how to win and
+call it advanced.
 
 ANT Targets
 -----------
