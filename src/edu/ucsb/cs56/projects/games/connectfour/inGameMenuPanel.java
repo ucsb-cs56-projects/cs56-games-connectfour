@@ -9,11 +9,12 @@ import java.io.*;
 import java.net.URL;
 
 /**
- * inGameMenuPanel creates a JPanel and then adds three buttons:
+ * inGameMenuPanel creates a JPanel and three buttons and then adds them.
+ * The three buttons are as follows:
  * mainButton
  * restartButton
  * exitButton
- * It then
+ */
 
 public class inGameMenuPanel extends JPanel{
     //Instance variables
@@ -47,23 +48,28 @@ public class inGameMenuPanel extends JPanel{
         exitButton = new JButton ("Exit");
         exitButton.addActionListener(new exitButtonListener(ss));
         exitButton.setFont(BFont);
-	
-
-        
-        
-        
+      
+        //adds buttons
         this.add(mainMButton);
         this.add(restartButton);
         this.add(exitButton);
     }
+
     
     // Listeners for Buttons in Panel
-    
-    // when restart Button is pressed
-    // relaunch Game
+    /**
+     * restartButtonListener is the button listener for the restart button.
+     * When restart button is pressed, the game is relaunched.
+     * 
+     */
     class restartButtonListener implements ActionListener {
         private startScreen2 ss1;
-        
+
+        /**
+	 * Constructor of this class.
+	 * @param ss argument to initialize a final startScreen2 object which
+	 * contains the launchGame method.
+	 */
         restartButtonListener(final startScreen2 ss){
             ss1 = ss;
         }
@@ -73,11 +79,19 @@ public class inGameMenuPanel extends JPanel{
         }
     }// end of RestartButtonListener Class
 
-    
-    // Navigate back to startScreen when this button is pressed
+
+    /**
+     * mainMenuButtonListener is the button listener for the main menu  button.
+     * When main menu button is pressed, one navigates back to the main menu
+     *  screen.
+     */
     class mainMenuButtonListener implements ActionListener {
         private startScreen2 ss1;
-        
+        /**
+	 * Constructor of this class.
+	 * @param ss argument to initialize a final startScreen2 object which
+	 * contains the BackToStartScreen method.
+	 */   
         mainMenuButtonListener(final startScreen2 ss){
             ss1 = ss;
         }
@@ -88,11 +102,19 @@ public class inGameMenuPanel extends JPanel{
         }
     }// end of mainMenuButtonListener Class
 
-    
-    // when exit button is pressed
-    // make the screen no longer visible, and stop execution
+    /**
+     * ecitButtonListener is the button listener for the exit button.
+     * When exit button is pressed, the main screen is no longer visible and the
+     * execution stops
+     */
     class exitButtonListener implements ActionListener {
         private startScreen2 ss1;
+
+        /**
+	 * Constructor of this class.
+	 * @param ss argument to initialize a final startScreen2 object which
+	 * contains the setVisible and dispose methods.
+	 */
         
         exitButtonListener(final startScreen2 ss){
             ss1 = ss;
@@ -104,12 +126,7 @@ public class inGameMenuPanel extends JPanel{
         }
     }// end of exitButtonListener Class
 
-    // when music button is pressed
-    // make the music turn on or off.
     
-
-
-
 }// end of inGameMenuPanel Class
 
 

@@ -7,12 +7,23 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * SinglePlayerAdvanced class implements an algorithm that the computer
+ * uses in order to compute its next move. The algorithm consists on figuring
+ * out the positions of potential wins for the player. This is done so that 
+ * the computer can block the win.
+ */
+
 class SinglePlayerAdvanced {
 
     
-    //Check if possibility for player to win
-    //If so, block spot. If not, random move
-    // For Advanced Mode
+    /**
+     * AdvancedComputerMove  checks each row, each column, and each diagonal lines
+     * from both side in order to figure out if there are three circles of the 
+     * player in consecutive order. If there are, then it would block the spot
+     * with its circle, else, it would just generate a random move
+     * @param b is the board object that stores all the current moves made. 
+     */
     
     public static void AdvancedComputerMove(Board b){
         if (!b.getGameOver()){    //make sure game is not already over

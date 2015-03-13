@@ -5,7 +5,8 @@ import java.awt.event.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-/** singlePlayerMenu Panel uses swing gui to represent the single player Menu
+/**
+ * SinglePlayerMenuPanel class uses swing gui to represent the single player Menu.
  */
 public class singlePlayerMenuPanel extends JPanel{
     //Instance variables
@@ -13,7 +14,14 @@ public class singlePlayerMenuPanel extends JPanel{
     private JButton singlePlayerAdvanced;
     AePlayWave music1;
     
-    //constructor
+    /**
+     * singlePlayerMenuPanel is the constructor for this class.
+     * A JPanel is created along with the two following buttons:
+     * Easy
+     * Advanced
+     * These buttons are then added to the JPanel.
+     * @param ss is the main menu object. 
+     */
     public singlePlayerMenuPanel(startScreen2 ss){
         super ();//calls jpanel constructor
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -32,16 +40,29 @@ public class singlePlayerMenuPanel extends JPanel{
         this.add(singlePlayerEasy);
         this.add(singlePlayerAdvanced);
     }
-    
-    //easy button listner 
+
+    /**
+     * singlePlayerEasyListener is the listener for the Easy button.
+     * When the Easy button is pressed the game will be set to easy mode
+     * and then will launch a new game with background music. 
+     */ 
     class singlePlayerEasyListener implements ActionListener {
         private startScreen2 ss1;
 
-	//constructor
+	/**
+	 * singlePlayerEasyListner is the constructor that creates a
+	 * copy of the main menu object ss
+	 * @param ss is the main menu object.
+	 */
         singlePlayerEasyListener(final startScreen2 ss){
             ss1 = ss;
         }
-	//if button is clicked, game mode is 2 and the game is launched
+	/**
+	 *actionPerformed sets the game mode to 2(easy mode) and 
+	 * launches game.It also starts playing the background music.
+	 * @param event is ActionEvent object.
+	 */
+	@Override
         public void actionPerformed(ActionEvent event){
             ss1.setGameMode(2);
             ss1.launchGame();
@@ -50,15 +71,30 @@ public class singlePlayerMenuPanel extends JPanel{
         }
     }
     
-    //advanced button listner
+
+    /**
+     * singlePlayerAdvancedListener is the listener for the Advanced button.
+     * When the Advanced button is pressed the game will be set to advanced mode
+     * and then will launch a new game with background music. 
+     */ 
     class singlePlayerAdvancedListener implements ActionListener {
         private startScreen2 ss1;
 
-	//constructor
+	/**
+	 * singlePlayerEasyListner is the constructor that creates a
+	 * copy of the main menu object ss
+	 * @param ss is the main menu object.
+	 */
         singlePlayerAdvancedListener(final startScreen2 ss){
             ss1 = ss;
         }
-	//if button is clicked, set game mode to 3 and lauch game
+
+	/**
+	 *actionPerformed sets the game mode to 3(advanced mode)
+	 * and launches game. It also starts playing the backround music.
+	 * @param event is ActionEvent object.
+	 */
+	@Override
         public void actionPerformed(ActionEvent event){
             ss1.setGameMode(3);
             ss1.launchGame();

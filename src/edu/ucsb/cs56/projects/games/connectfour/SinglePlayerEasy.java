@@ -7,13 +7,18 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 
-/** SinglePlayerEasy class implements 1 player game that is easy */
+/** 
+ * SinglePlayerEasy class implements 1 player game that is easy. 
+*/
 class SinglePlayerEasy {
 
     
     //Automatically Generate a Random Computer Move
     // For Easy Mode
-    
+    /**
+     * randomMove automatically generates a random computer move.
+     * @param b is the current game being played.
+     */
     public static void randomMove(Board b){
         if (!b.getGameOver()){    //make sure game is not already over
             Random rand = new Random();
