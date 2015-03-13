@@ -14,10 +14,12 @@ YES | mastergberry | gkowligi, vwtan | A "Connect Four" game where the player tr
  - __Navigation__: 
    - [Introduction](https://github.com/SharSoft/cs56-games-connectfour/blob/master/README.md#introduction)
    - [Interface](https://github.com/SharSoft/cs56-games-connectfour/blob/master/README.md#interface)
-      - [Single Player](https://github.com/SharSoft/cs56-games-connectfour/blob/master/README.md#Single-Player)
-      - [Choose Version](https://github.com/SharSoft/cs56-games-connectfour/blob/master/README.md#choose-version)
-        - [Rules](https://github.com/SharSoft/cs56-games-connectfour/blob/master/README.md#rules)
-	  - [Exit](https://github.com/SharSoft/cs56-games-connectfour/blob/master/README.md#exit)
+      - [Single Player](https://github.com/SharSoft/cs56-games-connectfour/blob/master/README.md#single-player)
+      	-[Easy](https://github.com/SharSoft/cs56-games-connectfour/blob/master/README.md#easy)
+	-[Advanced](https://github.com/SharSoft/cs56-games-connectfour/blob/master/README.md#advanced)
+      - [Multiplayer](https://github.com/SharSoft/cs56-games-connectfour/blob/master/README.md#multiplayer)
+      - [Rules](https://github.com/SharSoft/cs56-games-connectfour/blob/master/README.md#rules)
+      - [Exit](https://github.com/SharSoft/cs56-games-connectfour/blob/master/README.md#exit)
    - [Documentation](https://github.com/SharSoft/cs56-games-connectfour/blob/master/README.md#documentation)
    - [How to run](https://github.com/SharSoft/cs56-games-connectfour/blob/master/README.md#how-to-run)
 
@@ -50,15 +52,18 @@ An implementation of Connect Four. Includes a Board and Circle class that create
 
 ![](http://i.imgur.com/DopHfQa.jpg)
 
+####Easy
 * You can choose either Easy mode or Advanced mode.
 * When you play easy mode, you almost always win at the first time:
 
 ![](http://i.imgur.com/FqndabM.jpg)
 
+####Advanced
 *When you play advanced, its harder to win:
 
 ![](http://i.imgur.com/0AbluIR.jpg)
 
+##Rules
 
 ![](http://i.imgur.com/flZkDD9.jpg)
 
