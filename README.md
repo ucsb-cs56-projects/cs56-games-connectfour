@@ -56,21 +56,44 @@ An implementation of Connect Four. Includes a Board and Circle class that create
 * You can choose either Easy mode or Advanced mode.
 * When you play easy mode, you almost always win at the first time:
 
-![](http://i.imgur.com/0AbluIR.jpg)
+![](http://i.imgur.com/flZkDD9.jpg)
 
-*
+* On the right hand side there are three buttons with options. These options are the same, regardless of what game mode you are playing.
+* These buttons are as follows:
+  * "Main Menu": Navigates you back to the start menu.
+  * "Restart": Creates a new game a tany time.
+  * "Exit" : Exits the game.  
+
 
 ####Advanced
-*When you play advanced, its harder to win:
+* When you play advanced, its harder to win:
+//ADD PICTURE
+
+###Multiplayer
+
+*This navigates you to the game screen, where two people get to play:
+
+![](http://i.imgur.com/0AbluIR.jpg)
 
 
+###Rules
+* When you click on the "Rules" button, a message dialog box will appear with the rules:
 
-##Rules
-
-![](http://i.imgur.com/flZkDD9.jpg)
 
 ![] (http://i.imgur.com/6pRunIO.jpg)
 
+* The "OK" button exits the dialog box.
+
+###Exit
+* When the "Exit" button is clicked, the game is exited.
+
+##Documentation:
+
+
+
+## How to run 
+To start the game, use `ant run`. 
 ![](http://i.imgur.com/FqndabM.jpg)
+
 
 
