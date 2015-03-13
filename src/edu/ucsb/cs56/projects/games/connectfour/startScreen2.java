@@ -32,14 +32,16 @@ public class startScreen2 extends JFrame {
 
     
     
-    // Launch game
+    /**
+     * main launches the game.
+     */
      public static void main (String [] args){
       JFrame frame = new startScreen2();
-	//m.music();   
+   
     }
     
     /**
-     Constructor intitializes JFrame For all panel
+     Constructor intitializes JFrame For all Panels.
      */
     
     // initial screen when program is executed
@@ -60,6 +62,9 @@ public class startScreen2 extends JFrame {
     
     // When single Player Button is pressed
     // Allow player to choose level of difficulty
+    /**
+     * loadSinglePlayerMenu loads in the single player menu.
+     */
     public void loadSinglePlayerMenu(){
         this.setSize(menu_width,menu_height);
         this.remove(ss);
@@ -71,7 +76,7 @@ public class startScreen2 extends JFrame {
         
     }
     /**
-     Navigate Back to the main Menu
+     * BackToStartScreen navigates back to the main menu.
      */
     public void BackToStartScreen(){
 	//remove board screen if there is one
@@ -94,6 +99,9 @@ public class startScreen2 extends JFrame {
     
     // remove the board if one already exists
     // and make a new one
+    /**  
+     * Removes the current board if one exists and makes a new one.
+     */
     public void launchGame(){
 
         // Make sure Panel already Exist.
@@ -126,11 +134,19 @@ public class startScreen2 extends JFrame {
         
     }
     
-    
+    /**
+     * MouseClass class creates the listener for the mouse when clicked
+     * during the game.
+     */
     class MouseClass implements MouseListener{
         private int xIndex;
         private int yIndex;
-        
+
+	/**
+	 * mouseClicked implements what happens if a mouse is clicked at a
+	 * specific spot on the board.
+	 * @param e is a MouseEvent.
+	 */
         public void mouseClicked(MouseEvent e){
 	    //if game is over, do nothing
             if (b.getGameOver())
@@ -255,13 +271,16 @@ public class startScreen2 extends JFrame {
             }// end else
         }// end Method
         
+	/**
+	 * mouseEntered has not been generated.
+	 */
         public void mouseEntered(MouseEvent e) {
             // TODO Auto-generated method stub
             
         }
         
         /**
-         mouseExited is a function in the MouseListener interface
+         mouseExited is a function in the MouseListener interface.
          @param e represents the mouseEvent
          */
         
@@ -280,7 +299,8 @@ public class startScreen2 extends JFrame {
         }
         
         /**
-         mouseReleased is a function in the MouseListener interface
+         mouseReleased is a function in the MouseListener interface, 
+	 * but has not been generate.
          @param e represents the mouseEvent
          */
         
@@ -292,11 +312,17 @@ public class startScreen2 extends JFrame {
     }
  
     
-    //getters and Setters
+    /**
+     * getGameMode returns the game mode value.
+     */
     public int getGameMode(){
         return gameMode;
     }
     
+    /**
+     * setGameMode sets the game mode value.
+     * @param gMode is the value the game mode will be set to.
+     */
     public void setGameMode(int gMode){
         gameMode = gMode;
     }
