@@ -276,8 +276,7 @@ class SinglePlayerInsane {
 		    if (curr == 1
 			&& curr == b.getGameGridCircle(col+1, row+1).getState() 
 			&& curr == b.getGameGridCircle(col+2, row+2).getState()
-			&& (b.getGameGridCircle(col+3, row+3).getState() == 0)
-			&& curr == b.getGameGridCircle(col+3, row+2).getState() )
+			&& (b.getGameGridCircle(col+3, row+3).getState() == 0))
 			{
 			    xIndex = col + 3;
 			    yIndex = row + 3;
@@ -310,8 +309,7 @@ class SinglePlayerInsane {
 		    if (curr == 1
 			&& curr == b.getGameGridCircle(col+1, row+1).getState() 
 			&& curr == b.getGameGridCircle(col+3, row+3).getState()
-			&& (b.getGameGridCircle(col+2, row+2).getState() == 0)
-			&& curr == b.getGameGridCircle(col+2, row+1).getState() )
+			&& (b.getGameGridCircle(col+2, row+2).getState() == 0))
 			{
 			    xIndex = col + 2;
 			    yIndex = row + 2;
@@ -344,8 +342,7 @@ class SinglePlayerInsane {
 		    if (curr == 1
 			&& curr == b.getGameGridCircle(col+3, row+3).getState() 
 			&& curr == b.getGameGridCircle(col+2, row+2).getState()
-			&& (b.getGameGridCircle(col+1, row+1).getState() == 0)
-			&& curr == b.getGameGridCircle(col+1, row).getState() )
+			&& (b.getGameGridCircle(col+1, row+1).getState() == 0))
 			{
 			    xIndex = col + 1;
 			    yIndex = row + 1;
@@ -380,8 +377,7 @@ class SinglePlayerInsane {
 		    if (curr == 1
 			&& curr == b.getGameGridCircle(col-1, row-1).getState()
 			&& curr == b.getGameGridCircle(col-2, row-2).getState()
-			&& (b.getGameGridCircle(col-3, row-3).getState() == 0)
-			&& ((row - 3 == 0) || (curr == b.getGameGridCircle(col-3, row-4).getState())) )
+			&& (b.getGameGridCircle(col-3, row-3).getState() == 0))
 			{
 			    xIndex = col - 3;
 			    yIndex = row - 3;
@@ -414,8 +410,7 @@ class SinglePlayerInsane {
 		    if (curr == 1
 			&& curr == b.getGameGridCircle(col-1, row-1).getState()
 			&& curr == b.getGameGridCircle(col-3, row-3).getState()
-			&& (b.getGameGridCircle(col-2, row-2).getState() == 0)
-			&& (curr == b.getGameGridCircle(col-2, row-3).getState()) )
+			&& (b.getGameGridCircle(col-2, row-2).getState() == 0))
 			{
 			    xIndex = col - 2;
 			    yIndex = row - 2;
@@ -448,8 +443,7 @@ class SinglePlayerInsane {
 		    if (curr == 1
 			&& curr == b.getGameGridCircle(col-3, row-3).getState()
 			&& curr == b.getGameGridCircle(col-2, row-2).getState()
-			&& (b.getGameGridCircle(col-1, row-1).getState() == 0)
-			&& (curr == b.getGameGridCircle(col-1, row-2).getState()) )
+			&& (b.getGameGridCircle(col-1, row-1).getState() == 0))
 			{
 			    xIndex = col - 1;
 			    yIndex = row - 1;
@@ -485,8 +479,7 @@ class SinglePlayerInsane {
 		    if (curr == 1
 			&& curr == b.getGameGridCircle(col-1, row+1).getState() 
 			&& curr == b.getGameGridCircle(col-2, row+2).getState()
-			&& (b.getGameGridCircle(col-3, row+3).getState() == 0)
-			&& curr == b.getGameGridCircle(col-3, row+2).getState()	) 
+			&& (b.getGameGridCircle(col-3, row+3).getState() == 0)) 
 			{
 			    xIndex = col - 3;
 			    yIndex = row + 3;
@@ -519,8 +512,7 @@ class SinglePlayerInsane {
 		    if (curr == 1
 			&& curr == b.getGameGridCircle(col-1, row+1).getState() 
 			&& curr == b.getGameGridCircle(col-3, row+3).getState()
-			&& (b.getGameGridCircle(col-2, row+2).getState() == 0)
-			&& curr == b.getGameGridCircle(col-2, row+1).getState()	) 
+			&& (b.getGameGridCircle(col-2, row+2).getState() == 0)) 
 			{
 			    xIndex = col - 2;
 			    yIndex = row + 2;
@@ -553,8 +545,7 @@ class SinglePlayerInsane {
 		    if (curr == 1
 			&& curr == b.getGameGridCircle(col-3, row+3).getState() 
 			&& curr == b.getGameGridCircle(col-2, row+2).getState()
-			&& (b.getGameGridCircle(col-1, row+1).getState() == 0)
-			&& curr == b.getGameGridCircle(col-1, row).getState()	) 
+			&& (b.getGameGridCircle(col-1, row+1).getState() == 0)) 
 			{
 			    xIndex = col - 1;
 			    yIndex = row + 1;
@@ -589,8 +580,7 @@ class SinglePlayerInsane {
 		    if (curr == 1
 			&& curr == b.getGameGridCircle(col+1, row-1).getState() 
 			&& curr == b.getGameGridCircle(col+2, row-2).getState()
-			&& (b.getGameGridCircle(col+3, row-3).getState() == 0)
-			&& ((row - 3 == 0) || (curr == b.getGameGridCircle(col+3, row-4).getState())) )
+			&& (b.getGameGridCircle(col+3, row-3).getState() == 0))
 			{
 			    xIndex = col + 3;
 			    yIndex = row - 3;
@@ -623,8 +613,7 @@ class SinglePlayerInsane {
 		    if (curr == 1
 			&& curr == b.getGameGridCircle(col+1, row-1).getState() 
 			&& curr == b.getGameGridCircle(col+3, row-3).getState()
-			&& (b.getGameGridCircle(col+2, row-2).getState() == 0)
-			&& (curr == b.getGameGridCircle(col+2, row-3).getState()) )
+			&& (b.getGameGridCircle(col+2, row-2).getState() == 0))
 			{
 			    xIndex = col + 2;
 			    yIndex = row - 2;
@@ -657,8 +646,7 @@ class SinglePlayerInsane {
 		    if (curr == 1
 			&& curr == b.getGameGridCircle(col+3, row-3).getState() 
 			&& curr == b.getGameGridCircle(col+2, row-2).getState()
-			&& (b.getGameGridCircle(col+1, row-1).getState() == 0)
-			&& ((row - 3 == 0) || (curr == b.getGameGridCircle(col+1, row-2).getState())) )
+			&& (b.getGameGridCircle(col+1, row-1).getState() == 0))
 			{
 			    xIndex = col + 3;
 			    yIndex = row - 3;
