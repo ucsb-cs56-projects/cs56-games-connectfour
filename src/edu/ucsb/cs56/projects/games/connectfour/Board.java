@@ -6,11 +6,10 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 /**
- Board class uses swing gui to represent the Connect 4 game board
- 
- @author Vincent Tan
- @author Girish Kowligi
- @version Project1, CS56, W14
+ * Board class uses swing gui to represent the Connect 4 game board
+ * @author Vincent Tan
+ * @author Girish Kowligi
+ * @version Project1, CS56, W14
  
  */
 
@@ -28,7 +27,7 @@ class Board extends JPanel {
     private boolean singlePlayer = false;
     
     /**
-     Constructor intitializes instance variables and creates the empty game board
+     * Constructor intitializes an array of circles and creates the empty game board
      */
     
     public Board() {
@@ -49,8 +48,8 @@ class Board extends JPanel {
     
     
     /**
-     Overridden paint method calls the circle's draw method
-     @param g argument to draw circle
+     * Overridden paint method calls the circle's draw method
+     * @param g argument to draw circle
      */
     
     @Override
@@ -69,10 +68,10 @@ class Board extends JPanel {
     }
     
     /**
-     Displays the win message on the screen when someone has won
-     If It's Red's Turn (turn == 1), and a winner has been detected, Yellow Wins
-     If It's Yellow's Turn (turn == 2) and a winner has been detected, Red Wins
-     @param g to draw the message
+     * Displays the win message on the screen when someone has won
+     * If It's Red's Turn (turn == 1), and a winner has been detected, Yellow Wins
+     * If It's Yellow's Turn (turn == 2) and a winner has been detected, Red Wins
+     * @param g to draw the message
      */
     
     public void displayWinner(Graphics g) {
@@ -95,8 +94,8 @@ class Board extends JPanel {
     }
     
     /**
-     Determines and displays a draw message if no player wins
-     @param g to draw the message
+     * Determines and displays a draw message if no player wins
+     * @param g to draw the message
      */
     
     public void checkDraw(Graphics g) {

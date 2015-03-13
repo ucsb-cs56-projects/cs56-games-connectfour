@@ -19,7 +19,7 @@ import java.net.URL;
    )
 
    "Our class extends Java Thread class to be asynchronous. There are two
-   constructors - AePlayWave(String wavfile) with has only one argument -
+   constructors - AePlayWave(String wavfile) which has only one argument -
    file name, and AePlayWave(String wavfile, Position p), which takes
    file name and Position constant, either Position.LEFT or
    Position.RIGHT -- this is simple balance control, which can toggle
@@ -59,6 +59,12 @@ public class AePlayWave extends Thread {
         filename = wavfile;
         curPosition = p;
     } 
+
+/** 
+ * This method catched the .wav file from the resources folder and then converts it into a URL. 
+ * The URL is then given as argumet to getAudioInputStream which will then return an audio input
+ * stream that will be formatted and then played.
+ */
  
     public void run() { 
  

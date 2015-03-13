@@ -41,8 +41,8 @@ public class Circle
     }
 
     /**
-       Setter for the state variable
-       @param value     integer that the state is set equal to
+     * Setter for the state variable
+     * @param value     integer that the state is set equal to
     */
 
     public void setState(int value) {
@@ -50,7 +50,7 @@ public class Circle
     }
 
     /**
-       Getter for the state variable 
+     * Getter for the state variable 
     */
 
     public int getState() {
@@ -58,7 +58,7 @@ public class Circle
     }
 
     /**
-       Draw function for the circle. Color depends on the state.
+     * Draw function for the circle. Color depends on the state.
     */
 
     public void draw(Graphics g) {

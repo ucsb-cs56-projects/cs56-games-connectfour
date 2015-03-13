@@ -8,7 +8,12 @@ import javax.sound.sampled.*;
 import java.io.*;
 import java.net.URL;
 
-// Panel for Buttons next to Connect Four Game Board
+/**
+ * inGameMenuPanel creates a JPanel and then adds three buttons:
+ * mainButton
+ * restartButton
+ * exitButton
+ * It then
 
 public class inGameMenuPanel extends JPanel{
     //Instance variables
