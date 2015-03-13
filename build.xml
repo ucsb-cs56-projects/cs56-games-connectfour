@@ -27,7 +27,10 @@
     <javac srcdir="src" destdir="build" debug="true"
 	   debuglevel="lines,vars,source" includeantruntime="false">
      <classpath>    
-      <pathelement location="build"/>                                                <pathelement location="lib/junit-4.8.2.jar"/>                                 </classpath>                                                                  </javac>   
+      <pathelement location="build"/>                                                <pathelement location="lib/junit-4.8.2.jar"/>                                 </classpath>                                                                  </javac>  
+      <copy todir="build/resources">
+	<fileset dir="resources"/>
+      </copy> 
   </target>
 
 
@@ -87,7 +90,12 @@
   </target>
 
  <target name="jar" depends="compile">                                          
-   <mkdir dir="dist" />                                                         
+   <mkdir dir="dist" />
+   <mkdir dir="build/resources"/>
+   <copy todir="build/resources">
+     <fileset dir="resources"/>
+   </copy>
+   
    <jar destfile="dist/${projectName}.jar" basedir="build">  
     <manifest>
       <attribute name="${mainClass}" value="startScreen2"/>
