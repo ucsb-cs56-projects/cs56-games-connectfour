@@ -12,7 +12,7 @@ public class StartScreenButtonsPanel extends JPanel{
     private JButton MPButton; // Multi Player Button
     private JButton SPButton; // Single Player Button
     private JButton ExitButton; // Exit Button
-    private JButton RuleButton; // Button to show rules
+    private JButton ruleButton; // Button to show rules
     
     public StartScreenButtonsPanel(startScreen2 ss){
         super();
@@ -29,9 +29,9 @@ public class StartScreenButtonsPanel extends JPanel{
         SPButton.addActionListener(new SPButtonListener(ss));
         SPButton.setFont(BFont);
         
-        RuleButton = new JButton ("Rules");
-        RuleButton.addActionListener(new RuleButtonListener());
-        RuleButton.setFont(BFont);
+        ruleButton = new JButton ("Rules");
+        ruleButton.addActionListener(new ruleButtonListener());
+        ruleButton.setFont(BFont);
         
         ExitButton = new JButton ("Exit");
         ExitButton.addActionListener(new ExitButtonListener(ss));
@@ -41,24 +41,19 @@ public class StartScreenButtonsPanel extends JPanel{
         
         this.add(SPButton);
         this.add(MPButton);
-        this.add(RuleButton);
+        this.add(ruleButton);
         this.add(ExitButton);
         
     }
     
-
-    public void displayRules() {
-        // Create pop-up window for rules
-        JFrame ruleFrame = new JFrame();
-        ruleFrame.setTitle("Rules");
-        // Use HTML tags for multiline JLabel
-        JLabel l1 = new JLabel("<html><FONT SIZE = 18><u>Rules:</u><br><br></FONT>" +
-                               "1. Choose a Column to Place a Circle in.<br>" +
-                               "2. Try to get Four identical circles in a row.<br><br><br>");
-        ruleFrame.getContentPane().add(l1, BorderLayout.CENTER);
-        ruleFrame.pack();
-        ruleFrame.setVisible(true);
-    }
+    
+     public void displayRules(Graphics g){
+	     g.setColor(Color.BLACK);
+	     g.setFont(new Font("Times", font.REGULAR, 18));
+	     g.drawString("1.Choose a Column to Place a Circle in.");
+             g.drawString("2. Try to get Four identical circles in a row.");
+     }
+ 
     
     class MPButtonListener implements ActionListener {
         private startScreen2 ss1;
@@ -85,9 +80,9 @@ public class StartScreenButtonsPanel extends JPanel{
         }
     }
     
-    class RuleButtonListener implements ActionListener {
+    class ruleButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent event){
-            displayRules();
+            // displayRules(g);
         }
     }
     
