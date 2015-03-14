@@ -52,13 +52,13 @@ An implementation of Connect Four. Includes a Board and Circle class that create
 ### Single Player
 * This navigates you to the Single Player Menu that looks like this: 
 
-//ADD PHTO
+![](http://i.imgur.com/TzZqOUI.jpg)
 
 #### Easy
 * You can choose either Easy mode or Advanced mode.
 * When you play easy mode, you almost always win at the first time:
 
-//ADD PHOTO
+![](http://i.imgur.com/R3uDkJm.jpg)
 
 * On the right hand side there are three buttons with options. These options are the same, regardless of what game mode you are playing.
 * These buttons are as follows:
@@ -69,17 +69,19 @@ An implementation of Connect Four. Includes a Board and Circle class that create
 
 #### Advanced
 * When you play advanced, its harder to win:
-//ADD PICTURE
+
+![](http://i.imgur.com/U1AkX6a.jpg)
 
 #### Insane
 * When you play insane, you must be an expert tp be able to win!!!:
-//ADD PHOTO
+
+![](http://i.imgur.com/OfmTX6h.jpg)
 
 ### Multiplayer
 
 *This navigates you to the game screen, where two people get to play:
 
-//ADD PHOTO
+![](http://i.imgur.com/jCjYTs4.jpg)
 
 
 ### Rules

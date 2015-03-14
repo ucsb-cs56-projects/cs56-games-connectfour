@@ -46,7 +46,7 @@ class SinglePlayerInsane {
 		    //and the 3 adjacent circles to the right of the circle being
 		    //looked at are white , make xIndex  3 plus the column being 
 		    //checked and yIndex, the row being checked.
-		    if (curr == 1
+		    if (curr > 0
 			&& curr == b.getGameGridCircle(col+1, row).getState() 
 			&& curr == b.getGameGridCircle(col+2, row).getState() 
 			&& (b.getGameGridCircle(col+3, row).getState() == 0) ) 
@@ -77,7 +77,7 @@ class SinglePlayerInsane {
 		    //and the 3 adjacent circles to the right of the circle being
 		    //looked at are white , make xIndex  3 plus the column being 
 		    //checked and yIndex, the row being checked.
-		    if (curr == 1
+		    if (curr > 0
 			&& curr == b.getGameGridCircle(col+1, row).getState() 
 			&& curr == b.getGameGridCircle(col+3, row).getState() 
 			&& (b.getGameGridCircle(col+2, row).getState() == 0) ) 
@@ -108,7 +108,7 @@ class SinglePlayerInsane {
 		    //and the 3 adjacent circles to the right of the circle being
 		    //looked at are white , make xIndex  3 plus the column being 
 		    //checked and yIndex, the row being checked.
-		    if (curr == 1
+		    if (curr > 0
 			&& curr == b.getGameGridCircle(col+2, row).getState() 
 			&& curr == b.getGameGridCircle(col+3, row).getState() 
 			&& (b.getGameGridCircle(col+1, row).getState() == 0) ) 
@@ -141,7 +141,7 @@ class SinglePlayerInsane {
 		    //and the 3 adjacent circles to the left of the circle being
 		    //looked at are white , make xIndex  3 minus the column being 
 		    //checked and yIndex, the row being checked.
-		    if (curr == 1
+		    if (curr > 0
 			&& curr == b.getGameGridCircle(col-1, row).getState() 
 			&& curr == b.getGameGridCircle(col-2, row).getState() 
 			&& (b.getGameGridCircle(col-3, row).getState() == 0) ) 
@@ -173,7 +173,7 @@ class SinglePlayerInsane {
 		    //and the 3 adjacent circles to the left of the circle being
 		    //looked at are white , make xIndex  3 minus the column being 
 		    //checked and yIndex, the row being checked.
-		    if (curr == 1
+		    if (curr > 0
 			&& curr == b.getGameGridCircle(col-1, row).getState() 
 			&& curr == b.getGameGridCircle(col-3, row).getState() 
 			&& (b.getGameGridCircle(col-2, row).getState() == 0) ) 
@@ -205,7 +205,7 @@ class SinglePlayerInsane {
 		    //and the 3 adjacent circles to the left of the circle being
 		    //looked at are white , make xIndex  3 minus the column being 
 		    //checked and yIndex, the row being checked.
-		    if (curr == 1
+		    if (curr > 0
 			&& curr == b.getGameGridCircle(col-2, row).getState() 
 			&& curr == b.getGameGridCircle(col-3, row).getState() 
 			&& (b.getGameGridCircle(col-1, row).getState() == 0) ) 
@@ -239,7 +239,7 @@ class SinglePlayerInsane {
 		    //and the 3 circle underneath  of the circle being
 		    //looked at are white , make yIndex  3 minus the row  being 
 		    //checked and xIndex, the column being checked.
-		    if (curr == 1 
+		    if (curr > 0 
 			&& curr == b.getGameGridCircle(col, row-1).getState() 
 			&& curr == b.getGameGridCircle(col, row-2).getState()
 			&& (b.getGameGridCircle(col, row-3).getState() == 0) )
@@ -273,7 +273,7 @@ class SinglePlayerInsane {
 		    // if state is more than zero (circle is red,yellow or blue)
 		    //and the 3 circles from the  upper left to lower right, left to right being
 		    //looked at are white , make yIndex and xIndex  3 plus the row and column  being checked respectively
-		    if (curr == 1
+		    if (curr > 0
 			&& curr == b.getGameGridCircle(col+1, row+1).getState() 
 			&& curr == b.getGameGridCircle(col+2, row+2).getState()
 			&& (b.getGameGridCircle(col+3, row+3).getState() == 0))
@@ -306,7 +306,7 @@ class SinglePlayerInsane {
 		    // if state is more than zero (circle is red,yellow or blue)
 		    //and the 3 circles from the  upper left to lower right, left to right being
 		    //looked at are white , make yIndex and xIndex  3 plus the row and column  being checked respectively
-		    if (curr == 1
+		    if (curr > 0
 			&& curr == b.getGameGridCircle(col+1, row+1).getState() 
 			&& curr == b.getGameGridCircle(col+3, row+3).getState()
 			&& (b.getGameGridCircle(col+2, row+2).getState() == 0))
@@ -339,7 +339,7 @@ class SinglePlayerInsane {
 		    // if state is more than zero (circle is red,yellow or blue)
 		    //and the 3 circles from the  upper left to lower right, left to right being
 		    //looked at are white , make yIndex and xIndex  3 plus the row and column  being checked respectively
-		    if (curr == 1
+		    if (curr > 0
 			&& curr == b.getGameGridCircle(col+3, row+3).getState() 
 			&& curr == b.getGameGridCircle(col+2, row+2).getState()
 			&& (b.getGameGridCircle(col+1, row+1).getState() == 0))
@@ -374,7 +374,7 @@ class SinglePlayerInsane {
 		    // if state is more than zero (circle is red,yellow or blue)
 		    //and the 3 circles from the  upper left to lower right, right to left being 
 		    //looked at are white , make yIndex and xIndex  3 minus the row and column  being checked
-		    if (curr == 1
+		    if (curr > 0
 			&& curr == b.getGameGridCircle(col-1, row-1).getState()
 			&& curr == b.getGameGridCircle(col-2, row-2).getState()
 			&& (b.getGameGridCircle(col-3, row-3).getState() == 0))
@@ -407,7 +407,7 @@ class SinglePlayerInsane {
 		    // if state is more than zero (circle is red,yellow or blue)
 		    //and the 3 circles from the  upper left to lower right, right to left being 
 		    //looked at are white , make yIndex and xIndex  3 minus the row and column  being checked
-		    if (curr == 1
+		    if (curr > 0
 			&& curr == b.getGameGridCircle(col-1, row-1).getState()
 			&& curr == b.getGameGridCircle(col-3, row-3).getState()
 			&& (b.getGameGridCircle(col-2, row-2).getState() == 0))
@@ -440,7 +440,7 @@ class SinglePlayerInsane {
 		    // if state is more than zero (circle is red,yellow or blue)
 		    //and the 3 circles from the  upper left to lower right, right to left being 
 		    //looked at are white , make yIndex and xIndex  3 minus the row and column  being checked
-		    if (curr == 1
+		    if (curr > 0
 			&& curr == b.getGameGridCircle(col-3, row-3).getState()
 			&& curr == b.getGameGridCircle(col-2, row-2).getState()
 			&& (b.getGameGridCircle(col-1, row-1).getState() == 0))
@@ -476,7 +476,7 @@ class SinglePlayerInsane {
 		    //and the 3 circles from the  upper right to lower left, left to right being 
 		    //looked at are white , make yIndex  3 plus the row  being checked and xIndex
 		    //be 3 minus the row being checked
-		    if (curr == 1
+		    if (curr > 0
 			&& curr == b.getGameGridCircle(col-1, row+1).getState() 
 			&& curr == b.getGameGridCircle(col-2, row+2).getState()
 			&& (b.getGameGridCircle(col-3, row+3).getState() == 0)) 
@@ -509,7 +509,7 @@ class SinglePlayerInsane {
 		    //and the 3 circles from the  upper right to lower left, left to right being 
 		    //looked at are white , make yIndex  3 plus the row  being checked and xIndex
 		    //be 3 minus the row being checked
-		    if (curr == 1
+		    if (curr > 0
 			&& curr == b.getGameGridCircle(col-1, row+1).getState() 
 			&& curr == b.getGameGridCircle(col-3, row+3).getState()
 			&& (b.getGameGridCircle(col-2, row+2).getState() == 0)) 
@@ -542,7 +542,7 @@ class SinglePlayerInsane {
 		    //and the 3 circles from the  upper right to lower left, left to right being 
 		    //looked at are white , make yIndex  3 plus the row  being checked and xIndex
 		    //be 3 minus the row being checked
-		    if (curr == 1
+		    if (curr > 0
 			&& curr == b.getGameGridCircle(col-3, row+3).getState() 
 			&& curr == b.getGameGridCircle(col-2, row+2).getState()
 			&& (b.getGameGridCircle(col-1, row+1).getState() == 0)) 
@@ -577,7 +577,7 @@ class SinglePlayerInsane {
 		    //and the 3 circles from the  upper right to lower left, right to left being 
 		    //looked at are white , make yIndex  3 minus the row  being checked and xIndex
 		    //be 3 plus the row being checked
-		    if (curr == 1
+		    if (curr > 0
 			&& curr == b.getGameGridCircle(col+1, row-1).getState() 
 			&& curr == b.getGameGridCircle(col+2, row-2).getState()
 			&& (b.getGameGridCircle(col+3, row-3).getState() == 0))
@@ -610,7 +610,7 @@ class SinglePlayerInsane {
 		    //and the 3 circles from the  upper right to lower left, right to left being 
 		    //looked at are white , make yIndex  3 minus the row  being checked and xIndex
 		    //be 3 plus the row being checked
-		    if (curr == 1
+		    if (curr > 0
 			&& curr == b.getGameGridCircle(col+1, row-1).getState() 
 			&& curr == b.getGameGridCircle(col+3, row-3).getState()
 			&& (b.getGameGridCircle(col+2, row-2).getState() == 0))
@@ -643,7 +643,7 @@ class SinglePlayerInsane {
 		    //and the 3 circles from the  upper right to lower left, right to left being 
 		    //looked at are white , make yIndex  3 minus the row  being checked and xIndex
 		    //be 3 plus the row being checked
-		    if (curr == 1
+		    if (curr > 0
 			&& curr == b.getGameGridCircle(col+3, row-3).getState() 
 			&& curr == b.getGameGridCircle(col+2, row-2).getState()
 			&& (b.getGameGridCircle(col+1, row-1).getState() == 0))
