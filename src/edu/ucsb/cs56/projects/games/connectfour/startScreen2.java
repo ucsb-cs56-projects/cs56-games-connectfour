@@ -18,7 +18,7 @@ import java.util.Random;
 public class startScreen2 extends JFrame {
     
     
-    
+    //Instance variables
     public static int frame_width = 880;
     public static int frame_height = 650;
     public static int menu_width = 240;
@@ -29,33 +29,42 @@ public class startScreen2 extends JFrame {
     private static singlePlayerMenuPanel SPMenu;
     private static inGameMenuPanel inGameMenuP;
 
+
     
     
-    // Launch game
-    public static void main (String [] args){
-        JFrame frame = new startScreen2();
-        
+    /**
+     * main launches the game.
+     */
+     public static void main (String [] args){
+      JFrame frame = new startScreen2();
+   
     }
     
     /**
-     Constructor intitializes JFrame For all panel
+     Constructor intitializes JFrame For all Panels.
      */
     
     // initial screen when program is executed
     public startScreen2(){
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(menu_width,menu_height);
+	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setSize(menu_width,menu_height); //sets size of start screen
         this.setResizable(false);
-        ss = new StartScreenButtonsPanel(this);
-        this.add(ss);
-        this.addMouseListener(new MouseClass());
+        ss = new StartScreenButtonsPanel(this); //makes buttons for main menu
+        this.add(ss); //adds it to the frame
+        this.addMouseListener(new MouseClass());//adds mouse listner to frame
         this.setVisible(true);
-        
+
+
+
+
         
     }
     
     // When single Player Button is pressed
     // Allow player to choose level of difficulty
+    /**
+     * loadSinglePlayerMenu loads in the single player menu.
+     */
     public void loadSinglePlayerMenu(){
         this.setSize(menu_width,menu_height);
         this.remove(ss);
@@ -67,18 +76,21 @@ public class startScreen2 extends JFrame {
         
     }
     /**
-     Navigate Back to the main Menu
+     * BackToStartScreen navigates back to the main menu.
      */
     public void BackToStartScreen(){
+	//remove board screen if there is one
         if (b != null)
             remove(b);
+	//remove game menu if one is made
         if (inGameMenuP != null)
             remove(inGameMenuP);
-        
+        //make new start menu 
         this.setSize(menu_width,menu_height);
+	//remove single player menu if there is one
         if (SPMenu != null)
             this.remove(SPMenu);
-        
+        //add the start screen buttons to the start menu and refresh
         this.add(ss);
         repaint();
         this.revalidate();
@@ -87,7 +99,11 @@ public class startScreen2 extends JFrame {
     
     // remove the board if one already exists
     // and make a new one
+    /**  
+     * Removes the current board if one exists and makes a new one.
+     */
     public void launchGame(){
+
         // Make sure Panel already Exist.
         // remove if it does.
         if (b != null)
@@ -118,22 +134,34 @@ public class startScreen2 extends JFrame {
         
     }
     
-    
+    /**
+     * MouseClass class creates the listener for the mouse when clicked
+     * during the game.
+     */
     class MouseClass implements MouseListener{
         private int xIndex;
         private int yIndex;
-        
+
+	/**
+	 * mouseClicked implements what happens if a mouse is clicked at a
+	 * specific spot on the board.
+	 * @param e is a MouseEvent.
+	 */
         public void mouseClicked(MouseEvent e){
+	    //if game is over, do nothing
             if (b.getGameOver())
                 return;
-            
+            //print out game mode (single or multi
             System.out.println("GameMode is " + gameMode);
+	    //Multip player game mode
             if (gameMode == 1){// multiplayer
                 b.setSinglePlayer(false);
                 xIndex = e.getX()/100;
                 yIndex = 0;
                 
-                
+                //while the circle below is not filled add 1 to the yindex until
+		//you find a filled circle, or until all you have searched all circles
+		//in the row 
                 while(b.getGameGridCircle(xIndex, yIndex+1).getState() == 0)
                 {
                     yIndex++;
@@ -174,7 +202,9 @@ public class startScreen2 extends JFrame {
                     xIndex = e.getX()/100;
                     yIndex = 0;
                     
-                    
+		    //while the circle below is not filled add 1 to the yindex until
+		    //you find a filled circle, or until all you have searched all circles
+		    //in the row 
                     while(b.getGameGridCircle(xIndex, yIndex+1).getState() == 0)
                     {
                         yIndex++;
@@ -236,18 +266,31 @@ public class startScreen2 extends JFrame {
                             System.out.println("Broken Thread");
                         }
                     }// end else if (gameMode == 3)
+		    else if (gameMode == 4){
+                        //retrieve an insane computer move
+                        //generate a delay to slow computer down
+                        try{
+                            Thread.sleep(500);
+                            SinglePlayerInsane.InsaneComputerMove(b);
+                        }catch (InterruptedException ex1){
+                            System.out.println("Broken Thread");
+                        }
+                    }// end else if (gameMode == 3)
                 
                 }// end else
             }// end else
         }// end Method
         
+	/**
+	 * mouseEntered has not been generated.
+	 */
         public void mouseEntered(MouseEvent e) {
             // TODO Auto-generated method stub
             
         }
         
         /**
-         mouseExited is a function in the MouseListener interface
+         mouseExited is a function in the MouseListener interface.
          @param e represents the mouseEvent
          */
         
@@ -266,7 +309,8 @@ public class startScreen2 extends JFrame {
         }
         
         /**
-         mouseReleased is a function in the MouseListener interface
+         mouseReleased is a function in the MouseListener interface, 
+	 * but has not been generate.
          @param e represents the mouseEvent
          */
         
@@ -278,11 +322,17 @@ public class startScreen2 extends JFrame {
     }
  
     
-    //getters and Setters
+    /**
+     * getGameMode returns the game mode value.
+     */
     public int getGameMode(){
         return gameMode;
     }
     
+    /**
+     * setGameMode sets the game mode value.
+     * @param gMode is the value the game mode will be set to.
+     */
     public void setGameMode(int gMode){
         gameMode = gMode;
     }
