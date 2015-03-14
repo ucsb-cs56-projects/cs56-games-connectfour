@@ -19,9 +19,8 @@ class SinglePlayerInsane {
     
     /**
      * InsaneComputerMove  checks each row, each column, and each diagonal lines
-     * from both side in order to figure out if there are three circles of the 
-     * player in consecutive order. If there are, then it would block the spot
-     * with its circle, else, it would just generate a random move
+     * from both side in order to figure out if there are any potential wins. If there are,
+     * then it would block the spot with its circle, else, it would just generate a random move
      * @param b is the board object that stores all the current moves made. 
      */
     
