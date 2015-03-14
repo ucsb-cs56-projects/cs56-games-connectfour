@@ -73,7 +73,7 @@ An implementation of Connect Four. Includes a Board and Circle class that create
 ![](http://i.imgur.com/U1AkX6a.jpg)
 
 #### Insane
-* When you play insane, you must be an expert tp be able to win!!!:
+* When you play insane, you must be an expert to be able to win!!!:
 
 ![](http://i.imgur.com/OfmTX6h.jpg)
 
@@ -109,7 +109,9 @@ An implementation of Connect Four. Includes a Board and Circle class that create
 
 * `SinglePlayerEasy` class generates a random move for the computer.
 
-* `SinglePlayerAdvanced` class generates an algorithm that checks whether the player has a potential win, if it does, the computer blocks it, else the computer generates a random move.
+* `SinglePlayerAdvanced` class generates an algorithm that checks whether the player has 3 consecutive circles in a row. If it does, the computer blocks it, else the computer generates a random move.
+
+* `SinglePlayerInsane` class generates an algorithm that check if player has a potential win, if it does, it blocks it, else the computer generates a rondom move.
 
 * `inGameMenuPanel` class constructs the JPanel for the buttons in the game menu: Three buttons: "Main Menu", "Restart" and "Exit" buttons along with their listeners.
 
