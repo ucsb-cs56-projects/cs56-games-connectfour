@@ -51,6 +51,7 @@ public class Circle
 
     /**
        Getter for the state variable 
+       @return int
     */
 
     public int getState() {
@@ -59,24 +60,58 @@ public class Circle
 
     /**
        Draw function for the circle. Color depends on the state.
+       @param g graphics 
     */
 
     public void draw(Graphics g) {
-	//red circle for first player
-	if (state == 1) {
+	
+	//state == 0, white circle
+	if (state == 0) {
+	    g.setColor(Color.white);
+	}
+	
+	//red circle 
+	else if (state == 1) {
 	    g.setColor(Color.red);
 	}
-	//yellow circle for second player
+	
+	//yellow circle
 	else if (state == 2){
 	    g.setColor(Color.yellow);
 	}
-    //blue circle for winning Circles
-    else if (state == 3) {
-        g.setColor(Color.blue);
-    }
-	//state == 0, white circle
-	else {
-	    g.setColor(Color.white);
+
+	//green circle for winning Circles
+	else if (state == 3) {
+	    g.setColor(Color.green.darker());
+	}
+	
+	//black circle
+	else if (state == 4){
+	    g.setColor(Color.black);
+	}
+	
+	//blue circle
+	else if (state == 5){
+	    g.setColor(Color.blue);
+	}
+
+	//magenta circle
+	else if (state == 6){
+	    g.setColor(Color.magenta);
+	}
+
+	//brown circle
+	else if (state == 7){
+	    g.setColor(Color.orange.darker());
+	}
+
+	//pink circle
+	else if (state == 8){
+	    g.setColor(Color.pink);
+	}
+
+	else { // failsafe
+	    g.setColor(Color.darkGray);
 	}
 
 	//draw and color the circle with the specificed dimensions
