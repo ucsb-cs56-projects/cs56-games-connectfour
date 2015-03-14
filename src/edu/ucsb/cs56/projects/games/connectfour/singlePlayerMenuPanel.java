@@ -20,6 +20,7 @@ public class singlePlayerMenuPanel extends JPanel{
      * A JPanel is created along with the two following buttons:
      * Easy
      * Advanced
+     * Insane
      * These buttons are then added to the JPanel.
      * @param ss is the main menu object. 
      */
@@ -111,6 +112,11 @@ public class singlePlayerMenuPanel extends JPanel{
         }
     }
 
+    /**
+     * singlePlayerInsaneListener is the listener for the Insane button.
+     * When the Insane button is pressed the game will be set to insane mode
+     * and then will launch a new game with background music. 
+     */ 
     class singlePlayerInsaneListener implements ActionListener {
         private startScreen2 ss1;
 
@@ -125,7 +131,7 @@ public class singlePlayerMenuPanel extends JPanel{
         }
 
 	/**
-	 *actionPerformed sets the game mode to 3(advanced mode)
+	 *actionPerformed sets the game mode to 4(insane mode)
 	 * and launches game. It also starts playing the backround music.
 	 * @param event is ActionEvent object.
 	 */
