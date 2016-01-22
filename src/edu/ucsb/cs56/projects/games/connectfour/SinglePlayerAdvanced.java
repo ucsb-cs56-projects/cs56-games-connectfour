@@ -7,6 +7,10 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+   Advanced single player difficulty class. 
+ */
+
 class SinglePlayerAdvanced {
 
     
@@ -14,13 +18,20 @@ class SinglePlayerAdvanced {
     //If so, block spot. If not, random move
     // For Advanced Mode
     
-    public static void AdvancedComputerMove(Board b){
-        if (!b.getGameOver()){    //make sure game is not already over
+    /**
+       Method that generates an advanced move and returns and IntPair of the spot that was chosen.
+       @param b Board on which the move should be made.
+       @return IntPair the IntPair of the spot at which the move is made
+     */
+    
+    public static IntPair AdvancedComputerMove(Board b){
+        Random rand = new Random();
+	int xIndex = 0;
+	int yIndex = 0;
+	int weight = 0;
+	if (!b.getGameOver()){    //make sure game is not already over
 
-            Random rand = new Random();
-            int xIndex = 0;
-            int yIndex = 0;
-	    int weight = 0;
+            
 
 
 
@@ -226,13 +237,15 @@ class SinglePlayerAdvanced {
             }
     
 	}
-
-
-            b.getGameGridCircle(xIndex,yIndex).setState(b.getTurn());
-            b.setTurn(1);
-            b.repaint();
-            b.setDrawCounter(b.getDrawCounter() + 1);
+	
+	
+	b.getGameGridCircle(xIndex,yIndex).setState( b.getPlayer2State() );
+	b.setTurn(1);
+	b.repaint();
+	b.setDrawCounter(b.getDrawCounter() + 1);
+	
         }
+	return new IntPair(xIndex, yIndex);
     }
 
 }
