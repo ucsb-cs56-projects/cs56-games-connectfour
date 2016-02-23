@@ -16,8 +16,6 @@ public class inGameMenuPanel extends JPanel{
     private JButton restartButton; // restart Button
     private JButton exitButton; // exitButton
     private JButton undoButton; // undoButton
-    private JTextField whoseTurnTextField; // Textfield indicating whose turn it is
-    private String whoseTurnText;
     private static int currentTurn;
     
     /**
@@ -26,30 +24,15 @@ public class inGameMenuPanel extends JPanel{
      */
     
     public inGameMenuPanel(startScreen2 ss){
-        super ();
+	// super ();
+
+	this.setBackground(Color.cyan);
+	
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         //this.setMaximumSize(new Dimension(100,650));
 	Font BFont = new Font ("Comic Sans MS", Font.BOLD, 22);
 	Font smallerBFont = new Font("Comic Sans MS", Font.BOLD, 15);
         
-	switch (currentTurn) {
-	case 1: whoseTurnText = "Red";
-	    break;
-	case 2: whoseTurnText = "Yellow";
-	    break;
-	case 4: whoseTurnText = "Black";
-	    break;
-	case 5: whoseTurnText = "Blue";
-	    break;
-	case 6: whoseTurnText = "Magenta";
-	    break;
-	case 7: whoseTurnText = "Brown";
-	    break;
-	case 8: whoseTurnText = "Pink";
-	    break;
-	default: whoseTurnText = "Broken";
-	    break;
-	}
 
         // Create a
         // main button
@@ -71,20 +54,13 @@ public class inGameMenuPanel extends JPanel{
         undoButton = new JButton ("Undo");
 	undoButton.addActionListener(new undoButtonListener(ss));
 	undoButton.setFont(BFont);
-
-	whoseTurnTextField = new JTextField("   Turn: " + whoseTurnText, 1);
-	whoseTurnTextField.setMaximumSize(new Dimension(200, 30));
-	whoseTurnTextField.setFont(smallerBFont);
-	whoseTurnTextField.setEditable(false);
-	
-	
-	//this.add(Box.createRigidArea(new Dimension(0,50)));
-	//this.add(whoseTurnTextField);
+		
 	this.add(Box.createRigidArea(new Dimension(0,50)));
 	this.add(undoButton);
+	this.add(restartButton);
         this.add(mainMButton);
-        this.add(restartButton);
         this.add(exitButton);
+
         
     }
     
@@ -119,8 +95,9 @@ public class inGameMenuPanel extends JPanel{
         mainMenuButtonListener(final startScreen2 ss){
             ss1 = ss;
         }
-        
+
         public void actionPerformed(ActionEvent event){
+	    // ss1.b.setGameOver();
             ss1.BackToStartScreen();
         }
     }// end of mainMenuButtonListener Class

@@ -150,7 +150,8 @@ public class startScreen2 extends JFrame {
      Navigate Back to the main Menu
      */
     public void BackToStartScreen(){
-        if (b != null)
+	this.b.setGameOver();
+	if (b != null)
             remove(b);
         if (inGameMenuP != null)
             remove(inGameMenuP);
