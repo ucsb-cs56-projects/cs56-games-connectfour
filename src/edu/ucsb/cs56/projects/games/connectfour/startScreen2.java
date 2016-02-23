@@ -33,10 +33,13 @@ public class startScreen2 extends JFrame {
     private static Stack<IntPair> movesList = new Stack<IntPair>();
     private static Player1ColorSelectScreen p1ColorScreen;
     private static Player2ColorSelectScreen p2ColorScreen;
+    private static namePanel enterName;
+    private static String p1Name;
+    private static String p2Name;
     private static int player1ColorState;
     private static int player2ColorState;
     private static settingsPanel settingsMenu;
-    private static boolean popOutModeCBIsSelected = false;
+
 
 
     /**
@@ -129,7 +132,13 @@ public class startScreen2 extends JFrame {
 	this.setSize( menu_width,  menu_height);
 	this.repaint();
 	p1ColorScreen = new Player1ColorSelectScreen(this);
+	namePanel = new JPanel();
+	enterName = new JLabel("Enter Name: ");
+	name = new JTextField("");
+	
+	this.getContentPane().add(BorderLayout.NORTH, name);
 	this.add(p1ColorScreen);
+	this.add(name);
 	this.revalidate();
     }
 
