@@ -132,13 +132,10 @@ public class startScreen2 extends JFrame {
 	this.setSize( menu_width,  menu_height);
 	this.repaint();
 	p1ColorScreen = new Player1ColorSelectScreen(this);
-	namePanel = new JPanel();
-	enterName = new JLabel("Enter Name: ");
-	name = new JTextField("");
-	
-	this.getContentPane().add(BorderLayout.NORTH, name);
+	enterName = new namePanel();
+	this.getContentPane().add(BorderLayout.NORTH, enterName);
 	this.add(p1ColorScreen);
-	this.add(name);
+	this.add(enterName);
 	this.revalidate();
     }
 
