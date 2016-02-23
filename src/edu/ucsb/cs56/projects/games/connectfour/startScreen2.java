@@ -135,7 +135,7 @@ public class startScreen2 extends JFrame {
 	enterName = new namePanel();
 	this.getContentPane().add(BorderLayout.NORTH, enterName);
 	this.add(p1ColorScreen);
-	this.add(enterName);
+	p1Name = enterName.getName();
 	this.revalidate();
     }
 

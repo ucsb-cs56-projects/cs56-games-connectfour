@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class namePanel extends JPanel{
     private JLabel enterName; // Textfield indicating whose turn it is
     private JTextField nameText;
+    public String name;
     
     /**
        Constructor for inGameMenuPanel
@@ -32,6 +33,7 @@ public class namePanel extends JPanel{
 	enterName = new JLabel("Enter Name: ");
 
 	nameText = new JTextField("");
+	nameText.setFocusable(true);
 	nameText.requestFocus();
 	
 	// this.add(Box.createRigidArea(new Dimension(0,50)));
@@ -39,5 +41,7 @@ public class namePanel extends JPanel{
 	this.add(nameText);
         
     }
+
+    public String getName() {return nameText.getText();}
 }
     
