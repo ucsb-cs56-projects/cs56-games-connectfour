@@ -117,7 +117,7 @@ public class startScreen2 extends JFrame {
 	this.setSize(menu_width, menu_height);
 	this.remove(ss);
 	this.repaint();
-	settingsMenu = new settingsPanel(this, popOutModeCBIsSelected);
+	settingsMenu = new settingsPanel(this);
 	this.add(settingsMenu);
 	this.revalidate();
     }
@@ -163,9 +163,11 @@ public class startScreen2 extends JFrame {
 	if (settingsMenu != null) 
 	    this.remove(settingsMenu);
 
+	this.setResizable(false);
         this.add(ss);
         repaint();
         this.revalidate();
+	
         
     }
     
@@ -496,9 +498,5 @@ public class startScreen2 extends JFrame {
         gameMode = gMode;
     }
 
-    public void setPopOutModeBool(boolean onOrOff){
-	popOutModeCBIsSelected = onOrOff;
-    }
-    
     
 }// end of startScreen Class

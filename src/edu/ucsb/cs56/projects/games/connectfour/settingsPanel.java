@@ -11,14 +11,12 @@ import java.util.ArrayList;
 public class settingsPanel extends JPanel{
     
     private JButton mainMenuButton;
-    private JCheckBox popOutModeCB;
-    private static boolean popOutModeCBIsSelected = false;;
 
     /**
        Constructor for the settingsPanel
        @param ss startScreen2
      */
-    public settingsPanel(startScreen2 ss, boolean popOutModeChecked){
+    public settingsPanel(startScreen2 ss) {
         super ();
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         Font BFont = new Font("Comic Sans MS", Font.BOLD, 22);
@@ -27,14 +25,7 @@ public class settingsPanel extends JPanel{
 	mainMenuButton.addActionListener( new mainMenuButtonListener(ss) );
 	mainMenuButton.setFont(BFont);
 	
-	popOutModeCBIsSelected = popOutModeChecked;
-
-	popOutModeCB = new JCheckBox("Pop Out Mode", popOutModeCBIsSelected);
-	popOutModeCB.addItemListener( new popOutModeCBListener(ss));
-	popOutModeCB.setFont(BFont);
-
 	this.add(mainMenuButton);
-	this.add(popOutModeCB);
     }
     
     /**
@@ -50,20 +41,5 @@ public class settingsPanel extends JPanel{
         }
 
     }
-
-    class popOutModeCBListener implements ItemListener {
-	private startScreen2 ss1;
-	popOutModeCBListener(final startScreen2 ss){
-	    ss1 = ss;
-	}
-	public void itemStateChanged(ItemEvent event) {
-	    if (event.getStateChange() == ItemEvent.SELECTED) 
-		ss1.setPopOutModeBool(true);
-	    else
-		ss1.setPopOutModeBool(false);
-	}
-
-    }
-    
     
 }
