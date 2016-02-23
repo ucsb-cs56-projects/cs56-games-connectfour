@@ -156,9 +156,10 @@ public class startScreen2 extends JFrame {
      Navigate Back to the main Menu
      */
     public void BackToStartScreen(){
-	this.b.setGameOver();
-	if (b != null)
+	if (b != null) {
+            b.setGameOver();
             remove(b);
+  }
         if (inGameMenuP != null)
             remove(inGameMenuP);
         
@@ -169,8 +170,6 @@ public class startScreen2 extends JFrame {
 	    this.remove(RulesMenu);
 	if (settingsMenu != null) 
 	    this.remove(settingsMenu);
-
-	this.setResizable(false);
         this.add(ss);
         repaint();
         this.revalidate();
