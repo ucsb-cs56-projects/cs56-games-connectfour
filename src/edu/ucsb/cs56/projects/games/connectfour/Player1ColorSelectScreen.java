@@ -71,7 +71,7 @@ public class Player1ColorSelectScreen extends JPanel{
         }
         public void actionPerformed(ActionEvent event){
             ss1.setPlayer1ColorState(4);
-	    ss1.launchPlayer2ColorSelectScreen();
+	          ss1.launchPlayer2ColorSelectScreen();
         }
     }
     

@@ -12,7 +12,9 @@ import java.util.Stack;
  startScreen2 class uses swing gui to represent the Connect 4 start Menu
  @author Vincent Tan
  @author Girish Kowligi
- @version Project1, CS56, W14
+ @author Christian Newkirk
+ @author Sarah Zhong
+ @version Project1, CS56, W16
  */
 
 
@@ -33,7 +35,8 @@ public class startScreen2 extends JFrame {
     private static Stack<IntPair> movesList = new Stack<IntPair>();
     private static Player1ColorSelectScreen p1ColorScreen;
     private static Player2ColorSelectScreen p2ColorScreen;
-    private static namePanel enterName;
+    private static namePanel namePanel1;
+    private static namePanel namePanel2;
     private static String p1Name;
     private static String p2Name;
     private static int player1ColorState;
@@ -47,8 +50,7 @@ public class startScreen2 extends JFrame {
      */
     // Launch game
     public static void main (String [] args){
-        JFrame frame = new startScreen2();
-        
+        JFrame frame = new startScreen2();   
     }
     
     /**
@@ -64,8 +66,6 @@ public class startScreen2 extends JFrame {
         this.add(ss);
         this.addMouseListener(new MouseClass());
         this.setVisible(true);
-        
-        
     }
     
     /**
@@ -79,9 +79,7 @@ public class startScreen2 extends JFrame {
         this.repaint();
         SPMenu = new singlePlayerMenuPanel(this);
         this.add(SPMenu);
-        this.revalidate();
-        
-        
+        this.revalidate();   
     }
 
     public void setPlayer1ColorState(int state1) {
@@ -100,6 +98,14 @@ public class startScreen2 extends JFrame {
 
     public int getPlayer2ColorState() {
 	return b.getPlayer2State();
+    }
+
+    public void setPlayer1Name(String name1) {
+      p1Name = name1;
+    }
+    
+    public void setPlayer2Name(String name2) {
+      p2Name = name2;
     }
 
     /**
@@ -132,22 +138,26 @@ public class startScreen2 extends JFrame {
 	this.setSize( menu_width,  menu_height);
 	this.repaint();
 	p1ColorScreen = new Player1ColorSelectScreen(this);
-	enterName = new namePanel();
-	this.getContentPane().add(BorderLayout.NORTH, enterName);
+  namePanel1 = new namePanel();
+	this.getContentPane().add(BorderLayout.NORTH, namePanel1);
 	this.add(p1ColorScreen);
-	p1Name = enterName.getName();
 	this.revalidate();
     }
 
     public void launchPlayer2ColorSelectScreen() {
+  p1Name = namePanel1.getName();
 	if (p1ColorScreen != null)
 	    remove(p1ColorScreen);
+  if (namePanel1 != null)
+      remove(namePanel1);
 	if (ss != null)
 	    remove(ss);
 	this.setSize( menu_width,  menu_height);
 	this.remove(ss);
 	this.repaint();
-	p2ColorScreen = new Player2ColorSelectScreen(this, player1ColorState);
+  p2ColorScreen = new Player2ColorSelectScreen(this, player1ColorState);
+  namePanel2 = new namePanel();
+  this.getContentPane().add(BorderLayout.NORTH, namePanel2);
 	this.add(p2ColorScreen);
 	this.revalidate();
     }
@@ -156,13 +166,12 @@ public class startScreen2 extends JFrame {
      Navigate Back to the main Menu
      */
     public void BackToStartScreen(){
-	if (b != null) {
-            b.setGameOver();
-            remove(b);
-  }
+	    if (b != null) {
+        b.setGameOver();
+        remove(b);
+      }
         if (inGameMenuP != null)
             remove(inGameMenuP);
-        
         this.setSize(menu_width,menu_height);
         if (SPMenu != null)
             this.remove(SPMenu);
@@ -189,14 +198,24 @@ public class startScreen2 extends JFrame {
             this.remove(b);
         if (inGameMenuP != null)
             this.remove(inGameMenuP);
-	if (p1ColorScreen != null)
-	    remove(p1ColorScreen);
-	if ( p2ColorScreen != null)
-	    remove(p2ColorScreen);
+	      if (p1ColorScreen != null)
+	          remove(p1ColorScreen);
+	      if (p2ColorScreen != null) {
+	          p2Name = namePanel2.getName();
+            remove(p2ColorScreen);
+        }
+        if (namePanel1 != null)
+            remove(namePanel1);
+        if (namePanel2 != null)
+            remove(namePanel2);
         this.repaint();
-        
         // set the Game size ready for The board
         this.setSize(frame_width,frame_height);
+        //remove Name Panels if they exist
+        if (namePanel1 != null)
+            this.remove(namePanel1);
+        if(namePanel2 != null)
+            this.remove(namePanel2);
         // Remove SinglePlayer Menu if it exist
         if (SPMenu != null)
             this.remove(SPMenu);
@@ -208,15 +227,20 @@ public class startScreen2 extends JFrame {
         inGameMenuP = new inGameMenuPanel(this);
         b = new Board();
         b.setPlayer1State(player1ColorState);
-	b.setPlayer2State(player2ColorState);
-
+	      b.setPlayer2State(player2ColorState);
+        if (p1Name != "")        
+          b.setPlayer1Name(p1Name);
+        else
+          b.setPlayer1Name("Player 1");
+        if (p2Name != "")
+          b.setPlayer2Name(p2Name);
+        else
+          b.setPlayer2Name("Player 2");
         // add it to frame and refresh
         this.add(b);
         this.add(inGameMenuP);
         this.revalidate();
-        this.repaint();
-        
-        
+        this.repaint(); 
     }
     
     /**

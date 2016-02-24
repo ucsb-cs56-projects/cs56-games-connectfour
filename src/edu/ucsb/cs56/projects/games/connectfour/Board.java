@@ -37,7 +37,10 @@ class Board extends JPanel {
     private static String magentaText = "Magenta";
     private static String brownText = "Brown";
     private static String pinkText = "Pink";
+    private String p1Name = "P1";
+    private String p2Name = "P2";
 
+    
     /**
      * Constructor intitializes instance variables and creates the empty game board
      */
@@ -87,8 +90,8 @@ class Board extends JPanel {
     
     /**
      * Displays the win message on the screen when someone has won
-     * If It's Red's Turn (turn == 1), and a winner has been detected, Yellow Wins
-     * If It's Yellow's Turn (turn == 2) and a winner has been detected, Red Wins
+     * If it is Red's Turn (turn == 1), and a winner has been detected, Yellow Wins
+     * If it is Yellow's Turn (turn == 2) and a winner has been detected, Red Wins
      * @param g to draw the message
      */
     
@@ -102,7 +105,7 @@ class Board extends JPanel {
             if (turn == 1){
 		// The switch looks at player 2 because right after
 		//     the player wins it switches turns
-		switch (player2State) {
+		/*switch (player2State) {
 		case 1: winnerText = "Red";
 		    break;
 		case 2: winnerText = "Yellow";
@@ -121,9 +124,11 @@ class Board extends JPanel {
 		    break;
 		}
                 g.drawString(winnerText + " Wins!", 100, 400);
-	    }
+	  */
+    g.drawString(p2Name + " wins!", 100, 400);  
+    }
             else {
-		switch (player1State) {
+		/*switch (player1State) {
 		case 1: winnerText = "Red";
 		    break;
 		case 2: winnerText = "Yellow";
@@ -142,7 +147,9 @@ class Board extends JPanel {
 		    break;
 		}
                 g.drawString(winnerText + " Wins!", 100, 400);
-	    }
+	  */
+    g.drawString(p1Name + " wins!", 100, 400);
+    }
         }
         else{
             if (turn == 1)
@@ -424,7 +431,13 @@ class Board extends JPanel {
      */
     public int getPlayer2State() {
 	return player2State;
-    }
-    
+    }    
 
+    public void setPlayer1Name(String name) {
+        p1Name = name;
+    }
+
+    public void setPlayer2Name(String name) {
+        p2Name = name;
+    }
 }
