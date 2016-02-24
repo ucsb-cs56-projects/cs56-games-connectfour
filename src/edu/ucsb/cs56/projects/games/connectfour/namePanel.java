@@ -42,6 +42,8 @@ public class namePanel extends JPanel{
         
     }
 
-    public String getName() {return nameText.getText();}
+    public String getName() {
+      return nameText.getText();
+    }
 }
     

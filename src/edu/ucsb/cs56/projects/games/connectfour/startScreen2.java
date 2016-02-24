@@ -19,8 +19,7 @@ import java.util.Stack;
 
 
 public class startScreen2 extends JFrame {
-    
-    
+        
     
     public static int frame_width = 890;
     public static int frame_height = 650;
@@ -42,7 +41,6 @@ public class startScreen2 extends JFrame {
     private static int player1ColorState;
     private static int player2ColorState;
     private static settingsPanel settingsMenu;
-
 
 
     /**
@@ -100,13 +98,6 @@ public class startScreen2 extends JFrame {
 	return b.getPlayer2State();
     }
 
-    public void setPlayer1Name(String name1) {
-      p1Name = name1;
-    }
-    
-    public void setPlayer2Name(String name2) {
-      p2Name = name2;
-    }
 
     /**
        Loads the rules page when the button on the main menu is pressed. (StartScreenButtonsPanel)
@@ -145,11 +136,12 @@ public class startScreen2 extends JFrame {
     }
 
     public void launchPlayer2ColorSelectScreen() {
-  p1Name = namePanel1.getName();
 	if (p1ColorScreen != null)
 	    remove(p1ColorScreen);
-  if (namePanel1 != null)
+  if (namePanel1 != null) {
+      p1Name = namePanel1.getName();
       remove(namePanel1);
+  }
 	if (ss != null)
 	    remove(ss);
 	this.setSize( menu_width,  menu_height);
@@ -203,14 +195,14 @@ public class startScreen2 extends JFrame {
 	      if (p1ColorScreen != null)
 	          remove(p1ColorScreen);
 	      if (p2ColorScreen != null) {
-	          if (namePanel2 != null)
-              p2Name = namePanel2.getName();
             remove(p2ColorScreen);
         }
         if (namePanel1 != null)
             remove(namePanel1);
-        if (namePanel2 != null)
+        if (namePanel2 != null) {
+            p2Name = namePanel2.getName();
             remove(namePanel2);
+        }
         this.repaint();
         // set the Game size ready for The board
         this.setSize(frame_width,frame_height);
@@ -231,14 +223,18 @@ public class startScreen2 extends JFrame {
         b = new Board();
         b.setPlayer1State(player1ColorState);
 	      b.setPlayer2State(player2ColorState);
-        if (p1Name != "")        
-          b.setPlayer1Name(p1Name);
-        else
+        //set player names
+        if (p1Name.equals("")) {       
           b.setPlayer1Name("Player 1");
-        if (p2Name != "")
-          b.setPlayer2Name(p2Name);
-        else
+        } else {
+          b.setPlayer1Name(p1Name);
+        }
+        if (p2Name.equals("")) {
           b.setPlayer2Name("Player 2");
+        }
+        else {
+          b.setPlayer2Name(p2Name);
+        }
         // add it to frame and refresh
         this.add(b);
         this.add(inGameMenuP);
