@@ -156,9 +156,11 @@ public class startScreen2 extends JFrame {
 	this.remove(ss);
 	this.repaint();
   p2ColorScreen = new Player2ColorSelectScreen(this, player1ColorState);
-  namePanel2 = new namePanel();
-  this.getContentPane().add(BorderLayout.NORTH, namePanel2);
-	this.add(p2ColorScreen);
+  if (gameMode == 1) {
+    namePanel2 = new namePanel();
+    this.getContentPane().add(BorderLayout.NORTH, namePanel2);
+	}
+  this.add(p2ColorScreen);
 	this.revalidate();
     }
 
@@ -201,7 +203,8 @@ public class startScreen2 extends JFrame {
 	      if (p1ColorScreen != null)
 	          remove(p1ColorScreen);
 	      if (p2ColorScreen != null) {
-	          p2Name = namePanel2.getName();
+	          if (namePanel2 != null)
+              p2Name = namePanel2.getName();
             remove(p2ColorScreen);
         }
         if (namePanel1 != null)
