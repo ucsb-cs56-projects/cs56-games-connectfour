@@ -129,7 +129,7 @@ public class startScreen2 extends JFrame {
 	this.setSize( menu_width,  menu_height);
 	this.repaint();
 	p1ColorScreen = new Player1ColorSelectScreen(this);
-  namePanel1 = new namePanel();
+	namePanel1 = new namePanel();
 	this.getContentPane().add(BorderLayout.NORTH, namePanel1);
 	this.add(p1ColorScreen);
 	this.revalidate();
@@ -147,12 +147,12 @@ public class startScreen2 extends JFrame {
 	this.setSize( menu_width,  menu_height);
 	this.remove(ss);
 	this.repaint();
-  p2ColorScreen = new Player2ColorSelectScreen(this, player1ColorState);
-  if (gameMode == 1) {
-    namePanel2 = new namePanel();
-    this.getContentPane().add(BorderLayout.NORTH, namePanel2);
+	p2ColorScreen = new Player2ColorSelectScreen(this, player1ColorState);
+	if (gameMode == 1) {
+	    namePanel2 = new namePanel();
+	    this.getContentPane().add(BorderLayout.NORTH, namePanel2);
 	}
-  this.add(p2ColorScreen);
+	this.add(p2ColorScreen);
 	this.revalidate();
     }
 
@@ -192,9 +192,9 @@ public class startScreen2 extends JFrame {
             this.remove(b);
         if (inGameMenuP != null)
             this.remove(inGameMenuP);
-	      if (p1ColorScreen != null)
-	          remove(p1ColorScreen);
-	      if (p2ColorScreen != null) {
+	if (p1ColorScreen != null)
+	    remove(p1ColorScreen);
+	if (p2ColorScreen != null) {
             remove(p2ColorScreen);
         }
         if (namePanel1 != null)
