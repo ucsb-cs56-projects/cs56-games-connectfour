@@ -20,7 +20,6 @@ class Board extends JPanel {
     public static int numColumns = 7;
     public static int numRows = 6;
     public static Circle cc;
-    private boolean gameOver = false;
     private int drawCounter;
     private static ArrayList<Circle> circleHolder;
     private Circle[][] gameGrid;
@@ -84,7 +83,7 @@ class Board extends JPanel {
         }
         //after re-drawing the game board, check if someone has won or if it's a draw
         checkWin(g);
-        if (!gameOver)
+        if (!gameIsOver)
             checkDraw(g);
     }
     
@@ -157,7 +156,7 @@ class Board extends JPanel {
             else
                 g.drawString("YOU WIN!", 100, 400);
         }
-        this.gameOver = true;
+        this.setGameOver();
         
     }
     
@@ -172,8 +171,7 @@ class Board extends JPanel {
             g.setColor(Color.BLACK);
             g.setFont(new Font("Times", Font.BOLD, 100));
             g.drawString("Draw", 100, 400);
-            gameOver = true;
-	    this.setGameOver();
+	          this.setGameOver();
         }
     }
     
@@ -343,7 +341,7 @@ class Board extends JPanel {
      * @return boolean
      */
     public boolean getGameOver(){
-        return this.gameOver;
+        return this.gameIsOver;
     }
     
     /**
