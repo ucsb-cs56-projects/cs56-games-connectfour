@@ -138,10 +138,10 @@ public class startScreen2 extends JFrame {
     public void launchPlayer2ColorSelectScreen() {
 	if (p1ColorScreen != null)
 	    remove(p1ColorScreen);
-  if (namePanel1 != null) {
-      p1Name = namePanel1.getName();
-      remove(namePanel1);
-  }
+	if (namePanel1 != null) {
+	    p1Name = namePanel1.getName();
+	    remove(namePanel1);
+	}
 	if (ss != null)
 	    remove(ss);
 	this.setSize( menu_width,  menu_height);
@@ -160,10 +160,10 @@ public class startScreen2 extends JFrame {
      Navigate Back to the main Menu
      */
     public void BackToStartScreen(){
-	    if (b != null) {
-        b.setGameOver();
-        remove(b);
-      }
+	if (b != null) {
+	    b.setGameOver();
+	    remove(b);
+	}
         if (inGameMenuP != null)
             remove(inGameMenuP);
         this.setSize(menu_width,menu_height);

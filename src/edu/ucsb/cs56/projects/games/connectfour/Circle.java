@@ -40,6 +40,17 @@ public class Circle
         
     }
 
+    /** 
+	smallCopy method for green win circles
+	@param playerCircle
+     */
+
+    public Circle smallCopy() {
+	Circle w = new Circle(this.x, this.y, this.width/2, this.height/2);
+	return w;
+    }
+    
+    
     /**
        Setter for the state variable
        @param value     integer that the state is set equal to
@@ -82,7 +93,9 @@ public class Circle
 
 	//green circle for winning Circles
 	else if (state == 3) {
-	    g.setColor(Color.green.darker());
+	    Graphics create = g.create();
+	    create.setColor(Color.green.darker());
+	    // g.setColor(Color.green.darker());
 	}
 	
 	//black circle

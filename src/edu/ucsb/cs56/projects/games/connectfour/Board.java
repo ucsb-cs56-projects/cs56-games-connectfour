@@ -20,6 +20,7 @@ class Board extends JPanel {
     public static int numColumns = 7;
     public static int numRows = 6;
     public static Circle cc;
+    private Circle winCircle;
     private int drawCounter;
     private static ArrayList<Circle> circleHolder;
     private Circle[][] gameGrid;
@@ -199,10 +200,15 @@ class Board extends JPanel {
                     // displayWinner(g, gameGrid[col][row].getState());
                     displayWinner(g);
                     // Change Winning Circles to Blue
-                    gameGrid[col][row].setState(3);
-                    gameGrid[col+1][row].setState(3);
-                    gameGrid[col+2][row].setState(3);
-                    gameGrid[col+3][row].setState(3);
+		    Circle one = gameGrid[col][row].smallCopy();
+                    Circle two = gameGrid[col+1][row].smallCopy();
+                    Circle three = gameGrid[col+2][row].smallCopy();
+                    Circle four = gameGrid[col+3][row].smallCopy();
+    		    one.setState(3);
+                    two.setState(3);
+                    three.setState(3);
+                    four.setState(3);
+    
                     repaint();
 		    this.setGameOver();
                     break;
