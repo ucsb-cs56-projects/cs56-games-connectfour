@@ -140,7 +140,7 @@ public class startScreen2 extends JFrame {
 	    remove(p1ColorScreen);
 	if (namePanel1 != null) {
 	    p1Name = namePanel1.getName();
-	    remove(namePanel1);
+	    this.remove(namePanel1);
 	}
 	if (ss != null)
 	    remove(ss);
@@ -160,24 +160,22 @@ public class startScreen2 extends JFrame {
      Navigate Back to the main Menu
      */
     public void BackToStartScreen(){
-	if (b != null) {
-	    b.setGameOver();
-	    remove(b);
-	}
-        if (inGameMenuP != null)
-            remove(inGameMenuP);
+	    if (b != null) {
+	      b.setGameOver();
+	      this.remove(b);
+	    }
+      if (inGameMenuP != null)
+        this.remove(inGameMenuP);
         this.setSize(menu_width,menu_height);
         if (SPMenu != null)
             this.remove(SPMenu);
-	if (RulesMenu != null)
-	    this.remove(RulesMenu);
-	if (settingsMenu != null) 
-	    this.remove(settingsMenu);
-        this.add(ss);
-        repaint();
-        this.revalidate();
-	
-        
+	    if (RulesMenu != null)
+	      this.remove(RulesMenu);
+	    if (settingsMenu != null) 
+	      this.remove(settingsMenu);
+      this.add(ss);
+      repaint();
+      this.revalidate();   
     }
     
     /**
@@ -192,25 +190,21 @@ public class startScreen2 extends JFrame {
             this.remove(b);
         if (inGameMenuP != null)
             this.remove(inGameMenuP);
-	if (p1ColorScreen != null)
-	    remove(p1ColorScreen);
-	if (p2ColorScreen != null) {
-            remove(p2ColorScreen);
+	      if (p1ColorScreen != null)
+	          this.remove(p1ColorScreen);
+	      if (p2ColorScreen != null) {
+            this.remove(p2ColorScreen);
         }
+        //remove name panels if they exist and take p2name
         if (namePanel1 != null)
-            remove(namePanel1);
+            this.remove(namePanel1);
         if (namePanel2 != null) {
             p2Name = namePanel2.getName();
-            remove(namePanel2);
+            this.remove(namePanel2);
         }
         this.repaint();
         // set the Game size ready for The board
         this.setSize(frame_width,frame_height);
-        //remove Name Panels if they exist
-        if (namePanel1 != null)
-            this.remove(namePanel1);
-        if(namePanel2 != null)
-            this.remove(namePanel2);
         // Remove SinglePlayer Menu if it exist
         if (SPMenu != null)
             this.remove(SPMenu);
@@ -229,7 +223,7 @@ public class startScreen2 extends JFrame {
         } else {
           b.setPlayer1Name(p1Name);
         }
-        if (p2Name.equals("")) {
+        if (p2Name==null || p2Name.equals("")) {
           b.setPlayer2Name("Player 2");
         }
         else {
