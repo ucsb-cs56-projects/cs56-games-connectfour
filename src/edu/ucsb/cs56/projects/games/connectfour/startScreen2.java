@@ -107,10 +107,10 @@ public class startScreen2 extends JFrame {
     public void loadRulesPage() {
 	this.setSize(2 * menu_width, (int) (1.25 * menu_height));
         this.remove(ss);
-        this.repaint();
         RulesMenu = new rulesPanel(this);
         this.add(RulesMenu);
         this.revalidate();
+        this.repaint();
     }
 
     public void loadSettingsPage() {
@@ -120,19 +120,21 @@ public class startScreen2 extends JFrame {
 	settingsMenu = new settingsPanel(this);
 	this.add(settingsMenu);
 	this.revalidate();
+  this.repaint();
     }
 
     public void launchPlayer1ColorSelectScreen() {
 	remove(ss);
 	if (SPMenu != null)
 	    remove(SPMenu);
-	this.setSize( menu_width,  menu_height);
-	this.repaint();
+	this.setSize(menu_width, menu_height);
+  this.repaint();
 	p1ColorScreen = new Player1ColorSelectScreen(this);
 	namePanel1 = new namePanel();
 	this.getContentPane().add(BorderLayout.NORTH, namePanel1);
-	this.add(p1ColorScreen);
+  this.add(p1ColorScreen);
 	this.revalidate();
+  this.repaint();
     }
 
     public void launchPlayer2ColorSelectScreen() {
@@ -146,14 +148,14 @@ public class startScreen2 extends JFrame {
 	    remove(ss);
 	this.setSize( menu_width,  menu_height);
 	this.remove(ss);
-	this.repaint();
 	p2ColorScreen = new Player2ColorSelectScreen(this, player1ColorState);
 	if (gameMode == 1) {
 	    namePanel2 = new namePanel();
 	    this.getContentPane().add(BorderLayout.NORTH, namePanel2);
-	}
+  }
 	this.add(p2ColorScreen);
 	this.revalidate();
+  this.repaint();
     }
 
     /**
@@ -166,16 +168,17 @@ public class startScreen2 extends JFrame {
 	    }
       if (inGameMenuP != null)
         this.remove(inGameMenuP);
-        this.setSize(menu_width,menu_height);
-        if (SPMenu != null)
+      this.setSize(menu_width,menu_height);
+      if (SPMenu != null)
             this.remove(SPMenu);
 	    if (RulesMenu != null)
 	      this.remove(RulesMenu);
 	    if (settingsMenu != null) 
 	      this.remove(settingsMenu);
+      this.setLayout(new BorderLayout());
       this.add(ss);
-      repaint();
-      this.revalidate();   
+      this.revalidate();
+      this.repaint();   
     }
     
     /**
