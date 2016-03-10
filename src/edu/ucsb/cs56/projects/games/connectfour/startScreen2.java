@@ -239,9 +239,9 @@ public class startScreen2 extends JFrame {
 	
 	// Panel for whose turn it is.
 	JPanel turnPanel = new JPanel();
-	JLabel who;
+	JLabel who = new JLabel();
 	if (b.getTurn() == 1)
-	    who = new JLabel("It's " + p1Name + "'s turn!");
+	    who.setText("It's " + p1Name + "'s turn!");
 	else
 	    who.setText("It's " + p2Name + "'s turn!");
        	
