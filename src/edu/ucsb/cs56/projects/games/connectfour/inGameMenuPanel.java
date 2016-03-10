@@ -24,9 +24,7 @@ public class inGameMenuPanel extends JPanel{
      */
     
     public inGameMenuPanel(startScreen2 ss){
-	// super ();
-
-	this.setBackground(Color.cyan);
+	super ();
 	
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         //this.setMaximumSize(new Dimension(100,650));
