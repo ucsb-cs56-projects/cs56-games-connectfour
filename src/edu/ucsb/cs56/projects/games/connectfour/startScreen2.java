@@ -42,6 +42,8 @@ public class startScreen2 extends JFrame {
     private static int player1ColorState;
     private static int player2ColorState;
     private static settingsPanel settingsMenu;
+    private static JPanel turnPanel;
+    private static JLabel who;
 
 
     /**
@@ -158,6 +160,8 @@ public class startScreen2 extends JFrame {
 	    remove(p1ColorScreen);
 	if (namePanel1 != null) {
 	    p1Name = namePanel1.getName();
+	    if (p1Name.equals(""))
+		p1Name = "Player 1";
 	    this.remove(namePanel1);
 	}
 	if (ss != null)
@@ -168,7 +172,6 @@ public class startScreen2 extends JFrame {
 	if (gameMode == 1) {
 	    namePanel2 = new namePanel(this);
 	    this.getContentPane().add(BorderLayout.NORTH, namePanel2);
-	    p2Name = namePanel2.getName();
 	}
 	this.add(p2ColorScreen);
 	this.revalidate();
@@ -215,13 +218,18 @@ public class startScreen2 extends JFrame {
 	if (p2ColorScreen != null) {
 	    this.remove(p2ColorScreen);
 	}
+	
 
         //remove name panels if they exist and take p2name
 	if (namePanel1 != null)
             this.remove(namePanel1);
-        if (namePanel2 != null)
+        if (namePanel2 != null) {
+	    p2Name = namePanel2.getName();
+	    if (p2Name.equals(""))
+		p2Name = "Player 2";
             this.remove(namePanel2);
-        this.repaint();
+	}
+	this.repaint();
         // set the Game size ready for The board
         this.setSize(frame_width,frame_height);
         // Remove SinglePlayer Menu if it exist
@@ -238,13 +246,13 @@ public class startScreen2 extends JFrame {
 	b.setPlayer2State(player2ColorState);
 	
 	// Panel for whose turn it is.
-	JPanel turnPanel = new JPanel();
-	JLabel who = new JLabel();
+        turnPanel = new JPanel();
+	who = new JLabel();
 	if (b.getTurn() == 1)
 	    who.setText("It's " + p1Name + "'s turn!");
 	else
 	    who.setText("It's " + p2Name + "'s turn!");
-  turnPanel.add(who);
+	turnPanel.add(who);
        	
 	// add it to frame and refresh
         /* this.add(b);
@@ -328,7 +336,11 @@ public class startScreen2 extends JFrame {
 		b.getGameGridCircle(tempPair1.getX(), tempPair1.getY()).setState(0);
 		b.getGameGridCircle(tempPair2.getX(), tempPair2.getY()).setState(0);
 	    }
-	
+	    if (b.getTurn() == 1)
+		who.setText("It's " + p1Name + "'s turn!");
+	    else
+		who.setText("It's " + p2Name + "'s turn!");
+	    turnPanel.add(who);
 	    b.repaint();
 	    return;
 	}
@@ -487,6 +499,11 @@ public class startScreen2 extends JFrame {
                 
                 }// end else
             }// end else
+	    if (b.getTurn() == 1)
+		who.setText("It's " + p1Name + "'s turn!");
+	    else
+		who.setText("It's " + p2Name + "'s turn!");
+	    turnPanel.add(who);
         }// end Method
         
         public void mouseEntered(MouseEvent e) {
