@@ -32,6 +32,7 @@ public class clickStartPanel extends JPanel {
 	super ();
 	
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        this.setAlignmentX(Component.CENTER_ALIGNMENT);
         //this.setMaximumSize(new Dimension(100,650));
 	Font BFont = new Font ("Comic Sans MS", Font.BOLD, 22);
 	Font smallerBFont = new Font("Comic Sans MS", Font.BOLD, 15);
@@ -45,7 +46,7 @@ public class clickStartPanel extends JPanel {
         startButton.setFont(smallerBFont);
 
 	try {
-	    image = ImageIO.read(new File("/cs/student/christiannewkirk/cs56/cs56-games-connectfour/images/connect-4-logo.png"));
+	    image = ImageIO.read(new File("images/connect-4-logo.png"));
 	    scaledImage = image.getScaledInstance(200, 44, Image.SCALE_DEFAULT);
 	    logo = new JLabel(new ImageIcon(scaledImage));
 	}

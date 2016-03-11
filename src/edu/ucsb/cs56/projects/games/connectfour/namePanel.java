@@ -13,10 +13,7 @@ import java.util.ArrayList;
 
 public class namePanel extends JPanel{
     private JLabel enterName; // Textfield indicating whose turn it is
-    private JButton saveButton;
     public JTextField nameText;
-    public String savedName;
-
     
     /**
        Constructor for inGameMenuPanel
@@ -38,34 +35,14 @@ public class namePanel extends JPanel{
 	nameText.setFocusable(true);
 	nameText.requestFocus();
 
-	saveButton = new JButton ("SAVE");
-        saveButton.addActionListener(new saveButtonListener(ss));
-        saveButton.setFont(smallerBFont);
-        
 	
 	// this.add(Box.createRigidArea(new Dimension(0,50)));
 	this.add(enterName);
 	this.add(nameText);
-	this.add(saveButton);
         
     }
 
-    /**
-       Listener class for the save button
-    */
-    class saveButtonListener implements ActionListener {
-        private startScreen2 ss1;
-        
-        saveButtonListener(final startScreen2 ss){
-            ss1 = ss;
-        }
-        
-        public void actionPerformed(ActionEvent event){
-	    savedName = nameText.getText();
-	    nameText.setText("");
-        }
-    }
 
-    public String getName() {return savedName;}
+    public String getName() {return nameText.getText();}
 }
     

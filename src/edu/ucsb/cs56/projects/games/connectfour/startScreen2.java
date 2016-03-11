@@ -230,7 +230,7 @@ public class startScreen2 extends JFrame {
         // remove startScreen if it exist
         if (ss!= null)
             this.remove(ss);
-        this.setLayout(new BoxLayout(getContentPane(), BoxLayout.X_AXIS));
+        //this.setLayout(new BoxLayout(getContentPane(), BoxLayout.X_AXIS));
         // initiate a new board and a in-Game Menu
         inGameMenuP = new inGameMenuPanel(this);
         b = new Board();
@@ -244,11 +244,15 @@ public class startScreen2 extends JFrame {
 	    who.setText("It's " + p1Name + "'s turn!");
 	else
 	    who.setText("It's " + p2Name + "'s turn!");
+  turnPanel.add(who);
        	
 	// add it to frame and refresh
-        this.add(b);
+        /* this.add(b);
         this.add(inGameMenuP);
-	this.add(turnPanel);
+	      this.add(turnPanel);*/
+        this.getContentPane().add(b, BorderLayout.CENTER);
+        this.getContentPane().add(inGameMenuP, BorderLayout.LINE_END);
+        this.getContentPane().add(turnPanel, BorderLayout.PAGE_START);
         this.revalidate();
         this.repaint(); 
     }
