@@ -1,6 +1,6 @@
 package edu.ucsb.cs56.projects.games.connectfour;
  
-
+import java.io.IOException;
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
@@ -12,19 +12,21 @@ import java.util.Stack;
  startScreen2 class uses swing gui to represent the Connect 4 start Menu
  @author Vincent Tan
  @author Girish Kowligi
- @version Project1, CS56, W14
+ @author Christian Newkirk
+ @author Sarah Zhong
+ @version Project1, CS56, W16
  */
 
 
 public class startScreen2 extends JFrame {
-    
-    
+        
     
     public static int frame_width = 890;
     public static int frame_height = 650;
     public static int menu_width = 240;
     public static int menu_height = 320;
     public static Board b;
+    private static clickStartPanel startPanel;
     private static StartScreenButtonsPanel ss;
     private int gameMode = 1;
     private static singlePlayerMenuPanel SPMenu;
@@ -33,10 +35,15 @@ public class startScreen2 extends JFrame {
     private static Stack<IntPair> movesList = new Stack<IntPair>();
     private static Player1ColorSelectScreen p1ColorScreen;
     private static Player2ColorSelectScreen p2ColorScreen;
+    private static namePanel namePanel1;
+    private static namePanel namePanel2;
+    private static String p1Name;
+    private static String p2Name;
     private static int player1ColorState;
     private static int player2ColorState;
     private static settingsPanel settingsMenu;
-    private static boolean popOutModeCBIsSelected = false;
+    private static JPanel turnPanel;
+    private static JLabel who;
 
 
     /**
@@ -44,27 +51,38 @@ public class startScreen2 extends JFrame {
      */
     // Launch game
     public static void main (String [] args){
-        JFrame frame = new startScreen2();
-        
+        JFrame frame = new startScreen2();   
     }
     
     /**
-     Constructor intitializes JFrame For all panel
+     Constructor intitializes JFrame For all panels
      */
-    
+
     // initial screen when program is executed
     public startScreen2(){
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(menu_width,menu_height);
         this.setResizable(false);
-        ss = new StartScreenButtonsPanel(this);
-        this.add(ss);
+        startPanel = new clickStartPanel(this);
+        this.add(startPanel);
         this.addMouseListener(new MouseClass());
         this.setVisible(true);
-        
-        
+    }
+
+    /**
+       Loads first menu (StartScreenButtonsPanel) with options for playing and settings.
+    */
+    
+    public void loadFirstMenu() {
+        this.setSize(menu_width,menu_height);
+	this.remove(startPanel);
+	this.repaint();
+        ss = new StartScreenButtonsPanel(this);
+        this.add(ss);
+        this.setVisible(true);
     }
     
+
     /**
        Loads the single player menu when the button on the main menu is pressed. (StartScreenButtonsPanel)
      */
@@ -76,9 +94,7 @@ public class startScreen2 extends JFrame {
         this.repaint();
         SPMenu = new singlePlayerMenuPanel(this);
         this.add(SPMenu);
-        this.revalidate();
-        
-        
+        this.revalidate();   
     }
 
     public void setPlayer1ColorState(int state1) {
@@ -99,6 +115,7 @@ public class startScreen2 extends JFrame {
 	return b.getPlayer2State();
     }
 
+
     /**
        Loads the rules page when the button on the main menu is pressed. (StartScreenButtonsPanel)
      */
@@ -107,66 +124,81 @@ public class startScreen2 extends JFrame {
     public void loadRulesPage() {
 	this.setSize(2 * menu_width, (int) (1.25 * menu_height));
         this.remove(ss);
-        this.repaint();
         RulesMenu = new rulesPanel(this);
         this.add(RulesMenu);
         this.revalidate();
+        this.repaint();
     }
 
     public void loadSettingsPage() {
 	this.setSize(menu_width, menu_height);
 	this.remove(ss);
 	this.repaint();
-	settingsMenu = new settingsPanel(this, popOutModeCBIsSelected);
+	settingsMenu = new settingsPanel(this);
 	this.add(settingsMenu);
 	this.revalidate();
+  this.repaint();
     }
 
     public void launchPlayer1ColorSelectScreen() {
 	remove(ss);
 	if (SPMenu != null)
 	    remove(SPMenu);
-	this.setSize( menu_width,  menu_height);
+	this.setSize(menu_width, menu_height);
 	this.repaint();
 	p1ColorScreen = new Player1ColorSelectScreen(this);
+	namePanel1 = new namePanel(this);
+	this.getContentPane().add(BorderLayout.NORTH, namePanel1);
+	p1Name = namePanel1.getName();
 	this.add(p1ColorScreen);
 	this.revalidate();
+	this.repaint();
     }
 
     public void launchPlayer2ColorSelectScreen() {
 	if (p1ColorScreen != null)
 	    remove(p1ColorScreen);
+	if (namePanel1 != null) {
+	    p1Name = namePanel1.getName();
+	    if (p1Name.equals(""))
+		p1Name = "Player 1";
+	    this.remove(namePanel1);
+	}
 	if (ss != null)
 	    remove(ss);
 	this.setSize( menu_width,  menu_height);
 	this.remove(ss);
-	this.repaint();
 	p2ColorScreen = new Player2ColorSelectScreen(this, player1ColorState);
+	if (gameMode == 1) {
+	    namePanel2 = new namePanel(this);
+	    this.getContentPane().add(BorderLayout.NORTH, namePanel2);
+	}
 	this.add(p2ColorScreen);
 	this.revalidate();
+  this.repaint();
     }
 
     /**
      Navigate Back to the main Menu
      */
     public void BackToStartScreen(){
-        if (b != null)
-            remove(b);
-        if (inGameMenuP != null)
-            remove(inGameMenuP);
-        
-        this.setSize(menu_width,menu_height);
-        if (SPMenu != null)
+	    if (b != null) {
+	      b.setGameOver();
+	      this.remove(b);
+	    }
+      if (inGameMenuP != null)
+        this.remove(inGameMenuP);
+      this.setSize(menu_width,menu_height);
+      if (SPMenu != null)
             this.remove(SPMenu);
-	if (RulesMenu != null)
-	    this.remove(RulesMenu);
-	if (settingsMenu != null) 
-	    this.remove(settingsMenu);
-
-        this.add(ss);
-        repaint();
-        this.revalidate();
-        
+	    if (RulesMenu != null)
+	      this.remove(RulesMenu);
+	    if (settingsMenu != null) 
+	      this.remove(settingsMenu);
+      this.setLayout(new BorderLayout());
+      this.add(ss);
+      this.revalidate();
+      this.repaint();   
     }
     
     /**
@@ -182,11 +214,22 @@ public class startScreen2 extends JFrame {
         if (inGameMenuP != null)
             this.remove(inGameMenuP);
 	if (p1ColorScreen != null)
-	    remove(p1ColorScreen);
-	if ( p2ColorScreen != null)
-	    remove(p2ColorScreen);
-        this.repaint();
-        
+	    this.remove(p1ColorScreen);
+	if (p2ColorScreen != null) {
+	    this.remove(p2ColorScreen);
+	}
+	
+
+        //remove name panels if they exist and take p2name
+	if (namePanel1 != null)
+            this.remove(namePanel1);
+        if (namePanel2 != null) {
+	    p2Name = namePanel2.getName();
+	    if (p2Name.equals(""))
+		p2Name = "Player 2";
+            this.remove(namePanel2);
+	}
+	this.repaint();
         // set the Game size ready for The board
         this.setSize(frame_width,frame_height);
         // Remove SinglePlayer Menu if it exist
@@ -195,20 +238,31 @@ public class startScreen2 extends JFrame {
         // remove startScreen if it exist
         if (ss!= null)
             this.remove(ss);
-        this.setLayout(new BoxLayout(getContentPane(), BoxLayout.X_AXIS));
+        //this.setLayout(new BoxLayout(getContentPane(), BoxLayout.X_AXIS));
         // initiate a new board and a in-Game Menu
         inGameMenuP = new inGameMenuPanel(this);
         b = new Board();
         b.setPlayer1State(player1ColorState);
 	b.setPlayer2State(player2ColorState);
-
-        // add it to frame and refresh
-        this.add(b);
+	
+	// Panel for whose turn it is.
+        turnPanel = new JPanel();
+	who = new JLabel();
+	if (b.getTurn() == 1)
+	    who.setText("It's " + p1Name + "'s turn!");
+	else
+	    who.setText("It's " + p2Name + "'s turn!");
+	turnPanel.add(who);
+       	
+	// add it to frame and refresh
+        /* this.add(b);
         this.add(inGameMenuP);
+	      this.add(turnPanel);*/
+        this.getContentPane().add(b, BorderLayout.CENTER);
+        this.getContentPane().add(inGameMenuP, BorderLayout.LINE_END);
+        this.getContentPane().add(turnPanel, BorderLayout.PAGE_START);
         this.revalidate();
-        this.repaint();
-        
-        
+        this.repaint(); 
     }
     
     /**
@@ -232,6 +286,7 @@ public class startScreen2 extends JFrame {
 	    // switch turns back to original person
 	    if (b.getTurn() == 1) {
 		b.setTurn(2);
+		
 	    }
 	    else {
 		b.setTurn(1);
@@ -281,7 +336,11 @@ public class startScreen2 extends JFrame {
 		b.getGameGridCircle(tempPair1.getX(), tempPair1.getY()).setState(0);
 		b.getGameGridCircle(tempPair2.getX(), tempPair2.getY()).setState(0);
 	    }
-	
+	    if (b.getTurn() == 1)
+		who.setText("It's " + p1Name + "'s turn!");
+	    else
+		who.setText("It's " + p2Name + "'s turn!");
+	    turnPanel.add(who);
 	    b.repaint();
 	    return;
 	}
@@ -440,6 +499,11 @@ public class startScreen2 extends JFrame {
                 
                 }// end else
             }// end else
+	    if (b.getTurn() == 1)
+		who.setText("It's " + p1Name + "'s turn!");
+	    else
+		who.setText("It's " + p2Name + "'s turn!");
+	    turnPanel.add(who);
         }// end Method
         
         public void mouseEntered(MouseEvent e) {
@@ -496,9 +560,5 @@ public class startScreen2 extends JFrame {
         gameMode = gMode;
     }
 
-    public void setPopOutModeBool(boolean onOrOff){
-	popOutModeCBIsSelected = onOrOff;
-    }
-    
     
 }// end of startScreen Class

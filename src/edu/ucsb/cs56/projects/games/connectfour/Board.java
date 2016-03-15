@@ -20,7 +20,7 @@ class Board extends JPanel {
     public static int numColumns = 7;
     public static int numRows = 6;
     public static Circle cc;
-    private boolean gameOver = false;
+    private Circle winCircle;
     private int drawCounter;
     private static ArrayList<Circle> circleHolder;
     private Circle[][] gameGrid;
@@ -37,7 +37,10 @@ class Board extends JPanel {
     private static String magentaText = "Magenta";
     private static String brownText = "Brown";
     private static String pinkText = "Pink";
+    private String p1Name = "P1";
+    private String p2Name = "P2";
 
+    
     /**
      * Constructor intitializes instance variables and creates the empty game board
      */
@@ -81,14 +84,14 @@ class Board extends JPanel {
         }
         //after re-drawing the game board, check if someone has won or if it's a draw
         checkWin(g);
-        if (!gameOver)
+        if (!gameIsOver)
             checkDraw(g);
     }
     
     /**
      * Displays the win message on the screen when someone has won
-     * If It's Red's Turn (turn == 1), and a winner has been detected, Yellow Wins
-     * If It's Yellow's Turn (turn == 2) and a winner has been detected, Red Wins
+     * If it is Red's Turn (turn == 1), and a winner has been detected, Yellow Wins
+     * If it is Yellow's Turn (turn == 2) and a winner has been detected, Red Wins
      * @param g to draw the message
      */
     
@@ -102,7 +105,7 @@ class Board extends JPanel {
             if (turn == 1){
 		// The switch looks at player 2 because right after
 		//     the player wins it switches turns
-		switch (player2State) {
+		/*switch (player2State) {
 		case 1: winnerText = "Red";
 		    break;
 		case 2: winnerText = "Yellow";
@@ -121,9 +124,11 @@ class Board extends JPanel {
 		    break;
 		}
                 g.drawString(winnerText + " Wins!", 100, 400);
-	    }
+	  */
+    g.drawString(p2Name + " wins!", 100, 400);  
+    }
             else {
-		switch (player1State) {
+		/*switch (player1State) {
 		case 1: winnerText = "Red";
 		    break;
 		case 2: winnerText = "Yellow";
@@ -142,7 +147,9 @@ class Board extends JPanel {
 		    break;
 		}
                 g.drawString(winnerText + " Wins!", 100, 400);
-	    }
+	  */
+    g.drawString(p1Name + " wins!", 100, 400);
+    }
         }
         else{
             if (turn == 1)
@@ -150,7 +157,7 @@ class Board extends JPanel {
             else
                 g.drawString("YOU WIN!", 100, 400);
         }
-        this.gameOver = true;
+        this.setGameOver();
         
     }
     
@@ -165,8 +172,7 @@ class Board extends JPanel {
             g.setColor(Color.BLACK);
             g.setFont(new Font("Times", Font.BOLD, 100));
             g.drawString("Draw", 100, 400);
-            gameOver = true;
-	    this.setGameOver();
+	          this.setGameOver();
         }
     }
     
@@ -194,10 +200,15 @@ class Board extends JPanel {
                     // displayWinner(g, gameGrid[col][row].getState());
                     displayWinner(g);
                     // Change Winning Circles to Blue
-                    gameGrid[col][row].setState(3);
-                    gameGrid[col+1][row].setState(3);
-                    gameGrid[col+2][row].setState(3);
-                    gameGrid[col+3][row].setState(3);
+		    Circle one = gameGrid[col][row].smallCopy();
+                    Circle two = gameGrid[col+1][row].smallCopy();
+                    Circle three = gameGrid[col+2][row].smallCopy();
+                    Circle four = gameGrid[col+3][row].smallCopy();
+    		    one.setState(3);
+                    two.setState(3);
+                    three.setState(3);
+                    four.setState(3);
+    
                     repaint();
 		    this.setGameOver();
                     break;
@@ -336,7 +347,7 @@ class Board extends JPanel {
      * @return boolean
      */
     public boolean getGameOver(){
-        return this.gameOver;
+        return this.gameIsOver;
     }
     
     /**
@@ -424,7 +435,13 @@ class Board extends JPanel {
      */
     public int getPlayer2State() {
 	return player2State;
-    }
-    
+    }    
 
+    public void setPlayer1Name(String name) {
+        p1Name = name;
+    }
+
+    public void setPlayer2Name(String name) {
+        p2Name = name;
+    }
 }

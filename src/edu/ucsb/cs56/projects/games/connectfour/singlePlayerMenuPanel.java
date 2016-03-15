@@ -24,10 +24,6 @@ public class singlePlayerMenuPanel extends JPanel{
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         Font BFont = new Font("Comic Sans MS", Font.BOLD, 22);
         
-        mainMenuButton = new JButton("Main Menu");
-	mainMenuButton.addActionListener( new mainMenuButtonListener(ss) );
-	mainMenuButton.setFont(BFont);
-
 	singlePlayerEasy = new JButton ("Easy");
         singlePlayerEasy.addActionListener(new singlePlayerEasyListener(ss) );
         singlePlayerEasy.setFont(BFont);
@@ -35,10 +31,14 @@ public class singlePlayerMenuPanel extends JPanel{
         singlePlayerAdvanced = new JButton ("Advanced");
         singlePlayerAdvanced.addActionListener(new singlePlayerAdvancedListener(ss) );
         singlePlayerAdvanced.setFont(BFont);
+
+        mainMenuButton = new JButton("Main Menu");
+	mainMenuButton.addActionListener( new mainMenuButtonListener(ss) );
+	mainMenuButton.setFont(BFont);
         
-	this.add(mainMenuButton);
         this.add(singlePlayerEasy);
         this.add(singlePlayerAdvanced);
+	this.add(mainMenuButton);
     }
     
     /**

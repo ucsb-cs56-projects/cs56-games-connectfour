@@ -30,6 +30,9 @@ YES | mastergberry | gkowligi, vwtan | An implementation of Connect Four
 ```
  W14 | bkiefer13 4pm | gkowligi, vwtan | An implementation of Connect Four
 ```
+```
+W16 | christiannewkirk sarahmzhong 6pm | gkowligi, vwtan | An implementation of Connect Four
+```
 
 ###How To Play
 The first player to get 4 circles in a row diagonally, vertically, or horizontally wins. Player 1 chooses their color first and then player 2 chooses their color. Player 1 starts. Click a column in order for the circle to be dropped into the first available spot starting from the bottom. If a column is full then no more circles can be added to it. If all spots become full and there is no winner then there is a draw. 
@@ -101,8 +104,9 @@ To start the program, use `ant run`
 
 ##Known Bugs
 * When forwarding through X11, in singleplayer mode there is a lag between when the user selects a column and when the computer makes their move. After the user clicks again does the computer make their move. This does not affect gameplay but rather only affects the user experience as they now have to click again after their selection in order for the computer to make their move. Regarding the undo feature, if the user presses undo before the computer has made its move, it will only undo 1 recent move as opposed to the expected 2. 
-* After pressing the main menu button from the game board, the buttons are moved down some space.
 
-![](https://raw.githubusercontent.com/omeedrabani/cs56-games-connectfour/master/images/screenshots/knownBugImage1.png)
+##W16 Final Remarks
+Future students working on this project, hello! The main thing to try to understand immediately is that almost all of the code revolves around startScreen2.java. Every other class is used either for support of another class or to make something to be added in to startScreen2.java. Some things we would highly recommend as issues are adding options in the Settings section of the game (music, different modes, etc), better UI, and more advanced AI for single player. We were unable to solve the X11 forwarding bug as well if that's something you want to tackle. There is more specifics in our W16_lab10.md file. Good luck with the project!
 
-![](https://raw.githubusercontent.com/omeedrabani/cs56-games-connectfour/master/images/screenshots/knownBugImage2.png)
+Sincerely,
+Christian Newkirk & Sarah Zhong
