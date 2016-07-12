@@ -1,31 +1,24 @@
 package edu.ucsb.cs56.projects.games.connectfour;
 
-import javax.swing.*;
-import java.awt.event.*;
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 
 /**
- * Single Player Advanced difficulty class
- * This level of AI scans the entire board and maintains
- * lists of moves to either block or make. It intelligently
- * chooses its move by comparing int values that represent
- * the "weight" of each move.
- * Currently, the AI does NOT avoid setting up wins for the
- * human player, though it could easily be programmed to do so
- * by maintaining another list of moves to avoid, and ensuring
- * that it does not make any of those moves
+ * Single player normal difficulty class
+ * This level of AI only checks for 3 in a row of human
+ * or AI color and blocks/wins
  */
-class SinglePlayerAdvanced {
+public class SinglePlayerNormal {
+
 
     //Check if possibility for player to win
     //If so, block spot. If not, random move
 
     /**
      * Method that scans Board object b for all horizontal triples of
-     * opponent's circles from left to right, top to bottom. Calls
-     * checkAndAdd to check if move is legal and update lists of moves
+     * opponent's circles from left to right, top to bottom. Adds src.edu.ucsb.cs56.projects.games.connectfour.Tuple of
+     * IntPair of the location that would block the opponent, and weight 2
+     * to movesToBlock
      *
      * @param b
      */
@@ -46,21 +39,7 @@ class SinglePlayerAdvanced {
                     yIndex = row;
                     checkAndAdd(b, movesToBlock, xIndex, yIndex, 2);
                 }
-                //check for 2 in a row of opponent
-                if (player1Color == b.getGameGridCircle(col, row).getState()
-                        && player1Color == b.getGameGridCircle(col + 1, row).getState()
-                        && (b.getGameGridCircle(col + 2, row).getState() == 0)) {
-                    if (b.getGameGridCircle(col + 3, row).getState() == 0) {
-                        xIndex = col + 2;
-                        yIndex = row;
-                        checkAndAdd(b, movesToBlock, xIndex, yIndex, 1);
-                    }
-                    if (b.getGameGridCircle(col + 3, row).getState() == player1Color) {
-                        xIndex = col + 2;
-                        yIndex = row;
-                        checkAndAdd(b, movesToBlock, xIndex, yIndex, 2);
-                    }
-                }
+
                 //check for 3 in a row of AI
                 if (player2Color == b.getGameGridCircle(col, row).getState()
                         && player2Color == b.getGameGridCircle(col + 1, row).getState()
@@ -70,29 +49,15 @@ class SinglePlayerAdvanced {
                     yIndex = row;
                     checkAndAdd(b, movesToMake, xIndex, yIndex, 2);
                 }
-                //check for 2 in a row of AI
-                if (player2Color == b.getGameGridCircle(col, row).getState()
-                        && player2Color == b.getGameGridCircle(col + 1, row).getState()
-                        && (b.getGameGridCircle(col + 2, row).getState() == 0)) {
-                    if (b.getGameGridCircle(col + 3, row).getState() == 0) {
-                        xIndex = col + 2;
-                        yIndex = row;
-                        checkAndAdd(b, movesToMake, xIndex, yIndex, 1);
-                    }
-                    if (b.getGameGridCircle(col + 3, row).getState() == player2Color) {
-                        xIndex = col + 2;
-                        yIndex = row;
-                        checkAndAdd(b, movesToMake, xIndex, yIndex, 2);
-                    }
-                }
             }
         }
     }
 
     /**
      * Method that scans Board object b for all horizontal triples of
-     * opponent's circles from right to left, top to bottom. Calls
-     * checkAndAdd to check if move is legal and update lists of moves
+     * opponent's circles from right to left, top to bottom. Adds src.edu.ucsb.cs56.projects.games.connectfour.Tuple of
+     * IntPair of the location that would block the opponent, and weight 2
+     * to movesToBlock
      *
      * @param b
      */
@@ -112,21 +77,7 @@ class SinglePlayerAdvanced {
                     yIndex = row;
                     checkAndAdd(b, movesToBlock, xIndex, yIndex, 2);
                 }
-                //check for 2 in a row of human player
-                if (player1Color == b.getGameGridCircle(col, row).getState()
-                        && player1Color == b.getGameGridCircle(col - 1, row).getState()
-                        && (b.getGameGridCircle(col - 2, row).getState() == 0)) {
-                    if (b.getGameGridCircle(col - 3, row).getState() == 0) {
-                        xIndex = col - 2;
-                        yIndex = row;
-                        checkAndAdd(b, movesToBlock, xIndex, yIndex, 1);
-                    }
-                    if (b.getGameGridCircle(col - 3, row).getState() == player1Color) {
-                        xIndex = col - 2;
-                        yIndex = row;
-                        checkAndAdd(b, movesToBlock, xIndex, yIndex, 2);
-                    }
-                }
+
                 //check for 3 in a row of AI
                 if (player2Color == b.getGameGridCircle(col, row).getState()
                         && player2Color == b.getGameGridCircle(col - 1, row).getState()
@@ -136,35 +87,22 @@ class SinglePlayerAdvanced {
                     yIndex = row;
                     checkAndAdd(b, movesToMake, xIndex, yIndex, 2);
                 }
-                //check for 2 in a row of AI
-                if (player2Color == b.getGameGridCircle(col, row).getState()
-                        && player2Color == b.getGameGridCircle(col - 1, row).getState()
-                        && (b.getGameGridCircle(col - 2, row).getState() == 0)) {
-                    if (b.getGameGridCircle(col - 3, row).getState() == 0) {
-                        xIndex = col - 2;
-                        yIndex = row;
-                        checkAndAdd(b, movesToMake, xIndex, yIndex, 1);
-                    }
-                    if (b.getGameGridCircle(col - 3, row).getState() == player2Color) {
-                        xIndex = col - 2;
-                        yIndex = row;
-                        checkAndAdd(b, movesToMake, xIndex, yIndex, 2);
-                    }
-                }
             }
         }
     }
 
     /**
      * Method that scans Board object b for all vertical triples of
-     * opponent's circles from left to right, bottom to top. Does NOT
-     * call checkAndAdd, as it is unnecessary to check, adds manually
+     * opponent's circles from left to right, bottom to top. Adds src.edu.ucsb.cs56.projects.games.connectfour.Tuple of
+     * IntPair of the location that would block the opponent, and weight 2
+     * to movesToBlock
      *
      * @param b
      */
     private static void vertical(Board b, ArrayList<Tuple> movesToMake, ArrayList<Tuple> movesToBlock) {
-        int xIndex;
-        int yIndex;
+        int weight = 0;
+        int xIndex = 0;
+        int yIndex = 0;
         int player1Color = b.getPlayer1State();
         int player2Color = b.getPlayer2State();
 
@@ -177,17 +115,9 @@ class SinglePlayerAdvanced {
                         && (b.getGameGridCircle(col, row - 3).getState() == 0)) {
                     xIndex = col;
                     yIndex = row - 3;
+                    weight = 2;
                     IntPair location = new IntPair(xIndex, yIndex);
-                    movesToBlock.add(new Tuple(location, 2));
-                }
-                //check for 2 in a row of human color
-                if (player1Color == b.getGameGridCircle(col, row).getState()
-                        && player1Color == b.getGameGridCircle(col, row - 1).getState()
-                        && (b.getGameGridCircle(col, row - 2).getState() == 0)) {
-                    xIndex = col;
-                    yIndex = row - 2;
-                    IntPair location = new IntPair(xIndex, yIndex);
-                    movesToBlock.add(new Tuple(location, 1));
+                    movesToBlock.add(new Tuple(location, weight));
                 }
                 //check for 3 in a row of AI color
                 if (player2Color == b.getGameGridCircle(col, row).getState()
@@ -196,17 +126,9 @@ class SinglePlayerAdvanced {
                         && (b.getGameGridCircle(col, row - 3).getState() == 0)) {
                     xIndex = col;
                     yIndex = row - 3;
+                    weight = 2;
                     IntPair location = new IntPair(xIndex, yIndex);
-                    movesToMake.add(new Tuple(location, 2));
-                }
-                //check for 2 in a row of human color
-                if (player2Color == b.getGameGridCircle(col, row).getState()
-                        && player2Color == b.getGameGridCircle(col, row - 1).getState()
-                        && (b.getGameGridCircle(col, row - 2).getState() == 0)) {
-                    xIndex = col;
-                    yIndex = row - 2;
-                    IntPair location = new IntPair(xIndex, yIndex);
-                    movesToBlock.add(new Tuple(location, 1));
+                    movesToMake.add(new Tuple(location, weight));
                 }
             }
         }
@@ -214,12 +136,14 @@ class SinglePlayerAdvanced {
 
     /**
      * Method that scans Board object b for all diagonal triples of
-     * opponent's circles in South-East direction. Calls
-     * checkAndAdd to check if move is legal and update lists of moves
+     * opponent's circles in South-East direction. Adds src.edu.ucsb.cs56.projects.games.connectfour.Tuple of
+     * IntPair of the location that would block the opponent, and weight 2
+     * to movesToBlock
      *
      * @param b
      */
     private static void diagLeftRight_Right(Board b, ArrayList<Tuple> movesToMake, ArrayList<Tuple> movesToBlock) {
+        int weight = 0;
         int xIndex = 0;
         int yIndex = 0;
         int player1Color = b.getPlayer1State();
@@ -236,21 +160,6 @@ class SinglePlayerAdvanced {
                     yIndex = row + 3;
                     checkAndAdd(b, movesToBlock, xIndex, yIndex, 2);
                 }
-                //check for 2 in a row of human color
-                if (player1Color == b.getGameGridCircle(col, row).getState()
-                        && player1Color == b.getGameGridCircle(col + 1, row + 1).getState()
-                        && (b.getGameGridCircle(col + 2, row + 2).getState() == 0)) {
-                    if (b.getGameGridCircle(col + 3, row + 3).getState() == 0) {
-                        xIndex = col + 2;
-                        yIndex = row + 2;
-                        checkAndAdd(b, movesToBlock, xIndex, yIndex, 1);
-                    }
-                    if (b.getGameGridCircle(col + 3, row + 3).getState() == player1Color) {
-                        xIndex = col + 2;
-                        yIndex = row + 2;
-                        checkAndAdd(b, movesToBlock, xIndex, yIndex, 2);
-                    }
-                }
                 //check for 3 in a row of AI color
                 if (player2Color == b.getGameGridCircle(col, row).getState()
                         && player2Color == b.getGameGridCircle(col + 1, row + 1).getState()
@@ -260,21 +169,6 @@ class SinglePlayerAdvanced {
                     yIndex = row + 3;
                     checkAndAdd(b, movesToMake, xIndex, yIndex, 2);
                 }
-                //check for 2 in a row of AI color
-                if (player2Color == b.getGameGridCircle(col, row).getState()
-                        && player2Color == b.getGameGridCircle(col + 1, row + 1).getState()
-                        && (b.getGameGridCircle(col + 2, row + 2).getState() == 0)) {
-                    if (b.getGameGridCircle(col + 3, row + 3).getState() == 0) {
-                        xIndex = col + 2;
-                        yIndex = row + 2;
-                        checkAndAdd(b, movesToMake, xIndex, yIndex, 1);
-                    }
-                    if (b.getGameGridCircle(col + 3, row + 3).getState() == player2Color) {
-                        xIndex = col + 2;
-                        yIndex = row + 2;
-                        checkAndAdd(b, movesToMake, xIndex, yIndex, 2);
-                    }
-                }
             }
         }
     }
@@ -283,12 +177,14 @@ class SinglePlayerAdvanced {
 
     /**
      * Method that scans Board object b for all diagonal triples of
-     * opponent's circles in North-East direction. Calls
-     * checkAndAdd to check if move is legal and update lists of moves
+     * opponent's circles in North-East direction. Adds src.edu.ucsb.cs56.projects.games.connectfour.Tuple of
+     * IntPair of the location that would block the opponent, and weight 2
+     * to movesToBlock
      *
      * @param b
      */
     private static void diagLeftRight_Left(Board b, ArrayList<Tuple> movesToMake, ArrayList<Tuple> movesToBlock) {
+        int weight = 0;
         int xIndex = 0;
         int yIndex = 0;
         int player1Color = b.getPlayer1State();
@@ -305,21 +201,6 @@ class SinglePlayerAdvanced {
                     yIndex = row - 3;
                     checkAndAdd(b, movesToBlock, xIndex, yIndex, 2);
                 }
-                //check for 2 in a row of human color
-                if (player1Color == b.getGameGridCircle(col, row).getState()
-                        && player1Color == b.getGameGridCircle(col - 1, row - 1).getState()
-                        && (b.getGameGridCircle(col - 2, row - 2).getState() == 0)) {
-                    if (b.getGameGridCircle(col - 3, row - 3).getState() == 0) {
-                        xIndex = col - 2;
-                        yIndex = row - 2;
-                        checkAndAdd(b, movesToBlock, xIndex, yIndex, 1);
-                    }
-                    if (b.getGameGridCircle(col - 3, row - 3).getState() == player1Color) {
-                        xIndex = col - 2;
-                        yIndex = row - 2;
-                        checkAndAdd(b, movesToBlock, xIndex, yIndex, 2);
-                    }
-                }
                 //check for 3 in a row of AI
                 if (player2Color == b.getGameGridCircle(col - 1, row - 1).getState()
                         && player2Color == b.getGameGridCircle(col - 1, row - 1).getState()
@@ -329,33 +210,22 @@ class SinglePlayerAdvanced {
                     yIndex = row - 3;
                     checkAndAdd(b, movesToMake, xIndex, yIndex, 2);
                 }
-                //check for 2 in a row of AI
-                if (player2Color == b.getGameGridCircle(col - 1, row - 1).getState()
-                        && player2Color == b.getGameGridCircle(col - 1, row - 1).getState()
-                        && (b.getGameGridCircle(col - 2, row - 2).getState() == 0)) {
-                    if (b.getGameGridCircle(col - 3, row - 3).getState() == 0) {
-                        xIndex = col - 2;
-                        yIndex = row - 2;
-                        checkAndAdd(b, movesToMake, xIndex, yIndex, 1);
-                    }
-                    if (b.getGameGridCircle(col - 3, row - 3).getState() == player2Color) {
-                        xIndex = col - 2;
-                        yIndex = row - 2;
-                        checkAndAdd(b, movesToMake, xIndex, yIndex, 2);
-                    }
-                }
             }
         }
     }
 
+    //digaonal upper right to lower left, right to left
+
     /**
      * Method that scans Board object b for all diagonal triples of
-     * opponent's circles in South-West direction. Calls checkAndAdd
-     * to check if move is legal and update lists of moves
+     * opponent's circles in South-West direction. Adds src.edu.ucsb.cs56.projects.games.connectfour.Tuple of
+     * IntPair of the location that would block the opponent, and weight 2
+     * to movesToBlock
      *
      * @param b
      */
     private static void diagRightLeft_Left(Board b, ArrayList<Tuple> movesToMake, ArrayList<Tuple> movesToBlock) {
+        int weight = 0;
         int xIndex = 0;
         int yIndex = 0;
         int player1Color = b.getPlayer1State();
@@ -372,21 +242,6 @@ class SinglePlayerAdvanced {
                     yIndex = row + 3;
                     checkAndAdd(b, movesToBlock, xIndex, yIndex, 2);
                 }
-                //check for 2 in a row of human color
-                if (player1Color == b.getGameGridCircle(col, row).getState()
-                        && player1Color == b.getGameGridCircle(col - 1, row + 1).getState()
-                        && (b.getGameGridCircle(col - 2, row + 2).getState() == 0)) {
-                    if (b.getGameGridCircle(col - 3, row + 3).getState() == 0) {
-                        xIndex = col - 2;
-                        yIndex = row + 2;
-                        checkAndAdd(b, movesToBlock, xIndex, yIndex, 1);
-                    }
-                    if (b.getGameGridCircle(col - 3, row + 3).getState() == player1Color) {
-                        xIndex = col - 2;
-                        yIndex = row + 2;
-                        checkAndAdd(b, movesToBlock, xIndex, yIndex, 2);
-                    }
-                }
                 //check for 3 in a row of AI color
                 if (player2Color == b.getGameGridCircle(col, row).getState()
                         && player2Color == b.getGameGridCircle(col - 1, row + 1).getState()
@@ -396,34 +251,22 @@ class SinglePlayerAdvanced {
                     yIndex = row + 3;
                     checkAndAdd(b, movesToMake, xIndex, yIndex, 2);
                 }
-                //check for 2 in a row of AI color
-                if (player2Color == b.getGameGridCircle(col, row).getState()
-                        && player2Color == b.getGameGridCircle(col - 1, row + 1).getState()
-                        && (b.getGameGridCircle(col - 2, row + 2).getState() == 0)
-                        && (b.getGameGridCircle(col - 3, row + 3).getState() == 0)) {
-                    if (b.getGameGridCircle(col - 3, row + 3).getState() == 0) {
-                        xIndex = col - 2;
-                        yIndex = row + 2;
-                        checkAndAdd(b, movesToMake, xIndex, yIndex, 1);
-                    }
-                    if (b.getGameGridCircle(col - 3, row + 3).getState() == player2Color) {
-                        xIndex = col - 2;
-                        yIndex = row + 2;
-                        checkAndAdd(b, movesToMake, xIndex, yIndex, 2);
-                    }
-                }
             }
         }
     }
 
+    // diagonal upper right to lower left, left to right
+
     /**
      * Method that scans Board object b for all diagonal triples of
-     * opponent's circles in North-East direction. Calls checkAndAdd
-     * to check if move is legal and add to list of moves
+     * opponent's circles in North-East direction. Adds src.edu.ucsb.cs56.projects.games.connectfour.Tuple of
+     * IntPair of the location that would block the opponent, and weight 2
+     * to movesToBlock
      *
      * @param b
      */
     private static void diagRightLeft_Right(Board b, ArrayList<Tuple> movesToMake, ArrayList<Tuple> movesToBlock) {
+        int weight = 0;
         int xIndex = 0;
         int yIndex = 0;
         int player1Color = b.getPlayer1State();
@@ -440,21 +283,6 @@ class SinglePlayerAdvanced {
                     yIndex = row - 3;
                     checkAndAdd(b, movesToBlock, xIndex, yIndex, 2);
                 }
-                //check for 2 in a row of human color
-                if (player1Color == b.getGameGridCircle(col, row).getState()
-                        && player1Color == b.getGameGridCircle(col + 1, row - 1).getState()
-                        && (b.getGameGridCircle(col + 2, row - 2).getState() == 0)) {
-                    if (b.getGameGridCircle(col + 3, row - 3).getState() == 0) {
-                        xIndex = col + 2;
-                        yIndex = row - 2;
-                        checkAndAdd(b, movesToBlock, xIndex, yIndex, 1);
-                    }
-                    if (b.getGameGridCircle(col + 3, row - 3).getState() == player1Color) {
-                        xIndex = col + 2;
-                        yIndex = row - 2;
-                        checkAndAdd(b, movesToBlock, xIndex, yIndex, 2);
-                    }
-                }
                 //check for 3 in a row of AI color
                 if (player2Color == b.getGameGridCircle(col, row).getState()
                         && player2Color == b.getGameGridCircle(col + 1, row - 1).getState()
@@ -463,21 +291,6 @@ class SinglePlayerAdvanced {
                     xIndex = col + 3;
                     yIndex = row - 3;
                     checkAndAdd(b, movesToMake, xIndex, yIndex, 2);
-                }
-                //check for 2 in a row of AI color
-                if (player2Color == b.getGameGridCircle(col, row).getState()
-                        && player2Color == b.getGameGridCircle(col + 1, row - 1).getState()
-                        && (b.getGameGridCircle(col + 2, row - 2).getState() == 0)) {
-                    if (b.getGameGridCircle(col + 3, row - 3).getState() == 0) {
-                        xIndex = col + 2;
-                        yIndex = row - 2;
-                        checkAndAdd(b, movesToMake, xIndex, yIndex, 1);
-                    }
-                    if (b.getGameGridCircle(col + 3, row - 3).getState() == player2Color) {
-                        xIndex = col + 2;
-                        yIndex = row - 2;
-                        checkAndAdd(b, movesToMake, xIndex, yIndex, 2);
-                    }
                 }
             }
         }
@@ -544,24 +357,8 @@ class SinglePlayerAdvanced {
         //check if opponent has winning move and block
         for (Tuple item : movesToBlock) {
             if (item.getWeight() == 2) {
+                updateBoard(b, item.getLocation().getX(), item.getLocation().getY());
                 System.out.println("I'm smart, so I'm blocking you at " + item.getLocation().getX() + "," + item.getLocation().getY());
-                updateBoard(b, item.getLocation().getX(), item.getLocation().getY());
-                return item.getLocation();
-            }
-        }
-        //if no winning move for either, make a triple
-        for (Tuple item : movesToMake) {
-            if (item.getWeight() == 1) {
-                System.out.println("Hmm, my best move is to make this triple at " + item.getLocation().getX() + "," + item.getLocation().getY());
-                updateBoard(b, item.getLocation().getX(), item.getLocation().getY());
-                return item.getLocation();
-            }
-        }
-        //if no triples to make, block any of opponent's triples
-        for (Tuple item : movesToBlock) {
-            if (item.getWeight() == 1) {
-                System.out.println("Hmm, my best move is to block your triple at " + item.getLocation().getX() + "," + item.getLocation().getY());
-                updateBoard(b, item.getLocation().getX(), item.getLocation().getY());
                 return item.getLocation();
             }
         }
@@ -583,7 +380,6 @@ class SinglePlayerAdvanced {
             }
         }
         System.out.println("Hmm, I'm not sure so I'm guessing " + xIndex + "," + yIndex);
-
         updateBoard(b, xIndex, yIndex);
         return new IntPair(xIndex, yIndex);
 
@@ -602,7 +398,6 @@ class SinglePlayerAdvanced {
         b.setTurn(1);
         b.repaint();
         b.setDrawCounter(b.getDrawCounter() + 1);
-        return;
     }
 
     /**
@@ -611,26 +406,20 @@ class SinglePlayerAdvanced {
      * @param b Board on which the move should be made.
      * @return IntPair the IntPair of the spot at which the move is made
      */
-    public static IntPair AdvancedComputerMove(Board b) {
+    public static IntPair normalComputerMove(Board b) {
         ArrayList<Tuple> movesToMake = new ArrayList<Tuple>();
         ArrayList<Tuple> movesToBlock = new ArrayList<Tuple>();
 
         if (!b.getGameOver()) {//make sure game is not already over
                /*
-               find highest weight to block, if none of weight 2, then go for the win
+	   		find highest weight to block, if none of weight 2, then go for the win
 	   		End goal is random moves only if first turn or only single circles on board
 	   		would have to make it calc moves for strings of 2 circles which would be a lot of coding
 	   		*/
             findMoves(b, movesToMake, movesToBlock);
-            IntPair move = calculateMove(b, movesToMake, movesToBlock);
-            return move;
+            return calculateMove(b, movesToMake, movesToBlock);
         }
         return new IntPair(0, 0);
     }
 
 }
-
-
-
-
-

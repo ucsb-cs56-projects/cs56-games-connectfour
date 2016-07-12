@@ -6,40 +6,43 @@ import java.awt.*;
 import java.util.ArrayList;
 
 /**
-   Panel for the settings menu accessed from the Main Menu screen
+ * Panel for the settings menu accessed from the Main Menu screen
  */
-public class settingsPanel extends JPanel{
-    
+public class settingsPanel extends JPanel {
+
     private JButton mainMenuButton;
 
     /**
-       Constructor for the settingsPanel
-       @param ss startScreen2
+     * Constructor for the settingsPanel
+     *
+     * @param ss startScreen2
      */
     public settingsPanel(startScreen2 ss) {
-        super ();
+        super();
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         Font BFont = new Font("Comic Sans MS", Font.BOLD, 22);
-        
+
         mainMenuButton = new JButton("Main Menu");
-	mainMenuButton.addActionListener( new mainMenuButtonListener(ss) );
-	mainMenuButton.setFont(BFont);
-	
-	this.add(mainMenuButton);
+        mainMenuButton.addActionListener(new mainMenuButtonListener(ss));
+        mainMenuButton.setFont(BFont);
+
+        this.add(mainMenuButton);
     }
-    
+
     /**
-       Listener for the main menu button in the rules page
+     * Listener for the main menu button in the rules page
      */
     class mainMenuButtonListener implements ActionListener {
-	private startScreen2 ss1;
-	mainMenuButtonListener(final startScreen2 ss){
+        private startScreen2 ss1;
+
+        mainMenuButtonListener(final startScreen2 ss) {
             ss1 = ss;
         }
-        public void actionPerformed(ActionEvent event){
+
+        public void actionPerformed(ActionEvent event) {
             ss1.BackToStartScreen();
         }
 
     }
-    
+
 }
