@@ -64,7 +64,7 @@ public class TestSinglePlayerNormal {
      *                     the circles at each location. Can easily be
      *                     exported from a game by checking Testing Mode
      *                     box in settings, and pressing Print Board on
-     *                     the InGameMenu
+     *                     the inGameMenu
      */
     public void initializeGrid(int[][] exportedGrid) {
         int rows = b.numRows;
@@ -102,8 +102,30 @@ public class TestSinglePlayerNormal {
         assertEquals(spot.getY(), AImove.getY());
     }
 
+// this case never happens right now; fix normal AI to block horizontal too 
+/*
     @Test
-    public void WinOverBlockVert() throws Exception {
+    public void BlockHorizontal() throws Exception {
+        startup();
+        int[][] exportedGrid =
+                {
+                        { 0 ,0 ,0 ,0 ,0 ,0 ,0  },
+                        { 0 ,0 ,0 ,0 ,0 ,0 ,0  },
+                        { 0 ,0 ,0 ,0 ,0 ,0 ,0  },
+                        { 0 ,0 ,0 ,0 ,0 ,0 ,0  },
+                        { 0 ,0 ,0 ,0 ,0 ,0 ,0  },
+                        { 0 ,1 ,1 ,1 ,2 ,2 ,0  }
+                };
+        initializeGrid(exportedGrid);
+
+        IntPair spot = new IntPair(0, 5);
+        IntPair AImove = SinglePlayerNormal.normalComputerMove(b);
+        assertEquals(spot.getX(), AImove.getX());
+        assertEquals(spot.getY(), AImove.getY());
+    } */
+
+    @Test
+    public void WinVertOverBlockVert() throws Exception {
         startup();
 
         int[][] exportedGrid =
@@ -122,5 +144,4 @@ public class TestSinglePlayerNormal {
         assertEquals(spot.getX(), AImove.getX());
         assertEquals(spot.getY(), AImove.getY());
     }
-
 }

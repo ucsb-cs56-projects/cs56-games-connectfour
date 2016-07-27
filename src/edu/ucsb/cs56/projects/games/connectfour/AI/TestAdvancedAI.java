@@ -78,7 +78,7 @@ public class TestAdvancedAI {
      *                     the circles at each location. Can easily be
      *                     exported from a game by checking Testing Mode
      *                     box in settings, and pressing Print Board on
-     *                     the InGameMenu
+     *                     the inGameMenu
      */
     public void initializeGrid(int[][] exportedGrid) {
         int rows = b.numRows;
@@ -157,6 +157,28 @@ public class TestAdvancedAI {
     }
 
     @Test
+    public void WinOn3Diagonal() throws Exception {
+        startup();
+
+        int[][] exportedGrid =
+                {
+                        { 0 ,0 ,0 ,0 ,0 ,0 ,0  },
+                        { 0 ,0 ,0 ,0 ,0 ,0 ,0  },
+                        { 0 ,0 ,0 ,0 ,0 ,0 ,0  },
+                        { 0 ,0 ,0 ,0 ,2 ,2 ,2  },
+                        { 0 ,0 ,0 ,2 ,1 ,1 ,1  },
+                        { 0 ,0 ,2 ,1 ,1 ,2 ,1  }
+                };
+        initializeGrid(exportedGrid);
+
+        IntPair spot = new IntPair(5, 2);
+        IntPair AImove = SinglePlayerAdvanced.AdvancedComputerMove(b);
+        assertEquals(spot.getX(), AImove.getX());
+        assertEquals(spot.getY(), AImove.getY());
+    }
+
+
+    @Test
     public void blockBrokenThreeHoriz() throws Exception {
         startup();
         int[][]exportedGrid =
@@ -175,6 +197,48 @@ public class TestAdvancedAI {
         assertEquals(spot.getX(), AImove.getX());
         assertEquals(spot.getY(), AImove.getY());
     }
+
+ @Test
+    public void blockDiagonal2NE() throws Exception {
+        startup();
+        int[][]exportedGrid =
+                {
+                        { 0 ,0 ,0 ,0 ,0 ,0 ,0  },
+                        { 0 ,0 ,0 ,0 ,0 ,0 ,0  },
+                        { 0 ,0 ,0 ,0 ,0 ,0 ,0  },
+                        { 0 ,0 ,0 ,0 ,1 ,1 ,0  },
+                        { 0 ,0 ,1 ,1 ,2 ,1 ,0  },
+                        { 0 ,0 ,2 ,1 ,2 ,2 ,0  }
+                };
+        initializeGrid(exportedGrid);
+
+        IntPair spot = new IntPair(5,2);
+        IntPair AImove = SinglePlayerAdvanced.AdvancedComputerMove(b);
+        assertEquals(spot.getX(), AImove.getX());
+        assertEquals(spot.getY(), AImove.getY());
+    }
+
+ @Test
+    public void blockDiagonal2NW() throws Exception {
+        startup();
+        int[][]exportedGrid =
+                {
+                        { 0 ,0 ,0 ,0 ,0 ,0 ,0  },
+                        { 0 ,0 ,0 ,0 ,0 ,0 ,0  },
+                        { 0 ,0 ,0 ,0 ,0 ,0 ,0  },
+                        { 0 ,0 ,0 ,0 ,0 ,0 ,0  },
+                        { 0 ,0 ,1 ,1 ,0 ,0 ,0  },
+                        { 0 ,0 ,2 ,1 ,1 ,0 ,0  }
+                };
+        initializeGrid(exportedGrid);
+
+        IntPair spot = new IntPair(2,3);
+        IntPair AImove = SinglePlayerAdvanced.AdvancedComputerMove(b);
+        assertEquals(spot.getX(), AImove.getX());
+        assertEquals(spot.getY(), AImove.getY());
+    }
+
+
 
     @Test
     public void blockBrokenThreeNE() throws Exception {
