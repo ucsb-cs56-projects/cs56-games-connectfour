@@ -327,13 +327,11 @@ public class SinglePlayerNormal {
                 && b.getGameGridCircle(xIndex, yIndex + 1).getState() != 0) {
             IntPair location = new IntPair(xIndex, yIndex);
             movesToBlockOrAdd.add(new Tuple(location, weight));
-            System.out.println("I see something at " + xIndex + "," + yIndex);
         }
         //check if in bottom row
         if (yIndex == Board.numRows - 1) {
             IntPair location = new IntPair(xIndex, yIndex);
             movesToBlockOrAdd.add(new Tuple(location, weight));
-            System.out.println("I see something at " + xIndex + "," + yIndex);
         }
     }
 
@@ -369,14 +367,14 @@ public class SinglePlayerNormal {
         //first check for winning move
         for (Tuple item : movesToMake) {
             if (item.getWeight() == 2) {
-                System.out.println("I'm smart, so I'm winning at " + item.getLocation().getX() + "," + item.getLocation().getY());
+                AIDebuggingOutput.println("I'm smart, so I'm winning at " + item.getLocation().getX() + "," + item.getLocation().getY());
                 return item.getLocation();
             }
         }
         //check if opponent has winning move and block
         for (Tuple item : movesToBlock) {
             if (item.getWeight() == 2) {
-                System.out.println("I'm smart, so I'm blocking you at " + item.getLocation().getX() + "," + item.getLocation().getY());
+                AIDebuggingOutput.println("I'm smart, so I'm blocking you at " + item.getLocation().getX() + "," + item.getLocation().getY());
                 return item.getLocation();
             }
         }
@@ -397,7 +395,7 @@ public class SinglePlayerNormal {
                 break;
             }
         }
-        System.out.println("Hmm, I'm not sure so I'm guessing " + xIndex + "," + yIndex);
+        AIDebuggingOutput.println("Hmm, I'm not sure so I'm guessing " + xIndex + "," + yIndex);
         return new IntPair(xIndex, yIndex);
     }
 

@@ -3,6 +3,7 @@ package edu.ucsb.cs56.projects.games.connectfour.AI;
 import edu.ucsb.cs56.projects.games.connectfour.Logic.Board;
 import edu.ucsb.cs56.projects.games.connectfour.Logic.Game;
 import edu.ucsb.cs56.projects.games.connectfour.Logic.IntPair;
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -25,10 +26,18 @@ import static org.junit.Assert.assertEquals;
  * <p>
  * (3)The AI is Player 2 :P
  */
-public class TestAdvancedAI {
+public class TestSinglePlayerAdvanced {
     Game g;
     Board b;
 
+    /**
+     * This disables the AI from printing out its moves so JUnit tests aren't
+     * as messy
+     */
+    @Before
+    public void runBeforeEveryTest() {
+        AIDebuggingOutput.debugOn = false;
+    }
     /**
      * Convenience method for initializing the board and game
      * Used in nearly every test to creat a board and game

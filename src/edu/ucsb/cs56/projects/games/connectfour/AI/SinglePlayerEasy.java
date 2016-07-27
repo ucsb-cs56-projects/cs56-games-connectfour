@@ -43,7 +43,7 @@ public class SinglePlayerEasy {
                 }
             }
         }
-        System.out.println("AI move is " + xIndex + "," + yIndex);
+        AIDebuggingOutput.println("AI move is " + xIndex + "," + yIndex);
         return new IntPair(xIndex, yIndex);
     }
 }

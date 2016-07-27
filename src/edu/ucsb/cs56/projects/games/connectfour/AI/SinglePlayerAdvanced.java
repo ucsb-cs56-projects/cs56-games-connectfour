@@ -558,25 +558,25 @@ public class SinglePlayerAdvanced {
     public static IntPair calculateMove(Board b, ArrayList<Tuple> movesToMake, ArrayList<Tuple> movesToBlock) {
         for (Tuple item : movesToMake) {
             if (item.getWeight() == 2) {
-                System.out.println("I'm smart, so I'm winning at " + item.getLocation().getX() + "," + item.getLocation().getY());
+                AIDebuggingOutput.println("I'm smart, so I'm winning at " + item.getLocation().getX() + "," + item.getLocation().getY());
                 return item.getLocation();
             }
         }
         for (Tuple item : movesToBlock) {
             if (item.getWeight() == 2) {
-                System.out.println("I'm smart, so I'm blocking you at " + item.getLocation().getX() + "," + item.getLocation().getY());
+                AIDebuggingOutput.println("I'm smart, so I'm blocking you at " + item.getLocation().getX() + "," + item.getLocation().getY());
                 return item.getLocation();
             }
         }
         for (Tuple item : movesToMake) {
             if (item.getWeight() == 1) {
-                System.out.println("Hmm, my best move is to make this triple at " + item.getLocation().getX() + "," + item.getLocation().getY());
+                AIDebuggingOutput.println("Hmm, my best move is to make this triple at " + item.getLocation().getX() + "," + item.getLocation().getY());
                 return item.getLocation();
             }
         }
         for (Tuple item : movesToBlock) {
             if (item.getWeight() == 1) {
-                System.out.println("Hmm, my best move is to block your triple at " + item.getLocation().getX() + "," + item.getLocation().getY());
+                AIDebuggingOutput.println("Hmm, my best move is to block your triple at " + item.getLocation().getX() + "," + item.getLocation().getY());
                 return item.getLocation();
             }
         }
@@ -595,7 +595,7 @@ public class SinglePlayerAdvanced {
                 break;
             }
         }
-        System.out.println("Hmm, I'm not sure so I'm guessing " + xIndex + "," + yIndex);
+        AIDebuggingOutput.println("Hmm, I'm not sure so I'm guessing " + xIndex + "," + yIndex);
         return new IntPair(xIndex, yIndex);
     }
 
