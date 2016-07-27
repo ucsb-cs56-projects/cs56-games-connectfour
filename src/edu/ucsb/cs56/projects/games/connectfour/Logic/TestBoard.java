@@ -64,7 +64,7 @@ public class TestBoard {
      *                     the circles at each location. Can easily be
      *                     exported from a game by checking Testing Mode
      *                     box in settings, and pressing Print Board on
-     *                     the inGameMenu
+     *                     the InGameMenu
      */
     public void initializeGrid(int[][] exportedGrid){
         int rows = b.numRows;

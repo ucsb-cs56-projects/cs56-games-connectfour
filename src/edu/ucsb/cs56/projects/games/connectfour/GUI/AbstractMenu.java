@@ -140,7 +140,7 @@ public abstract class AbstractMenu extends JPanel {
 
     /**
      * This handles the GUI side of launching the game
-     * creates the BoardDisplay and inGameMenu
+     * creates the BoardDisplay and InGameMenu
      * then calls Game's launchGame() to handle
      * the logic side of launching the game
      */
@@ -148,7 +148,7 @@ public abstract class AbstractMenu extends JPanel {
         frame.setSize(frame_width, frame_height);
         frame.getContentPane().removeAll();
         game.setFrame(frame);
-        inGameMenu nextMenu = new inGameMenu(game, frame);
+        InGameMenu nextMenu = new InGameMenu(game, frame);
         BoardDisplay display = new BoardDisplay(game, frame);
         display.repaint();
         game.launchGame();
@@ -163,7 +163,7 @@ public abstract class AbstractMenu extends JPanel {
 
     /**
      * This handles the GUI side of restarting a game
-     * Called when the Restart button is pressed on the inGameMenu
+     * Called when the Restart button is pressed on the InGameMenu
      * We've implemented it in the abstract class in case future
      * versions have a need for it in other menus
      */
@@ -173,7 +173,7 @@ public abstract class AbstractMenu extends JPanel {
         game.setFrame(frame);
         game.getBoard().restart();
         frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.X_AXIS));
-        inGameMenu nextMenu = new inGameMenu(game, frame);
+        InGameMenu nextMenu = new InGameMenu(game, frame);
         display.repaint();
         frame.getContentPane().add(display, BorderLayout.CENTER);
         frame.getContentPane().add(nextMenu, BorderLayout.LINE_END);

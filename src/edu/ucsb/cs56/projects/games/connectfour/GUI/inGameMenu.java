@@ -13,7 +13,7 @@ import java.awt.event.ActionListener;
  * @author Bryanna Phan
  * @version CS56 M16 UCSB
  */
-public class inGameMenu extends AbstractMenu {
+public class InGameMenu extends AbstractMenu {
 
     private JButton mainMButton;
     private JButton restartButton;
@@ -24,7 +24,7 @@ public class inGameMenu extends AbstractMenu {
      * @param game  game object that is passed to all menus so they can access game data
      * @param frame the JFrame reference that is passed to all load(*)Menu functions so they can add menus to the frame
      */
-    public inGameMenu(Game game, JFrame frame) {
+    public InGameMenu(Game game, JFrame frame) {
         super(game, frame);
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
