@@ -171,7 +171,7 @@ public class TestAdvancedAI {
                 };
         initializeGrid(exportedGrid);
 
-        IntPair spot = new IntPair(5, 2);
+        IntPair spot = new IntPair(3, 3);
         IntPair AImove = SinglePlayerAdvanced.AdvancedComputerMove(b);
         assertEquals(spot.getX(), AImove.getX());
         assertEquals(spot.getY(), AImove.getY());
@@ -208,7 +208,7 @@ public class TestAdvancedAI {
                         { 0 ,0 ,0 ,0 ,0 ,0 ,0  },
                         { 0 ,0 ,0 ,0 ,1 ,1 ,0  },
                         { 0 ,0 ,1 ,1 ,2 ,1 ,0  },
-                        { 0 ,0 ,2 ,1 ,2 ,2 ,0  }
+                        { 0 ,0 ,1 ,1 ,2 ,2 ,0  }
                 };
         initializeGrid(exportedGrid);
 
@@ -227,8 +227,8 @@ public class TestAdvancedAI {
                         { 0 ,0 ,0 ,0 ,0 ,0 ,0  },
                         { 0 ,0 ,0 ,0 ,0 ,0 ,0  },
                         { 0 ,0 ,0 ,0 ,0 ,0 ,0  },
-                        { 0 ,0 ,1 ,1 ,0 ,0 ,0  },
-                        { 0 ,0 ,2 ,1 ,1 ,0 ,0  }
+                        { 0 ,0 ,2 ,1 ,0 ,0 ,0  },
+                        { 0 ,1 ,2 ,2 ,1 ,0 ,0  }
                 };
         initializeGrid(exportedGrid);
 

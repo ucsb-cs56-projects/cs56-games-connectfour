@@ -5,7 +5,6 @@ import edu.ucsb.cs56.projects.games.connectfour.Logic.Game;
 import edu.ucsb.cs56.projects.games.connectfour.Logic.IntPair;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -83,7 +82,7 @@ public class TestSinglePlayerEasy {
     }
 
     @Test
-    public void ensureValid() throws Exception {
+    public void testensureValid() throws Exception {
         startup();
         int[][] exportedGrid =
                 {

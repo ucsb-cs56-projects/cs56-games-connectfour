@@ -77,7 +77,7 @@
        <batchtest fork="yes">
           <fileset dir="src">
             <!-- this will pick up every class with a name ending in Test -->
-            <include name="**/*Test.java"/>
+            <include name="**/Test*.java"/>
           </fileset>
        </batchtest>
 
@@ -93,6 +93,8 @@
       <attribute name="${mainClass}" value="startScreen2"/>
     </manifest>
    </jar>
- </target>   
+ </target>
+
+
 
 </project>

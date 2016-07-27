@@ -5,7 +5,6 @@ import edu.ucsb.cs56.projects.games.connectfour.Logic.Game;
 import edu.ucsb.cs56.projects.games.connectfour.Logic.IntPair;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -103,7 +102,7 @@ public class TestSinglePlayerNormal {
     }
 
 // this case never happens right now; fix normal AI to block horizontal too 
-/*
+
     @Test
     public void BlockHorizontal() throws Exception {
         startup();
@@ -122,7 +121,7 @@ public class TestSinglePlayerNormal {
         IntPair AImove = SinglePlayerNormal.normalComputerMove(b);
         assertEquals(spot.getX(), AImove.getX());
         assertEquals(spot.getY(), AImove.getY());
-    } */
+    }
 
     @Test
     public void WinVertOverBlockVert() throws Exception {
