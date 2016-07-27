@@ -1,9 +1,9 @@
 <project default="compile">
 
 
-  <property name="mainClass" value="startScreen2" />
+  <property name="mainClass" value="GameLauncher" />
  
-  <!-- build.xml for ConnectFour, CS56, W14
+  <!-- build.xml for ConnectFour, CS56, M16
        name: Vincent Tan and Girish Kowligi-->
   
 
