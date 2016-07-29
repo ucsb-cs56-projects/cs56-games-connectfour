@@ -62,31 +62,35 @@ The user chooses their color first, and then selects the color for the computer.
 
 ###Startscreen
 
-![](https://raw.githubusercontent.com/omeedrabani/cs56-games-connectfour/master/images/screenshots/startscreenImage.png)
+![](https://raw.githubusercontent.com/joelbagan/cs56-games-connectfour/master/images/screenshots/startscreen.png)
+
+###Main Menu
+
+![](https://raw.githubusercontent.com/joelbagan/cs56-games-connectfour/master/images/screenshots/mainmenu.png)
 
 ###Single Player Select Screen
 
-![](https://raw.githubusercontent.com/omeedrabani/cs56-games-connectfour/master/images/screenshots/singlePlayerSelectScreenImage.png)
+![](https://raw.githubusercontent.com/joelbagan/cs56-games-connectfour/master/images/screenshots/singleplayermenu.png)
 
 ###Select Color Screen
 
-![](https://raw.githubusercontent.com/omeedrabani/cs56-games-connectfour/master/images/screenshots/selectColorScreenImage.png)
+![](https://raw.githubusercontent.com/joelbagan/cs56-games-connectfour/master/images/screenshots/player1colorselect.png)
 
 ###Board In Play
 
-![](https://raw.githubusercontent.com/omeedrabani/cs56-games-connectfour/master/images/screenshots/boardInPlay.png)
+![](https://raw.githubusercontent.com/joelbagan/cs56-games-connectfour/master/images/screenshots/boardinplay.png)
 
 ###Board Win
 
-![](https://raw.githubusercontent.com/omeedrabani/cs56-games-connectfour/master/images/screenshots/boardWin.png)
+![](https://raw.githubusercontent.com/joelbagan/cs56-games-connectfour/master/images/screenshots/boardwin.png)
 
 ###Rules Page
 
-![](https://raw.githubusercontent.com/omeedrabani/cs56-games-connectfour/master/images/screenshots/rulesPageImage.png)
+![](https://raw.githubusercontent.com/joelbagan/cs56-games-connectfour/master/images/screenshots/rulespage.png)
 
 ###Settings Page
 
-![](https://raw.githubusercontent.com/omeedrabani/cs56-games-connectfour/master/images/screenshots/settingsPageImage.png)
+![](https://raw.githubusercontent.com/joelbagan/cs56-games-connectfour/master/images/screenshots/settingsmenu.png)
 
 ##Documentation
 
@@ -118,7 +122,7 @@ To start the program, use `ant run`
 
 ##Known Bugs
 * When forwarding through X11, in singleplayer mode there is a lag between when the user selects a column and when the computer makes their move. After the user clicks again does the computer make their move. This does not affect gameplay but rather only affects the user experience as they now have to click again after their selection in order for the computer to make their move. Regarding the undo feature, if the user presses undo before the computer has made its move, it will only undo 1 recent move as opposed to the expected 2. 
-* After the refactoring in Summer '16, the panel that displays whose turn it is disappears after pressing the restart button on the in game menu. Our attempt at a fix was commented out in the method `restartGame()` in `AbstractMenu.java` as it did not fully fix the problem. More information can be found in the comments in that class, and Issue #FILL IN
+* After the refactoring in Summer '16, the panel that displays whose turn it is disappears after pressing the restart button on the in game menu. Our attempt at a fix was commented out in the method `restartGame()` in `AbstractMenu.java` as it did not fully fix the problem. More information can be found in the comments in that class, and [Issue #53](https://github.com/UCSB-CS56-Projects/cs56-games-connectfour/issues/53)
 
 ##M16 Final Remarks
 Hello World and future humans! The first thing to note about this project is
@@ -133,7 +137,7 @@ we suggest looking back at the previous version's handling of these features. Wh
 the previous version has a significantly different structure than the current version,
 it may be helpful to see the features implemented and working correctly to get an
 idea of how to proceed. As you first begin to read the code and get a feel for
-the project, we suggest going through the GUI pakcage first. Follow the basic
+the project, we suggest going through the GUI package first. Follow the basic
 flow of the game, starting with `StartScreen` then `MainMenu` and so on. Once
 the game is started, nearly everything responds to mouse click events, so
 really try to understand the `MouseClass` in `Board`. Then dive into the
