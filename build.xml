@@ -66,7 +66,7 @@
    <echo>Javadoc deployed to ${javadocURL}</echo>                                                 
   </target>      
 
-  <target name="test" depends="compile">
+  <target name="test" depends="compile" description="Run test suite for game logic and all AI difficulties">
 
     <junit haltonerror="no" haltonfailure="no">
        <classpath>
