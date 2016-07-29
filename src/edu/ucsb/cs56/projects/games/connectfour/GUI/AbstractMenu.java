@@ -68,7 +68,7 @@ public abstract class AbstractMenu extends JPanel {
         frame.setSize(menu_width, menu_height);
         Player1ColorSelectMenu nextMenu = new Player1ColorSelectMenu(game, frame);
         /*
-        Issue #TODO fill in
+        Issue #58
         This was an attempt at allowing the players to enter in their own
         names to be displayed at the top of the screen instead of just
         "Player1" and "Player2"
@@ -111,7 +111,7 @@ public abstract class AbstractMenu extends JPanel {
         frame.setSize(menu_width, menu_height);
         Player2ColorSelectMenu nextMenu = new Player2ColorSelectMenu(game, frame, colorToNotShow);
         /*
-        Issue #TODO fill in
+        Issue #58
         This was an attempt at allowing the players to enter in their own
         names to be displayed at the top of the screen instead of just
         "Player1" and "Player2"
@@ -178,7 +178,7 @@ public abstract class AbstractMenu extends JPanel {
         frame.getContentPane().add(display, BorderLayout.CENTER);
         frame.getContentPane().add(nextMenu, BorderLayout.LINE_END);
         /*
-        Issue #TODO Fill in
+        Issue #53
         the turn panel is doing some funky stuff when the game is restarted
         commented out for now, so it disappears when pressing restart
          */
