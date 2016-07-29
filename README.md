@@ -133,7 +133,7 @@ we suggest looking back at the previous version's handling of these features. Wh
 the previous version has a significantly different structure than the current version,
 it may be helpful to see the features implemented and working correctly to get an
 idea of how to proceed. As you first begin to read the code and get a feel for
-the project, we suggest going through the GUI pakcage first. Follow the basic
+the project, we suggest going through the GUI package first. Follow the basic
 flow of the game, starting with `StartScreen` then `MainMenu` and so on. Once
 the game is started, nearly everything responds to mouse click events, so
 really try to understand the `MouseClass` in `Board`. Then dive into the
