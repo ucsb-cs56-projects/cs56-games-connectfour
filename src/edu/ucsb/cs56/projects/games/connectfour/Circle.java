@@ -8,13 +8,12 @@ import java.awt.event.MouseEvent;
 /**
  * Circle draws a circle at the specified location and with
  * the specified color.
- * 
+ *
  * @author Jake Dumont
  * @author Heneli Kailahi
  * @version CS56, Spring 2013, UCSB
  */
-public class Circle
-{ 
+public class Circle {
 
     private int x;
     private int y;
@@ -24,112 +23,106 @@ public class Circle
 
     /**
      * Constructor for objects of class Circle
-     * @param x    x coordinate of upper left hand corner of circle
-     * @param y    y coordinate of upper left hand corner of circle
-     * @param w    width of circle
-     * @param h    height of circle
+     *
+     * @param x x coordinate of upper left hand corner of circle
+     * @param y y coordinate of upper left hand corner of circle
+     * @param w width of circle
+     * @param h height of circle
      */
 
-    public Circle(int x, int y, int w, int h)
-    {
-	this.x = x;
-	this.y = y;
-	this.width = w;
-	this.height = h;
-	this.state = 0;
-        
+    public Circle(int x, int y, int w, int h) {
+        this.x = x;
+        this.y = y;
+        this.width = w;
+        this.height = h;
+        this.state = 0;
+
     }
 
-    /** 
-	smallCopy method for green win circles
-	@param playerCircle
+    /**
+     * Method that returns a small copy of the circle that calls the method
+     *
+     * @return Circle obj reference that is half as large, in same location
      */
-
     public Circle smallCopy() {
-	Circle w = new Circle(this.x, this.y, this.width/2, this.height/2);
-	return w;
+        Circle w = new Circle(this.x, this.y, this.width / 2, this.height / 2);
+        return w;
     }
-    
-    
-    /**
-       Setter for the state variable
-       @param value     integer that the state is set equal to
-    */
 
+
+    /**
+     * @param value the int that the state variable is set to
+     */
     public void setState(int value) {
-	this.state = value;
+        this.state = value;
     }
 
     /**
-       Getter for the state variable 
-       @return int
-    */
-
+     * Getter for the state variable
+     *
+     * @return int
+     */
     public int getState() {
-	return this.state;
+        return this.state;
     }
 
     /**
-       Draw function for the circle. Color depends on the state.
-       @param g graphics 
-    */
-
+     * Draw function for the circle. Color depends on the state.
+     *
+     * @param g graphics
+     */
     public void draw(Graphics g) {
-	
-	//state == 0, white circle
-	if (state == 0) {
-	    g.setColor(Color.white);
-	}
-	
-	//red circle 
-	else if (state == 1) {
-	    g.setColor(Color.red);
-	}
-	
-	//yellow circle
-	else if (state == 2){
-	    g.setColor(Color.yellow);
-	}
 
-	//green circle for winning Circles
-	else if (state == 3) {
-	    Graphics create = g.create();
-	    create.setColor(Color.green.darker());
-	    // g.setColor(Color.green.darker());
-	}
-	
-	//black circle
-	else if (state == 4){
-	    g.setColor(Color.black);
-	}
-	
-	//blue circle
-	else if (state == 5){
-	    g.setColor(Color.blue);
-	}
+        //state == 0, white circle
+        if (state == 0) {
+            g.setColor(Color.white);
+        }
 
-	//magenta circle
-	else if (state == 6){
-	    g.setColor(Color.magenta);
-	}
+        //red circle
+        else if (state == 1) {
+            g.setColor(Color.red);
+        }
 
-	//brown circle
-	else if (state == 7){
-	    g.setColor(Color.orange.darker());
-	}
+        //yellow circle
+        else if (state == 2) {
+            g.setColor(Color.yellow);
+        }
 
-	//pink circle
-	else if (state == 8){
-	    g.setColor(Color.pink);
-	}
+        //green circle for winning Circles
+        else if (state == 3) {
+            g.setColor(Color.GREEN);
+        }
 
-	else { // failsafe
-	    g.setColor(Color.darkGray);
-	}
+        //black circle
+        else if (state == 4) {
+            g.setColor(Color.black);
+        }
 
-	//draw and color the circle with the specificed dimensions
-	g.drawOval(x - width/2, y - height/2, width, height);
-	g.fillOval(x - width/2, y - height/2, width, height);
-	
+        //blue circle
+        else if (state == 5) {
+            g.setColor(Color.blue);
+        }
+
+        //magenta circle
+        else if (state == 6) {
+            g.setColor(Color.magenta);
+        }
+
+        //brown circle
+        else if (state == 7) {
+            g.setColor(Color.orange.darker());
+        }
+
+        //pink circle
+        else if (state == 8) {
+            g.setColor(Color.pink);
+        } else { // failsafe
+            g.setColor(Color.darkGray);
+        }
+
+        //draw and color the circle with the specificed dimensions
+        g.drawOval(x - width / 2, y - height / 2, width, height);
+        g.fillOval(x - width / 2, y - height / 2, width, height);
+
     }
 }
