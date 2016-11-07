@@ -18,7 +18,8 @@ import java.awt.event.MouseListener;
  * @author Girish Kowligi
  * @author Joel Bagan
  * @author Bryanna Phan
- * @version CS56 M16 UCSB
+ * @author Brian Lee
+ * @version CS56 F16 UCSB
  */
 public class Board {
 

@@ -12,7 +12,8 @@ import java.util.Stack;
  * relevant game data specific to the board
  * @author Joel Bagan
  * @author Bryanna Phan
- * @version CS56 M16 UCSB
+ * @author Brian Lee
+ * @version CS56 F16 UCSB
  */
 public class Game {
 
@@ -97,9 +98,9 @@ public class Game {
         System.out.println("GameMode is " + getGameMode());
 
         coinToss();
-        turn = coinTossWinner;
+        turn = getCoinTossWinner();
         if (gameMode!= 1 && turn == 2) {
-            try {
+                try {
                 Robot r = new Robot();
                 Point p = frame.getLocationOnScreen();
                 Point current = MouseInfo.getPointerInfo().getLocation();
@@ -125,26 +126,30 @@ public class Game {
 
         System.out.println("GameMode is " + getGameMode());
 
-        turn = coinTossWinner;
+	coinToss();
+        turn = getCoinTossWinner();
         if (turn == 2) {
             System.out.println("Player 2 gets to start!");
-            try {
-                // Thread.sleep(1000);
-                Robot r = new Robot();
-                Point p = frame.getLocationOnScreen();
-                Point current = MouseInfo.getPointerInfo().getLocation();
-                r.mouseMove((int) p.getX() + 50, (int) p.getY() + 50);
-                r.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-                r.mouseRelease(InputEvent.BUTTON1_MASK);
-                r.mouseMove((int) current.getX(), (int) current.getY());
-            } catch (AWTException ex) {
-                System.out.println("didn't work");
-            }
-        } else {
-            System.out.println("Player 1 gets to start!");
+	    if(getGameMode() != 1) {
+		try {
+		    // Thread.sleep(1000);
+		    Robot r = new Robot();
+		    Point p = frame.getLocationOnScreen();
+		    Point current = MouseInfo.getPointerInfo().getLocation();
+		    r.mouseMove((int) p.getX() + 50, (int) p.getY() + 50);
+		    r.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+		    r.mouseRelease(InputEvent.BUTTON1_MASK);
+		    r.mouseMove((int) current.getX(), (int) current.getY());
+		} catch (AWTException ex) {
+		    System.out.println("didn't work");
+		}
+	    }
+	}
+	else {
+	    System.out.println("Player 1 gets to start!");
+	}
 
-        }
-        board.setGame(this);
+	board.setGame(this);
         moveCounter = 0;
         movesList.clear();
         board.setDrawCounter(0);
@@ -156,11 +161,12 @@ public class Game {
      * turn when game is launched and restarted
      */
     public void coinToss() {
-        Random randomNum = new Random();
-        coinTossWinner = randomNum.nextInt(2 - 1 + 1) + 1;
-        if (coinTossWinner == 1) {
+	Random randomNum = new Random();
+	coinTossWinner = randomNum.nextInt(3) % 2;//formerly (2 - 1 + 1) + 1
+        if (coinTossWinner >= 1) {
             System.out.println("Player 1 gets to start!");
         } else {
+	    coinTossWinner = 2;
             System.out.println("Player 2 gets to start!");
         }
     }
