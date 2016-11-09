@@ -123,7 +123,7 @@ public class Game {
         gameIsOver = false;
 
         System.out.println("Restarting...");
-
+	
         System.out.println("GameMode is " + getGameMode());
 
 	coinToss();
@@ -154,7 +154,7 @@ public class Game {
         movesList.clear();
         board.setDrawCounter(0);
     }
-
+	
     /**
      * Method that simulates a coin flip, generating a 1 or 2 at random
      * stores result in coinTossWinner, which is used to determine first

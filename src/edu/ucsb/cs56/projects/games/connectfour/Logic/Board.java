@@ -63,7 +63,7 @@ public class Board {
                 cc = new Circle(i * 100 + 55, j * 100 + 55, 90, 90);
                 gameGrid[i][j] = cc;
             }
-        }
+	}
     }
 
     /**
