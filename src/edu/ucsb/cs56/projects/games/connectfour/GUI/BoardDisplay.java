@@ -96,7 +96,7 @@ public class BoardDisplay extends AbstractMenu {
         turnPanel.add(turnMessage);
         frame.getContentPane().add(turnPanel, BorderLayout.PAGE_START);
         frame.repaint();
-	System.out.println("Turn Updated");
+	//System.out.println("Turn Updated");
     }
 
     /**
