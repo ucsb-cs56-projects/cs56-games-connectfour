@@ -36,7 +36,7 @@ public class Game {
      */
     public void undo() {
         if (gameIsOver)
-            return;
+            gameIsOver = false;
         if (moveCounter < 1)
             return;
 
