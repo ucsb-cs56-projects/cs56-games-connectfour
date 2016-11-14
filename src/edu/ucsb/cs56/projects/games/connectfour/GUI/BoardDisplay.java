@@ -69,6 +69,7 @@ public class BoardDisplay extends AbstractMenu {
         }
         updateTurnPanel();
         //unsure of why this method MUST be called both in this function, and on every mouse click
+	//Must be called so that the players know whose turn it is.
     }
 
     /**
@@ -95,6 +96,7 @@ public class BoardDisplay extends AbstractMenu {
         turnPanel.add(turnMessage);
         frame.getContentPane().add(turnPanel, BorderLayout.PAGE_START);
         frame.repaint();
+	//System.out.println("Turn Updated");
     }
 
     /**

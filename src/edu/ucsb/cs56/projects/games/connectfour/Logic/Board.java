@@ -18,7 +18,8 @@ import java.awt.event.MouseListener;
  * @author Girish Kowligi
  * @author Joel Bagan
  * @author Bryanna Phan
- * @version CS56 M16 UCSB
+ * @author Brian Lee
+ * @version CS56 F16 UCSB
  */
 public class Board {
 
@@ -62,7 +63,7 @@ public class Board {
                 cc = new Circle(i * 100 + 55, j * 100 + 55, 90, 90);
                 gameGrid[i][j] = cc;
             }
-        }
+	}
     }
 
     /**

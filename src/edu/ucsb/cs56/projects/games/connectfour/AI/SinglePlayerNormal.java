@@ -14,7 +14,8 @@ import java.util.Random;
  * or AI color and blocks/wins
  * @author Joel Bagan
  * @author Bryanna Phan
- * @version CS56 M16 UCSB
+ * @author Brian Lee
+ * @version CS56 F16 UCSB
  */
 public class SinglePlayerNormal {
     /**
@@ -56,6 +57,25 @@ public class SinglePlayerNormal {
                     yIndex = row;
                     checkAndAdd(b, movesToMake, xIndex, yIndex, 2);
                 }
+
+		//Check for 2 in a row for the AI
+		if (player2Color == b.getGameGridCircle(col, row).getState()
+		    && player2Color == b.getGameGridCircle(col + 1, row).getState()
+		    && (b.getGameGridCircle(col + 2, row).getState() == 0))
+		    {
+			if (b.getGameGridCircle(col + 3, row).getState() == 0)
+			    {
+				xIndex = col + 2;
+				yIndex = row;
+				checkAndAdd(b, movesToMake, xIndex, yIndex, 1);
+			    }
+			if (b.getGameGridCircle(col + 3, row).getState() == player2Color)
+			    {
+				xIndex = col + 2;
+				yIndex = row;
+				checkAndAdd(b, movesToMake, xIndex, yIndex, 2);
+			    }
+		    }
             }
         }
     }
@@ -97,6 +117,25 @@ public class SinglePlayerNormal {
                     yIndex = row;
                     checkAndAdd(b, movesToMake, xIndex, yIndex, 2);
                 }
+
+		//Check for AI 2 in a row
+		if (player2Color == b.getGameGridCircle(col, row).getState()
+		    && player2Color == b.getGameGridCircle(col - 1, row).getState()
+		    && (b.getGameGridCircle(col - 2, row).getState() == 0))
+		    {
+			if (b.getGameGridCircle(col - 3, row).getState() == 0)
+			    {
+				xIndex = col - 2;
+				yIndex = row;
+				checkAndAdd(b, movesToMake, xIndex, yIndex, 1);
+			    }
+			if (b.getGameGridCircle(col - 3, row).getState() == player2Color)
+			    {
+				xIndex = col - 2;
+				yIndex = row;
+				checkAndAdd(b, movesToMake, xIndex, yIndex, 2);
+			    }
+		    }
             }
         }
     }
@@ -139,6 +178,17 @@ public class SinglePlayerNormal {
                     checkAndAdd(b, movesToMake, xIndex, yIndex, 2);
 
                 }
+
+		//Look for AI 2 in a row
+		if (player2Color == b.getGameGridCircle(col, row).getState()
+		    && player2Color == b.getGameGridCircle(col, row - 1).getState()
+		    && (b.getGameGridCircle(col, row - 2).getState() == 0))
+		    {
+			xIndex = col;
+			yIndex = row - 2;
+			IntPair location = new IntPair(xIndex,yIndex);
+			movesToMake.add(new Tuple(location, 1));
+		    }
             }
         }
     }
@@ -180,6 +230,25 @@ public class SinglePlayerNormal {
                     yIndex = row + 3;
                     checkAndAdd(b, movesToMake, xIndex, yIndex, 2);
                 }
+
+		//Check for AI 2 in a row
+		if (player2Color == b.getGameGridCircle(col, row).getState()
+		    && player2Color == b.getGameGridCircle(col + 1, row + 1).getState()
+		    && (b.getGameGridCircle(col + 2, row + 2).getState() == 0))
+		    {
+			if (b.getGameGridCircle(col + 3, row + 3).getState() == 0)
+			    {
+				xIndex = col + 2;
+				yIndex = row + 2;
+				checkAndAdd(b, movesToMake, xIndex, yIndex, 1);
+			    }
+			if (b.getGameGridCircle(col + 3, row + 3).getState() == player2Color)
+			    {
+				xIndex = col + 2;
+				yIndex = row + 2;
+				checkAndAdd(b, movesToMake, xIndex, yIndex, 2);
+			    }
+		    }
             }
         }
     }
@@ -223,6 +292,25 @@ public class SinglePlayerNormal {
                     yIndex = row - 3;
                     checkAndAdd(b, movesToMake, xIndex, yIndex, 2);
                 }
+
+		//check for AI's 2 in a row
+		if (player2Color == b.getGameGridCircle(col, row).getState()
+		    && player2Color == b.getGameGridCircle(col - 1, row - 1).getState()
+		    && (b.getGameGridCircle(col - 2, row - 2).getState() == 0))
+		    {
+			if (b.getGameGridCircle(col - 3, row - 3).getState() == 0)
+			    {
+				xIndex = col - 2;
+				yIndex = row - 2;
+				checkAndAdd(b, movesToMake, xIndex, yIndex, 1);
+			    }
+			if (b.getGameGridCircle(col - 3, row - 3).getState() == player2Color)
+			    {
+				xIndex = col - 2;
+				yIndex = row - 2;
+				checkAndAdd(b, movesToMake, xIndex, yIndex, 2);
+			    }
+		    }
             }
         }
     }
@@ -266,6 +354,26 @@ public class SinglePlayerNormal {
                     yIndex = row + 3;
                     checkAndAdd(b, movesToMake, xIndex, yIndex, 2);
                 }
+
+		//check for 2 in a row for AI
+		if (player2Color == b.getGameGridCircle(col, row).getState()
+		    && player2Color == b.getGameGridCircle(col - 1, row + 1).getState()
+		    && (b.getGameGridCircle(col - 2, row + 2).getState() == 0)
+		    && (b.getGameGridCircle(col - 3, row + 3).getState() == 0))
+		    {
+			if (b.getGameGridCircle(col - 3, row + 3).getState() == 0)
+			    {
+				xIndex = col - 2;
+				yIndex = row + 2;
+				checkAndAdd(b, movesToMake, xIndex, yIndex, 1);
+			    }
+			if (b.getGameGridCircle(col - 3, row + 3).getState() == player2Color)
+			    {
+				xIndex = col - 2;
+				yIndex = row + 2;
+				checkAndAdd(b, movesToMake, xIndex, yIndex, 2);
+			    }
+		    }
             }
         }
     }
@@ -309,6 +417,25 @@ public class SinglePlayerNormal {
                     yIndex = row - 3;
                     checkAndAdd(b, movesToMake, xIndex, yIndex, 2);
                 }
+		
+		//Check for 2 in a row AI
+		if (player2Color == b.getGameGridCircle(col, row).getState()
+		    && player2Color == b.getGameGridCircle(col + 1, row - 1).getState()
+		    && (b.getGameGridCircle(col + 2, row - 2).getState() == 0))
+		    {
+			if (b.getGameGridCircle(col + 3, row - 3).getState() == 0)
+			    {
+				xIndex = col + 2;
+				yIndex = row - 2;
+				checkAndAdd(b, movesToMake, xIndex, yIndex, 1);
+			    }
+			if (b.getGameGridCircle(col + 3, row - 3).getState() == player2Color)
+			    {
+				xIndex = col + 2;
+				yIndex = row - 2;
+				checkAndAdd(b, movesToMake, xIndex, yIndex, 2);
+			    }
+		    }
             }
         }
     }
