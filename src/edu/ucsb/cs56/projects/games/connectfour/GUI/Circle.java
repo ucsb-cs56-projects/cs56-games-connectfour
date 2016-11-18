@@ -29,7 +29,7 @@ public class Circle {
 
     public Circle(int x, int y, int w, int h) {
         this.x = x;
-        this.y = y;
+        this.y = y + 20;
         this.width = w;
         this.height = h;
         this.state = 0;

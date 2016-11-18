@@ -40,7 +40,7 @@ public class BoardDisplay extends AbstractMenu {
     public void paint(Graphics g) {
         Board b = game.getBoard();
         g.setColor(Color.LIGHT_GRAY);
-        g.fillRect(0, 0, this.getWidth(), this.getHeight());
+        g.fillRect(0, 20, this.getWidth(), this.getHeight());
 
         for (Circle[] circles : b.getGameGrid()) {
             for (Circle circle : circles) {

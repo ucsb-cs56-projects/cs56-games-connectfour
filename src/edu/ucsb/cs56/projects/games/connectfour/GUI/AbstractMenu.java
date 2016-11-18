@@ -16,7 +16,7 @@ public abstract class AbstractMenu extends JPanel {
     int menu_width = 240;
     int menu_height = 380;
     private static int frame_width = 890;
-    private static int frame_height = 670;
+    private static int frame_height = 690;
     protected final Game game;
     protected final JFrame frame;
     Font smallFont = new Font("Comic Sans MS", Font.BOLD, 15);
