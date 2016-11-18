@@ -13,6 +13,7 @@ import java.util.Stack;
  * @author Joel Bagan
  * @author Bryanna Phan
  * @author Brian Lee
+ * @author Peter Master
  * @version CS56 F16 UCSB
  */
 public class Game {
@@ -37,7 +38,7 @@ public class Game {
      */
     public void undo() {
         if (gameIsOver)
-            return;
+            gameIsOver = false;
         if (moveCounter < 1)
             return;
 
