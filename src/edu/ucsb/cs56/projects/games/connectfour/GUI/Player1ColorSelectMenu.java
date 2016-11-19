@@ -11,6 +11,9 @@ import java.awt.event.ActionListener;
  * @author Joel Bagan
  * @author Bryanna Phan
  * @version CS56 M16 UCSB
+ *
+ * @author Brian Lee
+ * @version CS56 F16 UCSB
  */
 public class Player1ColorSelectMenu extends AbstractMenu {
 
@@ -22,6 +25,8 @@ public class Player1ColorSelectMenu extends AbstractMenu {
     private JButton pinkButton;
     private JButton redButton;
     private JButton yellowButton;
+    private JLabel nameInst;
+    private JTextField nameText;
 
     private JPanel namePanel;
 
@@ -68,6 +73,15 @@ public class Player1ColorSelectMenu extends AbstractMenu {
         yellowButton.addActionListener(new yellowButtonListener());
         yellowButton.setFont(largeFont);
 
+	//Fix Issue #58
+	nameInst = new JLabel("Enter Player 1 name:");
+	nameInst.setFont(smallFont);
+	nameText = new JTextField("Player 1");
+	nameText.setFont(smallFont);
+	nameText.setFocusable(true);
+	nameText.requestFocus();
+	
+
         this.add(header);
         this.add(redButton);
         this.add(yellowButton);
@@ -76,6 +90,8 @@ public class Player1ColorSelectMenu extends AbstractMenu {
         this.add(magentaButton);
         this.add(brownButton);
         this.add(pinkButton);
+	this.add(nameInst);
+	this.add(nameText);
     }
 
     /**
@@ -85,6 +101,10 @@ public class Player1ColorSelectMenu extends AbstractMenu {
      */
     class redButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent event) {
+     	    //Issue #58 get name
+	    String getName = nameText.getText();
+	    game.setP1Name(getName);
+	    
             game.setPlayer1Color(1);
             loadPlayer2ColorSelectMenu(game, frame, 1);
         }
@@ -97,6 +117,10 @@ public class Player1ColorSelectMenu extends AbstractMenu {
      */
     class yellowButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent event) {
+	    //Issue #58 get name
+	    String getName = nameText.getText();
+	    game.setP1Name(getName);
+	    
             game.setPlayer1Color(2);
             loadPlayer2ColorSelectMenu(game, frame, 2);
         }
@@ -109,6 +133,10 @@ public class Player1ColorSelectMenu extends AbstractMenu {
      */
     class blackButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent event) {
+	    //Issue #58 get name
+	    String getName = nameText.getText();
+	    game.setP1Name(getName);
+	    
             game.setPlayer1Color(4);
             loadPlayer2ColorSelectMenu(game, frame, 4);
         }
@@ -121,6 +149,10 @@ public class Player1ColorSelectMenu extends AbstractMenu {
      */
     class blueButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent event) {
+	    //Issue #58 get name
+	    String getName = nameText.getText();
+	    game.setP1Name(getName);
+	    
             game.setPlayer1Color(5);
             loadPlayer2ColorSelectMenu(game, frame, 5);
         }
@@ -133,6 +165,10 @@ public class Player1ColorSelectMenu extends AbstractMenu {
      */
     class magentaButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent event) {
+	    //Issue #58 get name
+	    String getName = nameText.getText();
+	    game.setP1Name(getName);
+	    
             game.setPlayer1Color(6);
             loadPlayer2ColorSelectMenu(game, frame, 6);
         }
@@ -145,6 +181,10 @@ public class Player1ColorSelectMenu extends AbstractMenu {
      */
     class brownButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent event) {
+	    //Issue #58 get name
+	    String getName = nameText.getText();
+	    game.setP1Name(getName);
+	    
             game.setPlayer1Color(7);
             loadPlayer2ColorSelectMenu(game, frame, 7);
         }
@@ -157,6 +197,10 @@ public class Player1ColorSelectMenu extends AbstractMenu {
      */
     class pinkButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent event) {
+	    //Issue #58 get name
+	    String getName = nameText.getText();
+	    game.setP1Name(getName);
+	    
             game.setPlayer1Color(8);
             loadPlayer2ColorSelectMenu(game, frame, 8);
         }
