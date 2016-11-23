@@ -24,6 +24,7 @@ public class BoardColorSelectMenu extends AbstractMenu
     private JButton beigeButton;
     private JButton cyanButton;
     private JButton oliveButton;
+    //private JButton gradGreyToBlackButton;
 
     //constructor
     public BoardColorSelectMenu(Game game, JFrame frame, int stateToNotShow1, int stateToNotShow2)
@@ -66,7 +67,11 @@ public class BoardColorSelectMenu extends AbstractMenu
 	oliveButton = new JButton("Olive");
 	oliveButton.addActionListener(new oliveButtonListener());
 	oliveButton.setFont(largeFont);
-
+	/*
+	gradGreyToBlackButton = new JButton("Gradient, grey to black");
+	gradGreyToBlackButton.addActionListener(new gGTBButtonListener());
+	gradGreyToBlackButton.setFont(largeFont);
+	*/
 	this.add(header);
 	this.add(greyButton);
 	if(stateToNotShow1 != 1 && stateToNotShow2 != 1)
@@ -80,6 +85,7 @@ public class BoardColorSelectMenu extends AbstractMenu
 	if(stateToNotShow1 != 4 && stateToNotShow2 != 4)
 	    {
 		this.add(blackButton);
+		//this.add(gradGreyToBlackButton);
 	    }
 	if(stateToNotShow1 != 8 && stateToNotShow2 != 8)
 	    {
@@ -202,6 +208,21 @@ public class BoardColorSelectMenu extends AbstractMenu
 	}
     }
 
+    /**
+     * Action Listener for the gadient-grey-to-black button
+     * Sets board color to gradient-grey-to-black and launches the game
+     */
+    /*
+    class gGTBButtonListener implements ActionListener
+    {
+	public void actionPerformed(ActionEvent event)
+	{
+	    //set board color to gradient-grey to black
+	    game.setBoardColor(13);
+	    launchGame();
+	}
+    }
+    */
     /**
      * No Back Button
      * May add one later

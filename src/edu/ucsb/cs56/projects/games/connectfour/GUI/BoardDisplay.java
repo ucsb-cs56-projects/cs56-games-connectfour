@@ -71,9 +71,12 @@ public class BoardDisplay extends AbstractMenu {
 	    {
 		g.setColor(new Color(107,142,35));
 	    }
-	
-	
-        g.fillRect(0, 20, this.getWidth(), this.getHeight());
+	/*	else if(game.getBoardColor() == 13)
+	    {
+		g.setColor(new GradientPaint(0,20,Color.LIGHT_GRAY,this.getWidth(),this.getHeight(),Color.BLACK));
+	    }
+*/
+	g.fillRect(0, 20, this.getWidth(), this.getHeight());
 
         for (Circle[] circles : b.getGameGrid()) {
             for (Circle circle : circles) {
