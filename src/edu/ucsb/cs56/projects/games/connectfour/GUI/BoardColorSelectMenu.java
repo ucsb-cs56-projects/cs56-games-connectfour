@@ -21,6 +21,9 @@ public class BoardColorSelectMenu extends AbstractMenu
     private JButton brownButton;
     private JButton redButton;
     private JButton yellowButton;
+    private JButton beigeButton;
+    private JButton cyanButton;
+    private JButton oliveButton;
 
     //constructor
     public BoardColorSelectMenu(Game game, JFrame frame, int stateToNotShow1, int stateToNotShow2)
@@ -29,7 +32,7 @@ public class BoardColorSelectMenu extends AbstractMenu
 	
 	this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
-        header = new JLabel("    Player 2: Choose Color");
+        header = new JLabel("    Choose Board Color");
         header.setFont(smallFont);
 
         greyButton = new JButton("Grey");
@@ -40,7 +43,7 @@ public class BoardColorSelectMenu extends AbstractMenu
 	blackButton.addActionListener(new blackButtonListener());
 	blackButton.setFont(largeFont);
 
-	pinkButton = new JButton("Pink");
+	pinkButton = new JButton("Light Pink");
 	pinkButton.addActionListener(new pinkButtonListener());
 	pinkButton.setFont(largeFont);
 
@@ -51,6 +54,18 @@ public class BoardColorSelectMenu extends AbstractMenu
 	yellowButton = new JButton("Yellow");
 	yellowButton.addActionListener(new yellowButtonListener());
 	yellowButton.setFont(largeFont);
+
+	beigeButton = new JButton("Beige");
+	beigeButton.addActionListener(new beigeButtonListener());
+	beigeButton.setFont(largeFont);
+
+	cyanButton = new JButton("Cyan");
+	cyanButton.addActionListener(new cyanButtonListener());
+	cyanButton.setFont(largeFont);
+
+	oliveButton = new JButton("Olive");
+	oliveButton.addActionListener(new oliveButtonListener());
+	oliveButton.setFont(largeFont);
 
 	this.add(header);
 	this.add(greyButton);
@@ -70,6 +85,9 @@ public class BoardColorSelectMenu extends AbstractMenu
 	    {
 		this.add(pinkButton);
 	    }
+	this.add(beigeButton);
+	this.add(cyanButton);
+	this.add(oliveButton);
     }
 
     /**
@@ -136,8 +154,50 @@ public class BoardColorSelectMenu extends AbstractMenu
     {
 	public void actionPerformed(ActionEvent event)
 	{
-	    //set board color to pink
+	    //set board color to light pink
 	    game.setBoardColor(8);
+	    launchGame();
+	}
+    }
+
+    /**
+     * Action Listener for the beige button
+     * Sets board color to beige and launches the game
+     */
+    class beigeButtonListener implements ActionListener
+    {
+	public void actionPerformed(ActionEvent event)
+	{
+	    //set board color to beige
+	    game.setBoardColor(10);
+	    launchGame();
+	}
+    }
+
+    /**
+     * Action Listener for the cyan button
+     * Sets board color to cyan and launches the game
+     */
+    class cyanButtonListener implements ActionListener
+    {
+	public void actionPerformed(ActionEvent event)
+	{
+	    //set board color to red
+	    game.setBoardColor(11);
+	    launchGame();
+	}
+    }
+
+    /**
+     * Action Listener for the olive button
+     * Sets board color to olive and launches the game
+     */
+    class oliveButtonListener implements ActionListener
+    {
+	public void actionPerformed(ActionEvent event)
+	{
+	    //set board color to olive
+	    game.setBoardColor(12);
 	    launchGame();
 	}
     }

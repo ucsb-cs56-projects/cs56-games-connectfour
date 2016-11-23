@@ -57,8 +57,21 @@ public class BoardDisplay extends AbstractMenu {
 	    }
 	else if(game.getBoardColor() == 8)
 	    {
-		g.setColor(Color.PINK);
+		g.setColor(new Color(225,182,193));
 	    }
+	else if(game.getBoardColor() == 10)
+	    {
+		g.setColor(new Color(245,245,220));
+	    }
+	else if(game.getBoardColor() == 11)
+	    {
+		g.setColor(Color.CYAN);
+	    }
+	else if(game.getBoardColor() == 12)
+	    {
+		g.setColor(new Color(107,142,35));
+	    }
+	
 	
         g.fillRect(0, 20, this.getWidth(), this.getHeight());
 
