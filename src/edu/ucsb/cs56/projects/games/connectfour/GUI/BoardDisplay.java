@@ -39,7 +39,27 @@ public class BoardDisplay extends AbstractMenu {
     @Override
     public void paint(Graphics g) {
         Board b = game.getBoard();
-        g.setColor(Color.LIGHT_GRAY);
+	if(game.getBoardColor() == 9)
+	    {
+		g.setColor(Color.LIGHT_GRAY);
+	    }
+	else if(game.getBoardColor() == 1)
+	    {
+		g.setColor(Color.RED);
+	    }
+	else if(game.getBoardColor() == 2)
+	    {
+		g.setColor(Color.YELLOW);
+	    }
+	else if(game.getBoardColor() == 4)
+	    {
+		g.setColor(Color.BLACK);
+	    }
+	else if(game.getBoardColor() == 8)
+	    {
+		g.setColor(Color.PINK);
+	    }
+	
         g.fillRect(0, 20, this.getWidth(), this.getHeight());
 
         for (Circle[] circles : b.getGameGrid()) {

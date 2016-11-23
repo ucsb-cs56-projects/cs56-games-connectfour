@@ -27,6 +27,7 @@ public class Player2ColorSelectMenu extends AbstractMenu {
     private JButton yellowButton;
     private JLabel nameInst;
     private JTextField nameText;
+    private int stateToNotShow;
 
     /**
      * Constructor for the Player2ColorSelectMenu
@@ -39,6 +40,7 @@ public class Player2ColorSelectMenu extends AbstractMenu {
      */
     public Player2ColorSelectMenu(Game game, JFrame frame, int stateToNotShow) {
         super(game, frame);
+	this.stateToNotShow = stateToNotShow;
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
@@ -117,7 +119,7 @@ public class Player2ColorSelectMenu extends AbstractMenu {
 
     /**
      * Listener class for the black button
-     * Sets player2's color and calls launchGame()
+     * Sets player2's color and calls launchGame() or BoardColorSelectMenu
      */
     class blackButtonListener implements ActionListener {
 
@@ -127,12 +129,13 @@ public class Player2ColorSelectMenu extends AbstractMenu {
 	    game.setP2Name(getName);
 	    
             game.setPlayer2Color(4);
-            launchGame();
+            //launchGame();
+	    loadBoardColorSelectMenu(game,frame,stateToNotShow,4);
 	    }
     }
     /**
      * Listener class for the blue button
-     * Sets player2's color and calls launchGame()
+     * Sets player2's color and calls launchGame() or BoardColorSelectMenu
      */
     class blueButtonListener implements ActionListener {
 
@@ -142,12 +145,13 @@ public class Player2ColorSelectMenu extends AbstractMenu {
 	    game.setP2Name(getName);
 	    
             game.setPlayer2Color(5);
-            launchGame();
+            //launchGame();
+	    loadBoardColorSelectMenu(game,frame,stateToNotShow,5);
         }
     }
     /**
      * Listener class for the magenta button
-     * Sets player2's color and calls launchGame()
+     * Sets player2's color and calls launchGame() or BoardColorSelectMenu
      */
     class magentaButtonListener implements ActionListener {
 
@@ -157,12 +161,13 @@ public class Player2ColorSelectMenu extends AbstractMenu {
 	    game.setP2Name(getName);
 	    
             game.setPlayer2Color(6);
-            launchGame();
+            //launchGame();
+	    loadBoardColorSelectMenu(game,frame,stateToNotShow,6);
         }
     }
     /**
      * Listener class for the red button
-     * Sets player2's color and calls launchGame()
+     * Sets player2's color and calls launchGame() or BoardColorSelectMenu
      */
     class brownButtonListener implements ActionListener {
 
@@ -172,12 +177,13 @@ public class Player2ColorSelectMenu extends AbstractMenu {
 	    game.setP2Name(getName);
 	    
             game.setPlayer2Color(7);
-            launchGame();
+            //launchGame();
+	    loadBoardColorSelectMenu(game,frame,stateToNotShow,7);
         }
     }
     /**
      * Listener class for the pink button
-     * Sets player2's color and calls launchGame()
+     * Sets player2's color and calls launchGame() or BoardColorSelectMenu
      */
     class pinkButtonListener implements ActionListener {
 
@@ -187,12 +193,13 @@ public class Player2ColorSelectMenu extends AbstractMenu {
 	    game.setP2Name(getName);
 	    
             game.setPlayer2Color(8);
-            launchGame();
+            //launchGame();
+	    loadBoardColorSelectMenu(game,frame,stateToNotShow,8);
         }
     }
     /**
      * Listener class for the red button
-     * Sets player2's color and calls launchGame()
+     * Sets player2's color and calls launchGame() or BoardColorSelectMenu
      */
     class redButtonListener implements ActionListener {
 
@@ -202,12 +209,13 @@ public class Player2ColorSelectMenu extends AbstractMenu {
 	    game.setP2Name(getName);
 	    
             game.setPlayer2Color(1);
-            launchGame();
+            //launchGame();
+	    loadBoardColorSelectMenu(game,frame,stateToNotShow,1);
         }
     }
     /**
      * Listener class for the yellow button
-     * Sets player2's color and calls launchGame()
+     * Sets player2's color and calls launchGame() or BoardColorSelectMenu
      */
     class yellowButtonListener implements ActionListener {
 
@@ -217,7 +225,8 @@ public class Player2ColorSelectMenu extends AbstractMenu {
 	    game.setP2Name(getName);
 	    
             game.setPlayer2Color(2);
-            launchGame();
+            //launchGame();
+	    loadBoardColorSelectMenu(game,frame,stateToNotShow,2);
         }
     }
 
