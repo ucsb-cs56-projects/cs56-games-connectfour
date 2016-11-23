@@ -32,7 +32,7 @@ public class BoardColorSelectMenu extends AbstractMenu
 	
 	this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
-        header = new JLabel("    Choose Board Color");
+        header = new JLabel("       Choose Board Color");
         header.setFont(smallFont);
 
         greyButton = new JButton("Grey");
