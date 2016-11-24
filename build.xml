@@ -18,10 +18,6 @@
   <property name="projectRepoName" value="cs56-games-connectfour" />
 
 
-  <property name="javadocDest" value="${webRoot}/${projectRepoName}/javadoc" /> 
-  <property name="javadocURL" value="${webBaseURL}/${projectRepoName}/javadoc"/> 
-
-
   <target name="compile" description="compile my code">
     <mkdir dir ="build" />
     <javac srcdir="src" destdir="build" debug="true"
@@ -53,7 +49,9 @@
   </target> 
 
 
-  <target name="javadoc" depends="compile">
+  <property name="javadocDest" value="${webRoot}/${projectRepoName}/javadoc" />
+  <property name="javadocURL" value="${webBaseURL}/${projectRepoName}/javadoc"/> 
+  <target name="javadoc" depends="compile" description="generate javadoc">
     <delete dir="javadoc" quiet="true" />
     <javadoc  destdir="javadoc" author="true" version="true" use="true" >
       <fileset dir="src" includes="**/*.java"/>
