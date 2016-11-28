@@ -11,6 +11,9 @@ import java.awt.event.ActionListener;
  * @author Joel Bagan
  * @author Bryanna Phan
  * @version CS56 M16 UCSB
+ *
+ * @author Brian Lee
+ * @version CS56 F16 UCSB
  */
 public class Player2ColorSelectMenu extends AbstractMenu {
 
@@ -22,6 +25,9 @@ public class Player2ColorSelectMenu extends AbstractMenu {
     private JButton pinkButton;
     private JButton redButton;
     private JButton yellowButton;
+    private JLabel nameInst;
+    private JTextField nameText;
+    private int stateToNotShow;
 
     /**
      * Constructor for the Player2ColorSelectMenu
@@ -34,6 +40,7 @@ public class Player2ColorSelectMenu extends AbstractMenu {
      */
     public Player2ColorSelectMenu(Game game, JFrame frame, int stateToNotShow) {
         super(game, frame);
+	this.stateToNotShow = stateToNotShow;
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
@@ -69,6 +76,21 @@ public class Player2ColorSelectMenu extends AbstractMenu {
         yellowButton.addActionListener(new yellowButtonListener());
         yellowButton.setFont(largeFont);
 
+	//Fix Issue #58
+	if(game.getGameMode() == 1)
+	    {
+		nameInst = new JLabel("Enter Player 2 name:");
+	    }
+	else
+	    {
+		nameInst = new JLabel("Enter Computer name:");
+	    }
+	nameInst.setFont(smallFont);
+	nameText = new JTextField("Player 2");
+	nameText.setFont(smallFont);
+	nameText.setFocusable(true);
+	nameText.requestFocus();
+
         this.add(header);
         if (stateToNotShow != 1) {
             this.add(redButton);
@@ -91,83 +113,120 @@ public class Player2ColorSelectMenu extends AbstractMenu {
         if (stateToNotShow != 8) {
             this.add(pinkButton);
         }
+	this.add(nameInst);
+	this.add(nameText);
     }
 
     /**
      * Listener class for the black button
-     * Sets player2's color and calls launchGame()
+     * Sets player2's color and calls launchGame() or BoardColorSelectMenu
      */
     class blackButtonListener implements ActionListener {
 
         public void actionPerformed(ActionEvent event) {
+	    //Issue #58 get name
+      	    String getName = nameText.getText();
+	    game.setP2Name(getName);
+	    
             game.setPlayer2Color(4);
-            launchGame();
-        }
+            //launchGame();
+	    loadBoardColorSelectMenu(game,frame,stateToNotShow,4);
+	    }
     }
     /**
      * Listener class for the blue button
-     * Sets player2's color and calls launchGame()
+     * Sets player2's color and calls launchGame() or BoardColorSelectMenu
      */
     class blueButtonListener implements ActionListener {
 
         public void actionPerformed(ActionEvent event) {
+      	    //Issue #58 get name
+	    String getName = nameText.getText();
+	    game.setP2Name(getName);
+	    
             game.setPlayer2Color(5);
-            launchGame();
+            //launchGame();
+	    loadBoardColorSelectMenu(game,frame,stateToNotShow,5);
         }
     }
     /**
      * Listener class for the magenta button
-     * Sets player2's color and calls launchGame()
+     * Sets player2's color and calls launchGame() or BoardColorSelectMenu
      */
     class magentaButtonListener implements ActionListener {
 
         public void actionPerformed(ActionEvent event) {
+       	    //Issue #58 get name
+	    String getName = nameText.getText();
+	    game.setP2Name(getName);
+	    
             game.setPlayer2Color(6);
-            launchGame();
+            //launchGame();
+	    loadBoardColorSelectMenu(game,frame,stateToNotShow,6);
         }
     }
     /**
      * Listener class for the red button
-     * Sets player2's color and calls launchGame()
+     * Sets player2's color and calls launchGame() or BoardColorSelectMenu
      */
     class brownButtonListener implements ActionListener {
 
         public void actionPerformed(ActionEvent event) {
+       	    //Issue #58 get name
+	    String getName = nameText.getText();
+	    game.setP2Name(getName);
+	    
             game.setPlayer2Color(7);
-            launchGame();
+            //launchGame();
+	    loadBoardColorSelectMenu(game,frame,stateToNotShow,7);
         }
     }
     /**
      * Listener class for the pink button
-     * Sets player2's color and calls launchGame()
+     * Sets player2's color and calls launchGame() or BoardColorSelectMenu
      */
     class pinkButtonListener implements ActionListener {
 
         public void actionPerformed(ActionEvent event) {
+       	    //Issue #58 get name
+	    String getName = nameText.getText();
+	    game.setP2Name(getName);
+	    
             game.setPlayer2Color(8);
-            launchGame();
+            //launchGame();
+	    loadBoardColorSelectMenu(game,frame,stateToNotShow,8);
         }
     }
     /**
      * Listener class for the red button
-     * Sets player2's color and calls launchGame()
+     * Sets player2's color and calls launchGame() or BoardColorSelectMenu
      */
     class redButtonListener implements ActionListener {
 
         public void actionPerformed(ActionEvent event) {
+      	    //Issue #58 get name
+	    String getName = nameText.getText();
+	    game.setP2Name(getName);
+	    
             game.setPlayer2Color(1);
-            launchGame();
+            //launchGame();
+	    loadBoardColorSelectMenu(game,frame,stateToNotShow,1);
         }
     }
     /**
      * Listener class for the yellow button
-     * Sets player2's color and calls launchGame()
+     * Sets player2's color and calls launchGame() or BoardColorSelectMenu
      */
     class yellowButtonListener implements ActionListener {
 
         public void actionPerformed(ActionEvent event) {
+     	    //Issue #58 get name
+	    String getName = nameText.getText();
+	    game.setP2Name(getName);
+	    
             game.setPlayer2Color(2);
-            launchGame();
+            //launchGame();
+	    loadBoardColorSelectMenu(game,frame,stateToNotShow,2);
         }
     }
 

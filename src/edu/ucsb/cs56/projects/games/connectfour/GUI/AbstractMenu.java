@@ -16,7 +16,7 @@ public abstract class AbstractMenu extends JPanel {
     int menu_width = 240;
     int menu_height = 380;
     private static int frame_width = 890;
-    private static int frame_height = 670;
+    private static int frame_height = 690;
     protected final Game game;
     protected final JFrame frame;
     Font smallFont = new Font("Comic Sans MS", Font.BOLD, 15);
@@ -136,6 +136,25 @@ public abstract class AbstractMenu extends JPanel {
         frame.getContentPane().add(nextMenu);
         frame.revalidate();
         frame.repaint();
+    }
+
+    /**
+     * Method that displays the BoardColorSelectMenu
+     *
+     * @param game game object that si passed to all menus so they can access game data
+     * @param frame the JFrame reference that is passed to all load(*)Menu functions so they can add menus to the frame
+     * @param int colorToNotshow(*) the int reference to determine which colors do not show up in the menu
+     */
+    public void loadBoardColorSelectMenu(Game game, JFrame frame, int colorToNotShow1, int colorToNotShow2)
+    {
+	frame.getContentPane().removeAll();
+	frame.getContentPane().setLayout(new BorderLayout());
+	frame.setSize(menu_width, menu_height);
+	BoardColorSelectMenu nextMenu = new BoardColorSelectMenu(game, frame, colorToNotShow1, colorToNotShow2);
+
+	frame.getContentPane().add(nextMenu);
+	frame.revalidate();
+	frame.repaint();
     }
 
     /**

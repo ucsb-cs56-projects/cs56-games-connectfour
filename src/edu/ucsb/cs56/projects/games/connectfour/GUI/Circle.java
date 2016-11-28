@@ -29,7 +29,7 @@ public class Circle {
 
     public Circle(int x, int y, int w, int h) {
         this.x = x;
-        this.y = y;
+        this.y = y + 20;
         this.width = w;
         this.height = h;
         this.state = 0;
@@ -42,7 +42,7 @@ public class Circle {
      * @return Circle obj reference that is half as large, in same location
      */
     public Circle smallCopy() {
-        Circle w = new Circle(this.x, this.y, this.width / 2, this.height / 2);
+        Circle w = new Circle(this.x, this.y-20, this.width / 2, this.height / 2);
         return w;
     }
 

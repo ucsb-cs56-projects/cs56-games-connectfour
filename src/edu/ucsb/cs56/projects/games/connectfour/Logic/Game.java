@@ -24,6 +24,7 @@ public class Game {
     private int coinTossWinner = -1;
     private int player1Color = 1;
     private int player2Color = 2;
+    private int boardColor = 9;
     private int turn;
     private int moveCounter = 0;
     private boolean gameIsOver = false;
@@ -279,6 +280,16 @@ public class Game {
 
     public void setTestingModeEnabled(boolean testingModeEnabled) {
         this.testingModeEnabled = testingModeEnabled;
+    }
+
+    public int getBoardColor()
+    {
+	return boardColor;
+    }
+
+    public void setBoardColor(int boardColor)
+    {
+	this.boardColor = boardColor;
     }
 
 }
