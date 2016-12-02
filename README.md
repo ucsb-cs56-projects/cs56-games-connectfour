@@ -141,6 +141,7 @@ project, you are not coming to something completely new. Instead, you are coming
 to a project that has had improvements made to its refactored form. Most of what we
 did this quarter were bug fixes, but don't worry! There's still plenty of work left!
 After all, no code is perfect and our work is far from finished.
+
 Our first suggestion is to do what any good game tester does and try to break the game.
 And no, we don't mean that you should screw with the code itself to make the game not
 work. That would be a very bad thing. Rather, you should play through the game to see if
@@ -150,6 +151,7 @@ same order that our predecessors recommended: going through the GUI package, loo
 `StartScreen`, then `MainMenu`, and so on before moving on to the Logic package,namely the
 `Board` and `Game` classes, and then finally, the AI package. The Javadoc in the GH-pages
 branch will have more information if you need it.
+
 One more suggestion, keep in mind each class's function and what it should have access to
 and keep the game logic and the GUI separate. Mixing the two causes numerous hiccups that
 you'd probably want to avoid.
@@ -157,4 +159,5 @@ you'd probably want to avoid.
 We wish you luck. Have fun and happy coding!
 
 Brian Lee
+
 Peter Master
