@@ -131,9 +131,12 @@ The user chooses their color first, and then selects the color for the computer.
 ##How To Run
 To start the program, use `ant run`
 
-##Known Bugs
-* When forwarding through X11, in singleplayer mode there is a lag between when the user selects a column and when the computer makes their move. After the user clicks again does the computer make their move. This does not affect gameplay but rather only affects the user experience as they now have to click again after their selection in order for the computer to make their move. Regarding the undo feature, if the user presses undo before the computer has made its move, it will only undo 1 recent move as opposed to the expected 2. 
-* After the refactoring in Summer '16, the panel that displays whose turn it is disappears after pressing the restart button on the in game menu. Our attempt at a fix was commented out in the method `restartGame()` in `AbstractMenu.java` as it did not fully fix the problem. More information can be found in the comments in that class, and [Issue #53](https://github.com/UCSB-CS56-Projects/cs56-games-connectfour/issues/53)
+##Known Bugs and Issues
+* There was an issue from the previous iteration where the JPanel which told you whose turn it was would get covered up by the game board when the restart button was hit. This bug was patched by moving the game board down far enough that, when it inevitable moved up, it would not cover the TurnPanel. Thing is, this is just a patch. Figuring out the underlying issue would be a great way to net yourself some points.
+* While you can now input your name in the Player Color Selection Menus, once the first player's color is selected, the JTextField doubles in size.
+* The game mistakenly thinks that the game is a draw when there are only a few spaces left on the board. In addition, when you hit the undo button, the DRAW image does not go away.
+* Every single AI is in need of improvements. We improved the normal AI a bit, but that means that the normal AI and the advanced AI are not that different from each other. Plus, the Easy AI is being left in the dust. Improve all 3 AI so that they are all sufficiently difficult and distinct from each other.
+* While we can now choose the color of the board, we cannot make it a gradient. Make it so that the board's color can be a gradient.
 
 ##F16 Final Remarks
 Hello to the next generation. Unlike what we came to when we first came to this
