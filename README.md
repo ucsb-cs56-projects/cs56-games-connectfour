@@ -80,7 +80,11 @@ The user chooses their color first, and then selects the color for the computer.
 
 ###Select Color Screen
 
-![](https://raw.githubusercontent.com/joelbagan/cs56-games-connectfour/master/images/screenshots/player1colorselect.png)
+![](https://github.com/brianslee/cs56-games-connectfour/blob/master/images/screenshots/PlayerSelectColorMenu.png)
+
+###Board Color Select Screen
+
+![](https://github.com/brianslee/cs56-games-connectfour/blob/master/images/screenshots/BoardColorSelectMenu.png)
 
 ###Board In Play
 
