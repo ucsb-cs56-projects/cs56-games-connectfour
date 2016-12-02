@@ -52,7 +52,7 @@ The user chooses their color first, and then selects the color for the computer.
   - Easy
     - Moves are made by the computer randomly
   - Normal
-    - Moves are made by the computer randomly until it detects 3 circles in a row of its own color or the human's and makes moves accordingly
+    - Moves are made by the computer randomly until it detects 3 circles in a row of its own color or the human's or a 2 in a row of it's own color and makes moves accordingly
   - Advanced
     - Moves are made by the computer randomly until it detects 2 or 3 circles in a row of its own color of the human's and makes moves accordingly.
 
@@ -131,30 +131,26 @@ To start the program, use `ant run`
 * When forwarding through X11, in singleplayer mode there is a lag between when the user selects a column and when the computer makes their move. After the user clicks again does the computer make their move. This does not affect gameplay but rather only affects the user experience as they now have to click again after their selection in order for the computer to make their move. Regarding the undo feature, if the user presses undo before the computer has made its move, it will only undo 1 recent move as opposed to the expected 2. 
 * After the refactoring in Summer '16, the panel that displays whose turn it is disappears after pressing the restart button on the in game menu. Our attempt at a fix was commented out in the method `restartGame()` in `AbstractMenu.java` as it did not fully fix the problem. More information can be found in the comments in that class, and [Issue #53](https://github.com/UCSB-CS56-Projects/cs56-games-connectfour/issues/53)
 
-##M16 Final Remarks
-Hello World and future humans! The first thing to note about this project is
-that it went through a massive refactoring in Summer '16. This was an effort
-to separate the GUI from the logic, to allow for the game's logic to be tested.
-Some functionality was lost in the refactoring; namely, the ability to define
-player names.This, as well as a bug with the actual in game display of player
-names, have been added as issues for you to potentially fix. Our suggestion
-would be to try and look at our attempts at fixing these issues, which we left
-in the code, commented out. If after looking at our attempts, you are still stuck,
-we suggest looking back at the previous version's handling of these features. While
-the previous version has a significantly different structure than the current version,
-it may be helpful to see the features implemented and working correctly to get an
-idea of how to proceed. As you first begin to read the code and get a feel for
-the project, we suggest going through the GUI package first. Follow the basic
-flow of the game, starting with `StartScreen` then `MainMenu` and so on. Once
-the game is started, nearly everything responds to mouse click events, so
-really try to understand the `MouseClass` in `Board`. Then dive into the
-Logic package, and note the separation of `Game` and `Board`. From there,
-the AI seems complicated, but is actually quite simple once you understand the
-structure of `Game` and `Board`. More information can be found in the javadoc
-comments in each class. One last suggestion would be to always consider what
-a class should know/have access to, and try to keep the GUI and game logic
-separate.
+##F16 Final Remarks
+Hello to the next generation. Unlike what we came to when we first came to this
+project, you are not coming to something completely new. Instead, you are coming
+to a project that has had improvements made to its refactored form. Most of what we
+did this quarter were bug fixes, but don't worry! There's still plenty of work left!
+After all, no code is perfect and our work is far from finished.
+Our first suggestion is to do what any good game tester does and try to break the game.
+And no, we don't mean that you should screw with the code itself to make the game not
+work. That would be a very bad thing. Rather, you should play through the game to see if
+any bugs crop up. After all, there is always something wrong that can escape the eye of
+the code's writer. After that, feel free to read through the code. We suggest taking the
+same order that our predecessors recommended: going through the GUI package, looking through
+`StartScreen`, then `MainMenu`, and so on before moving on to the Logic package,namely the
+`Board` and `Game` classes, and then finally, the AI package. The Javadoc in the GH-pages
+branch will have more information if you need it.
+One more suggestion, keep in mind each class's function and what it should have access to
+and keep the game logic and the GUI separate. Mixing the two causes numerous hiccups that
+you'd probably want to avoid.
 
-Good luck!
+We wish you luck. Have fun and happy coding!
 
-Bryanna Phan && Joel Bagan
+Brian Lee
+Peter Master
