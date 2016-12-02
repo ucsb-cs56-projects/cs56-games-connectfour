@@ -37,6 +37,10 @@ W16 | christiannewkirk sarahmzhong 6pm | gkowligi, vwtan | An implementation of 
 ```
 M16 | bryannaphan joelbagan 9am | Refactored Project
 ```
+
+```
+F16 | brianslee peter-master 4pm | bryannaphan joelbagan | Improvements on Refactored Project
+```
 ###How To Play
 The first player to get 4 circles in a row diagonally, vertically, or horizontally wins. Player 1 chooses their color first and then player 2 chooses their color. Player 1 starts. Click a column in order for the circle to be dropped into the first available spot starting from the bottom. If a column is full then no more circles can be added to it. If all spots become full and there is no winner then there is a draw. 
 
@@ -53,7 +57,9 @@ The user chooses their color first, and then selects the color for the computer.
     - Moves are made by the computer randomly until it detects 2 or 3 circles in a row of its own color of the human's and makes moves accordingly.
 
 ###Features
-- Each player (or computer) can choose the color of their cirlces
+- Each player (or computer) can choose the color of their circles.
+- Each player (or computer) can input their names.
+- The player(s) can choose the color of the board.
 - The undo button removes the most recent move made. (The undo button can be used as many times as you like, until the board is empty)
   - Multiplayer: The undo button only removes the most recent singular move. The turn is switched with each press of the undo.
   - Singleplayer: The undo button removes the 2 most recent moves (the user's and the computer's). It is always the user's turn.
@@ -105,8 +111,9 @@ The user chooses their color first, and then selects the color for the computer.
   * `Circle` - Class for the circles that are drawn on the board
   * `InGameMenu` - Class for the in game menu. Holds undo, restart, main menu, exit buttons by default. If testing mode is enables it will hold a print board button. Extends AbstractMenu.
   * `MainMenu` - Class for the main menu. Extends AbstractMenu.
-  * `Player1ColorSelectMenu` - Class for the color selection menu for player 1. Extends AbstractMenu.
-  * `Player2ColorSelectMenu` - Class for the color selection menu for player 2. Will not display a button for the color chosen by player 1, so as not to allow both players having the same color circles. Extends AbstractMenu.
+  * `Player1ColorSelectMenu` - Class for the color selection menu for player 1. Allows for the input of player 1's name. Extends AbstractMenu.
+  * `Player2ColorSelectMenu` - Class for the color selection menu for player 2. Will not display a button for the color chosen by player 1, so as not to allow both players having the same color circles. Allows for the input of player 2 or the computer's name. Extends AbstractMenu.
+  * `BoardColorSelectMenu` - Class for the color selection menu for the board. Will not display buttons for colors selected for the players. Extends Abstract Menu.
   * `RulesPage` - Class for the rules page which displays a JTextArea with inofrmation on the game. Extends AbstractMenu.
   * `SettingsMenu` - Class for the settings menu which currently only holds a JCheckBox for enabling testing mode;
   * `SinglePlayerMenu` - Class for the single player menu in which you choose the difficulty level. Extends AbstractMenu.
