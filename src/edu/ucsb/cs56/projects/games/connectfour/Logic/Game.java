@@ -33,11 +33,19 @@ public class Game {
     private String p2Name = "Player 2";
     private static Stack<IntPair> movesList = new Stack<IntPair>();
 
+    //This is the list of random AI names and can be adjusted as such.
+    private final String[] randomNames = new String[]{
+        "Jacob", "Augustine", "Harambe", "Rochester", "Michelle",
+        "Kayla", "Deborah", "William", "Howard", "Stewart",
+        "Dumbledore", "McKenzie", "Sasha", "Michael", "Alexis"
+    };
+
     /**
      * Undo the last move that was done. (undo 1 move is multiplayer, 2 moves if singleplayer)
      * updates instance variables as appropriate
      */
     public void undo() {
+
         if (gameIsOver)
             gameIsOver = false;
         if (moveCounter < 1)
@@ -125,7 +133,7 @@ public class Game {
         gameIsOver = false;
 
         System.out.println("Restarting...");
-	
+
         System.out.println("GameMode is " + getGameMode());
 
 	coinToss();
@@ -156,7 +164,7 @@ public class Game {
         movesList.clear();
         board.setDrawCounter(0);
     }
-	
+
     /**
      * Method that simulates a coin flip, generating a 1 or 2 at random
      * stores result in coinTossWinner, which is used to determine first
@@ -265,6 +273,19 @@ public class Game {
     public void setP2Name(String p2Name) {
         this.p2Name = p2Name;
     }
+
+    public void setP2NoName() {
+        // Chooses default name for Computers if one was not chosen
+        if(this.getP2Name().equals("Player 2") && this.getGameMode() > 1)
+            {
+                Random random = new Random();
+                int randomNameIndex = random.nextInt(randomNames.length);
+                System.out.println(randomNameIndex);
+                System.out.println(randomNames[randomNameIndex]);
+                this.setP2Name(randomNames[randomNameIndex]);
+            }
+    }
+
 
     public int getCoinTossWinner() {
         return coinTossWinner;
