@@ -94,7 +94,6 @@ public class BoardColorSelectMenu extends AbstractMenu
 	this.add(beigeButton);
 	this.add(cyanButton);
 	this.add(oliveButton);
-        this.game.setP2NoName();
     }
 
     /**

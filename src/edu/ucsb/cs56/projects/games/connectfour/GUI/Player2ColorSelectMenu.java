@@ -25,7 +25,6 @@ public class Player2ColorSelectMenu extends AbstractMenu {
     private JButton pinkButton;
     private JButton redButton;
     private JButton yellowButton;
-    private JButton invisibleButton;
     private JLabel nameInst;
     private JTextField nameText;
     private int stateToNotShow;
