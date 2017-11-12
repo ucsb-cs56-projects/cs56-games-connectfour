@@ -124,6 +124,8 @@ public class BoardDisplay extends AbstractMenu {
     public void updateTurnPanel() {
         frame.getContentPane().remove(turnPanel);
         turnPanel.remove(turnMessage);
+
+
         if (game.getTurn() == 1) {
             turnMessage.setText("It's " + game.getP1Name() + "'s turn!");
         } else {
