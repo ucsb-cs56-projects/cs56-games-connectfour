@@ -30,7 +30,7 @@ public class BoardColorSelectMenu extends AbstractMenu
     public BoardColorSelectMenu(Game game, JFrame frame, int stateToNotShow1, int stateToNotShow2)
     {
 	super(game,frame);
-	
+
 	this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         header = new JLabel("       Choose Board Color");

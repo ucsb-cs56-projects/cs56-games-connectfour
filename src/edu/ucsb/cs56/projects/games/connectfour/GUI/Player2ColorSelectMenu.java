@@ -113,21 +113,24 @@ public class Player2ColorSelectMenu extends AbstractMenu {
         if (stateToNotShow != 8) {
             this.add(pinkButton);
         }
+        this.add(Box.createVerticalStrut(40));
 	this.add(nameInst);
-	this.add(nameText);
+        this.add(nameText);
     }
 
     /**
      * Listener class for the black button
      * Sets player2's color and calls launchGame() or BoardColorSelectMenu
      */
+
     class blackButtonListener implements ActionListener {
 
         public void actionPerformed(ActionEvent event) {
 	    //Issue #58 get name
       	    String getName = nameText.getText();
-	    game.setP2Name(getName);
-	    
+            game.setP2Name(getName);
+            game.setP2NoName();
+
             game.setPlayer2Color(4);
             //launchGame();
 	    loadBoardColorSelectMenu(game,frame,stateToNotShow,4);
@@ -143,7 +146,8 @@ public class Player2ColorSelectMenu extends AbstractMenu {
       	    //Issue #58 get name
 	    String getName = nameText.getText();
 	    game.setP2Name(getName);
-	    
+            game.setP2NoName();
+
             game.setPlayer2Color(5);
             //launchGame();
 	    loadBoardColorSelectMenu(game,frame,stateToNotShow,5);
@@ -159,7 +163,8 @@ public class Player2ColorSelectMenu extends AbstractMenu {
        	    //Issue #58 get name
 	    String getName = nameText.getText();
 	    game.setP2Name(getName);
-	    
+            game.setP2NoName();
+
             game.setPlayer2Color(6);
             //launchGame();
 	    loadBoardColorSelectMenu(game,frame,stateToNotShow,6);
@@ -175,7 +180,8 @@ public class Player2ColorSelectMenu extends AbstractMenu {
        	    //Issue #58 get name
 	    String getName = nameText.getText();
 	    game.setP2Name(getName);
-	    
+            game.setP2NoName();
+
             game.setPlayer2Color(7);
             //launchGame();
 	    loadBoardColorSelectMenu(game,frame,stateToNotShow,7);
@@ -191,7 +197,8 @@ public class Player2ColorSelectMenu extends AbstractMenu {
        	    //Issue #58 get name
 	    String getName = nameText.getText();
 	    game.setP2Name(getName);
-	    
+            game.setP2NoName();
+
             game.setPlayer2Color(8);
             //launchGame();
 	    loadBoardColorSelectMenu(game,frame,stateToNotShow,8);
@@ -207,7 +214,8 @@ public class Player2ColorSelectMenu extends AbstractMenu {
       	    //Issue #58 get name
 	    String getName = nameText.getText();
 	    game.setP2Name(getName);
-	    
+            game.setP2NoName();
+
             game.setPlayer2Color(1);
             //launchGame();
 	    loadBoardColorSelectMenu(game,frame,stateToNotShow,1);
@@ -223,7 +231,8 @@ public class Player2ColorSelectMenu extends AbstractMenu {
      	    //Issue #58 get name
 	    String getName = nameText.getText();
 	    game.setP2Name(getName);
-	    
+            game.setP2NoName();
+
             game.setPlayer2Color(2);
             //launchGame();
 	    loadBoardColorSelectMenu(game,frame,stateToNotShow,2);
