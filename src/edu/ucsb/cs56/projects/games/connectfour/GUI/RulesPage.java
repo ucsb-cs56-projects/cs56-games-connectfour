@@ -41,6 +41,8 @@ public class RulesPage extends AbstractMenu {
      */
     public RulesPage(Game game, JFrame frame) {
         super(game, frame);
+        frame.setTitle("Rules");
+
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         Font BFont = new Font("Comic Sans MS", Font.BOLD, 22);
@@ -48,13 +50,13 @@ public class RulesPage extends AbstractMenu {
         mainMenuButton = new JButton("Back");
         mainMenuButton.addActionListener(new backButtonListener());
         mainMenuButton.setFont(BFont);
+        mainMenuButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         rulesTextArea = new JTextArea(5, 20);
         scrollPane = new JScrollPane(rulesTextArea);
         rulesTextArea.setEditable(false);
         rulesTextArea.setLineWrap(true);
         rulesTextArea.append(rulesTextString);
-
 
         this.add(mainMenuButton);
         this.add(rulesTextArea);

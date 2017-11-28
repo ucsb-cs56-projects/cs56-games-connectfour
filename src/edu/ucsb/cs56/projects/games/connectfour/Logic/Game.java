@@ -53,6 +53,7 @@ public class Game {
 
         if (gameMode == 1) {
             --moveCounter;
+            board.setDrawCounter(board.getDrawCounter() - 1);
             System.out.println("Move Counter Decremented to: " + moveCounter);
             IntPair tempPair = movesList.pop();
             int xSpot = tempPair.getX();
@@ -76,14 +77,18 @@ public class Game {
             if (moveCounter % 2 == 1 && coinTossWinner == 1) {
                 IntPair tempPair = movesList.pop();
                 --moveCounter;
+                board.setDrawCounter(board.getDrawCounter() - 1);
                 setTurn(1);
                 System.out.println("Move Counter Decremented to: " + moveCounter);
                 board.getGameGridCircle(tempPair.getX(), tempPair.getY()).setState(0);
             } else {
                 IntPair tempPair1 = movesList.pop();
                 --moveCounter;
+                board.setDrawCounter(board.getDrawCounter() - 1);
+
                 IntPair tempPair2 = movesList.pop();
                 --moveCounter;
+                board.setDrawCounter(board.getDrawCounter() - 1);
 
                 System.out.println("Move Counter Decremented to: " + moveCounter);
                 board.getGameGridCircle(tempPair1.getX(), tempPair1.getY()).setState(0);

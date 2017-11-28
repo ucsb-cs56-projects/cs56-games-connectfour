@@ -71,14 +71,11 @@ public class Board {
      * @return true if 42 circles drawn and no win detected, else false
      */
     public boolean checkDraw() {
-        if (drawCounter == 42 &&
-                !(checkVertical()
-                        && checkMainDiagonal()
-                        && checkAntiDiagonal()
-                        && checkHorizontal())) {
+        if (drawCounter == 42 &&!(checkVertical() && checkMainDiagonal() && checkAntiDiagonal() && checkHorizontal())) {
             game.setGameIsOver(true);
             return true;
         }
+
         return false;
     }
 

@@ -27,6 +27,8 @@ public class MainMenu extends AbstractMenu {
      */
     public MainMenu(Game game, JFrame frame) {
         super(game, frame);
+        frame.setTitle("Main Menu");
+
 
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -35,22 +37,29 @@ public class MainMenu extends AbstractMenu {
         MPButton = new JButton("Multiplayer");
         MPButton.addActionListener(new MPButtonListener());
         MPButton.setFont(BFont);
+        MPButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+
 
         SPButton = new JButton("Single Player");
         SPButton.addActionListener(new SPButtonListener());
         SPButton.setFont(BFont);
+        SPButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+
 
         settingsButton = new JButton("Settings");
         settingsButton.addActionListener(new settingsButtonListener());
         settingsButton.setFont(BFont);
+        settingsButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         ruleButton = new JButton("Rules");
         ruleButton.addActionListener(new ruleButtonListener());
         ruleButton.setFont(BFont);
+        ruleButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         ExitButton = new JButton("Exit");
         ExitButton.addActionListener(new ExitButtonListener());
         ExitButton.setFont(BFont);
+        ExitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
 
         this.add(SPButton);

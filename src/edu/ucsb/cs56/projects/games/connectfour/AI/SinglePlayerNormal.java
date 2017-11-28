@@ -56,6 +56,7 @@ public class SinglePlayerNormal {
                     xIndex = col + 3;
                     yIndex = row;
                     checkAndAdd(b, movesToMake, xIndex, yIndex, 2);
+            
                 }
 
 		//Check for 2 in a row for the AI
@@ -105,6 +106,7 @@ public class SinglePlayerNormal {
                         && (b.getGameGridCircle(col - 3, row).getState() == 0)) {
                     xIndex = col - 3;
                     yIndex = row;
+                   
                     checkAndAdd(b, movesToBlock, xIndex, yIndex, 2);
                 }
 
@@ -115,6 +117,7 @@ public class SinglePlayerNormal {
                         && (b.getGameGridCircle(col - 3, row).getState() == 0)) {
                     xIndex = col - 3;
                     yIndex = row;
+                
                     checkAndAdd(b, movesToMake, xIndex, yIndex, 2);
                 }
 
@@ -175,8 +178,8 @@ public class SinglePlayerNormal {
                         && (b.getGameGridCircle(col, row - 3).getState() == 0)) {
                     xIndex = col;
                     yIndex = row - 3;
+               
                     checkAndAdd(b, movesToMake, xIndex, yIndex, 2);
-
                 }
 
 		//Look for AI 2 in a row
@@ -228,6 +231,7 @@ public class SinglePlayerNormal {
                         && (b.getGameGridCircle(col + 3, row + 3).getState() == 0)) {
                     xIndex = col + 3;
                     yIndex = row + 3;
+    
                     checkAndAdd(b, movesToMake, xIndex, yIndex, 2);
                 }
 
@@ -290,6 +294,7 @@ public class SinglePlayerNormal {
                         && (b.getGameGridCircle(col - 3, row - 3).getState() == 0)) {
                     xIndex = col - 3;
                     yIndex = row - 3;
+            
                     checkAndAdd(b, movesToMake, xIndex, yIndex, 2);
                 }
 
@@ -352,6 +357,7 @@ public class SinglePlayerNormal {
                         && (b.getGameGridCircle(col - 3, row + 3).getState() == 0)) {
                     xIndex = col - 3;
                     yIndex = row + 3;
+          
                     checkAndAdd(b, movesToMake, xIndex, yIndex, 2);
                 }
 
@@ -415,7 +421,9 @@ public class SinglePlayerNormal {
                         && (b.getGameGridCircle(col + 3, row - 3).getState() == 0)) {
                     xIndex = col + 3;
                     yIndex = row - 3;
+  
                     checkAndAdd(b, movesToMake, xIndex, yIndex, 2);
+                
                 }
 		
 		//Check for 2 in a row AI

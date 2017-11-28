@@ -20,6 +20,7 @@ public abstract class AbstractMenu extends JPanel {
     protected final Game game;
     protected final JFrame frame;
     Font smallFont = new Font("Comic Sans MS", Font.BOLD, 15);
+    Font mediumFont = new Font("Comic Sans MS", Font.BOLD, 18);
     Font largeFont = new Font("Comic Sans MS", Font.BOLD, 22);
 
 

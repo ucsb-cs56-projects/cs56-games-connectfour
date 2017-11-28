@@ -2,6 +2,7 @@ package edu.ucsb.cs56.projects.games.connectfour.GUI;
 
 import edu.ucsb.cs56.projects.games.connectfour.Logic.Game;
 
+import java.awt.*;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,6 +26,7 @@ public class Player2ColorSelectMenu extends AbstractMenu {
     private JButton pinkButton;
     private JButton redButton;
     private JButton yellowButton;
+    private JButton backButton;
     private JLabel nameInst;
     private JTextField nameText;
     private int stateToNotShow;
@@ -40,41 +42,57 @@ public class Player2ColorSelectMenu extends AbstractMenu {
      */
     public Player2ColorSelectMenu(Game game, JFrame frame, int stateToNotShow) {
         super(game, frame);
-	this.stateToNotShow = stateToNotShow;
+	    this.stateToNotShow = stateToNotShow;
+        frame.setTitle("Player 2");
+
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         header = new JLabel("    Player 2: Choose Color");
         header.setFont(smallFont);
-
+        header.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         blackButton = new JButton("Black");
         blackButton.addActionListener(new blackButtonListener());
         blackButton.setFont(largeFont);
+        blackButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+
 
         blueButton = new JButton("Blue");
         blueButton.addActionListener(new blueButtonListener());
         blueButton.setFont(largeFont);
+        blueButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+
 
         magentaButton = new JButton("Magenta");
         magentaButton.addActionListener(new magentaButtonListener());
         magentaButton.setFont(largeFont);
+        magentaButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         brownButton = new JButton("Brown");
         brownButton.addActionListener(new brownButtonListener());
         brownButton.setFont(largeFont);
+        brownButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         pinkButton = new JButton("Pink");
         pinkButton.addActionListener(new pinkButtonListener());
         pinkButton.setFont(largeFont);
+        pinkButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         redButton = new JButton("Red");
         redButton.addActionListener(new redButtonListener());
         redButton.setFont(largeFont);
+        redButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         yellowButton = new JButton("Yellow");
         yellowButton.addActionListener(new yellowButtonListener());
         yellowButton.setFont(largeFont);
+        yellowButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        backButton = new JButton("Back");
+        backButton.addActionListener(new backButtonListener());
+        backButton.setFont(largeFont);
+        backButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
 	//Fix Issue #58
 	if(game.getGameMode() == 1)
@@ -86,10 +104,13 @@ public class Player2ColorSelectMenu extends AbstractMenu {
 		nameInst = new JLabel("Enter Computer name:");
 	    }
 	nameInst.setFont(smallFont);
+    nameInst.setAlignmentX(Component.CENTER_ALIGNMENT);
 	nameText = new JTextField("Player 2");
 	nameText.setFont(smallFont);
 	nameText.setFocusable(true);
 	nameText.requestFocus();
+    nameText.setHorizontalAlignment(JLabel.CENTER);
+
 
         this.add(header);
         if (stateToNotShow != 1) {
@@ -113,8 +134,9 @@ public class Player2ColorSelectMenu extends AbstractMenu {
         if (stateToNotShow != 8) {
             this.add(pinkButton);
         }
-        this.add(Box.createVerticalStrut(40));
-	this.add(nameInst);
+        this.add(backButton);
+        //this.add(Box.createVerticalStrut(40));
+	    this.add(nameInst);
         this.add(nameText);
     }
 
@@ -240,10 +262,25 @@ public class Player2ColorSelectMenu extends AbstractMenu {
     }
 
     /**
-     * No back button, may add one later
+     * Listener for the back button
+     */
+    class backButtonListener implements ActionListener {
+        public void actionPerformed(ActionEvent event) {
+            back(game, frame);
+        }
+    }
+
+    /**
+     * Loads the main menu
+     *
+     * @param game
+     * @param frame
      */
     @Override
     public void back(Game game, JFrame frame) {
-        return;
+        loadMainMenu(game, frame);
+        //return;
     }
+
+
 }
