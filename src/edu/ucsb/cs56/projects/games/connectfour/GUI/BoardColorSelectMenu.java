@@ -2,6 +2,7 @@ package edu.ucsb.cs56.projects.games.connectfour.GUI;
 
 import edu.ucsb.cs56.projects.games.connectfour.Logic.Game;
 
+import java.awt.*;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -29,71 +30,82 @@ public class BoardColorSelectMenu extends AbstractMenu
     //constructor
     public BoardColorSelectMenu(Game game, JFrame frame, int stateToNotShow1, int stateToNotShow2)
     {
-	super(game,frame);
+		super(game,frame);
+	    frame.setTitle("Board Color Selector");
 
-	this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+
+		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         header = new JLabel("       Choose Board Color");
         header.setFont(smallFont);
+        header.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         greyButton = new JButton("Grey");
-	greyButton.addActionListener(new greyButtonListener());
-	greyButton.setFont(largeFont);
+		greyButton.addActionListener(new greyButtonListener());
+		greyButton.setFont(largeFont);
+		greyButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-	blackButton = new JButton("Black");
-	blackButton.addActionListener(new blackButtonListener());
-	blackButton.setFont(largeFont);
+		blackButton = new JButton("Black");
+		blackButton.addActionListener(new blackButtonListener());
+		blackButton.setFont(largeFont);
+		blackButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-	pinkButton = new JButton("Light Pink");
-	pinkButton.addActionListener(new pinkButtonListener());
-	pinkButton.setFont(largeFont);
+		pinkButton = new JButton("Light Pink");
+		pinkButton.addActionListener(new pinkButtonListener());
+		pinkButton.setFont(largeFont);
+		pinkButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-	redButton = new JButton("Red");
-	redButton.addActionListener(new redButtonListener());
-	redButton.setFont(largeFont);
+		redButton = new JButton("Red");
+		redButton.addActionListener(new redButtonListener());
+		redButton.setFont(largeFont);
+		redButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-	yellowButton = new JButton("Yellow");
-	yellowButton.addActionListener(new yellowButtonListener());
-	yellowButton.setFont(largeFont);
+		yellowButton = new JButton("Yellow");
+		yellowButton.addActionListener(new yellowButtonListener());
+		yellowButton.setFont(largeFont);
+		yellowButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-	beigeButton = new JButton("Beige");
-	beigeButton.addActionListener(new beigeButtonListener());
-	beigeButton.setFont(largeFont);
+		beigeButton = new JButton("Beige");
+		beigeButton.addActionListener(new beigeButtonListener());
+		beigeButton.setFont(largeFont);
+		beigeButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-	cyanButton = new JButton("Cyan");
-	cyanButton.addActionListener(new cyanButtonListener());
-	cyanButton.setFont(largeFont);
+		cyanButton = new JButton("Cyan");
+		cyanButton.addActionListener(new cyanButtonListener());
+		cyanButton.setFont(largeFont);
+		cyanButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-	oliveButton = new JButton("Olive");
-	oliveButton.addActionListener(new oliveButtonListener());
-	oliveButton.setFont(largeFont);
-	/*
-	gradGreyToBlackButton = new JButton("Gradient, grey to black");
-	gradGreyToBlackButton.addActionListener(new gGTBButtonListener());
-	gradGreyToBlackButton.setFont(largeFont);
-	*/
-	this.add(header);
-	this.add(greyButton);
-	if(stateToNotShow1 != 1 && stateToNotShow2 != 1)
-	    {
-		this.add(redButton);
-	    }
-	if(stateToNotShow1 != 2 && stateToNotShow2 != 2)
-	    {
-		this.add(yellowButton);
-	    }
-	if(stateToNotShow1 != 4 && stateToNotShow2 != 4)
-	    {
-		this.add(blackButton);
-		//this.add(gradGreyToBlackButton);
-	    }
-	if(stateToNotShow1 != 8 && stateToNotShow2 != 8)
-	    {
-		this.add(pinkButton);
-	    }
-	this.add(beigeButton);
-	this.add(cyanButton);
-	this.add(oliveButton);
+		oliveButton = new JButton("Olive");
+		oliveButton.addActionListener(new oliveButtonListener());
+		oliveButton.setFont(largeFont);
+		oliveButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+		/*
+		gradGreyToBlackButton = new JButton("Gradient, grey to black");
+		gradGreyToBlackButton.addActionListener(new gGTBButtonListener());
+		gradGreyToBlackButton.setFont(largeFont);
+		*/
+		this.add(header);
+		this.add(greyButton);
+		if(stateToNotShow1 != 1 && stateToNotShow2 != 1)
+		    {
+			this.add(redButton);
+		    }
+		if(stateToNotShow1 != 2 && stateToNotShow2 != 2)
+		    {
+			this.add(yellowButton);
+		    }
+		if(stateToNotShow1 != 4 && stateToNotShow2 != 4)
+		    {
+			this.add(blackButton);
+			//this.add(gradGreyToBlackButton);
+		    }
+		if(stateToNotShow1 != 8 && stateToNotShow2 != 8)
+		    {
+			this.add(pinkButton);
+		    }
+		this.add(beigeButton);
+		this.add(cyanButton);
+		this.add(oliveButton);
     }
 
     /**

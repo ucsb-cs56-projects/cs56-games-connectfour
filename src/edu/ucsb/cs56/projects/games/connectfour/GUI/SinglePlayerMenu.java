@@ -27,6 +27,8 @@ public class SinglePlayerMenu extends AbstractMenu {
      */
     public SinglePlayerMenu(Game game, JFrame frame) {
         super(game, frame);
+        frame.setTitle("Single Player");
+
 
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -35,18 +37,23 @@ public class SinglePlayerMenu extends AbstractMenu {
         singlePlayerEasy = new JButton("Easy");
         singlePlayerEasy.addActionListener(new singlePlayerEasyListener());
         singlePlayerEasy.setFont(BFont);
+        singlePlayerEasy.setAlignmentX(Component.CENTER_ALIGNMENT);
+
 
         singlePlayerNormal = new JButton("Normal");
         singlePlayerNormal.addActionListener(new singlePlayerNormalListener());
         singlePlayerNormal.setFont(BFont);
+        singlePlayerNormal.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         singlePlayerAdvanced = new JButton("Advanced");
         singlePlayerAdvanced.addActionListener(new singlePlayerAdvancedListener());
         singlePlayerAdvanced.setFont(BFont);
+        singlePlayerAdvanced.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         mainMenuButton = new JButton("Back");
         mainMenuButton.addActionListener(new backButtonListener());
         mainMenuButton.setFont(BFont);
+        mainMenuButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         this.add(singlePlayerEasy);
         this.add(singlePlayerNormal);

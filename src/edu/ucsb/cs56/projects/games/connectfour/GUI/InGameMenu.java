@@ -33,18 +33,22 @@ public class InGameMenu extends AbstractMenu {
         mainMButton = new JButton("Main Menu");
         mainMButton.addActionListener(new mainMenuButtonListener());
         mainMButton.setFont(largeFont);
+        mainMButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         restartButton = new JButton("Restart");
         restartButton.addActionListener(new restartButtonListener());
         restartButton.setFont(largeFont);
+        restartButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         exitButton = new JButton("Exit");
         exitButton.addActionListener(new exitButtonListener());
         exitButton.setFont(largeFont);
+        exitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         undoButton = new JButton("Undo");
         undoButton.addActionListener(new undoButtonListener());
         undoButton.setFont(largeFont);
+        undoButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         if (game.isTestingModeEnabled()) {
             JButton printBoard = new JButton("Print Board");
             printBoard.addActionListener(new printBoardButtonListener());

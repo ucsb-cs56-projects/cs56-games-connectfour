@@ -28,6 +28,8 @@ public class BoardDisplay extends AbstractMenu {
      */
     public BoardDisplay(Game game, JFrame frame) {
         super(game, frame);
+        frame.setTitle("Connect Four");
+
     }
 
     /**
@@ -38,45 +40,45 @@ public class BoardDisplay extends AbstractMenu {
      */
     @Override
     public void paint(Graphics g) {
-        Board b = game.getBoard();
-	if(game.getBoardColor() == 9)
-	    {
-		g.setColor(Color.LIGHT_GRAY);
-	    }
-	else if(game.getBoardColor() == 1)
-	    {
-		g.setColor(Color.RED);
-	    }
-	else if(game.getBoardColor() == 2)
-	    {
-		g.setColor(Color.YELLOW);
-	    }
-	else if(game.getBoardColor() == 4)
-	    {
-		g.setColor(Color.BLACK);
-	    }
-	else if(game.getBoardColor() == 8)
-	    {
-		g.setColor(new Color(225,182,193));
-	    }
-	else if(game.getBoardColor() == 10)
-	    {
-		g.setColor(new Color(245,245,220));
-	    }
-	else if(game.getBoardColor() == 11)
-	    {
-		g.setColor(Color.CYAN);
-	    }
-	else if(game.getBoardColor() == 12)
-	    {
-		g.setColor(new Color(107,142,35));
-	    }
+       Board b = game.getBoard();
+	   if(game.getBoardColor() == 9)
+	   {
+	       g.setColor(Color.LIGHT_GRAY);
+	   }
+	   else if(game.getBoardColor() == 1)
+	   {
+	       g.setColor(Color.RED);
+	   }
+	   else if(game.getBoardColor() == 2)
+	   {
+	       g.setColor(Color.YELLOW);
+	   }
+	   else if(game.getBoardColor() == 4)
+	   {
+	       g.setColor(Color.BLACK);
+	   }
+	   else if(game.getBoardColor() == 8)
+	   {
+	       g.setColor(new Color(225,182,193));
+	   }
+	   else if(game.getBoardColor() == 10)
+	   {
+	       g.setColor(new Color(245,245,220));
+	   }
+	   else if(game.getBoardColor() == 11)
+	   {
+		  g.setColor(Color.CYAN);
+	   }
+	   else if(game.getBoardColor() == 12)
+	   {
+	       g.setColor(new Color(107,142,35));
+	   }
 	/*	else if(game.getBoardColor() == 13)
 	    {
 		g.setColor(new GradientPaint(0,20,Color.LIGHT_GRAY,this.getWidth(),this.getHeight(),Color.BLACK));
 	    }
 */
-	g.fillRect(0, 20, this.getWidth(), this.getHeight());
+	   g.fillRect(0, 20, this.getWidth(), this.getHeight());
 
         for (Circle[] circles : b.getGameGrid()) {
             for (Circle circle : circles) {
@@ -146,6 +148,16 @@ public class BoardDisplay extends AbstractMenu {
         g.setFont(new Font("Times", Font.BOLD, 100));
         g.drawString("Draw", 100, 400);
     }
+
+    /**
+     * Method for removing "Draw" text when user clicks "undo" after game ends in a draw
+     * @param g Graphics object for drawing the message
+     */
+    // private void removeDraw(Graphics g) {
+    //     g.setColor(Color.BLACK);
+    //     g.setFont(new Font("Times", Font.BOLD, 100));
+    //     g.drawString("Draw", 100, 400);
+    // }
 
     /**
      * Method that draws small green circles over diagonal winning

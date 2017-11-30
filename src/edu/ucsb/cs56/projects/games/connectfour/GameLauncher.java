@@ -2,8 +2,9 @@ package edu.ucsb.cs56.projects.games.connectfour;
 
 import edu.ucsb.cs56.projects.games.connectfour.GUI.StartScreen;
 import edu.ucsb.cs56.projects.games.connectfour.Logic.Game;
-
+import edu.ucsb.cs56.projects.games.connectfour.GUI.MusicPlayer;
 import javax.swing.*;
+import javafx.embed.swing.JFXPanel;
 
 /**
  * Creates a JFrame and Game, whose references are passed to the StartScreen's constructor
@@ -20,5 +21,7 @@ public class GameLauncher {
         StartScreen start = new StartScreen(game, frame);
         frame.getContentPane().add(start);
         frame.setVisible(true);
+        MusicPlayer player = new MusicPlayer();
+        player.playSound();
     }
 }

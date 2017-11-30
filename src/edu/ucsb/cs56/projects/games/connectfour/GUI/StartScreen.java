@@ -10,6 +10,8 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 /**
  * Class for the first screen that appears with the logo and "click here to start" button
@@ -37,6 +39,8 @@ public class StartScreen extends AbstractMenu {
         super(gameIn, frameIn);
 
         frame.setSize(menu_width, menu_height);
+        frame.setTitle("Start Screen");
+
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.setAlignmentX(Component.CENTER_ALIGNMENT);
         Font BFont = new Font("Comic Sans MS", Font.BOLD, 22);
@@ -45,11 +49,14 @@ public class StartScreen extends AbstractMenu {
         startButton = new JButton("Click here to start!");
         startButton.addActionListener(new startButtonListener());
         startButton.setFont(smallerBFont);
+        startButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+
 
         try {
             image = ImageIO.read(new File("images/connect-4-logo.png"));
             scaledImage = image.getScaledInstance(200, 44, Image.SCALE_DEFAULT);
             logo = new JLabel(new ImageIcon(scaledImage));
+            logo.setAlignmentX(Component.CENTER_ALIGNMENT);
         } catch (IOException ex) {
             System.out.println("Image unavailable");
         }

@@ -3,6 +3,7 @@ package edu.ucsb.cs56.projects.games.connectfour.GUI;
 import edu.ucsb.cs56.projects.games.connectfour.Logic.Game;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -25,6 +26,7 @@ public class Player1ColorSelectMenu extends AbstractMenu {
     private JButton pinkButton;
     private JButton redButton;
     private JButton yellowButton;
+    private JButton backButton;
     private JLabel nameInst;
     private JTextField nameText;
 
@@ -39,57 +41,77 @@ public class Player1ColorSelectMenu extends AbstractMenu {
      */
     public Player1ColorSelectMenu(Game game, JFrame frame) {
         super(game, frame);
+        frame.setTitle("Player 1");
+
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         header = new JLabel("    Player 1: Choose Color");
         header.setFont(smallFont);
+        header.setAlignmentX(Component.CENTER_ALIGNMENT);
+
 
         blackButton = new JButton("Black");
         blackButton.addActionListener(new blackButtonListener());
-        blackButton.setFont(largeFont);
+        blackButton.setFont(mediumFont);
+        blackButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         blueButton = new JButton("Blue");
         blueButton.addActionListener(new blueButtonListener());
-        blueButton.setFont(largeFont);
+        blueButton.setFont(mediumFont);
+        blueButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         magentaButton = new JButton("Magenta");
         magentaButton.addActionListener(new magentaButtonListener());
-        magentaButton.setFont(largeFont);
+        magentaButton.setFont(mediumFont);
+        magentaButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         brownButton = new JButton("Brown");
         brownButton.addActionListener(new brownButtonListener());
-        brownButton.setFont(largeFont);
+        brownButton.setFont(mediumFont);
+        brownButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         pinkButton = new JButton("Pink");
         pinkButton.addActionListener(new pinkButtonListener());
-        pinkButton.setFont(largeFont);
+        pinkButton.setFont(mediumFont);
+        pinkButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         redButton = new JButton("Red");
         redButton.addActionListener(new redButtonListener());
-        redButton.setFont(largeFont);
+        redButton.setFont(mediumFont);
+        redButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         yellowButton = new JButton("Yellow");
         yellowButton.addActionListener(new yellowButtonListener());
-        yellowButton.setFont(largeFont);
+        yellowButton.setFont(mediumFont);
+        yellowButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        backButton = new JButton("Back");
+        backButton.addActionListener(new backButtonListener());
+        backButton.setFont(mediumFont);
+        backButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
 	//Fix Issue #58
 	nameInst = new JLabel("Enter Player 1 name:");
 	nameInst.setFont(smallFont);
+    nameInst.setAlignmentX(Component.CENTER_ALIGNMENT);
 	nameText = new JTextField("Player 1");
 	nameText.setFont(smallFont);
 	nameText.setFocusable(true);
 	nameText.requestFocus();
+    nameText.setHorizontalAlignment(JLabel.CENTER);
+
 	
 
-        this.add(header);
-        this.add(redButton);
-        this.add(yellowButton);
-        this.add(blackButton);
-        this.add(blueButton);
-        this.add(magentaButton);
-        this.add(brownButton);
-        this.add(pinkButton);
+    this.add(header);
+    this.add(redButton);
+    this.add(yellowButton);
+    this.add(blackButton);
+    this.add(blueButton);
+    this.add(magentaButton);
+    this.add(brownButton);
+    this.add(pinkButton);
+    this.add(backButton);
 	this.add(nameInst);
 	this.add(nameText);
     }
@@ -207,13 +229,23 @@ public class Player1ColorSelectMenu extends AbstractMenu {
     }
 
     /**
-     * Currently no back button on this menu so return nothing
+     * Listener for the back button
+     */
+    class backButtonListener implements ActionListener {
+        public void actionPerformed(ActionEvent event) {
+            back(game, frame);
+        }
+    }
+
+    /**
+     * Loads the main menu
      *
      * @param game
      * @param frame
      */
     @Override
     public void back(Game game, JFrame frame) {
-        return;
+        loadMainMenu(game, frame);
+        //return;
     }
 }
