@@ -1,5 +1,5 @@
 # Alex Funk - a-funk
-# id Malik - smalik1337
+# Sid Malik - smalik1337
 
 ## a.
 ### This application is a game known as connect-four.  Two players attempt to connect four circular objects in a row on a 6x7 grid. The players alternate turn by turn and the first player to 'connect four' wins.  
