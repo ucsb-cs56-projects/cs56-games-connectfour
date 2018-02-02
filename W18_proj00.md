@@ -12,4 +12,10 @@
 ### The software runs upon typing the command 'ant run'.  It runs well, graphically and also provides regular updates via terminal of ongoing actions.  When the game is running a GUI is drawn to display the board, it regularly updates when a player makes a move.  It is capable of idetifying illegal moves.  It also grants the player the ability to choose the board color, and both of the pieces colors.  
 
 ## d.
-### 
+### I open the application and select my game settings. Upon running the game, the pieces are animated into their positions within the board, and the game flows smoothly. The pieces fall vertically into their appropriate places. 
+
+### I open the application and the menu has beautiful sound effects upon clicking on the different options. When entering the connect four game board, the pieces animation matches the sounds playing from the game. When I win the game, a congratulatory sound plays and upon clicking exit a good bye sound plays as well.
+
+### Upon launching the game, I expanded the screen size and then clicked on a menu item. Following this, the screen size stayed constant to what I selected previously and didn't change until I wanted it to. This remained the case until I hit quit.
+
+
