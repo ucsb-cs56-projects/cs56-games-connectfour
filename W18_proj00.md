@@ -24,7 +24,7 @@
 ## f
 ### The build file is in Ant. There are many descriptions of what the commands for ant do in this file. This is much appreciated and will certainly help with saving time. In fact all of the targets have descriptions to go with them.
 
-##g
+## g
 ### The issues are largely product improvement and flow, as the main game itself is already functioning. They center around utilizing music and improving the UI, both of which we initially recognized as possible topics we could work on in this project. The issues also include possible AI improvements. We believe that the 18 issues present should be enough to earn 1000 points, as the AI issues themselves should be worth a large amount, with their topics being far more complex. The GUI code also provides a large amount of points as well, with cleanup in one section providing 300 by itself.
 
 ## h
