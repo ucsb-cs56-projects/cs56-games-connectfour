@@ -28,8 +28,8 @@
 ### The issues are largely product improvement and flow, as the main game itself is already functioning. They center around utilizing music and improving the UI, both of which we initially recognized as possible topics we could work on in this project. The issues also include possible AI improvements. We believe that the 18 issues present should be enough to earn 1000 points, as the AI issues themselves should be worth a large amount, with their topics being far more complex. The GUI code also provides a large amount of points as well, with cleanup in one section providing 300 by itself.
 
 ## h
-###
-
+### https://github.com/ucsb-cs56-projects/cs56-games-connectfour/issues/90
+### https://github.com/ucsb-cs56-projects/cs56-games-connectfour/issues/91
 
 ## i
 ### The code is well organized, with 3 main files containing separate entities: AI, GUI, and Logic. The AI folder contains all the information relating to how the AI functions in its difficulties, as well as how it makes some of its choices. There are helpful comments in the mix, to describe what every part of the code does. The Java testing class for each difficulty is also provided, and this describes in detail how the AI makes its moves.
