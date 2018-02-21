@@ -19,6 +19,8 @@ public class InGameMenu extends AbstractMenu {
     private JButton restartButton;
     private JButton exitButton;
     private JButton undoButton;
+    private JLabel leaderBoardLabel;
+    private JScrollPane leaderBoard;
 
     /**
      * @param game  game object that is passed to all menus so they can access game data
@@ -49,7 +51,28 @@ public class InGameMenu extends AbstractMenu {
         undoButton.addActionListener(new undoButtonListener());
         undoButton.setFont(largeFont);
         undoButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-        if (game.isTestingModeEnabled()) {
+	
+	leaderBoardLabel = new JLabel("Leaderboard");
+	leaderBoardLabel.setLabelFor(leaderBoard);
+	leaderBoardLabel.setSize(50,30);
+	leaderBoardLabel.setBackground(Color.BLACK);
+	leaderBoardLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+	//adding leaderboard here
+	
+	String[] columns = {"Name", "Score"};
+	Object[][] data = {
+	    {"Sidnificent", "1000"}
+	};
+	JTable table = new JTable(data, columns); 
+       	for(int i = 0; i < 2; i++){
+	    table.getColumnModel().getColumn(i).setMaxWidth(100);
+	}
+	leaderBoard = new JScrollPane(table);
+	leaderBoard.setPreferredSize(new Dimension(100,50));
+	table.setFillsViewportHeight(true);
+	leaderBoard.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+	if (game.isTestingModeEnabled()) {
             JButton printBoard = new JButton("Print Board");
             printBoard.addActionListener(new printBoardButtonListener());
             printBoard.setFont(largeFont);
@@ -59,6 +82,8 @@ public class InGameMenu extends AbstractMenu {
         this.add(restartButton);
         this.add(mainMButton);
         this.add(exitButton);
+	this.add(leaderBoardLabel);
+	this.add(leaderBoard);
     }
 
     /**
