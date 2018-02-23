@@ -57,11 +57,17 @@ public class InGameMenu extends AbstractMenu {
 	leaderBoardLabel.setSize(50,30);
 	leaderBoardLabel.setBackground(Color.BLACK);
 	leaderBoardLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+	
+	//saving and loading done here
+	
+	ArrayList<Player> scores = new ArrayList<Player>();
+	
+	
 	//adding leaderboard here
 	
 	String[] columns = {"Name", "Score"};
 	Object[][] data = {
-	    {"Sidnificent", "1000"}
+	    {}
 	};
 	JTable table = new JTable(data, columns); 
        	for(int i = 0; i < 2; i++){
