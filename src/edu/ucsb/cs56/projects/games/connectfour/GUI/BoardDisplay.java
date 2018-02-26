@@ -130,6 +130,7 @@ public class BoardDisplay extends AbstractMenu {
 
         if (game.getTurn() == 1) {
             turnMessage.setText("It's " + game.getP1Name() + "'s turn!");
+	    game.reduceScore();
         } else {
             turnMessage.setText("It's " + game.getP2Name() + "'s turn!");
         }
@@ -263,6 +264,8 @@ public class BoardDisplay extends AbstractMenu {
                 g.drawString("YOU WIN!", 100, 400);
         }
         game.setGameIsOver(true);
+	game.updateLeaderBoard();
+
     }
 
     /**

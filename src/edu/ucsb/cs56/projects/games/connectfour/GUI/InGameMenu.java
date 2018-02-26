@@ -6,6 +6,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.*;
+import java.util.ArrayList;
 
 /**
  * Class for the menu panel shown while the game is played.
@@ -59,16 +61,19 @@ public class InGameMenu extends AbstractMenu {
 	leaderBoardLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 	
 	//saving and loading done here
-	
-	ArrayList<Player> scores = new ArrayList<Player>();
-	
+	       	
 	
 	//adding leaderboard here
 	
 	String[] columns = {"Name", "Score"};
-	Object[][] data = {
-	    {}
-	};
+	
+	//reading in data
+	game.loadLeaderBoard();
+	
+	Object[][] data = { {game.getScoreName(0), game.getScoreScore(0)},{game.getScoreName(1), game.getScoreScore(1)}};
+	
+	//Object[][] data = { {"supperino", 100}};
+	
 	JTable table = new JTable(data, columns); 
        	for(int i = 0; i < 2; i++){
 	    table.getColumnModel().getColumn(i).setMaxWidth(100);
@@ -82,7 +87,7 @@ public class InGameMenu extends AbstractMenu {
             JButton printBoard = new JButton("Print Board");
             printBoard.addActionListener(new printBoardButtonListener());
             printBoard.setFont(largeFont);
-            this.add(printBoard);
+           this.add(printBoard);
         }
         this.add(undoButton);
         this.add(restartButton);

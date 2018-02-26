@@ -5,6 +5,9 @@ import java.awt.*;
 import java.awt.event.InputEvent;
 import java.util.Random;
 import java.util.Stack;
+import java.util.ArrayList;
+import java.io.*;
+//import java.util.Collections;
 
 /**
  * Game object that holds relevant variables to the game's logic
@@ -32,6 +35,9 @@ public class Game {
     private String p1Name = "Player 1";
     private String p2Name = "Player 2";
     private static Stack<IntPair> movesList = new Stack<IntPair>();
+    private ArrayList<UserInfo> scores = new ArrayList<UserInfo>();
+    private int currentScore = 400;
+    
 
     //This is the list of random AI names and can be adjusted as such.
     private final String[] randomNames = new String[]{
@@ -39,6 +45,59 @@ public class Game {
         "Kayla", "Deborah", "William", "Howard", "Stewart",
         "Dumbledore", "McKenzie", "Sasha", "Michael", "Alexis"
     };
+
+    //All memory functionality
+    public void reduceScore(){
+	currentScore -= 1;
+    }
+
+    public void updateLeaderBoard(){
+	UserInfo toAdd = new UserInfo(this.getP1Name(), currentScore);  
+	
+	System.out.println(toAdd.getScore());
+	scores.add(toAdd);
+	//Collections.sort(scores);
+	saveLeaderBoard();
+    }
+
+    public void saveLeaderBoard(){
+	try{
+	    FileOutputStream fs = new FileOutputStream("SavedScores.ser");
+	    System.out.println("got this far");
+	    ObjectOutputStream os = new ObjectOutputStream(fs);
+	    os.writeObject(scores);
+	    os.close();
+	    fs.close();
+	    System.out.println("Saved the scores");
+	}
+	catch(Exception ex){
+	    System.out.println("error saving data in saveLeaderBoard()");
+	}
+    }
+
+    public void loadLeaderBoard(){
+	try{
+	    ObjectInputStream is = new ObjectInputStream(new FileInputStream("SavedScores.ser"));
+	    scores = (ArrayList<UserInfo>) is.readObject();
+	    is.close();
+	    System.out.println("loaded the leaderboard from memory");
+	}
+	catch(Exception ex){
+	    System.out.println("error reading in data or does not exist yet");
+	    updateLeaderBoard();
+	}
+    }
+
+    public String getScoreName(int i){
+	UserInfo holder = scores.get(i);
+	return holder.getName();
+    }
+
+    public int getScoreScore(int i){
+	UserInfo holder = scores.get(i);
+	return holder.getScore();
+    }
+    
 
     /**
      * Undo the last move that was done. (undo 1 move is multiplayer, 2 moves if singleplayer)
@@ -128,6 +187,7 @@ public class Game {
             }
         }
         board.setDrawCounter(0);
+	
     }
 
     /**
