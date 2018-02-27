@@ -7,7 +7,7 @@ import java.util.Random;
 import java.util.Stack;
 import java.util.ArrayList;
 import java.io.*;
-//import java.util.Collections;
+import java.util.Collections;
 
 /**
  * Game object that holds relevant variables to the game's logic
@@ -36,7 +36,7 @@ public class Game {
     private String p2Name = "Player 2";
     private static Stack<IntPair> movesList = new Stack<IntPair>();
     private ArrayList<UserInfo> scores = new ArrayList<UserInfo>();
-    private int currentScore = 400;
+    //private int currentScore = 400;
     
 
     //This is the list of random AI names and can be adjusted as such.
@@ -47,17 +47,18 @@ public class Game {
     };
 
     //All memory functionality
+    /*
     public void reduceScore(){
-	currentScore -= 1;
+	currentScore -= 10;
     }
-
+    */
     public void updateLeaderBoard(){
-	UserInfo toAdd = new UserInfo(this.getP1Name(), currentScore);  
-	
+	UserInfo toAdd = new UserInfo(this.getP1Name(), 400 - (10 * moveCounter));  
 	System.out.println(toAdd.getScore());
 	scores.add(toAdd);
-	//Collections.sort(scores);
+	Collections.sort(scores);
 	saveLeaderBoard();
+       
     }
 
     public void saveLeaderBoard(){
@@ -73,6 +74,7 @@ public class Game {
 	catch(Exception ex){
 	    System.out.println("error saving data in saveLeaderBoard()");
 	}
+	//currentScore = 400;
     }
 
     public void loadLeaderBoard(){
@@ -84,16 +86,49 @@ public class Game {
 	}
 	catch(Exception ex){
 	    System.out.println("error reading in data or does not exist yet");
-	    updateLeaderBoard();
+	    saveLeaderBoard();
 	}
     }
 
     public String getScoreName(int i){
+	try{
+	    UserInfo tester = scores.get(i);
+	}
+	catch(Exception ex){
+	    System.out.println("No names present. populating default");
+	    UserInfo hold1 = new UserInfo("empty", 0);
+	    UserInfo hold2 = new UserInfo("empty", 0);
+	    UserInfo hold3 = new UserInfo("empty", 0);
+	    UserInfo hold4 = new UserInfo("empty", 0);
+	    UserInfo hold5 = new UserInfo("empty", 0);
+	    UserInfo hold6 = new UserInfo("empty", 0);
+	    UserInfo hold7 = new UserInfo("empty", 0);
+	    UserInfo hold8 = new UserInfo("empty", 0);
+	    UserInfo hold9 = new UserInfo("empty", 0);
+	    UserInfo hold10 = new UserInfo("empty", 0);
+	    scores.add(hold1);
+	    scores.add(hold2);
+	    scores.add(hold3);
+	    scores.add(hold4);
+	    scores.add(hold5);
+	    scores.add(hold6);
+	    scores.add(hold7);
+	    scores.add(hold8);
+	    scores.add(hold9);
+	    scores.add(hold10);
+	}
 	UserInfo holder = scores.get(i);
 	return holder.getName();
     }
 
     public int getScoreScore(int i){
+	try{
+	    UserInfo tester = scores.get(i);
+	}
+	catch(Exception ex){
+	    return 50;
+	}
+
 	UserInfo holder = scores.get(i);
 	return holder.getScore();
     }
@@ -223,7 +258,7 @@ public class Game {
 	else {
 	    System.out.println("Player 1 gets to start!");
 	}
-
+	
 	board.setGame(this);
         moveCounter = 0;
         movesList.clear();
