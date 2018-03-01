@@ -218,6 +218,26 @@ public class Board {
             //of BoardDisplay, doesn't work otherwise
         }
 
+        @Override
+        public void mousePressed(MouseEvent e) {
+            
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+
+        }
+
         /**
          * Method for making an AI move on advanced difficulty
          */
@@ -373,41 +393,6 @@ public class Board {
             ++drawCounter;
         }
 
-        public void mouseEntered(MouseEvent e) {
-            // TODO Auto-generated method stub
-
-        }
-
-        /**
-         * mouseExited is a function in the MouseListener interface
-         *
-         * @param e represents the mouseEvent
-         */
-
-        public void mouseExited(MouseEvent e) {
-            // TODO Auto-generated method stub
-
-        }
-
-        /**
-         * mousePressed is a function in the MouseListener interface
-         *
-         * @param e represents the mouseEvent
-         */
-
-        public void mousePressed(MouseEvent e) {
-            //TODO Auto-generated method stub
-        }
-
-        /**
-         * mouseReleased is a function in the MouseListener interface
-         *
-         * @param e represents the mouseEvent
-         */
-
-        public void mouseReleased(MouseEvent e) {
-            // TODO Auto-generated method stub
-        }
 
 
     }

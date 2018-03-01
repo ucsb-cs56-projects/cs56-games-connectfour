@@ -1,5 +1,7 @@
 package edu.ucsb.cs56.projects.games.connectfour.Logic;
 
+import edu.ucsb.cs56.projects.games.connectfour.GUI.InGameMenu;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.InputEvent;
@@ -19,10 +21,12 @@ import java.util.Collections;
  * @author Peter Master
  * @version CS56 F16 UCSB
  */
-public class Game {
+public class Game implements Serializable{
 
     private Board board;
     private JFrame frame;
+    private JLabel leaderBoardLabel;
+    private JScrollPane leaderBoard;
     private int gameMode;
     private int coinTossWinner = -1;
     private int player1Color = 1;
@@ -52,42 +56,41 @@ public class Game {
 	currentScore -= 10;
     }
     */
+
     public void updateLeaderBoard(){
-	UserInfo toAdd = new UserInfo(this.getP1Name(), 400 - (10 * moveCounter));  
-	System.out.println(toAdd.getScore());
-	scores.add(toAdd);
-	Collections.sort(scores);
-	saveLeaderBoard();
-       
+        UserInfo toAdd = new UserInfo(this.getP1Name(), 400 - (10 * moveCounter));
+        System.out.println(toAdd.getScore());
+        scores.add(toAdd);
+        Collections.sort(scores);
+        saveLeaderBoard();
     }
 
     public void saveLeaderBoard(){
-	try{
-	    FileOutputStream fs = new FileOutputStream("SavedScores.ser");
-	    System.out.println("got this far");
-	    ObjectOutputStream os = new ObjectOutputStream(fs);
-	    os.writeObject(scores);
-	    os.close();
-	    fs.close();
-	    System.out.println("Saved the scores");
-	}
-	catch(Exception ex){
-	    System.out.println("error saving data in saveLeaderBoard()");
-	}
-	//currentScore = 400;
+        try{
+            FileOutputStream fs = new FileOutputStream("SavedScores.ser");
+            System.out.println("got this far");
+            ObjectOutputStream os = new ObjectOutputStream(fs);
+            os.writeObject(scores);
+            os.close();
+            fs.close();
+            System.out.println("Saved the scores");
+        }
+        catch(Exception ex){
+            System.out.println("error saving data in saveLeaderBoard()");
+        }
     }
 
     public void loadLeaderBoard(){
-	try{
-	    ObjectInputStream is = new ObjectInputStream(new FileInputStream("SavedScores.ser"));
-	    scores = (ArrayList<UserInfo>) is.readObject();
-	    is.close();
-	    System.out.println("loaded the leaderboard from memory");
-	}
-	catch(Exception ex){
-	    System.out.println("error reading in data or does not exist yet");
-	    saveLeaderBoard();
-	}
+        try{
+            ObjectInputStream is = new ObjectInputStream(new FileInputStream("SavedScores.ser"));
+            scores = (ArrayList<UserInfo>) is.readObject();
+            is.close();
+            System.out.println("loaded the leaderboard from memory");
+        }
+        catch(Exception ex){
+            System.out.println("error reading in data or does not exist yet");
+            saveLeaderBoard();
+        }
     }
 
     public String getScoreName(int i){
@@ -202,7 +205,6 @@ public class Game {
         movesList.clear();
         Board board = new Board();
         this.board = board;
-//        board.setFrame(frame);
         board.setGame(this);
         System.out.println("GameMode is " + getGameMode());
 
@@ -242,7 +244,6 @@ public class Game {
             System.out.println("Player 2 gets to start!");
 	    if(getGameMode() != 1) {
 		try {
-		    // Thread.sleep(1000);
 		    Robot r = new Robot();
 		    Point p = frame.getLocationOnScreen();
 		    Point current = MouseInfo.getPointerInfo().getLocation();

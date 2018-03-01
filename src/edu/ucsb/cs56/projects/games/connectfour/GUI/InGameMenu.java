@@ -34,67 +34,80 @@ public class InGameMenu extends AbstractMenu {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.add(Box.createRigidArea(new Dimension(0, 50)));
 
-        mainMButton = new JButton("Main Menu");
-        mainMButton.addActionListener(new mainMenuButtonListener());
-        mainMButton.setFont(largeFont);
-        mainMButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        drawMainMenu(game);
+        drawRestartButton(game);
+        drawExitButton(game);
+        drawLeaderBoard(game);
+        drawUndoButton(game);
 
-        restartButton = new JButton("Restart");
-        restartButton.addActionListener(new restartButtonListener());
-        restartButton.setFont(largeFont);
-        restartButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        exitButton = new JButton("Exit");
-        exitButton.addActionListener(new exitButtonListener());
-        exitButton.setFont(largeFont);
-        exitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        undoButton = new JButton("Undo");
-        undoButton.addActionListener(new undoButtonListener());
-        undoButton.setFont(largeFont);
-        undoButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-	
-	leaderBoardLabel = new JLabel("Leaderboard");
-	leaderBoardLabel.setLabelFor(leaderBoard);
-	leaderBoardLabel.setSize(50,30);
-	leaderBoardLabel.setBackground(Color.BLACK);
-	leaderBoardLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-	
-	//saving and loading done here
-	       	
-	
-	//adding leaderboard here
-	
-	String[] columns = {"Name", "Score"};
-	
-	//reading in data
-	game.loadLeaderBoard();
-	
-	Object[][] data = { {game.getScoreName(0), game.getScoreScore(0)},{game.getScoreName(1), game.getScoreScore(1)}, {game.getScoreName(2), game.getScoreScore(2)}, {game.getScoreName(3), game.getScoreScore(3)}, {game.getScoreName(4), game.getScoreScore(4)}, {game.getScoreName(5), game.getScoreScore(5)}, {game.getScoreName(6), game.getScoreScore(6)}, {game.getScoreName(7), game.getScoreScore(7)}, {game.getScoreName(8), game.getScoreScore(8)}, {game.getScoreName(9), game.getScoreScore(9)}};
-	
-	//Object[][] data = { {"supperino", 100}};
-	
-	JTable table = new JTable(data, columns); 
-       	for(int i = 0; i < 2; i++){
-	    table.getColumnModel().getColumn(i).setMaxWidth(100);
-	}
-	leaderBoard = new JScrollPane(table);
-	leaderBoard.setPreferredSize(new Dimension(100,50));
-	table.setFillsViewportHeight(true);
-	leaderBoard.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-	if (game.isTestingModeEnabled()) {
+	    if (game.isTestingModeEnabled()) {
             JButton printBoard = new JButton("Print Board");
             printBoard.addActionListener(new printBoardButtonListener());
             printBoard.setFont(largeFont);
            this.add(printBoard);
         }
-        this.add(undoButton);
-        this.add(restartButton);
+
+    }
+    private void drawLeaderBoard(Game game){
+        //saving and loading done here
+        //adding leaderboard here
+        leaderBoardLabel = new JLabel("Leaderboard");
+        leaderBoardLabel.setLabelFor(leaderBoard);
+        leaderBoardLabel.setSize(50,30);
+        leaderBoardLabel.setBackground(Color.BLACK);
+        leaderBoardLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        //reading in data
+        game.loadLeaderBoard();
+        String[] columns = {"Name", "Score"};
+        Object[][] data = { {game.getScoreName(0), game.getScoreScore(0)},{game.getScoreName(1), game.getScoreScore(1)}, {game.getScoreName(2), game.getScoreScore(2)}, {game.getScoreName(3), game.getScoreScore(3)}, {game.getScoreName(4), game.getScoreScore(4)}, {game.getScoreName(5), game.getScoreScore(5)}, {game.getScoreName(6), game.getScoreScore(6)}, {game.getScoreName(7), game.getScoreScore(7)}, {game.getScoreName(8), game.getScoreScore(8)}, {game.getScoreName(9), game.getScoreScore(9)}};
+
+        JTable table = new JTable(data, columns);
+        table.setEnabled(false);
+        for(int i = 0; i < 2; i++){
+            table.getColumnModel().getColumn(i).setMaxWidth(100);
+        }
+        leaderBoard = new JScrollPane();
+        leaderBoard.setViewportView(table);
+        leaderBoard.setPreferredSize(new Dimension(100,50));
+        table.setFillsViewportHeight(true);
+        leaderBoard.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        this.add(leaderBoardLabel);
+        this.add(leaderBoard);
+
+    }
+
+    private void drawMainMenu(Game game){
+        mainMButton = new JButton("Main Menu");
+        mainMButton.addActionListener(new mainMenuButtonListener());
+        mainMButton.setFont(largeFont);
+        mainMButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         this.add(mainMButton);
+    }
+
+    private void drawRestartButton(Game game){
+        restartButton = new JButton("Restart");
+        restartButton.addActionListener(new restartButtonListener());
+        restartButton.setFont(largeFont);
+        restartButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        this.add(restartButton);
+    }
+
+    private void drawExitButton(Game game){
+        exitButton = new JButton("Exit");
+        exitButton.addActionListener(new exitButtonListener());
+        exitButton.setFont(largeFont);
+        exitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         this.add(exitButton);
-	this.add(leaderBoardLabel);
-	this.add(leaderBoard);
+    }
+
+    private void drawUndoButton(Game game){
+        undoButton = new JButton("Undo");
+        undoButton.addActionListener(new undoButtonListener());
+        undoButton.setFont(largeFont);
+        undoButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        this.add(undoButton);
     }
 
     /**
