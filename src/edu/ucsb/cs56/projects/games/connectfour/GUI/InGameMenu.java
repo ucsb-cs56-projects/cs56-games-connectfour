@@ -47,6 +47,8 @@ public class InGameMenu extends AbstractMenu {
            this.add(printBoard);
         }
 
+
+
     }
     private void drawLeaderBoard(Game game){
         //saving and loading done here
@@ -76,6 +78,13 @@ public class InGameMenu extends AbstractMenu {
         this.add(leaderBoardLabel);
         this.add(leaderBoard);
 
+    }
+    public void updateLeaderBoard(Game game){
+        // Remove leaderboard element and redraw with new data.
+        this.remove((Component)leaderBoard);
+        this.remove((Component)leaderBoardLabel);
+
+        drawLeaderBoard(game);
     }
 
     private void drawMainMenu(Game game){

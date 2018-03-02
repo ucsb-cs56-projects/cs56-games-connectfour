@@ -4,5 +4,7 @@
 # Package Files #
 *.war
 *.ear
-
+SavedScores.ser
+cs56-games-connectfour.iml
+.idea/
 javadoc/

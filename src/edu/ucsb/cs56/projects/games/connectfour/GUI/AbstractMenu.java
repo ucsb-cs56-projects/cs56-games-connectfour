@@ -167,7 +167,6 @@ public abstract class AbstractMenu extends JPanel implements Serializable {
         frame.repaint();
         game.restartGame();
     }
-
     /**
      * abstract method for general "back" button that appears on several menus
      * has a different function depending upon context, hence abstract

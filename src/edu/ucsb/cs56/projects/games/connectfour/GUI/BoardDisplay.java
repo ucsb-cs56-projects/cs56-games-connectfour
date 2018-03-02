@@ -249,7 +249,9 @@ public class BoardDisplay extends AbstractMenu {
      */
     private void displayWinner(Graphics g) {
         game.updateLeaderBoard();
-
+        InGameMenu leaderboard = (InGameMenu)frame.getContentPane().getComponent(1);
+        leaderboard.updateLeaderBoard(game);
+        leaderboard.revalidate();
         System.out.println("Winstate");
         g.setColor(Color.black);
         if ((game.getPlayer1Color() == 4) || (game.getPlayer2Color() == 4))

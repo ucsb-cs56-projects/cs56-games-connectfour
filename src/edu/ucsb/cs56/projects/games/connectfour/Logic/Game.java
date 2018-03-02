@@ -259,8 +259,7 @@ public class Game implements Serializable{
 	else {
 	    System.out.println("Player 1 gets to start!");
 	}
-	
-	board.setGame(this);
+        board.setGame(this);
         moveCounter = 0;
         movesList.clear();
         board.setDrawCounter(0);
