@@ -6,6 +6,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.*;
+import java.util.ArrayList;
 
 /**
  * Class for the menu panel shown while the game is played.
@@ -19,6 +21,8 @@ public class InGameMenu extends AbstractMenu {
     private JButton restartButton;
     private JButton exitButton;
     private JButton undoButton;
+    private JLabel leaderBoardLabel;
+    private JScrollPane leaderBoard;
 
     /**
      * @param game  game object that is passed to all menus so they can access game data
@@ -30,35 +34,93 @@ public class InGameMenu extends AbstractMenu {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.add(Box.createRigidArea(new Dimension(0, 50)));
 
+        drawMainMenu(game);
+        drawRestartButton(game);
+        drawExitButton(game);
+        drawLeaderBoard(game);
+        drawUndoButton(game);
+
+	    if (game.isTestingModeEnabled()) {
+            JButton printBoard = new JButton("Print Board");
+            printBoard.addActionListener(new printBoardButtonListener());
+            printBoard.setFont(largeFont);
+           this.add(printBoard);
+        }
+
+
+
+    }
+    private void drawLeaderBoard(Game game){
+        //saving and loading done here
+        //adding leaderboard here
+        leaderBoardLabel = new JLabel("Leaderboard");
+        leaderBoardLabel.setLabelFor(leaderBoard);
+        leaderBoardLabel.setSize(50,30);
+        leaderBoardLabel.setBackground(Color.BLACK);
+        leaderBoardLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        //reading in data
+        game.loadLeaderBoard();
+        String[] columns = {"Name", "Score"};
+        Object[][] data = new Object[10][2];
+        for (int r=0; r<10; r++){
+            data[r][0] = game.getScoreName(r);
+            data[r][1] = game.getScoreScore(r);
+        } 
+
+        JTable table = new JTable(data, columns);
+        table.setEnabled(false);
+        for(int i = 0; i < 2; i++){
+            table.getColumnModel().getColumn(i).setMaxWidth(100);
+        }
+        leaderBoard = new JScrollPane();
+        leaderBoard.setViewportView(table);
+        leaderBoard.setPreferredSize(new Dimension(100,50));
+        table.setFillsViewportHeight(true);
+        leaderBoard.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        this.add(leaderBoardLabel);
+        this.add(leaderBoard);
+    }
+
+    public void updateLeaderBoard(Game game){
+        // Remove leaderboard element and redraw with new data.
+        this.remove((Component)leaderBoard);
+        this.remove((Component)leaderBoardLabel);
+
+        drawLeaderBoard(game);
+    }
+
+    private void drawMainMenu(Game game){
         mainMButton = new JButton("Main Menu");
         mainMButton.addActionListener(new mainMenuButtonListener());
         mainMButton.setFont(largeFont);
         mainMButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        this.add(mainMButton);
+    }
 
+    private void drawRestartButton(Game game){
         restartButton = new JButton("Restart");
         restartButton.addActionListener(new restartButtonListener());
         restartButton.setFont(largeFont);
         restartButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        this.add(restartButton);
+    }
 
+    private void drawExitButton(Game game){
         exitButton = new JButton("Exit");
         exitButton.addActionListener(new exitButtonListener());
         exitButton.setFont(largeFont);
         exitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        this.add(exitButton);
+    }
 
+    private void drawUndoButton(Game game){
         undoButton = new JButton("Undo");
         undoButton.addActionListener(new undoButtonListener());
         undoButton.setFont(largeFont);
         undoButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-        if (game.isTestingModeEnabled()) {
-            JButton printBoard = new JButton("Print Board");
-            printBoard.addActionListener(new printBoardButtonListener());
-            printBoard.setFont(largeFont);
-            this.add(printBoard);
-        }
         this.add(undoButton);
-        this.add(restartButton);
-        this.add(mainMButton);
-        this.add(exitButton);
     }
 
     /**

@@ -1,10 +1,15 @@
 package edu.ucsb.cs56.projects.games.connectfour.Logic;
 
+import edu.ucsb.cs56.projects.games.connectfour.GUI.InGameMenu;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.InputEvent;
 import java.util.Random;
 import java.util.Stack;
+import java.util.ArrayList;
+import java.io.*;
+import java.util.Collections;
 
 /**
  * Game object that holds relevant variables to the game's logic
@@ -16,10 +21,12 @@ import java.util.Stack;
  * @author Peter Master
  * @version CS56 F16 UCSB
  */
-public class Game {
+public class Game implements Serializable{
 
     private Board board;
     private JFrame frame;
+    private JLabel leaderBoardLabel;
+    private JScrollPane leaderBoard;
     private int gameMode;
     private int coinTossWinner = -1;
     private int player1Color = 1;
@@ -32,6 +39,8 @@ public class Game {
     private String p1Name = "Player 1";
     private String p2Name = "Player 2";
     private static Stack<IntPair> movesList = new Stack<IntPair>();
+    private ArrayList<UserInfo> scores = new ArrayList<UserInfo>();
+    
 
     //This is the list of random AI names and can be adjusted as such.
     private final String[] randomNames = new String[]{
@@ -39,6 +48,80 @@ public class Game {
         "Kayla", "Deborah", "William", "Howard", "Stewart",
         "Dumbledore", "McKenzie", "Sasha", "Michael", "Alexis"
     };
+
+    //All memory functionality
+    /*
+    public void reduceScore(){
+	currentScore -= 10;
+    }
+    */
+
+    public void updateLeaderBoard(){
+        UserInfo toAdd = new UserInfo(this.getP1Name(), 400 - (10 * moveCounter));
+        System.out.println(toAdd.getScore());
+        scores.add(toAdd);
+        Collections.sort(scores);
+        saveLeaderBoard();
+    }
+
+    public void saveLeaderBoard(){
+        try{
+            FileOutputStream fs = new FileOutputStream("SavedScores.ser");
+            System.out.println("got this far");
+            ObjectOutputStream os = new ObjectOutputStream(fs);
+            os.writeObject(scores);
+            os.close();
+            fs.close();
+            System.out.println("Saved the scores");
+        }
+        catch(Exception ex){
+            System.out.println("error saving data in saveLeaderBoard()");
+        }
+    }
+
+    public void loadLeaderBoard(){
+        try{
+            ObjectInputStream is = new ObjectInputStream(new FileInputStream("SavedScores.ser"));
+            scores = (ArrayList<UserInfo>) is.readObject();
+            is.close();
+            System.out.println("loaded the leaderboard from memory");
+        }
+        catch(Exception ex){
+            System.out.println("error reading in data or does not exist yet");
+            saveLeaderBoard();
+        }
+    }
+
+    public String getScoreName(int i){
+        try{
+            UserInfo tester = scores.get(i);
+        }
+        catch(Exception ex){
+            System.out.println("No names present. populating default");
+            for(int x=0; x<10; x++){
+                UserInfo info= new UserInfo("empty", 0);
+                scores.add(info);
+            }
+        }
+        UserInfo holder = scores.get(i);
+        return holder.getName();
+    }
+
+    public int getScoreScore(int i){
+        try{
+            UserInfo tester = scores.get(i);
+        }
+        catch(Exception ex){
+            System.out.println("No names present. populating default");
+            for(int x=0; x<10; x++){
+                UserInfo info= new UserInfo("empty", 0);
+                scores.add(info);
+            }
+        }
+        UserInfo holder = scores.get(i);
+        return holder.getScore();
+    }
+    
 
     /**
      * Undo the last move that was done. (undo 1 move is multiplayer, 2 moves if singleplayer)
@@ -108,7 +191,6 @@ public class Game {
         movesList.clear();
         Board board = new Board();
         this.board = board;
-//        board.setFrame(frame);
         board.setGame(this);
         System.out.println("GameMode is " + getGameMode());
 
@@ -128,6 +210,7 @@ public class Game {
             }
         }
         board.setDrawCounter(0);
+	
     }
 
     /**
@@ -147,7 +230,6 @@ public class Game {
             System.out.println("Player 2 gets to start!");
 	    if(getGameMode() != 1) {
 		try {
-		    // Thread.sleep(1000);
 		    Robot r = new Robot();
 		    Point p = frame.getLocationOnScreen();
 		    Point current = MouseInfo.getPointerInfo().getLocation();
@@ -163,8 +245,7 @@ public class Game {
 	else {
 	    System.out.println("Player 1 gets to start!");
 	}
-
-	board.setGame(this);
+        board.setGame(this);
         moveCounter = 0;
         movesList.clear();
         board.setDrawCounter(0);

@@ -1,9 +1,14 @@
 package edu.ucsb.cs56.projects.games.connectfour.GUI;
 
 import edu.ucsb.cs56.projects.games.connectfour.Logic.Game;
+import edu.ucsb.cs56.projects.games.connectfour.Logic.UserInfo;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * Abstract class for the menus used in the
@@ -12,7 +17,7 @@ import java.awt.*;
  * @author Bryanna Phan
  * @version CS56 M16 UCSB
  */
-public abstract class AbstractMenu extends JPanel {
+public abstract class AbstractMenu extends JPanel implements Serializable {
     int menu_width = 240;
     int menu_height = 380;
     private static int frame_width = 890;
@@ -68,30 +73,7 @@ public abstract class AbstractMenu extends JPanel {
         frame.getContentPane().setLayout(new BorderLayout());
         frame.setSize(menu_width, menu_height);
         Player1ColorSelectMenu nextMenu = new Player1ColorSelectMenu(game, frame);
-        /*
-        Issue #58
-        This was an attempt at allowing the players to enter in their own
-        names to be displayed at the top of the screen instead of just
-        "Player1" and "Player2"
-        We were having trouble with getting the text from the JTextField
-        with it sometimes working, sometimes getting nothing, and otherwise
-        just breaking entirely
-        We've left what we had commented out so you have somewhere to start
-         */
-//
-//        JPanel namePanel = new JPanel();
-//        namePanel.setLayout(new BoxLayout(namePanel, BoxLayout.X_AXIS));
-//        JLabel enterName = new JLabel("Enter Name: ");
-//        enterName.setFont(smallFont);
-//        JTextField nameText = new JTextField("");
-//        nameText.setFont(smallFont);
-//        nameText.setFocusable(true);
-//        nameText.requestFocus();
-//        namePanel.add(enterName);
-//        namePanel.add(nameText);
-//
-//        frame.getContentPane().add(BorderLayout.NORTH, namePanel);
-//        game.setP1Name(nameText.getText());
+
         frame.getContentPane().add(nextMenu);
         frame.revalidate();
         frame.repaint();
@@ -111,29 +93,7 @@ public abstract class AbstractMenu extends JPanel {
         frame.getContentPane().setLayout(new BorderLayout());
         frame.setSize(menu_width, menu_height);
         Player2ColorSelectMenu nextMenu = new Player2ColorSelectMenu(game, frame, colorToNotShow);
-        /*
-        Issue #58
-        This was an attempt at allowing the players to enter in their own
-        names to be displayed at the top of the screen instead of just
-        "Player1" and "Player2"
-        We were having trouble with getting the text from the JTextField
-        with it sometimes working, sometimes getting nothing, and otherwise
-        just breaking entirely
-        We've left what we had commented out so you have somewhere to start
-         */
-//
-//        JPanel namePanel = new JPanel();
-//        namePanel.setLayout(new BoxLayout(namePanel, BoxLayout.X_AXIS));
-//        JLabel enterName = new JLabel("Enter Name: ");
-//        enterName.setFont(smallFont);
-//        JTextField nameText = new JTextField("");
-//        nameText.setFont(smallFont);
-//        nameText.setFocusable(true);
-//        nameText.requestFocus();
-//        namePanel.add(enterName);
-//        namePanel.add(nameText);
-//
-//        frame.getContentPane().add(namePanel);
+
         frame.getContentPane().add(nextMenu);
         frame.revalidate();
         frame.repaint();
@@ -207,7 +167,6 @@ public abstract class AbstractMenu extends JPanel {
         frame.repaint();
         game.restartGame();
     }
-
     /**
      * abstract method for general "back" button that appears on several menus
      * has a different function depending upon context, hence abstract

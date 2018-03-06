@@ -21,6 +21,7 @@ public class BoardDisplay extends AbstractMenu {
     private JPanel turnPanel = new JPanel();
     private JLabel turnMessage= new JLabel();
 
+
     /**
      * Constructor that calls super with same arguments
      * @param game Game reference passed to every GUI class
@@ -238,6 +239,7 @@ public class BoardDisplay extends AbstractMenu {
         displayWinner(g);
     }
 
+
     /**
      * Displays the win message on the screen when someone has won
      * If it is Red's Turn (turn == 1), and a winner has been detected, Yellow Wins
@@ -246,6 +248,11 @@ public class BoardDisplay extends AbstractMenu {
      * @param g to draw the message
      */
     private void displayWinner(Graphics g) {
+        game.updateLeaderBoard();
+        InGameMenu leaderboard = (InGameMenu)frame.getContentPane().getComponent(1);
+        leaderboard.updateLeaderBoard(game);
+        leaderboard.revalidate();
+        System.out.println("Winstate");
         g.setColor(Color.black);
         if ((game.getPlayer1Color() == 4) || (game.getPlayer2Color() == 4))
             g.setColor(Color.cyan);
@@ -257,10 +264,12 @@ public class BoardDisplay extends AbstractMenu {
                 g.drawString(game.getP1Name() + " wins!", 100, 400);
             }
         } else {
-            if (game.getTurn() == 1)
+            if (game.getTurn() == 1) {
                 g.drawString("YOU LOSE!", 100, 400);
-            else
+            }
+            else {
                 g.drawString("YOU WIN!", 100, 400);
+            }
         }
         game.setGameIsOver(true);
     }
