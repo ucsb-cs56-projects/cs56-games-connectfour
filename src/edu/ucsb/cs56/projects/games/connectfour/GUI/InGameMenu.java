@@ -62,7 +62,11 @@ public class InGameMenu extends AbstractMenu {
         //reading in data
         game.loadLeaderBoard();
         String[] columns = {"Name", "Score"};
-        Object[][] data = { {game.getScoreName(0), game.getScoreScore(0)},{game.getScoreName(1), game.getScoreScore(1)}, {game.getScoreName(2), game.getScoreScore(2)}, {game.getScoreName(3), game.getScoreScore(3)}, {game.getScoreName(4), game.getScoreScore(4)}, {game.getScoreName(5), game.getScoreScore(5)}, {game.getScoreName(6), game.getScoreScore(6)}, {game.getScoreName(7), game.getScoreScore(7)}, {game.getScoreName(8), game.getScoreScore(8)}, {game.getScoreName(9), game.getScoreScore(9)}};
+        Object[][] data = new Object[10][2];
+        for (int r=0; r<10; r++){
+            data[r][0] = game.getScoreName(r);
+            data[r][1] = game.getScoreScore(r);
+        } 
 
         JTable table = new JTable(data, columns);
         table.setEnabled(false);
@@ -77,8 +81,8 @@ public class InGameMenu extends AbstractMenu {
 
         this.add(leaderBoardLabel);
         this.add(leaderBoard);
-
     }
+
     public void updateLeaderBoard(Game game){
         // Remove leaderboard element and redraw with new data.
         this.remove((Component)leaderBoard);

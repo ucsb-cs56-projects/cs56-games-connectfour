@@ -2,39 +2,35 @@ package edu.ucsb.cs56.projects.games.connectfour.Logic;
 import java.io.*;
 
 public class UserInfo implements Serializable, Comparable<UserInfo>{
-    //had comparable<UserInfo>
     private String name;
     private int score;
 
     public UserInfo(){
-	name = "empty";
-	score = 0;
+        name = "empty";
+        score = 0;
     }
 
     public UserInfo(String name, int score){
-	this.name = name;
-	this.score = score;
+        this.name = name;
+        this.score = score;
     }
 
     public String getName(){
-	return this.name;
+        return this.name;
     }
     public int getScore(){
-	return this.score;
+        return this.score;
     }
     
     public int compareTo(UserInfo comparestu){
-	//int compareScore=((UserInfo)comparestu).getScore();
-	if(this.score > comparestu.getScore()){
-	    return -1;
-	}
-	if(this.score == comparestu.getScore()){
-	    return 0;
-	}
-	else{
-	    return 1;
-	}
+        if(this.score > comparestu.getScore()){
+            return -1;
+        }
+        if(this.score == comparestu.getScore()){
+            return 0;
+        }
+        else{
+            return 1;
+        }
     }
-    
-
 }

@@ -40,7 +40,6 @@ public class Game implements Serializable{
     private String p2Name = "Player 2";
     private static Stack<IntPair> movesList = new Stack<IntPair>();
     private ArrayList<UserInfo> scores = new ArrayList<UserInfo>();
-    //private int currentScore = 400;
     
 
     //This is the list of random AI names and can be adjusted as such.
@@ -94,46 +93,33 @@ public class Game implements Serializable{
     }
 
     public String getScoreName(int i){
-	try{
-	    UserInfo tester = scores.get(i);
-	}
-	catch(Exception ex){
-	    System.out.println("No names present. populating default");
-	    UserInfo hold1 = new UserInfo("empty", 0);
-	    UserInfo hold2 = new UserInfo("empty", 0);
-	    UserInfo hold3 = new UserInfo("empty", 0);
-	    UserInfo hold4 = new UserInfo("empty", 0);
-	    UserInfo hold5 = new UserInfo("empty", 0);
-	    UserInfo hold6 = new UserInfo("empty", 0);
-	    UserInfo hold7 = new UserInfo("empty", 0);
-	    UserInfo hold8 = new UserInfo("empty", 0);
-	    UserInfo hold9 = new UserInfo("empty", 0);
-	    UserInfo hold10 = new UserInfo("empty", 0);
-	    scores.add(hold1);
-	    scores.add(hold2);
-	    scores.add(hold3);
-	    scores.add(hold4);
-	    scores.add(hold5);
-	    scores.add(hold6);
-	    scores.add(hold7);
-	    scores.add(hold8);
-	    scores.add(hold9);
-	    scores.add(hold10);
-	}
-	UserInfo holder = scores.get(i);
-	return holder.getName();
+        try{
+            UserInfo tester = scores.get(i);
+        }
+        catch(Exception ex){
+            System.out.println("No names present. populating default");
+            for(int x=0; x<10; x++){
+                UserInfo info= new UserInfo("empty", 0);
+                scores.add(info);
+            }
+        }
+        UserInfo holder = scores.get(i);
+        return holder.getName();
     }
 
     public int getScoreScore(int i){
-	try{
-	    UserInfo tester = scores.get(i);
-	}
-	catch(Exception ex){
-	    return 50;
-	}
-
-	UserInfo holder = scores.get(i);
-	return holder.getScore();
+        try{
+            UserInfo tester = scores.get(i);
+        }
+        catch(Exception ex){
+            System.out.println("No names present. populating default");
+            for(int x=0; x<10; x++){
+                UserInfo info= new UserInfo("empty", 0);
+                scores.add(info);
+            }
+        }
+        UserInfo holder = scores.get(i);
+        return holder.getScore();
     }
     
 
