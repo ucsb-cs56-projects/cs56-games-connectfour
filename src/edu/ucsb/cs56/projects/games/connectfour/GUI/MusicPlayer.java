@@ -22,7 +22,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class MusicPlayer {
 
     //Music files must be in ".au" format
-    private static String[] musicFiles = {"audio/dance.au", "audio/popdance.au", "audio/buddy.au", "audio/sunny.au", "audio/tenderness.au"};
+    private static String[] musicFiles = {"audio/maintheme.au","audio/dance.au", "audio/popdance.au", "audio/buddy.au", "audio/sunny.au", "audio/tenderness.au"};
     private static Clip myClip;
     public static boolean musicOn;
 
@@ -44,7 +44,7 @@ public class MusicPlayer {
         musicOn = true;
         myClip.loop(Clip.LOOP_CONTINUOUSLY);
     }
-
+    
     //Stops playing music
     public static void stopSound() {
         musicOn = false;
@@ -69,5 +69,22 @@ public class MusicPlayer {
         playSound();
 
     }
+    
+    //change to a selected song
+
+    public static void selectSong(int i){
+	stopSound();
+	try{
+	    URL url = new File(musicFiles[i]).toURI().toURL();
+	    myClip = AudioSystem.getClip();
+	    AudioInputStream ais = AudioSystem.getAudioInputStream(url);
+	    myClip.open(ais);
+	}
+	catch(Exception ex){
+	    ex.printStackTrace();
+	}
+	playSound();
+    }
+    
 
 }

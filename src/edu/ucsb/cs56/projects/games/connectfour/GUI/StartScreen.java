@@ -25,7 +25,12 @@ import javafx.scene.media.MediaPlayer;
  */
 public class StartScreen extends AbstractMenu {
 
+    private JLabel Background;
+    private Image BackgroundImage;
+    private BufferedImage BufferedBackgroundImage;
     private JButton startButton; // main Menu Button
+    private Image startButtonImage;
+    private BufferedImage startButtonImageBuffered;
     private JLabel logo; // label for image to go into
     private BufferedImage image; // image
     private Image scaledImage; // scaled image for logo
@@ -46,13 +51,28 @@ public class StartScreen extends AbstractMenu {
         Font BFont = new Font("Comic Sans MS", Font.BOLD, 22);
         Font smallerBFont = new Font("Comic Sans MS", Font.BOLD, 15);
 
+	/*
         startButton = new JButton("Click here to start!");
         startButton.addActionListener(new startButtonListener());
         startButton.setFont(smallerBFont);
         startButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-
+	*/
 
         try {
+	    BufferedBackgroundImage = ImageIO.read(new File("images/background.png"));
+            BackgroundImage = BufferedBackgroundImage.getScaledInstance(250,375, Image.SCALE_DEFAULT);
+            Background = new JLabel(new ImageIcon(BackgroundImage));
+            Background.setAlignmentX(Component.CENTER_ALIGNMENT);
+            Background.setLayout(new BoxLayout(Background, BoxLayout.Y_AXIS));
+	  
+	    startButtonImageBuffered = ImageIO.read(new File("images/StartButton.png"));
+            startButtonImage = startButtonImageBuffered.getScaledInstance(200,70, Image.SCALE_DEFAULT);
+            startButton = new JButton(new ImageIcon(startButtonImage));
+            startButton.setBorder(BorderFactory.createEmptyBorder());
+            startButton.setContentAreaFilled(false);
+            startButton.addActionListener(new startButtonListener());
+            startButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+	    
             image = ImageIO.read(new File("images/connect-4-logo.png"));
             scaledImage = image.getScaledInstance(200, 44, Image.SCALE_DEFAULT);
             logo = new JLabel(new ImageIcon(scaledImage));
@@ -61,10 +81,11 @@ public class StartScreen extends AbstractMenu {
             System.out.println("Image unavailable");
         }
 
-        this.add(Box.createRigidArea(new Dimension(0, 50)));
-        this.add(logo);
-        this.add(Box.createRigidArea(new Dimension(0, 50)));
-        this.add(startButton);
+	this.add(Background);
+        Background.add(Box.createRigidArea(new Dimension(0, 50)));
+        Background.add(logo);
+        Background.add(Box.createRigidArea(new Dimension(0, 120)));
+        Background.add(startButton);
     }
 
     /**

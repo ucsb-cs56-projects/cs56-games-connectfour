@@ -6,6 +6,10 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.imageio.ImageIO;
+import java.io.File;
+import java.io.IOException;
+import java.awt.image.BufferedImage;
 
 /**
  * Class for the player color selection menu for player 2
@@ -18,15 +22,34 @@ import java.awt.event.ActionListener;
  */
 public class Player2ColorSelectMenu extends AbstractMenu {
 
+    private JLabel Background;
+    private Image BackgroundImage;
+    private BufferedImage BufferedBackgroundImage;
     private JLabel header;
     private JButton blackButton;
+    private Image blackButtonImage;
+    private BufferedImage bufferedBlackButtonImage;
     private JButton blueButton;
+    private Image blueButtonImage;
+    private BufferedImage bufferedBlueButtonImage;
     private JButton magentaButton;
+    private Image magentaButtonImage;
+    private BufferedImage bufferedMagentaButtonImage;
     private JButton brownButton;
+    private Image brownButtonImage;
+    private BufferedImage bufferedBrownButtonImage;
     private JButton pinkButton;
+    private Image pinkButtonImage;
+    private BufferedImage bufferedPinkButtonImage;
     private JButton redButton;
+    private Image redButtonImage;
+    private BufferedImage bufferedRedButtonImage;
     private JButton yellowButton;
+    private Image yellowButtonImage;
+    private BufferedImage bufferedYellowButtonImage;
     private JButton backButton;
+    private Image backButtonImage;
+    private BufferedImage bufferedBackButtonImage;
     private JLabel nameInst;
     private JTextField nameText;
     private int stateToNotShow;
@@ -43,14 +66,123 @@ public class Player2ColorSelectMenu extends AbstractMenu {
     public Player2ColorSelectMenu(Game game, JFrame frame, int stateToNotShow) {
         super(game, frame);
 	    this.stateToNotShow = stateToNotShow;
-        frame.setTitle("Player 2");
+        frame.setTitle("Player 2 Color and Name");
 
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         header = new JLabel("    Player 2: Choose Color");
+	header.setForeground(Color.white);
         header.setFont(smallFont);
         header.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+	try{
+	    //Background Image                                                                                                \
+                                                                                                                               
+            BufferedBackgroundImage = ImageIO.read(new File("images/background.png"));
+            BackgroundImage = BufferedBackgroundImage.getScaledInstance(250,375, Image.SCALE_DEFAULT);
+            Background = new JLabel(new ImageIcon(BackgroundImage));
+            Background.setAlignmentX(Component.CENTER_ALIGNMENT);
+            Background.setLayout(new BoxLayout(Background, BoxLayout.Y_AXIS));
+
+            // Black button                                                                                                    
+
+            bufferedBlackButtonImage = ImageIO.read(new File("images/BlackButton.png"));
+            blackButtonImage = bufferedBlackButtonImage.getScaledInstance(175,30, Image.SCALE_DEFAULT);
+            blackButton = new JButton(new ImageIcon(blackButtonImage));
+            blackButton.setBorder(BorderFactory.createEmptyBorder());
+            blackButton.setContentAreaFilled(false);
+            blackButton.addActionListener(new blackButtonListener());
+            blackButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+            // Blue button                                                                                                     
+
+            bufferedBlueButtonImage = ImageIO.read(new File("images/BlueButton.png"));
+            blueButtonImage = bufferedBlueButtonImage.getScaledInstance(175,30, Image.SCALE_DEFAULT);
+            blueButton = new JButton(new ImageIcon(blueButtonImage));
+            blueButton.setBorder(BorderFactory.createEmptyBorder());
+            blueButton.setContentAreaFilled(false);
+            blueButton.addActionListener(new blueButtonListener());
+            blueButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+            // Magenta Button                                                                                                  
+
+            bufferedMagentaButtonImage = ImageIO.read(new File("images/MagentaButton.png"));
+            magentaButtonImage = bufferedMagentaButtonImage.getScaledInstance(175,30, Image.SCALE_DEFAULT);
+            magentaButton = new JButton(new ImageIcon(magentaButtonImage));
+            magentaButton.setBorder(BorderFactory.createEmptyBorder());
+            magentaButton.setContentAreaFilled(false);
+            magentaButton.addActionListener(new magentaButtonListener());
+            magentaButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+	    
+	    // Brown button                                                                                                    
+
+            bufferedBrownButtonImage = ImageIO.read(new File("images/BrownButton.png"));
+            brownButtonImage = bufferedBrownButtonImage.getScaledInstance(175,30, Image.SCALE_DEFAULT);
+            brownButton = new JButton(new ImageIcon(brownButtonImage));
+            brownButton.setBorder(BorderFactory.createEmptyBorder());
+            brownButton.setContentAreaFilled(false);
+            brownButton.addActionListener(new brownButtonListener());
+            brownButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+            // Pink button                                                                                                     
+
+            bufferedPinkButtonImage = ImageIO.read(new File("images/PinkButton.png"));
+            pinkButtonImage = bufferedPinkButtonImage.getScaledInstance(175,30, Image.SCALE_DEFAULT);
+            pinkButton = new JButton(new ImageIcon(pinkButtonImage));
+            pinkButton.setBorder(BorderFactory.createEmptyBorder());
+            pinkButton.setContentAreaFilled(false);
+            pinkButton.addActionListener(new pinkButtonListener());
+            pinkButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+            // Red button                                                                                                      
+
+            bufferedRedButtonImage = ImageIO.read(new File("images/RedButton.png"));
+            redButtonImage = bufferedRedButtonImage.getScaledInstance(175,30, Image.SCALE_DEFAULT);
+            redButton = new JButton(new ImageIcon(redButtonImage));
+            redButton.setBorder(BorderFactory.createEmptyBorder());
+            redButton.setContentAreaFilled(false);
+            redButton.addActionListener(new redButtonListener());
+            redButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+            // Yellow button                                                                                                   
+
+            bufferedYellowButtonImage = ImageIO.read(new File("images/YellowButton.png"));
+            yellowButtonImage = bufferedYellowButtonImage.getScaledInstance(175,30, Image.SCALE_DEFAULT);
+            yellowButton = new JButton(new ImageIcon(yellowButtonImage));
+            yellowButton.setBorder(BorderFactory.createEmptyBorder());
+            yellowButton.setContentAreaFilled(false);
+            yellowButton.addActionListener(new yellowButtonListener());
+            yellowButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+	    // Black button                                                                                                    
+
+            bufferedBlackButtonImage = ImageIO.read(new File("images/BlackButton.png"));
+            blackButtonImage = bufferedBlackButtonImage.getScaledInstance(175,30, Image.SCALE_DEFAULT);
+            blackButton = new JButton(new ImageIcon(blackButtonImage));
+            blackButton.setBorder(BorderFactory.createEmptyBorder());
+            blackButton.setContentAreaFilled(false);
+            blackButton.addActionListener(new blackButtonListener());
+            blackButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+            // Back button                                                                                                     
+
+            bufferedBackButtonImage = ImageIO.read(new File("images/BackButton.png"));
+            backButtonImage = bufferedBackButtonImage.getScaledInstance(175,30, Image.SCALE_DEFAULT);
+            backButton = new JButton(new ImageIcon(backButtonImage));
+            backButton.setBorder(BorderFactory.createEmptyBorder());
+            backButton.setContentAreaFilled(false);
+            backButton.addActionListener(new backButtonListener());
+            backButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        }
+        catch(IOException ex){
+            System.out.println("error retrieving images for main menu");
+        }
+	
+	this.add(Background);
+	
+	
+	/*
 
         blackButton = new JButton("Black");
         blackButton.addActionListener(new blackButtonListener());
@@ -94,6 +226,7 @@ public class Player2ColorSelectMenu extends AbstractMenu {
         backButton.setFont(largeFont);
         backButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
+	*/
 	//Fix Issue #58
 	if(game.getGameMode() == 1)
 	    {
@@ -104,40 +237,41 @@ public class Player2ColorSelectMenu extends AbstractMenu {
 		nameInst = new JLabel("Enter Computer name:");
 	    }
 	nameInst.setFont(smallFont);
-    nameInst.setAlignmentX(Component.CENTER_ALIGNMENT);
+	nameInst.setForeground(Color.white);
+	nameInst.setAlignmentX(Component.CENTER_ALIGNMENT);
 	nameText = new JTextField("Player 2");
 	nameText.setFont(smallFont);
 	nameText.setFocusable(true);
 	nameText.requestFocus();
-    nameText.setHorizontalAlignment(JLabel.CENTER);
+	nameText.setHorizontalAlignment(JLabel.CENTER);
 
 
-        this.add(header);
+        Background.add(header);
         if (stateToNotShow != 1) {
-            this.add(redButton);
+            Background.add(redButton);
         }
         if (stateToNotShow != 2) {
-            this.add(yellowButton);
+            Background.add(yellowButton);
         }
         if (stateToNotShow != 4) {
-            this.add(blackButton);
+            Background.add(blackButton);
         }
         if (stateToNotShow != 5) {
-            this.add(blueButton);
+            Background.add(blueButton);
         }
         if (stateToNotShow != 6) {
-            this.add(magentaButton);
+            Background.add(magentaButton);
         }
         if (stateToNotShow != 7) {
-            this.add(brownButton);
+            Background.add(brownButton);
         }
         if (stateToNotShow != 8) {
-            this.add(pinkButton);
+            Background.add(pinkButton);
         }
-        this.add(backButton);
+        Background.add(backButton);
         //this.add(Box.createVerticalStrut(40));
-	    this.add(nameInst);
-        this.add(nameText);
+	Background.add(nameInst);
+        Background.add(nameText);
     }
 
     /**
