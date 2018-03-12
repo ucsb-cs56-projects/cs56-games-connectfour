@@ -100,6 +100,7 @@ public class SinglePlayerMenu extends AbstractMenu {
         }
 	
 	this.add(background);
+	background.add(Box.createRigidArea(new Dimension(0, 10)));
 	background.add(singlePlayerEasy);
 	background.add(singlePlayerNormal);
 	background.add(singlePlayerAdvanced);

@@ -1,0 +1,24 @@
+@Author Sid Malik
+@CS56 W18 
+
+      All User Interface Updates are done using the basic photoshop files included within the images
+directory. All the buttons and labels were created using these two photoshop files, with the 
+flair file being used for more flashy display, such as the main menu, and the other one being used
+for basic images. I have included them here in case someone wishes to create more buttons.
+
+Steps:
+1) Open the type of button you wish to create (Flair or Regular) within photoshop.
+2) Modify the text field layer by using the text tool while having the text layer selected,
+and simply clicking on the words. This will allow you to edit the words without changing anything
+else, such as the background.
+3) Save as a png file and reduce the files resolution to about 300 width and 200 height. You can do 
+this online at any resizing website.
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!IMPORTANT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+This resize step is extremely important as not doing this will result in lag during loading between
+scenes in the game, and be a waste of memory.
+
+4) Drag the final png file into the images directory of this game.
+5) Profit
+

@@ -107,6 +107,7 @@ public class MainMenu extends AbstractMenu {
 	    LeaderboardButton = new JButton(new ImageIcon(Leaderboard));
 	    LeaderboardButton.setBorder(BorderFactory.createEmptyBorder());
 	    LeaderboardButton.setContentAreaFilled(false);
+	    LeaderboardButton.addActionListener(new LeaderboardButtonListener());
 	    LeaderboardButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 	    
 	    //Exit Image
@@ -178,6 +179,16 @@ public class MainMenu extends AbstractMenu {
     }
 
     /**
+     * Listener for the leaderboard button
+     */
+
+    class LeaderboardButtonListener implements ActionListener {
+	public void actionPerformed(ActionEvent event){
+	    loadLeaderboardMenu(game,frame);
+	}
+    }
+
+    /**
      * Listener for the single player button
      */
     class SPButtonListener implements ActionListener {
@@ -215,6 +226,7 @@ public class MainMenu extends AbstractMenu {
         }
     }
 
+	
     /**
      * Method that removes current menu, then displays the SettingsMenu
      */
@@ -256,7 +268,20 @@ public class MainMenu extends AbstractMenu {
         frame.repaint();
         frame.setVisible(true);
     }
-
+    
+    /**
+    * Method for diplaying the leaderboard menu
+    */
+    public void loadLeaderboardMenu(Game game, JFrame frame) {
+	frame.setSize(menu_width, menu_height);
+	frame.getContentPane().removeAll();
+	LeaderboardMenu nextMenu = new LeaderboardMenu(game,frame);
+	frame.getContentPane().add(nextMenu);
+	frame.revalidate();
+	frame.repaint();
+	frame.setVisible(true);
+    }
+    
     /**
      * there is no back button on the main menu, so return nothing
      */

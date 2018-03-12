@@ -75,6 +75,7 @@ public class SettingsMenu extends AbstractMenu {
         testingModeBox.setSelected(false);                                                                                            testingModeBox.setAlignmentX(Component.CENTER_ALIGNMENT);
 	testingModeBox.setForeground(Color.white);
 	this.add(Background);
+	Background.add(Box.createRigidArea(new Dimension(0, 10)));
 	Background.add(audioMenuButton);
 	Background.add(mainMenuButton);
 	Background.add(testingModeBox);
