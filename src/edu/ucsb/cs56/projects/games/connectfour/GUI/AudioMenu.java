@@ -42,6 +42,7 @@ public class AudioMenu extends AbstractMenu {
     private JRadioButton musicBuddySelection;
     private JRadioButton musicSunnySelection;
     private JRadioButton musicTendernessSelection;
+    private JRadioButton musicHumpMeSelection;
 
     /**
      * Constructor for the Audio Page
@@ -98,21 +99,25 @@ public class AudioMenu extends AbstractMenu {
 	    musicObnoxiousSelection.setForeground(Color.white);
 	    musicObnoxiousSelection.addActionListener(new selectSongTwoListener());
 	    musicDancePopSelection = new JRadioButton("Pop Dance");
-            musicDancePopSelection.setAlignmentX(Component.LEFT_ALIGNMENT);
-            musicDancePopSelection.setForeground(Color.white);
-            musicDancePopSelection.addActionListener(new selectSongThreeListener());
+        musicDancePopSelection.setAlignmentX(Component.LEFT_ALIGNMENT);
+        musicDancePopSelection.setForeground(Color.white);
+        musicDancePopSelection.addActionListener(new selectSongThreeListener());
 	    musicBuddySelection = new JRadioButton("Buddy");
-            musicBuddySelection.setAlignmentX(Component.LEFT_ALIGNMENT);
-            musicBuddySelection.setForeground(Color.white);
-            musicBuddySelection.addActionListener(new selectSongFourListener());
+        musicBuddySelection.setAlignmentX(Component.LEFT_ALIGNMENT);
+        musicBuddySelection.setForeground(Color.white);
+        musicBuddySelection.addActionListener(new selectSongFourListener());
 	    musicSunnySelection = new JRadioButton("Sunny");
-            musicSunnySelection.setAlignmentX(Component.LEFT_ALIGNMENT);
-            musicSunnySelection.setForeground(Color.white);
-            musicSunnySelection.addActionListener(new selectSongFiveListener());
+        musicSunnySelection.setAlignmentX(Component.LEFT_ALIGNMENT);
+        musicSunnySelection.setForeground(Color.white);
+        musicSunnySelection.addActionListener(new selectSongFiveListener());
 	    musicTendernessSelection = new JRadioButton("Tenderness");
-            musicTendernessSelection.setAlignmentX(Component.LEFT_ALIGNMENT);
-            musicTendernessSelection.setForeground(Color.white);
-            musicTendernessSelection.addActionListener(new selectSongSixListener());
+        musicTendernessSelection.setAlignmentX(Component.LEFT_ALIGNMENT);
+        musicTendernessSelection.setForeground(Color.white);
+        musicTendernessSelection.addActionListener(new selectSongSixListener());
+        musicHumpMeSelection = new JRadioButton("Hump Me");
+        musicHumpMeSelection.setAlignmentX(Component.LEFT_ALIGNMENT);
+        musicHumpMeSelection.setForeground(Color.white);
+        musicHumpMeSelection.addActionListener(new selectSongSevenListener());
 
 
 	    musicSelection = new ButtonGroup(); 
@@ -122,6 +127,7 @@ public class AudioMenu extends AbstractMenu {
 	    musicSelection.add(musicBuddySelection);
 	    musicSelection.add(musicSunnySelection);
 	    musicSelection.add(musicTendernessSelection);
+        musicSelection.add(musicHumpMeSelection);
 	    musicMysticalSelection.setSelected(true);
 	    
 	    
@@ -131,15 +137,17 @@ public class AudioMenu extends AbstractMenu {
         }
 
         this.add(Background);
-	Background.add(changeMusicButton);
-	Background.add(toggleMusicButton);
-	Background.add(mainMenuButton);
-	Background.add(audioSelectionLabel);
-	Background.add(musicMysticalSelection);
-	Background.add(musicObnoxiousSelection);
-	Background.add(musicDancePopSelection);
-	Background.add(musicBuddySelection);
-	Background.add(musicSunnySelection);
+        Background.add(changeMusicButton);
+        Background.add(toggleMusicButton);
+        Background.add(mainMenuButton);
+        Background.add(audioSelectionLabel);
+        Background.add(musicMysticalSelection);
+        Background.add(musicObnoxiousSelection);
+        Background.add(musicDancePopSelection);
+        Background.add(musicBuddySelection);
+        Background.add(musicSunnySelection);
+        Background.add(musicHumpMeSelection);
+
 
 	/*
 
@@ -216,6 +224,12 @@ public class AudioMenu extends AbstractMenu {
     class selectSongSixListener implements ActionListener {
         public void actionPerformed(ActionEvent even){
             MusicPlayer.selectSong(5);
+        }
+    }
+
+    class selectSongSevenListener implements ActionListener {
+        public void actionPerformed(ActionEvent even){
+            MusicPlayer.selectSong(6);
         }
     }
 
