@@ -4,6 +4,7 @@ import edu.ucsb.cs56.projects.games.connectfour.Logic.Game;
 
 import javax.imageio.ImageIO;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.awt.image.BufferedImage;
 import javax.swing.*;
@@ -49,123 +50,136 @@ public class MainMenu extends AbstractMenu {
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         Font BFont = new Font("Comic Sans MS", Font.BOLD, 22);
-	
-	try{
 
-	    //Background Image 
+        //Background Image
+        backgroundImage();
 
-	    BufferedBackgroundImage = ImageIO.read(new File("images/background.png"));
-	    BackgroundImage = BufferedBackgroundImage.getScaledInstance(250,375, Image.SCALE_DEFAULT);
-	    Background = new JLabel(new ImageIcon(BackgroundImage));
-	    Background.setAlignmentX(Component.CENTER_ALIGNMENT);
-	    Background.setLayout(new BoxLayout(Background, BoxLayout.Y_AXIS));
-	    
-	    // Single Player Button image
-	    
-	    SinglePlayerImage = ImageIO.read(new File("images/SingleplayerButton.png"));
-	    SinglePlayer = SinglePlayerImage.getScaledInstance(225,60, Image.SCALE_DEFAULT);
-	    SPButton = new JButton(new ImageIcon(SinglePlayer));
-	    SPButton.setBorder(BorderFactory.createEmptyBorder());
-	    SPButton.setContentAreaFilled(false);
-	    SPButton.addActionListener(new SPButtonListener());
-	    SPButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        // Single Player Button image
+        singlePlayerButton();
 
-	    // Multiplayer Button image
+        // Multiplayer Button image
+        multiPlayerButton();
 
-	    MultiPlayerImage = ImageIO.read(new File("images/MultiplayerButton.png"));
-	    MultiPlayer = MultiPlayerImage.getScaledInstance(225,60,Image.SCALE_DEFAULT);
-	    MPButton = new JButton(new ImageIcon(MultiPlayer));
-	    MPButton.setBorder(BorderFactory.createEmptyBorder());
-	    MPButton.setContentAreaFilled(false);
-	    MPButton.addActionListener(new MPButtonListener());
-	    MPButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-	    
-	    // Settings Button Image
+        // Settings Button Image
+        settingsButton();
 
-	    SettingsImage = ImageIO.read(new File("images/SettingsButton.png"));
-	    Settings = SettingsImage.getScaledInstance(225,60,Image.SCALE_DEFAULT);
-	    settingsButton = new JButton(new ImageIcon(Settings));
-	    settingsButton.setBorder(BorderFactory.createEmptyBorder());
-	    settingsButton.setContentAreaFilled(false);
-	    settingsButton.addActionListener(new settingsButtonListener());
-	    settingsButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        // rules Button Image
+        rulesButton();
 
-	    // rules Button Image
+        // leaderboard Image
+        leaderBoardImage();
 
-	    ruleImage = ImageIO.read(new File("images/RulesButton.png"));
-	    rules = ruleImage.getScaledInstance(225,60,Image.SCALE_DEFAULT);
-	    ruleButton = new JButton(new ImageIcon(rules));
-	    ruleButton.setBorder(BorderFactory.createEmptyBorder());
-	    ruleButton.setContentAreaFilled(false);
-	    ruleButton.addActionListener(new ruleButtonListener());
-	    ruleButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        //Exit Image
+        exitImage();
 
-	    // leaderboard Image
 
-	    LeaderboardImage = ImageIO.read(new File("images/LeaderboardButton.png"));
-	    Leaderboard = LeaderboardImage.getScaledInstance(225,60,Image.SCALE_DEFAULT);
-	    LeaderboardButton = new JButton(new ImageIcon(Leaderboard));
-	    LeaderboardButton.setBorder(BorderFactory.createEmptyBorder());
-	    LeaderboardButton.setContentAreaFilled(false);
-	    LeaderboardButton.addActionListener(new LeaderboardButtonListener());
-	    LeaderboardButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-	    
-	    //Exit Image
-
-	    ExitImage = ImageIO.read(new File("images/ExitButton.png"));
-	    Exit = ExitImage.getScaledInstance(225,60,Image.SCALE_DEFAULT);
-	    ExitButton = new JButton(new ImageIcon(Exit));
-	    ExitButton.setBorder(BorderFactory.createEmptyBorder());
-	    ExitButton.setContentAreaFilled(false);
-	    ExitButton.addActionListener(new ExitButtonListener());
-	    ExitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-	}
-	catch(IOException ex){
-	    System.out.println("error retrieving images for main menu");
-	}
         this.add(Background);
-	
-       
+        background();
+    }
 
-	/*
-        MPButton = new JButton("Multiplayer");
-        MPButton.addActionListener(new MPButtonListener());
-        MPButton.setFont(BFont);
-        MPButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-	
 
-        SPButton = new JButton("Single Player");
-        SPButton.addActionListener(new SPButtonListener());
-        SPButton.setFont(BFont);
-        SPButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-	
+    private void backgroundImage() {
+        try {
+            BufferedBackgroundImage = ImageIO.read(new File("images/background.png"));
+            BackgroundImage = BufferedBackgroundImage.getScaledInstance(250, 375, Image.SCALE_DEFAULT);
+            Background = new JLabel(new ImageIcon(BackgroundImage));
+            Background.setAlignmentX(Component.CENTER_ALIGNMENT);
+            Background.setLayout(new BoxLayout(Background, BoxLayout.Y_AXIS));
+        } catch (IOException ex) {
+            System.out.print("File not found error");
+        }
+    }
 
-        settingsButton = new JButton("Settings");
-        settingsButton.addActionListener(new settingsButtonListener());
-        settingsButton.setFont(BFont);
-        settingsButton.setAlignmentX(Component.CENTER_ALIGNMENT);
- 
-        ruleButton = new JButton("Rules");
-        ruleButton.addActionListener(new ruleButtonListener());
-        ruleButton.setFont(BFont);
-        ruleButton.setAlignmentX(Component.CENTER_ALIGNMENT);
- 
-        ExitButton = new JButton("Exit");
-        ExitButton.addActionListener(new ExitButtonListener());
-        ExitButton.setFont(BFont);
-        ExitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-	
-	*/
+    private void singlePlayerButton() {
+        try {
+            SinglePlayerImage = ImageIO.read(new File("images/SingleplayerButton.png"));
+            SinglePlayer = SinglePlayerImage.getScaledInstance(225, 60, Image.SCALE_DEFAULT);
+            SPButton = new JButton(new ImageIcon(SinglePlayer));
+            SPButton.setBorder(BorderFactory.createEmptyBorder());
+            SPButton.setContentAreaFilled(false);
+            SPButton.addActionListener(new SPButtonListener());
+            SPButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        } catch (IOException ex) {
+            System.out.print("File not found error");
+        }
+    }
 
+    private void multiPlayerButton() {
+        try {
+            MultiPlayerImage = ImageIO.read(new File("images/MultiplayerButton.png"));
+            MultiPlayer = MultiPlayerImage.getScaledInstance(225, 60, Image.SCALE_DEFAULT);
+            MPButton = new JButton(new ImageIcon(MultiPlayer));
+            MPButton.setBorder(BorderFactory.createEmptyBorder());
+            MPButton.setContentAreaFilled(false);
+            MPButton.addActionListener(new MPButtonListener());
+            MPButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        } catch (IOException ex) {
+            System.out.print("File not found error");
+        }
+    }
+
+    private void settingsButton() {
+        try {
+            SettingsImage = ImageIO.read(new File("images/SettingsButton.png"));
+            Settings = SettingsImage.getScaledInstance(225, 60, Image.SCALE_DEFAULT);
+            settingsButton = new JButton(new ImageIcon(Settings));
+            settingsButton.setBorder(BorderFactory.createEmptyBorder());
+            settingsButton.setContentAreaFilled(false);
+            settingsButton.addActionListener(new settingsButtonListener());
+            settingsButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        } catch (IOException ex) {
+            System.out.print("File not found error");
+        }
+    }
+
+    private void rulesButton() {
+        try {
+            ruleImage = ImageIO.read(new File("images/RulesButton.png"));
+            rules = ruleImage.getScaledInstance(225, 60, Image.SCALE_DEFAULT);
+            ruleButton = new JButton(new ImageIcon(rules));
+            ruleButton.setBorder(BorderFactory.createEmptyBorder());
+            ruleButton.setContentAreaFilled(false);
+            ruleButton.addActionListener(new ruleButtonListener());
+            ruleButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        } catch (IOException ex) {
+            System.out.print("File not found error");
+        }
+    }
+
+    private void leaderBoardImage() {
+        try {
+            LeaderboardImage = ImageIO.read(new File("images/LeaderboardButton.png"));
+            Leaderboard = LeaderboardImage.getScaledInstance(225, 60, Image.SCALE_DEFAULT);
+            LeaderboardButton = new JButton(new ImageIcon(Leaderboard));
+            LeaderboardButton.setBorder(BorderFactory.createEmptyBorder());
+            LeaderboardButton.setContentAreaFilled(false);
+            LeaderboardButton.addActionListener(new LeaderboardButtonListener());
+            LeaderboardButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        } catch (IOException ex) {
+            System.out.print("File not found error");
+        }
+    }
+
+    private void exitImage() {
+        try {
+            ExitImage = ImageIO.read(new File("images/ExitButton.png"));
+            Exit = ExitImage.getScaledInstance(225, 60, Image.SCALE_DEFAULT);
+            ExitButton = new JButton(new ImageIcon(Exit));
+            ExitButton.setBorder(BorderFactory.createEmptyBorder());
+            ExitButton.setContentAreaFilled(false);
+            ExitButton.addActionListener(new ExitButtonListener());
+            ExitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        } catch (IOException ex) {
+            System.out.print("File not found error");
+        }
+    }
+    private void background() {
         Background.add(SPButton);
-	
         Background.add(MPButton);
-	Background.add(settingsButton);
+        Background.add(settingsButton);
         Background.add(ruleButton);
-	Background.add(LeaderboardButton);
+        Background.add(LeaderboardButton);
         Background.add(ExitButton);
-	
     }
 
     /**

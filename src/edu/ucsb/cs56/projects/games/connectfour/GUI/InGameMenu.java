@@ -36,10 +36,10 @@ public class InGameMenu extends AbstractMenu {
         this.add(Box.createRigidArea(new Dimension(0, 50)));
   
         drawMainMenu(game);
-	drawRestartButton(game);
+	    drawRestartButton(game);
         drawExitButton(game);
         drawLeaderBoard(game);
-	drawUndoButton(game);
+	    drawUndoButton(game);
 
 	    if (game.isTestingModeEnabled()) {
             JButton printBoard = new JButton("Print Board");
