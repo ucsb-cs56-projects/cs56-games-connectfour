@@ -54,68 +54,116 @@ public class BoardColorSelectMenu extends AbstractMenu
     //private JButton gradGreyToBlackButton;
 
     //constructor
-    public BoardColorSelectMenu(Game game, JFrame frame, int stateToNotShow1, int stateToNotShow2)
-    {
+    public BoardColorSelectMenu(Game game, JFrame frame, int stateToNotShow1, int stateToNotShow2){
 		super(game,frame);
 	    frame.setTitle("Board Color Selector");
-
-
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         header = new JLabel("Choose Board Color");
         header.setFont(smallFont);
-	header.setForeground(Color.white);
+	    header.setForeground(Color.white);
         header.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-	try{
-	    //Background Image                                                                                                                                              
+        backgroundImage();
+        blackButton();
+        greyButton();
+        pinkButton();
+        redButton();
+        yellowButton();
+        beigeButton();
+        cyanButton();
+        oliveButton();
+
+        this.add(Background);
+        background(stateToNotShow1,stateToNotShow2); // Adds elements to background
+    }
+    private void backgroundImage(){
+        try{
             BufferedBackgroundImage = ImageIO.read(new File("images/background.png"));
             BackgroundImage = BufferedBackgroundImage.getScaledInstance(250,375, Image.SCALE_DEFAULT);
             Background = new JLabel(new ImageIcon(BackgroundImage));
             Background.setAlignmentX(Component.CENTER_ALIGNMENT);
             Background.setLayout(new BoxLayout(Background, BoxLayout.Y_AXIS));
-	    
-	    blackButtonImageBuffered = ImageIO.read(new File("images/BlackButton.png"));
+
+        }
+        catch(IOException ex){
+            System.out.println("error retrieving images for main menu");
+        }
+    }
+    private void blackButton(){
+        try{
+            blackButtonImageBuffered = ImageIO.read(new File("images/BlackButton.png"));
             blackButtonImage = blackButtonImageBuffered.getScaledInstance(175,30, Image.SCALE_DEFAULT);
             blackButton = new JButton(new ImageIcon(blackButtonImage));
             blackButton.setBorder(BorderFactory.createEmptyBorder());
             blackButton.setContentAreaFilled(false);
             blackButton.addActionListener(new blackButtonListener());
             blackButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-	    
-	    greyButtonImageBuffered = ImageIO.read(new File("images/GreyButton.png"));
+        }
+        catch(IOException ex){
+            System.out.println("error retrieving images for main menu");
+        }
+    }
+    private void greyButton(){
+        try{
+            greyButtonImageBuffered = ImageIO.read(new File("images/GreyButton.png"));
             greyButtonImage = greyButtonImageBuffered.getScaledInstance(175,30, Image.SCALE_DEFAULT);
             greyButton = new JButton(new ImageIcon(greyButtonImage));
             greyButton.setBorder(BorderFactory.createEmptyBorder());
             greyButton.setContentAreaFilled(false);
             greyButton.addActionListener(new greyButtonListener());
             greyButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-	    
-	    pinkButtonImageBuffered = ImageIO.read(new File("images/PinkButton.png"));
+        }
+        catch(IOException ex){
+            System.out.println("error retrieving images for main menu");
+        }
+    }
+    private void pinkButton(){
+        try{
+            pinkButtonImageBuffered = ImageIO.read(new File("images/PinkButton.png"));
             pinkButtonImage = pinkButtonImageBuffered.getScaledInstance(175,30, Image.SCALE_DEFAULT);
-	    pinkButton = new JButton(new ImageIcon(pinkButtonImage));
+            pinkButton = new JButton(new ImageIcon(pinkButtonImage));
             pinkButton.setBorder(BorderFactory.createEmptyBorder());
             pinkButton.setContentAreaFilled(false);
             pinkButton.addActionListener(new pinkButtonListener());
             pinkButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-	    
-	    redButtonImageBuffered = ImageIO.read(new File("images/RedButton.png"));
+        }
+        catch(IOException ex){
+            System.out.println("error retrieving images for main menu");
+        }
+    }
+    private void redButton(){
+        try{
+            redButtonImageBuffered = ImageIO.read(new File("images/RedButton.png"));
             redButtonImage = redButtonImageBuffered.getScaledInstance(175,30, Image.SCALE_DEFAULT);
             redButton = new JButton(new ImageIcon(redButtonImage));
             redButton.setBorder(BorderFactory.createEmptyBorder());
             redButton.setContentAreaFilled(false);
             redButton.addActionListener(new redButtonListener());
             redButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-	    yellowButtonImageBuffered = ImageIO.read(new File("images/YellowButton.png"));
+        }
+        catch(IOException ex){
+            System.out.println("error retrieving images for main menu");
+        }
+    }
+    private void yellowButton(){
+        try{
+            yellowButtonImageBuffered = ImageIO.read(new File("images/YellowButton.png"));
             yellowButtonImage = yellowButtonImageBuffered.getScaledInstance(175,30, Image.SCALE_DEFAULT);
             yellowButton = new JButton(new ImageIcon(yellowButtonImage));
             yellowButton.setBorder(BorderFactory.createEmptyBorder());
             yellowButton.setContentAreaFilled(false);
             yellowButton.addActionListener(new yellowButtonListener());
             yellowButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-	    
-	    beigeButtonImageBuffered = ImageIO.read(new File("images/BeigeButton.png"));
+
+        }
+        catch(IOException ex){
+            System.out.println("error retrieving images for main menu");
+        }
+    }
+    private void beigeButton(){
+        try{
+            beigeButtonImageBuffered = ImageIO.read(new File("images/BeigeButton.png"));
             beigeButtonImage = beigeButtonImageBuffered.getScaledInstance(175,30, Image.SCALE_DEFAULT);
             beigeButton = new JButton(new ImageIcon(beigeButtonImage));
             beigeButton.setBorder(BorderFactory.createEmptyBorder());
@@ -123,103 +171,58 @@ public class BoardColorSelectMenu extends AbstractMenu
             beigeButton.addActionListener(new beigeButtonListener());
             beigeButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-	    cyanButtonImageBuffered = ImageIO.read(new File("images/CyanButton.png"));
+        }
+        catch(IOException ex){
+            System.out.println("error retrieving images for main menu");
+        }
+    }
+    private void cyanButton(){
+        try{
+            cyanButtonImageBuffered = ImageIO.read(new File("images/CyanButton.png"));
             cyanButtonImage = cyanButtonImageBuffered.getScaledInstance(175,30, Image.SCALE_DEFAULT);
             cyanButton = new JButton(new ImageIcon(cyanButtonImage));
             cyanButton.setBorder(BorderFactory.createEmptyBorder());
-	    cyanButton.setContentAreaFilled(false);
+            cyanButton.setContentAreaFilled(false);
             cyanButton.addActionListener(new cyanButtonListener());
-	    cyanButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-	    
-	    oliveButtonImageBuffered = ImageIO.read(new File("images/OliveButton.png"));
-	    oliveButtonImage = oliveButtonImageBuffered.getScaledInstance(175,30, Image.SCALE_DEFAULT);
-            oliveButton = new JButton(new ImageIcon(oliveButtonImage));
-            oliveButton.setBorder(BorderFactory.createEmptyBorder());
-	    oliveButton.setContentAreaFilled(false);
-            oliveButton.addActionListener(new oliveButtonListener());
-            oliveButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-
-	}
-	catch(IOException ex){
+            cyanButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        }
+        catch(IOException ex){
             System.out.println("error retrieving images for main menu");
         }
-	this.add(Background);
-	
-	/*
-
-        greyButton = new JButton("Grey");
-		greyButton.addActionListener(new greyButtonListener());
-		greyButton.setFont(largeFont);
-		greyButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-		blackButton = new JButton("Black");
-		blackButton.addActionListener(new blackButtonListener());
-		blackButton.setFont(largeFont);
-		blackButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-		pinkButton = new JButton("Light Pink");
-		pinkButton.addActionListener(new pinkButtonListener());
-		pinkButton.setFont(largeFont);
-		pinkButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-		redButton = new JButton("Red");
-		redButton.addActionListener(new redButtonListener());
-		redButton.setFont(largeFont);
-		redButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-		yellowButton = new JButton("Yellow");
-		yellowButton.addActionListener(new yellowButtonListener());
-		yellowButton.setFont(largeFont);
-		yellowButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-		beigeButton = new JButton("Beige");
-		beigeButton.addActionListener(new beigeButtonListener());
-		beigeButton.setFont(largeFont);
-		beigeButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-		cyanButton = new JButton("Cyan");
-		cyanButton.addActionListener(new cyanButtonListener());
-		cyanButton.setFont(largeFont);
-		cyanButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-		oliveButton = new JButton("Olive");
-		oliveButton.addActionListener(new oliveButtonListener());
-		oliveButton.setFont(largeFont);
-		oliveButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-		/*
-		gradGreyToBlackButton = new JButton("Gradient, grey to black");
-		gradGreyToBlackButton.addActionListener(new gGTBButtonListener());
-		gradGreyToBlackButton.setFont(largeFont);
-		*/
-
-
-		Background.add(header);
-		Background.add(greyButton);
-		
-		if(stateToNotShow1 != 1 && stateToNotShow2 != 1)
-		    {
-			Background.add(redButton);
-		    }
-		if(stateToNotShow1 != 2 && stateToNotShow2 != 2)
-		    {
-			Background.add(yellowButton);
-		    }
-		if(stateToNotShow1 != 4 && stateToNotShow2 != 4)
-		    {
-			Background.add(blackButton);
-			//this.add(gradGreyToBlackButton);
-		    }
-		if(stateToNotShow1 != 8 && stateToNotShow2 != 8)
-		    {
-			Background.add(pinkButton);
-		    }
-		Background.add(beigeButton);
-		Background.add(cyanButton);
-		Background.add(oliveButton);
-					 
     }
-
+    private void oliveButton(){
+        try{
+            oliveButtonImageBuffered = ImageIO.read(new File("images/OliveButton.png"));
+            oliveButtonImage = oliveButtonImageBuffered.getScaledInstance(175,30, Image.SCALE_DEFAULT);
+            oliveButton = new JButton(new ImageIcon(oliveButtonImage));
+            oliveButton.setBorder(BorderFactory.createEmptyBorder());
+            oliveButton.setContentAreaFilled(false);
+            oliveButton.addActionListener(new oliveButtonListener());
+            oliveButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        }
+        catch(IOException ex){
+            System.out.println("error retrieving images for main menu");
+        }
+    }
+    private void background(int stateToNotShow1, int stateToNotShow2){
+        Background.add(header);
+        Background.add(greyButton);
+        if(stateToNotShow1 != 1 && stateToNotShow2 != 1) {
+            Background.add(redButton);
+        }
+        if(stateToNotShow1 != 2 && stateToNotShow2 != 2) {
+            Background.add(yellowButton);
+        }
+        if(stateToNotShow1 != 4 && stateToNotShow2 != 4) {
+            Background.add(blackButton);
+        }
+        if(stateToNotShow1 != 8 && stateToNotShow2 != 8){
+            Background.add(pinkButton);
+        }
+        Background.add(beigeButton);
+        Background.add(cyanButton);
+        Background.add(oliveButton);
+    }
     /**
      * Action Listener for the grey button
      * Sets board color to light grey and launches the game

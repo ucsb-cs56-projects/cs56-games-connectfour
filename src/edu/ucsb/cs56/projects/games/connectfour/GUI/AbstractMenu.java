@@ -108,14 +108,14 @@ public abstract class AbstractMenu extends JPanel implements Serializable {
      */
     public void loadBoardColorSelectMenu(Game game, JFrame frame, int colorToNotShow1, int colorToNotShow2)
     {
-	frame.getContentPane().removeAll();
-	frame.getContentPane().setLayout(new BorderLayout());
-	frame.setSize(menu_width, menu_height);
-	BoardColorSelectMenu nextMenu = new BoardColorSelectMenu(game, frame, colorToNotShow1, colorToNotShow2);
+        frame.getContentPane().removeAll();
+        frame.getContentPane().setLayout(new BorderLayout());
+        frame.setSize(menu_width, menu_height);
+        BoardColorSelectMenu nextMenu = new BoardColorSelectMenu(game, frame, colorToNotShow1, colorToNotShow2);
 
-	frame.getContentPane().add(nextMenu);
-	frame.revalidate();
-	frame.repaint();
+        frame.getContentPane().add(nextMenu);
+        frame.revalidate();
+        frame.repaint();
     }
 
     /**
@@ -162,7 +162,6 @@ public abstract class AbstractMenu extends JPanel implements Serializable {
         the turn panel is doing some funky stuff when the game is restarted
         commented out for now, so it disappears when pressing restart
          */
-//        frame.getContentPane().add(display.getTurnPanel(), BorderLayout.PAGE_START);
         frame.revalidate();
         frame.repaint();
         game.restartGame();
@@ -172,5 +171,4 @@ public abstract class AbstractMenu extends JPanel implements Serializable {
      * has a different function depending upon context, hence abstract
      */
     public abstract void back(Game game, JFrame frame);
-
 }

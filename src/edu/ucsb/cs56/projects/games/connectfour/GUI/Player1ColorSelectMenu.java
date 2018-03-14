@@ -72,11 +72,7 @@ public class Player1ColorSelectMenu extends AbstractMenu {
 
 	try{
 	    //Background Image                                                                                                 
-            BufferedBackgroundImage = ImageIO.read(new File("images/backgroundWide.png"));
-            BackgroundImage = BufferedBackgroundImage.getScaledInstance(500,375, Image.SCALE_DEFAULT);
-            Background = new JLabel(new ImageIcon(BackgroundImage));
-            Background.setAlignmentX(Component.CENTER_ALIGNMENT);
-            Background.setLayout(new BoxLayout(Background, BoxLayout.Y_AXIS));
+        backgroundImage();
 
 	    // Black button
 
@@ -257,6 +253,14 @@ public class Player1ColorSelectMenu extends AbstractMenu {
 	this.add(nameText);
     
     */
+    }
+
+    private void backgroundImage() throws IOException {
+        BufferedBackgroundImage = ImageIO.read(new File("images/backgroundWide.png"));
+        BackgroundImage = BufferedBackgroundImage.getScaledInstance(500,375, Image.SCALE_DEFAULT);
+        Background = new JLabel(new ImageIcon(BackgroundImage));
+        Background.setAlignmentX(Component.CENTER_ALIGNMENT);
+        Background.setLayout(new BoxLayout(Background, BoxLayout.Y_AXIS));
     }
 
     /**
