@@ -69,200 +69,203 @@ public class Player1ColorSelectMenu extends AbstractMenu {
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
-
-	try{
-	    //Background Image                                                                                                 
         backgroundImage();
 
-	    // Black button
+        // Black button
+        blackButtonImage();
 
-	    bufferedBlackButtonImage = ImageIO.read(new File("images/BlackButton.png"));
-            blackButtonImage = bufferedBlackButtonImage.getScaledInstance(175,30, Image.SCALE_DEFAULT);
-            blackButton = new JButton(new ImageIcon(blackButtonImage));
-            blackButton.setBorder(BorderFactory.createEmptyBorder());
-            blackButton.setContentAreaFilled(false);
-            blackButton.addActionListener(new blackButtonListener());
-            blackButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        // Blue button
+        blueButtonImage();
 
-	    // Blue button
+        // Magenta Button
+        magentaButtonImage();
 
-	    bufferedBlueButtonImage = ImageIO.read(new File("images/BlueButton.png"));
-            blueButtonImage = bufferedBlueButtonImage.getScaledInstance(175,30, Image.SCALE_DEFAULT);
-            blueButton = new JButton(new ImageIcon(blueButtonImage));
-            blueButton.setBorder(BorderFactory.createEmptyBorder());
-            blueButton.setContentAreaFilled(false);
-            blueButton.addActionListener(new blueButtonListener());
-            blueButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        // Brown button
+        brownButtonImage();
 
-	    // Magenta Button
+        // Pink button
+        pinkButtonImage();
 
-	    bufferedMagentaButtonImage = ImageIO.read(new File("images/MagentaButton.png"));
-	    magentaButtonImage = bufferedMagentaButtonImage.getScaledInstance(175,30, Image.SCALE_DEFAULT);
-            magentaButton = new JButton(new ImageIcon(magentaButtonImage));
-            magentaButton.setBorder(BorderFactory.createEmptyBorder());
-            magentaButton.setContentAreaFilled(false);
-            magentaButton.addActionListener(new magentaButtonListener());
-            magentaButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        // Red button
+        redButtonImage();
 
-	    // Brown button
+        // Yellow button
+        yellowButtonImage();
 
-	    bufferedBrownButtonImage = ImageIO.read(new File("images/BrownButton.png"));
-            brownButtonImage = bufferedBrownButtonImage.getScaledInstance(175,30, Image.SCALE_DEFAULT);
-            brownButton = new JButton(new ImageIcon(brownButtonImage));
-            brownButton.setBorder(BorderFactory.createEmptyBorder());
-            brownButton.setContentAreaFilled(false);
-	    brownButton.addActionListener(new brownButtonListener());
-            brownButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        // Back button
+        backButtonImage();
 
-	    // Pink button
+        this.add(Background);
+	    background();
 
-	    bufferedPinkButtonImage = ImageIO.read(new File("images/PinkButton.png"));
-            pinkButtonImage = bufferedPinkButtonImage.getScaledInstance(175,30, Image.SCALE_DEFAULT);
-            pinkButton = new JButton(new ImageIcon(pinkButtonImage));
-            pinkButton.setBorder(BorderFactory.createEmptyBorder());
-            pinkButton.setContentAreaFilled(false);
-            pinkButton.addActionListener(new pinkButtonListener());
-            pinkButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        name();
 
-	    // Red button
-  
-            bufferedRedButtonImage = ImageIO.read(new File("images/RedButton.png"));
-            redButtonImage = bufferedRedButtonImage.getScaledInstance(175,30, Image.SCALE_DEFAULT);
-	    redButton = new JButton(new ImageIcon(redButtonImage));
-            redButton.setBorder(BorderFactory.createEmptyBorder());
-            redButton.setContentAreaFilled(false);
-            redButton.addActionListener(new redButtonListener());
-            redButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-	    
-	    // Yellow button
+	    Background.add(nameInst);                                                                                                     Background.add(nameText);
 
-	    bufferedYellowButtonImage = ImageIO.read(new File("images/YellowButton.png"));
+    }
+
+    private void backButtonImage() {
+        try {
+            bufferedBackButtonImage = ImageIO.read(new File("images/BackButton.png"));
+            backButtonImage = bufferedBackButtonImage.getScaledInstance(175, 30, Image.SCALE_DEFAULT);
+            backButton = new JButton(new ImageIcon(backButtonImage));
+            backButton.setBorder(BorderFactory.createEmptyBorder());
+            backButton.setContentAreaFilled(false);
+            backButton.addActionListener(new backButtonListener());
+            backButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        }
+        catch( IOException ex){
+            System.out.println("error retrieving images for main menu");
+        }
+    }
+
+    private void yellowButtonImage() {
+        try{
+            bufferedYellowButtonImage = ImageIO.read(new File("images/YellowButton.png"));
             yellowButtonImage = bufferedYellowButtonImage.getScaledInstance(175,30, Image.SCALE_DEFAULT);
             yellowButton = new JButton(new ImageIcon(yellowButtonImage));
             yellowButton.setBorder(BorderFactory.createEmptyBorder());
             yellowButton.setContentAreaFilled(false);
             yellowButton.addActionListener(new yellowButtonListener());
             yellowButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-	    
-	    // Black button
-
-	    bufferedBlackButtonImage = ImageIO.read(new File("images/BlackButton.png"));
-	    blackButtonImage = bufferedBlackButtonImage.getScaledInstance(175,30, Image.SCALE_DEFAULT);
-            blackButton = new JButton(new ImageIcon(blackButtonImage));
-            blackButton.setBorder(BorderFactory.createEmptyBorder());
-	    blackButton.setContentAreaFilled(false);
-            blackButton.addActionListener(new blackButtonListener());
-            blackButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-	    // Back button
-	    
-            bufferedBackButtonImage = ImageIO.read(new File("images/BackButton.png"));
-            backButtonImage = bufferedBackButtonImage.getScaledInstance(175,30, Image.SCALE_DEFAULT);
-            backButton = new JButton(new ImageIcon(backButtonImage));
-	    backButton.setBorder(BorderFactory.createEmptyBorder());
-            backButton.setContentAreaFilled(false);
-            backButton.addActionListener(new backButtonListener());
-            backButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-	}
-	catch(IOException ex){
+        }
+        catch(IOException ex){
             System.out.println("error retrieving images for main menu");
         }
-        
+    }
+
+    private void redButtonImage() {
+        try{
+            bufferedRedButtonImage = ImageIO.read(new File("images/RedButton.png"));
+            redButtonImage = bufferedRedButtonImage.getScaledInstance(175,30, Image.SCALE_DEFAULT);
+            redButton = new JButton(new ImageIcon(redButtonImage));
+            redButton.setBorder(BorderFactory.createEmptyBorder());
+            redButton.setContentAreaFilled(false);
+            redButton.addActionListener(new redButtonListener());
+            redButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        }
+        catch(IOException ex){
+            System.out.println("error retrieving images for main menu");
+        }
+    }
+
+    private void pinkButtonImage() {
+        try{
+            bufferedPinkButtonImage = ImageIO.read(new File("images/PinkButton.png"));
+            pinkButtonImage = bufferedPinkButtonImage.getScaledInstance(175,30, Image.SCALE_DEFAULT);
+            pinkButton = new JButton(new ImageIcon(pinkButtonImage));
+            pinkButton.setBorder(BorderFactory.createEmptyBorder());
+            pinkButton.setContentAreaFilled(false);
+            pinkButton.addActionListener(new pinkButtonListener());
+            pinkButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        }
+        catch(IOException ex){
+            System.out.println("error retrieving images for main menu");
+        }
+    }
+
+    private void brownButtonImage() {
+        try{
+            bufferedBrownButtonImage = ImageIO.read(new File("images/BrownButton.png"));
+            brownButtonImage = bufferedBrownButtonImage.getScaledInstance(175,30, Image.SCALE_DEFAULT);
+            brownButton = new JButton(new ImageIcon(brownButtonImage));
+            brownButton.setBorder(BorderFactory.createEmptyBorder());
+            brownButton.setContentAreaFilled(false);
+            brownButton.addActionListener(new brownButtonListener());
+            brownButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        }
+        catch(IOException ex){
+            System.out.println("error retrieving images for main menu");
+        }
+    }
+
+    private void magentaButtonImage() {
+        try{
+            bufferedMagentaButtonImage = ImageIO.read(new File("images/MagentaButton.png"));
+            magentaButtonImage = bufferedMagentaButtonImage.getScaledInstance(175,30, Image.SCALE_DEFAULT);
+            magentaButton = new JButton(new ImageIcon(magentaButtonImage));
+            magentaButton.setBorder(BorderFactory.createEmptyBorder());
+            magentaButton.setContentAreaFilled(false);
+            magentaButton.addActionListener(new magentaButtonListener());
+            magentaButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        }
+        catch(IOException ex){
+            System.out.println("error retrieving images for main menu");
+        }
+    }
+
+    private void blueButtonImage() {
+        try{
+            bufferedBlueButtonImage = ImageIO.read(new File("images/BlueButton.png"));
+            blueButtonImage = bufferedBlueButtonImage.getScaledInstance(175,30, Image.SCALE_DEFAULT);
+            blueButton = new JButton(new ImageIcon(blueButtonImage));
+            blueButton.setBorder(BorderFactory.createEmptyBorder());
+            blueButton.setContentAreaFilled(false);
+            blueButton.addActionListener(new blueButtonListener());
+            blueButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        }
+        catch(IOException ex){
+            System.out.println("error retrieving images for main menu");
+        }
+    }
+
+    private void blackButtonImage() {
+        try{
+            bufferedBlackButtonImage = ImageIO.read(new File("images/BlackButton.png"));
+            blackButtonImage = bufferedBlackButtonImage.getScaledInstance(175,30, Image.SCALE_DEFAULT);
+            blackButton = new JButton(new ImageIcon(blackButtonImage));
+            blackButton.setBorder(BorderFactory.createEmptyBorder());
+            blackButton.setContentAreaFilled(false);
+            blackButton.addActionListener(new blackButtonListener());
+            blackButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        }
+        catch(IOException ex){
+            System.out.println("error retrieving images for main menu");
+        }
+    }
+
+    private void backgroundImage() {
+        try{
+            BufferedBackgroundImage = ImageIO.read(new File("images/background.png"));
+            BackgroundImage = BufferedBackgroundImage.getScaledInstance(250,375, Image.SCALE_DEFAULT);
+            Background = new JLabel(new ImageIcon(BackgroundImage));
+            Background.setAlignmentX(Component.CENTER_ALIGNMENT);
+            Background.setLayout(new BoxLayout(Background, BoxLayout.Y_AXIS));
+        }
+        catch(IOException ex){
+            System.out.println("error retrieving images for main menu");
+        }
+    }
+    private void background() {
         header = new JLabel("Player 1: Choose Color");
         header.setFont(smallFont);
         header.setAlignmentX(Component.CENTER_ALIGNMENT);
-	header.setForeground(Color.white);
-	this.add(Background);
-	Background.add(header);
+        header.setForeground(Color.white);
+        Background.add(header);
         Background.add(blackButton);
         Background.add(blueButton);
-	Background.add(magentaButton);
-	Background.add(brownButton);
-	Background.add(pinkButton);
-	Background.add(redButton);
-	Background.add(yellowButton);
-	Background.add(blackButton);
-	Background.add(backButton);
-	/*
-
-        blackButton = new JButton("Black");
-        blackButton.addActionListener(new blackButtonListener());
-        blackButton.setFont(mediumFont);
-        blackButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        blueButton = new JButton("Blue");
-        blueButton.addActionListener(new blueButtonListener());
-        blueButton.setFont(mediumFont);
-        blueButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        magentaButton = new JButton("Magenta");
-        magentaButton.addActionListener(new magentaButtonListener());
-        magentaButton.setFont(mediumFont);
-        magentaButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        brownButton = new JButton("Brown");
-        brownButton.addActionListener(new brownButtonListener());
-        brownButton.setFont(mediumFont);
-        brownButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        pinkButton = new JButton("Pink");
-        pinkButton.addActionListener(new pinkButtonListener());
-        pinkButton.setFont(mediumFont);
-        pinkButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        redButton = new JButton("Red");
-        redButton.addActionListener(new redButtonListener());
-        redButton.setFont(mediumFont);
-        redButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        yellowButton = new JButton("Yellow");
-        yellowButton.addActionListener(new yellowButtonListener());
-        yellowButton.setFont(mediumFont);
-        yellowButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        backButton = new JButton("Back");
-        backButton.addActionListener(new backButtonListener());
-        backButton.setFont(mediumFont);
-        backButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-	*/
-
-	//Fix Issue #58
-	nameInst = new JLabel("Enter Player 1 name:");
-	nameInst.setFont(smallFont);
-	nameInst.setForeground(Color.white);
-	nameInst.setAlignmentX(Component.CENTER_ALIGNMENT);
-	nameText = new JTextField("Player 1");
-	nameText.setFont(smallFont);
-	nameText.setFocusable(true);
-	nameText.requestFocus();
-	nameText.setHorizontalAlignment(JLabel.CENTER);
-	Background.add(nameInst);                                                                                                     Background.add(nameText);    
-	
-    /*
-    this.add(header);
-    this.add(redButton);
-    this.add(yellowButton);
-    this.add(blackButton);
-    this.add(blueButton);
-    this.add(magentaButton);
-    this.add(brownButton);
-    this.add(pinkButton);
-    this.add(backButton);
-	this.add(nameInst);
-	this.add(nameText);
-    
-    */
+        Background.add(magentaButton);
+        Background.add(brownButton);
+        Background.add(pinkButton);
+        Background.add(redButton);
+        Background.add(yellowButton);
+        Background.add(blackButton);
+        Background.add(backButton);
+        Background.add(backButton);
+        Background.add(nameInst);
+        Background.add(nameText);
     }
-
-    private void backgroundImage() throws IOException {
-        BufferedBackgroundImage = ImageIO.read(new File("images/backgroundWide.png"));
-        BackgroundImage = BufferedBackgroundImage.getScaledInstance(500,375, Image.SCALE_DEFAULT);
-        Background = new JLabel(new ImageIcon(BackgroundImage));
-        Background.setAlignmentX(Component.CENTER_ALIGNMENT);
-        Background.setLayout(new BoxLayout(Background, BoxLayout.Y_AXIS));
+    private void name(){
+        nameInst = new JLabel("Enter Player 1 name:");
+        nameInst.setFont(smallFont);
+        nameInst.setForeground(Color.white);
+        nameInst.setAlignmentX(Component.CENTER_ALIGNMENT);
+        nameText = new JTextField("Player 1");
+        nameText.setFont(smallFont);
+        nameText.setFocusable(true);
+        nameText.requestFocus();
+        nameText.setHorizontalAlignment(JLabel.CENTER);
     }
-
     /**
      * Listener class for the red button
      * Calls loadPlayer2ColorSelectMenu and passes the int chosen by Player 1

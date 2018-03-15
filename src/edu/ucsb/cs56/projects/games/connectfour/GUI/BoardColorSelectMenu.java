@@ -227,112 +227,104 @@ public class BoardColorSelectMenu extends AbstractMenu
      * Action Listener for the grey button
      * Sets board color to light grey and launches the game
      */
-    class greyButtonListener implements ActionListener
-    {
-	public void actionPerformed(ActionEvent event)
-	{
-	    //set board color to light grey
-	    game.setBoardColor(9);
-	    launchGame();
-	}
+    class greyButtonListener implements ActionListener {
+        public void actionPerformed(ActionEvent event)
+        {
+            //set board color to light grey
+            game.setBoardColor(9);
+            launchGame();
+        }
     }
 
     /**
      * Action Listener for the red button
      * Sets board color to red and launches the game
      */
-    class redButtonListener implements ActionListener
-    {
-	public void actionPerformed(ActionEvent event)
-	{
-	    //set board color to red
-	    game.setBoardColor(1);
-	    launchGame();
-	}
+    class redButtonListener implements ActionListener {
+        public void actionPerformed(ActionEvent event)
+        {
+            //set board color to red
+            game.setBoardColor(1);
+            launchGame();
+        }
     }
 
     /**
      * Action Listener for the yellow button
      * Sets board color to yellow and launches the game
      */
-    class yellowButtonListener implements ActionListener
-    {
-	public void actionPerformed(ActionEvent event)
-	{
-	    //set board color to yellow
-	    game.setBoardColor(2);
-	    launchGame();
-	}
+    class yellowButtonListener implements ActionListener {
+        public void actionPerformed(ActionEvent event)
+        {
+            //set board color to yellow
+            game.setBoardColor(2);
+            launchGame();
+        }
     }
 
     /**
      * Action Listener for the black button
      * Sets board color to black and launches the game
      */
-    class blackButtonListener implements ActionListener
-    {
-	public void actionPerformed(ActionEvent event)
-	{
-	    //set board color to black
-	    game.setBoardColor(4);
-	    launchGame();
-	}
+    class blackButtonListener implements ActionListener {
+        public void actionPerformed(ActionEvent event)
+        {
+            //set board color to black
+            game.setBoardColor(4);
+            launchGame();
+        }
     }
 
     /**
      * Action Listener for the pink button
      * Sets board color to pink and launches the game
      */
-    class pinkButtonListener implements ActionListener
-    {
-	public void actionPerformed(ActionEvent event)
-	{
-	    //set board color to light pink
-	    game.setBoardColor(8);
-	    launchGame();
-	}
+    class pinkButtonListener implements ActionListener {
+        public void actionPerformed(ActionEvent event)
+        {
+            //set board color to light pink
+            game.setBoardColor(8);
+            launchGame();
+        }
     }
 
     /**
      * Action Listener for the beige button
      * Sets board color to beige and launches the game
      */
-    class beigeButtonListener implements ActionListener
-    {
+    class beigeButtonListener implements ActionListener {
 	public void actionPerformed(ActionEvent event)
-	{
-	    //set board color to beige
-	    game.setBoardColor(10);
-	    launchGame();
-	}
+        {
+            //set board color to beige
+            game.setBoardColor(10);
+            launchGame();
+        }
     }
 
     /**
      * Action Listener for the cyan button
      * Sets board color to cyan and launches the game
      */
-    class cyanButtonListener implements ActionListener
-    {
-	public void actionPerformed(ActionEvent event)
-	{
-	    //set board color to red
-	    game.setBoardColor(11);
-	    launchGame();
-	}
+    class cyanButtonListener implements ActionListener {
+        public void actionPerformed(ActionEvent event)
+        {
+            //set board color to red
+            game.setBoardColor(11);
+            launchGame();
+        }
     }
 
     /**
      * Action Listener for the olive button
      * Sets board color to olive and launches the game
      */
-    class oliveButtonListener implements ActionListener
-    {
-	public void actionPerformed(ActionEvent event)
-	{
-	    //set board color to olive
-	    game.setBoardColor(12);
-	    launchGame();
-	}
+    class oliveButtonListener implements ActionListener {
+        public void actionPerformed(ActionEvent event)
+        {
+            //set board color to olive
+            game.setBoardColor(12);
+            launchGame();
+        }
     }
 
     /**

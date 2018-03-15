@@ -48,7 +48,7 @@ public class SinglePlayerMenu extends AbstractMenu {
         Font BFont = new Font("Comic Sans MS", Font.BOLD, 22);
 
 	try{
-	    bufferedBackgroundImage = ImageIO.read(new File("images/background.png"));
+            bufferedBackgroundImage = ImageIO.read(new File("images/background.png"));
             backgroundImage = bufferedBackgroundImage.getScaledInstance(250,375, Image.SCALE_DEFAULT);
             background = new JLabel(new ImageIcon(backgroundImage));
             background.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -58,15 +58,15 @@ public class SinglePlayerMenu extends AbstractMenu {
 	    
             bufferedSinglePlayerEasy = ImageIO.read(new File("images/EasyButton.png"));
             singlePlayerEasyImage = bufferedSinglePlayerEasy.getScaledInstance(230,40, Image.SCALE_DEFAULT);
-	    singlePlayerEasy = new JButton(new ImageIcon(singlePlayerEasyImage));
+	        singlePlayerEasy = new JButton(new ImageIcon(singlePlayerEasyImage));
             singlePlayerEasy.setBorder(BorderFactory.createEmptyBorder());
-	    singlePlayerEasy.setContentAreaFilled(false);
+	        singlePlayerEasy.setContentAreaFilled(false);
             singlePlayerEasy.addActionListener(new singlePlayerEasyListener());
             singlePlayerEasy.setAlignmentX(Component.CENTER_ALIGNMENT);
 
 	    // Normal difficulty
 
-	    bufferedSinglePlayerNormal = ImageIO.read(new File("images/NormalButton.png"));
+	        bufferedSinglePlayerNormal = ImageIO.read(new File("images/NormalButton.png"));
             singlePlayerNormalImage = bufferedSinglePlayerNormal.getScaledInstance(230,40, Image.SCALE_DEFAULT);
             singlePlayerNormal = new JButton(new ImageIcon(singlePlayerNormalImage));
             singlePlayerNormal.setBorder(BorderFactory.createEmptyBorder());
@@ -85,7 +85,7 @@ public class SinglePlayerMenu extends AbstractMenu {
 
 	    // Main Menu
 
-	    bufferedMainMenu = ImageIO.read(new File("images/MainMenuButton.png"));
+	        bufferedMainMenu = ImageIO.read(new File("images/MainMenuButton.png"));
             mainMenuImage = bufferedMainMenu.getScaledInstance(230,40, Image.SCALE_DEFAULT);
             mainMenuButton = new JButton(new ImageIcon(mainMenuImage));
             mainMenuButton.setBorder(BorderFactory.createEmptyBorder());
