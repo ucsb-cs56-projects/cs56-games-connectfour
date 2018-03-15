@@ -41,6 +41,8 @@ M16 | bryannaphan joelbagan 9am | Refactored Project
 ```
 F16 | brianslee peter-master 4pm | bryannaphan joelbagan | Improvements on Refactored Project
 ```
+
+
 ###How To Play
 The first player to get 4 circles in a row diagonally, vertically, or horizontally wins. Player 1 chooses their color first and then player 2 chooses their color. Player 1 starts. Click a column in order for the circle to be dropped into the first available spot starting from the bottom. If a column is full then no more circles can be added to it. If all spots become full and there is no winner then there is a draw. 
 
@@ -164,3 +166,27 @@ We wish you luck. Have fun and happy coding!
 Brian Lee
 
 Peter Master
+
+
+##W18 Final Remarks
+Greetings. This project has been completely changed and refactored into its current form. We
+used our quarter to completely redo the UI from basic java buttons to images and backgrounds,
+and added the leaderboard to enhance the functionality of the application. We also took care of
+a large amount of bad code and refactored a large amount of code into it's own functions. This 
+will make it far easier for you to deal with it, as you simply have to change these functions and
+not have to worry about messing up the function calls.
+
+One of the things you should definately do is get our user interface to function within the game 
+itself in InGameMenu.java. This will cement the UI style into all aspects of the game. We did not 
+have the time to change it in this file, as it is more complicated to do here than in the other
+files. Then I would suggest making the leaderboard arraylist scores cap at 10, and remove any other
+scores present after 10 spots, as they will never be displayed. Following this, feel free to move onto 
+changing the AI and implementing any more screens as you desire. We have included the photoshop files 
+we used to create the buttons and titles within the images folder. There are also detailed instructions
+about resizing the images in there. Feel free to use them to keep the art style consistent.
+
+Best of luck!
+
+Sid Malik
+
+Alex Funk
