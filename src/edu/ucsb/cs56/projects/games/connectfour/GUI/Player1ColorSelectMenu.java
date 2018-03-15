@@ -96,10 +96,9 @@ public class Player1ColorSelectMenu extends AbstractMenu {
         backButtonImage();
 
         this.add(Background);
-	    background();
-
+	//	    background();
         name();
-
+	background();
 	    Background.add(nameInst);                                                                                                     Background.add(nameText);
 
     }
