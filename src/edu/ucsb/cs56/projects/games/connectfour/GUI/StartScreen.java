@@ -59,13 +59,13 @@ public class StartScreen extends AbstractMenu {
 	*/
 
         try {
-	    BufferedBackgroundImage = ImageIO.read(new File("images/background.png"));
+	        BufferedBackgroundImage = ImageIO.read(new File("images/background.png"));
             BackgroundImage = BufferedBackgroundImage.getScaledInstance(250,375, Image.SCALE_DEFAULT);
             Background = new JLabel(new ImageIcon(BackgroundImage));
             Background.setAlignmentX(Component.CENTER_ALIGNMENT);
             Background.setLayout(new BoxLayout(Background, BoxLayout.Y_AXIS));
 	  
-	    startButtonImageBuffered = ImageIO.read(new File("images/StartButton.png"));
+            startButtonImageBuffered = ImageIO.read(new File("images/StartButton.png"));
             startButtonImage = startButtonImageBuffered.getScaledInstance(200,70, Image.SCALE_DEFAULT);
             startButton = new JButton(new ImageIcon(startButtonImage));
             startButton.setBorder(BorderFactory.createEmptyBorder());
@@ -77,11 +77,12 @@ public class StartScreen extends AbstractMenu {
             scaledImage = image.getScaledInstance(200, 44, Image.SCALE_DEFAULT);
             logo = new JLabel(new ImageIcon(scaledImage));
             logo.setAlignmentX(Component.CENTER_ALIGNMENT);
-        } catch (IOException ex) {
+        }
+        catch (IOException ex) {
             System.out.println("Image unavailable");
         }
 
-	this.add(Background);
+	    this.add(Background);
         Background.add(Box.createRigidArea(new Dimension(0, 50)));
         Background.add(logo);
         Background.add(Box.createRigidArea(new Dimension(0, 120)));

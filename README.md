@@ -176,7 +176,7 @@ a large amount of bad code and refactored a large amount of code into it's own f
 will make it far easier for you to deal with it, as you simply have to change these functions and
 not have to worry about messing up the function calls.
 
-One of the things you should definately do is get our user interface to function within the game 
+One of the things you should definitely do is get our user interface to function within the game 
 itself in InGameMenu.java. This will cement the UI style into all aspects of the game. We did not 
 have the time to change it in this file, as it is more complicated to do here than in the other
 files. Then I would suggest making the leaderboard arraylist scores cap at 10, and remove any other
