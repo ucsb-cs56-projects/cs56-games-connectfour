@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.io.*;
 import java.util.ArrayList;
 
+
 /**
  * Class for the menu panel shown while the game is played.
  * @author Joel Bagan
@@ -16,7 +17,7 @@ import java.util.ArrayList;
  * @version CS56 M16 UCSB
  */
 public class InGameMenu extends AbstractMenu {
-
+    
     private JButton mainMButton;
     private JButton restartButton;
     private JButton exitButton;
@@ -33,12 +34,12 @@ public class InGameMenu extends AbstractMenu {
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.add(Box.createRigidArea(new Dimension(0, 50)));
-
+  
         drawMainMenu(game);
-        drawRestartButton(game);
+	    drawRestartButton(game);
         drawExitButton(game);
         drawLeaderBoard(game);
-        drawUndoButton(game);
+	    drawUndoButton(game);
 
 	    if (game.isTestingModeEnabled()) {
             JButton printBoard = new JButton("Print Board");

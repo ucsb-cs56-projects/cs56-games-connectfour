@@ -63,7 +63,7 @@ public class Board {
                 cc = new Circle(i * 100 + 55, j * 100 + 55, 90, 90);
                 gameGrid[i][j] = cc;
             }
-	}
+	    }
     }
 
     /**
@@ -75,7 +75,6 @@ public class Board {
             game.setGameIsOver(true);
             return true;
         }
-
         return false;
     }
 
@@ -373,7 +372,8 @@ public class Board {
             //set the selected circle's state to current player's color
             if (game.getTurn() == 1) {
                 gameGrid[xIndex][yIndex].setState(game.getPlayer1Color());
-            } else if (game.getTurn() == 2) {
+            }
+            else if (game.getTurn() == 2) {
                 gameGrid[xIndex][yIndex].setState(game.getPlayer2Color());
             }
             display.repaint();

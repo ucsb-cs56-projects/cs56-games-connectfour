@@ -6,6 +6,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.imageio.ImageIO;
+import java.io.File;
+import java.io.IOException;
+import java.awt.image.BufferedImage;
+
 
 /**
  * Class for the Single player menu where the difficulty is chosen
@@ -14,12 +19,22 @@ import java.awt.event.ActionListener;
  * @version CS56 M16 UCSB
  */
 public class SinglePlayerMenu extends AbstractMenu {
-
+    private JLabel background;
+    private BufferedImage bufferedBackgroundImage;
+    private Image backgroundImage;
     private JButton singlePlayerEasy;
+    private BufferedImage bufferedSinglePlayerEasy;
+    private Image singlePlayerEasyImage;
     private JButton singlePlayerNormal;
+    private BufferedImage bufferedSinglePlayerNormal;
+    private Image singlePlayerNormalImage;
     private JButton singlePlayerAdvanced;
+    private BufferedImage bufferedSinglePlayerAdvanced;
+    private Image singlePlayerAdvancedImage;
     private JButton mainMenuButton;
-
+    private BufferedImage bufferedMainMenu;
+    private Image mainMenuImage;
+    
     /**
      * Constructor for the single player menu panel
      * @param game Game reference passed to all GUI classes
@@ -29,10 +44,69 @@ public class SinglePlayerMenu extends AbstractMenu {
         super(game, frame);
         frame.setTitle("Single Player");
 
-
-
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         Font BFont = new Font("Comic Sans MS", Font.BOLD, 22);
+
+	try{
+            bufferedBackgroundImage = ImageIO.read(new File("images/background.png"));
+            backgroundImage = bufferedBackgroundImage.getScaledInstance(250,375, Image.SCALE_DEFAULT);
+            background = new JLabel(new ImageIcon(backgroundImage));
+            background.setAlignmentX(Component.CENTER_ALIGNMENT);
+            background.setLayout(new BoxLayout(background, BoxLayout.Y_AXIS));
+
+	    // Easy Difficulty
+	    
+            bufferedSinglePlayerEasy = ImageIO.read(new File("images/EasyButton.png"));
+            singlePlayerEasyImage = bufferedSinglePlayerEasy.getScaledInstance(230,40, Image.SCALE_DEFAULT);
+	        singlePlayerEasy = new JButton(new ImageIcon(singlePlayerEasyImage));
+            singlePlayerEasy.setBorder(BorderFactory.createEmptyBorder());
+	        singlePlayerEasy.setContentAreaFilled(false);
+            singlePlayerEasy.addActionListener(new singlePlayerEasyListener());
+            singlePlayerEasy.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+	    // Normal difficulty
+
+	        bufferedSinglePlayerNormal = ImageIO.read(new File("images/NormalButton.png"));
+            singlePlayerNormalImage = bufferedSinglePlayerNormal.getScaledInstance(230,40, Image.SCALE_DEFAULT);
+            singlePlayerNormal = new JButton(new ImageIcon(singlePlayerNormalImage));
+            singlePlayerNormal.setBorder(BorderFactory.createEmptyBorder());
+            singlePlayerNormal.setContentAreaFilled(false);
+            singlePlayerNormal.addActionListener(new singlePlayerNormalListener());
+            singlePlayerNormal.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+	    // Advanced difficulty                                                                                               
+            bufferedSinglePlayerAdvanced = ImageIO.read(new File("images/AdvancedButton.png"));
+            singlePlayerAdvancedImage = bufferedSinglePlayerAdvanced.getScaledInstance(230,40, Image.SCALE_DEFAULT);
+            singlePlayerAdvanced = new JButton(new ImageIcon(singlePlayerAdvancedImage));
+            singlePlayerAdvanced.setBorder(BorderFactory.createEmptyBorder());
+            singlePlayerAdvanced.setContentAreaFilled(false);
+            singlePlayerAdvanced.addActionListener(new singlePlayerAdvancedListener());
+            singlePlayerAdvanced.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+	    // Main Menu
+
+	        bufferedMainMenu = ImageIO.read(new File("images/MainMenuButton.png"));
+            mainMenuImage = bufferedMainMenu.getScaledInstance(230,40, Image.SCALE_DEFAULT);
+            mainMenuButton = new JButton(new ImageIcon(mainMenuImage));
+            mainMenuButton.setBorder(BorderFactory.createEmptyBorder());
+            mainMenuButton.setContentAreaFilled(false);
+            mainMenuButton.addActionListener(new backButtonListener());
+            mainMenuButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+
+	}
+	catch(IOException ex){
+            System.out.println("error retrieving images for single player menu");
+        }
+	
+	this.add(background);
+	background.add(Box.createRigidArea(new Dimension(0, 10)));
+	background.add(singlePlayerEasy);
+	background.add(singlePlayerNormal);
+	background.add(singlePlayerAdvanced);
+	background.add(mainMenuButton);
+
+	/*
 
         singlePlayerEasy = new JButton("Easy");
         singlePlayerEasy.addActionListener(new singlePlayerEasyListener());
@@ -59,6 +133,8 @@ public class SinglePlayerMenu extends AbstractMenu {
         this.add(singlePlayerNormal);
         this.add(singlePlayerAdvanced);
         this.add(mainMenuButton);
+
+	*/
     }
 
     /**

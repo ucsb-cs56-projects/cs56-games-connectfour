@@ -6,6 +6,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.imageio.ImageIO;
+import java.io.File;
+import java.io.IOException;
+import java.awt.image.BufferedImage;
 
 /**
  * Class for settings menu
@@ -16,8 +20,15 @@ import java.awt.event.ActionListener;
  */
 public class SettingsMenu extends AbstractMenu {
 
+    private JLabel Background;
+    private Image BackgroundImage;
+    private BufferedImage BufferedBackgroundImage;
     private JButton mainMenuButton;
+    private Image mainMenuButtonImage;
+    private BufferedImage mainMenuButtonImageBuffered;
     private JButton audioMenuButton;
+    private Image audioMenuButtonImage;
+    private BufferedImage audioMenuButtonImageBuffered;
     private JCheckBox testingModeBox;
 
     /**
@@ -31,27 +42,70 @@ public class SettingsMenu extends AbstractMenu {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         Font BFont = new Font("Comic Sans MS", Font.BOLD, 22);
 
-        audioMenuButton = new JButton("Audio");
-        audioMenuButton.addActionListener(new audioButtonListener());
-        audioMenuButton.setFont(BFont);
-        audioMenuButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        backgroundImage();
+        audioMenuButtonImage();
+        mainMenuButtonImage();
+        testingModeBox();
 
-        mainMenuButton = new JButton("Back");
-        mainMenuButton.addActionListener(new backButtonListener());
-        mainMenuButton.setFont(BFont);
-        mainMenuButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        this.add(Background);
+        background();
 
+
+	frame.getContentPane().add(this);
+    }
+    public void backgroundImage(){
+        try{
+            BufferedBackgroundImage = ImageIO.read(new File("images/background.png"));
+            BackgroundImage = BufferedBackgroundImage.getScaledInstance(250,375, Image.SCALE_DEFAULT);
+            Background = new JLabel(new ImageIcon(BackgroundImage));
+            Background.setAlignmentX(Component.CENTER_ALIGNMENT);
+            Background.setLayout(new BoxLayout(Background, BoxLayout.Y_AXIS));
+        }
+        catch(IOException ex){
+            System.out.println("error retrieving images for main menu");
+        }
+    }
+    public void audioMenuButtonImage(){
+        try{
+            audioMenuButtonImageBuffered = ImageIO.read(new File("images/AudioButton.png"));
+            audioMenuButtonImage = audioMenuButtonImageBuffered.getScaledInstance(200,50, Image.SCALE_DEFAULT);
+            audioMenuButton = new JButton(new ImageIcon(audioMenuButtonImage));
+            audioMenuButton.setBorder(BorderFactory.createEmptyBorder());
+            audioMenuButton.setContentAreaFilled(false);
+            audioMenuButton.addActionListener(new audioButtonListener());
+            audioMenuButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        }
+        catch(IOException ex){
+            System.out.println("error retrieving images for main menu");
+        }
+    }
+    public void mainMenuButtonImage(){
+        try{
+            mainMenuButtonImageBuffered = ImageIO.read(new File("images/BackButton.png"));
+            mainMenuButtonImage = mainMenuButtonImageBuffered.getScaledInstance(200,50, Image.SCALE_DEFAULT);
+            mainMenuButton = new JButton(new ImageIcon(mainMenuButtonImage));
+            mainMenuButton.setBorder(BorderFactory.createEmptyBorder());
+            mainMenuButton.setContentAreaFilled(false);
+            mainMenuButton.addActionListener(new backButtonListener());
+            mainMenuButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        }
+        catch(IOException ex){
+            System.out.println("error retrieving images for main menu");
+        }
+    }
+    public void testingModeBox(){
         testingModeBox = new JCheckBox("Testing Mode");
         testingModeBox.addActionListener(new testingModeBoxListener());
         testingModeBox.setSelected(false);
         testingModeBox.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        this.add(testingModeBox);
-        this.add(audioMenuButton);
-        this.add(mainMenuButton);
-        frame.getContentPane().add(this);
+        testingModeBox.setForeground(Color.white);
     }
-
+    public void background(){
+        Background.add(Box.createRigidArea(new Dimension(0, 10)));
+        Background.add(audioMenuButton);
+        Background.add(mainMenuButton);
+        Background.add(testingModeBox);
+    }
     /**
      * Listener class for the audio menu button
      */

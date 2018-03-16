@@ -221,30 +221,30 @@ public class Game implements Serializable{
         gameIsOver = false;
 
         System.out.println("Restarting...");
-
         System.out.println("GameMode is " + getGameMode());
 
-	coinToss();
+	    coinToss();
         turn = getCoinTossWinner();
         if (turn == 2) {
             System.out.println("Player 2 gets to start!");
-	    if(getGameMode() != 1) {
-		try {
-		    Robot r = new Robot();
-		    Point p = frame.getLocationOnScreen();
-		    Point current = MouseInfo.getPointerInfo().getLocation();
-		    r.mouseMove((int) p.getX() + 50, (int) p.getY() + 50);
-		    r.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-		    r.mouseRelease(InputEvent.BUTTON1_MASK);
-		    r.mouseMove((int) current.getX(), (int) current.getY());
-		} catch (AWTException ex) {
-		    System.out.println("didn't work");
-		}
+            if(getGameMode() != 1) {
+                try {
+                    Robot r = new Robot();
+                    Point p = frame.getLocationOnScreen();
+                    Point current = MouseInfo.getPointerInfo().getLocation();
+                    r.mouseMove((int) p.getX() + 50, (int) p.getY() + 50);
+                    r.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+                    r.mouseRelease(InputEvent.BUTTON1_MASK);
+                    r.mouseMove((int) current.getX(), (int) current.getY());
+                }
+                catch (AWTException ex) {
+                    System.out.println("didn't work");
+                }
+            }
 	    }
-	}
-	else {
+	    else {
 	    System.out.println("Player 1 gets to start!");
-	}
+	    }
         board.setGame(this);
         moveCounter = 0;
         movesList.clear();
@@ -257,12 +257,13 @@ public class Game implements Serializable{
      * turn when game is launched and restarted
      */
     public void coinToss() {
-	Random randomNum = new Random();
-	coinTossWinner = randomNum.nextInt(3) % 2;//formerly (2 - 1 + 1) + 1
+        Random randomNum = new Random();
+        coinTossWinner = randomNum.nextInt(3) % 2;//formerly (2 - 1 + 1) + 1
         if (coinTossWinner >= 1) {
             System.out.println("Player 1 gets to start!");
-        } else {
-	    coinTossWinner = 2;
+        }
+        else {
+            coinTossWinner = 2;
             System.out.println("Player 2 gets to start!");
         }
     }
