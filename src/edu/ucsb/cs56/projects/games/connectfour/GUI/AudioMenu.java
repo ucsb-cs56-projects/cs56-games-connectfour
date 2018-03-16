@@ -42,7 +42,6 @@ public class AudioMenu extends AbstractMenu {
     private JRadioButton musicBuddySelection;
     private JRadioButton musicSunnySelection;
     private JRadioButton musicTendernessSelection;
-    private JRadioButton musicHumpMeSelection;
 
     /**
      * Constructor for the Audio Page
@@ -156,10 +155,6 @@ public class AudioMenu extends AbstractMenu {
         musicTendernessSelection.setForeground(Color.white);
         musicTendernessSelection.addActionListener(new selectSongSixListener());
 
-        musicHumpMeSelection = new JRadioButton("Hump Me");
-        musicHumpMeSelection.setAlignmentX(Component.LEFT_ALIGNMENT);
-        musicHumpMeSelection.setForeground(Color.white);
-        musicHumpMeSelection.addActionListener(new selectSongSevenListener());
 
     }
 
@@ -171,7 +166,6 @@ public class AudioMenu extends AbstractMenu {
         musicSelection.add(musicBuddySelection);
         musicSelection.add(musicSunnySelection);
         musicSelection.add(musicTendernessSelection);
-        musicSelection.add(musicHumpMeSelection);
         musicMysticalSelection.setSelected(true);
     }
     private void background() {
@@ -184,7 +178,7 @@ public class AudioMenu extends AbstractMenu {
         Background.add(musicDancePopSelection);
         Background.add(musicBuddySelection);
         Background.add(musicSunnySelection);
-        Background.add(musicHumpMeSelection);
+        Background.add(musicTendernessSelection);
     }
 
     
@@ -224,11 +218,6 @@ public class AudioMenu extends AbstractMenu {
         }
     }
 
-    class selectSongSevenListener implements ActionListener {
-        public void actionPerformed(ActionEvent even){
-            MusicPlayer.selectSong(6);
-        }
-    }
 
         /**
      * Listener for the back button

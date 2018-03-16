@@ -24,7 +24,7 @@ public class MusicPlayer {
     //Music files must be in ".au" format
     private static String[] musicFiles =
             {"audio/maintheme.au","audio/dance.au", "audio/popdance.au", "audio/buddy.au",
-                    "audio/sunny.au", "audio/tenderness.au","audio/deepthroat.au"};
+                    "audio/sunny.au", "audio/tenderness.au"};
     private static Clip myClip;
     public static boolean musicOn;
 
